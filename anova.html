@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>ANOVA og k-stikprøver beregner — Online og gratis</title>
+<meta name="description" content="Gratis ANOVA-beregner på dansk til at sammenligne tre eller flere grupper. Lav en envejs-ANOVA (parametrisk) eller en Kruskal-Wallis test (ikke-parametrisk): teststørrelse, frihedsgrader, p-værdi og effektstørrelse.">
+<link rel="canonical" href="https://statistikberegner.dk/anova.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="ANOVA og k-stikprøver beregner">
+<meta property="og:description" content="Sammenlign tre eller flere grupper med envejs-ANOVA eller Kruskal-Wallis testen. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/anova.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ANOVA og k-stikprøver beregner",
+  "url": "https://statistikberegner.dk/anova.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Beregner til envejs-ANOVA og Kruskal-Wallis testen, der sammenligner tre eller flere grupper."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"ANOVA og k-stikprøver beregner","item":"https://statistikberegner.dk/anova.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er ANOVA?","acceptedAnswer":{"@type":"Answer","text":"Envejs-ANOVA (variansanalyse) er en hypotesetest, der sammenligner gennemsnit fra tre eller flere grupper samtidig. Den tjekker, om mindst én gruppe afviger fra de andre, ved at sammenligne variationen mellem grupperne med variationen indenfor dem."}},
+    {"@type":"Question","name":"Hvorfor ikke køre flere t-tests i stedet for ANOVA?","acceptedAnswer":{"@type":"Answer","text":"Hver t-test bærer en risiko for falsk positiv. Når du gentager flere tests for at sammenligne alle par af grupper, hober disse risici sig op, og chancen for en type I-fejl ryger godt over 5%. ANOVA laver én samlet sammenligning og holder fejlen under kontrol."}},
+    {"@type":"Question","name":"Hvad er forskellen på ANOVA og Kruskal-Wallis?","acceptedAnswer":{"@type":"Answer","text":"ANOVA er parametrisk: den antager nogenlunde normalfordelte data og lignende varianser mellem grupperne. Kruskal-Wallis testen er det ikke-parametriske alternativ, baseret på rangordener, og er velegnet når disse antagelser ikke holder, eller når data er ordinale."}},
+    {"@type":"Question","name":"Hvad betyder et signifikant resultat i ANOVA?","acceptedAnswer":{"@type":"Answer","text":"En p-værdi under signifikansniveauet viser, at mindst én gruppe har et gennemsnit, der adskiller sig fra de andre. ANOVA siger ikke hvilken gruppe der afviger — til det bruges post hoc-tests som Tukeys test."}},
+    {"@type":"Question","name":"Hvad er eta-i-anden i ANOVA?","acceptedAnswer":{"@type":"Answer","text":"Eta-i-anden (η²) er et mål for effektstørrelsen. Den viser, hvor stor en andel af den samlede variation i data der forklares af forskellen mellem grupperne: værdier omkring 0,01 er små, 0,06 er mellemstore og 0,14 eller mere er store."}},
+    {"@type":"Question","name":"Hvor mange grupper kræver ANOVA?","acceptedAnswer":{"@type":"Answer","text":"ANOVA bruges til at sammenligne tre eller flere grupper. Med kun to grupper er den matematisk identisk med t-testen for to stikprøver, og t-testen er mere direkte."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>ANOVA og k-stikprøver beregner</li>
+        </ol>
+      </nav>
+      <h1>ANOVA og k-stikprøver beregner</h1>
+      <p class="lead">Sammenlign <strong>tre eller flere grupper på én gang</strong> og find ud af, om et af gennemsnittene skiller sig ud — med envejs-ANOVA (parametrisk) eller Kruskal-Wallis testen (ikke-parametrisk).</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="ka-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg>
+        Beregn sammenligningen af k grupper
+      </h2>
+      <p class="calculator__hint">Vælg analysetype, indsæt værdierne for hver gruppe og se, om forskellene mellem gennemsnittene er statistisk signifikante.</p>
+
+      <fieldset class="field-group">
+        <legend>Analysetype</legend>
+        <div class="segmented" role="radiogroup" aria-label="Analysetype">
+          <label><input type="radio" name="ka-method" value="anova" checked><span>ANOVA (parametrisk)</span></label>
+          <label><input type="radio" name="ka-method" value="kruskal"><span>Kruskal-Wallis (ikke-parametrisk)</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Dine grupper</legend>
+        <p class="help help--block">Indsæt værdierne for hver gruppe adskilt af mellemrum, komma eller linjeskift.</p>
+        <div class="group-list" id="ka-groups"></div>
+        <div class="matrix-controls">
+          <button type="button" class="btn btn--ghost btn--sm" id="ka-add">+ Gruppe</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="ka-del">− Gruppe</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row field-row--single">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="ka-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="ka-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="ka-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="ka-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn</button>
+        <button class="btn btn--ghost" type="button" id="ka-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="ka-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad vil det sige at sammenligne k stikprøver</a></li>
+          <li><a href="#por-que-anova">Hvorfor ikke køre flere t-tests</a></li>
+          <li><a href="#anova">Envejs-ANOVA</a></li>
+          <li><a href="#kruskal">Kruskal-Wallis: det ikke-parametriske alternativ</a></li>
+          <li><a href="#pressupostos">ANOVA's antagelser</a></li>
+          <li><a href="#posthoc">Og bagefter? Post hoc-tests</a></li>
+          <li><a href="#interpretar">Sådan tolker du resultatet</a></li>
+          <li><a href="#exemplo">Gennemregnet eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad vil det sige at sammenligne k stikprøver</h2>
+      <p>Mange forskningsspørgsmål involverer <strong>mere end to grupper</strong>. Giver tre undervisningsmetoder forskellige karakterer? Giver fire gødninger forskellige høstudbytter? Har fem versioner af en salgsside forskellige opholdstider? I alle disse tilfælde vil du sammenligne <strong>k grupper</strong> — hvor k er tre, fire, fem eller flere — og finde ud af, om gennemsnittene faktisk er forskellige, eller om den observerede variation bare er tilfældig stikprøveudsving.</p>
+      <p><a href="/t-test.html">T-testen</a> håndterer fint sammenligningen af <em>to</em> grupper. Men fra tre og opefter holder den op med at være det rigtige værktøj — og grunden er mere alvorlig, end den lyder. Denne beregner tilbyder de to korrekte tests til k-stikprøveproblemet: <strong>envejs-ANOVA</strong>, der er parametrisk, og <strong>Kruskal-Wallis</strong> testen, der er ikke-parametrisk. Begge arbejder på præcis de samme data — du skal blot skifte analysetype øverst i beregneren.</p>
+      <p>Spørgsmålet, de begge svarer på, er det samme: <strong>findes der mindst én gruppe, hvis fordeling adskiller sig fra de andre?</strong> Forskellen ligger i de antagelser, hver test kræver, som vi ser længere nede.</p>
+
+      <h2 id="por-que-anova">Hvorfor ikke køre flere t-tests</h2>
+      <p>Fristelsen er naturlig: med tre grupper A, B og C — hvorfor ikke køre tre t-tests, A mod B, A mod C, B mod C, og kigge på resultaterne? Problemet har et fagligt navn: <strong>inflation af type I-fejlen</strong>.</p>
+      <p>Hver hypotesetest bærer en risiko for <strong>falsk positiv</strong>: chancen for at erklære en forskel, der i virkeligheden ikke findes. Med det sædvanlige signifikansniveau på 5% er den risiko 0,05 <em>pr. test</em>. Når du laver flere tests, hober risiciene sig op.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Risikoen for falsk positiv vokser hurtigt
+        </div>
+        <p>Med 3 grupper er der 3 parsammenligninger; med 4 grupper, 6; med 5 grupper, 10. Hvis hver test har 5% risiko for falsk positiv, stiger sandsynligheden for at lave <em>mindst én</em> fejl hurtigt: allerede med 3 uafhængige tests når den omkring 14%, og med 10 tests over 40%. "Signifikansniveau på 5%" gælder ikke længere for konklusionen som helhed.</p>
+      </div>
+      <p>ANOVA løser det elegant: den laver <strong>én samlet sammenligning</strong>, med én p-værdi, og holder type I-fejlen på det valgte niveau (fx 5%). Først bagefter — og kun hvis den samlede sammenligning er signifikant — undersøger man hvilke par der adskiller sig, med egne teknikker, som beskrives i afsnittet om <a href="#posthoc">post hoc-tests</a>. Gem <a href="/t-test.html">t-testen</a> til, når der faktisk kun er to grupper at sammenligne.</p>
+
+      <h2 id="anova">Envejs-ANOVA</h2>
+      <p>Navnet <strong>variansanalyse</strong> virker mærkeligt — vi vil jo gerne sammenligne <em>gennemsnit</em>, ikke varianser. Geniet i metoden ligger lige præcis der: ANOVA finder ud af, om gennemsnittene adskiller sig, ved at <strong>analysere to kilder til variation</strong> i data.</p>
+      <p>Den første er <strong>variationen mellem grupperne</strong>: hvor meget gruppegennemsnittene afviger fra det samlede gennemsnit. Den anden er <strong>variationen indenfor grupperne</strong>: hvor meget de enkelte værdier svinger omkring deres egen gruppes gennemsnit — det er den naturlige "støj" i data. Teststørrelsen, kaldet <strong>F</strong>, er ganske enkelt forholdet mellem de to:</p>
+      <div class="formula">F = varians mellem grupperne ÷ varians indenfor grupperne
+        <span class="formula__where">Hvis alle gennemsnit er ens, estimerer de to varianser det samme, og F ligger tæt på 1. Jo mere gennemsnittene adskiller sig, jo større bliver F.</span>
+      </div>
+      <p>Mere formelt er variationen mellem grupperne <strong>kvadratsummen mellem</strong> (SS mellem) divideret med dens frihedsgrader; det samme gælder variationen <strong>indenfor</strong>. Disse forhold er <strong>de gennemsnitlige kvadratsummer</strong> (MS):</p>
+      <div class="formula">F = MS<sub>mellem</sub> ÷ MS<sub>indenfor</sub>, &nbsp; hvor MS = SS ÷ frihedsgrader</div>
+      <p>Frihedsgraderne har to dele. <strong>Frihedsgrader mellem grupper</strong> er k − 1 (antal grupper minus 1). <strong>Frihedsgrader indenfor grupperne</strong> er N − k (samlet antal observationer minus antal grupper). Med F og dette par af frihedsgrader slår beregneren op i <strong>F-fordelingen</strong> og finder <strong>p-værdien</strong>: sandsynligheden for at observere et så stort F, hvis alle gennemsnit i virkeligheden var ens.</p>
+
+      <h2 id="kruskal">Kruskal-Wallis: det ikke-parametriske alternativ</h2>
+      <p>ANOVA er stærk, men har en pris: den antager, at data i hver gruppe nogenlunde følger en normalfordeling, og at varianserne er ens. Når disse antagelser ikke holder — meget skæve data, ekstreme værdier, små stikprøver — eller når variablen kun er <strong>ordinal</strong> (fx tilfredshedskarakterer fra 1 til 5), kan ANOVA give skrøbelige konklusioner.</p>
+      <p><strong>Kruskal-Wallis</strong> testen er det <strong>ikke-parametriske</strong> alternativ. I stedet for at arbejde med de oprindelige værdier konverterer den dem til <strong>rangordener</strong>: alle observationer fra alle grupper samles, sorteres fra mindste til største, og hver værdi erstattes af sin position (1, 2, 3, …). Analysen sker derefter på disse rangordener.</p>
+      <p>Logikken er intuitiv. Hvis grupperne er ens, bør høje og lave rangordener fordele sig nogenlunde ens mellem dem — summen af rangordener i hver gruppe vil være proportional med dens størrelse. Hvis én gruppe samler de højeste værdier (store rangordener) og en anden de laveste, vokser teststørrelsen, kaldet <strong>H</strong>. Under antagelsen om ens grupper følger H tilnærmelsesvis en chi-i-anden fordeling med k − 1 frihedsgrader, og deraf kommer p-værdien.</p>
+      <p>Fordi den kun bruger datas rækkefølge, er Kruskal-Wallis <strong>robust over for ekstreme værdier</strong> og kræver ikke normalitet. For tre eller flere grupper er den det samme som <a href="/wilcoxon.html">Mann-Whitney</a> testen er for to grupper. Prisen er et beskedent tab i statistisk styrke, når data <em>faktisk</em> er normalfordelte — i det tilfælde opdager ANOVA forskelle lidt mere følsomt.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="pressupostos">ANOVA's antagelser</h2>
+      <p>For at p-værdien fra ANOVA er pålidelig, skal tre betingelser være rimeligt opfyldt:</p>
+      <ul>
+        <li><strong>Normalitet</strong> — indenfor hver gruppe følger data (mere præcist residualerne) nogenlunde en normalfordeling. Med større stikprøver er små afvigelser ikke længere et problem, takket være den centrale grænseværdisætning.</li>
+        <li><strong>Variansens homogenitet</strong> — også kaldet <em>homoskedasticitet</em>: grupperne har lignende varianser. Tests som Levenes test hjælper med at tjekke det. Når antagelsen tydeligt brydes, findes der varianter som Welch's ANOVA.</li>
+        <li><strong>Uafhængighed</strong> — hver observation er uafhængig af de andre, både indenfor og mellem grupperne. Det er den vigtigste antagelse og den sværeste at rette bagefter: den afhænger af et godt studiedesign.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Når antagelserne ikke holder
+        </div>
+        <p>Hvis data er meget skæve, har indflydelsesrige ekstreme værdier eller er ordinale, så skift til Kruskal-Wallis testen øverst i beregneren. Den svarer på det samme spørgsmål uden at kræve normalitet eller ens varianser — det er kun ét klik på de samme data.</p>
+      </div>
+
+      <h2 id="posthoc">Og bagefter? Post hoc-tests</h2>
+      <p>Et signifikant resultat fra ANOVA eller Kruskal-Wallis giver en vigtig, men <strong>ufuldstændig</strong> konklusion: den fortæller, at <em>mindst én</em> gruppe afviger — uden at sige <em>hvilken</em>. Med fire grupper kan forskellen ligge i ét enkelt par eller i flere.</p>
+      <p>For at finde præcis hvor forskellene ligger, bruger man <strong>post hoc-tests</strong> (eller multiple sammenligninger). De sammenligner par af grupper, men — og det er pointen — <strong>justerer signifikansniveauet</strong>, så type I-fejlsinflationen ikke vender tilbage. De mest kendte er:</p>
+      <ul>
+        <li><strong>Tukeys test (HSD)</strong> — den mest almindelige efter en signifikant ANOVA. Den sammenligner alle par af gennemsnit og kontrollerer den samlede fejl.</li>
+        <li><strong>Bonferroni-korrektion</strong> — simpel og generel: signifikansniveauet divideres med antallet af sammenligninger. Den er konservativ.</li>
+        <li><strong>Dunns test</strong> — den sædvanlige post hoc-test efter en signifikant Kruskal-Wallis, som arbejder på rangordenerne.</li>
+      </ul>
+      <p>Tommelfingerreglen er rækkefølgen: <strong>først</strong> den samlede test (ANOVA eller Kruskal-Wallis); <strong>kun hvis den er signifikant</strong>, går man videre til post hoc. Uden den indgangsdør vender vi tilbage til problemet med ukontrollerede multiple sammenligninger.</p>
+
+      <h2 id="interpretar">Sådan tolker du resultatet</h2>
+      <p>Beregneren returnerer et kort med konklusionen og et sæt nøgletal. I <strong>ANOVA</strong> er det:</p>
+      <ul>
+        <li><strong>F-teststørrelse</strong> — forholdet mellem variansen mellem grupperne og variansen indenfor dem. Værdier tæt på 1 antyder ens gennemsnit; høje værdier, forskellige gennemsnit.</li>
+        <li><strong>Frihedsgrader mellem grupper</strong> — er k − 1 og definerer sammen med dem indenfor F-fordelingen.</li>
+        <li><strong>Frihedsgrader indenfor grupperne</strong> — er N − k.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at se et så stort F ved et tilfælde. Hvis den er mindre end signifikansniveauet (normalt 0,05), så afviger mindst én gruppe.</li>
+        <li><strong>Eta-i-anden (η²)</strong> — effektstørrelsen: den andel af den samlede variation, som forklares af grupperne. Omkring 0,01 er småt, 0,06 er mellem, og 0,14 eller mere er stort.</li>
+        <li><strong>Antal grupper</strong> — hvor mange grupper der indgik i analysen.</li>
+      </ul>
+      <p>I <strong>Kruskal-Wallis</strong> er nøgletallene <strong>H-teststørrelsen</strong>, <strong>frihedsgraderne</strong> (k − 1), <strong>p-værdien</strong>, <strong>antallet af grupper</strong> og det <strong>samlede antal observationer</strong>. Aflæsningen af p-værdien er den samme: under signifikansniveauet er der forskel mellem grupperne — men her handler konklusionen om rangordener (tendensen til at en gruppe systematisk har større eller mindre værdier).</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Signifikant betyder ikke "alle forskellige"
+        </div>
+        <p>En lille p-værdi viser, at <em>mindst én</em> gruppe skiller sig ud — ikke at alle grupper adskiller sig fra hinanden. For at vide præcis hvilke par der er forskellige, kræves en post hoc-test. Og husk at kigge på effektstørrelsen: med store stikprøver bliver trivielle forskelle "signifikante".</p>
+      </div>
+
+      <h2 id="exemplo">Gennemregnet eksempel</h2>
+      <p>En skole sammenlignede <strong>tre studiemetoder</strong> i tre klasser med fem elever hver og noterede slutkarakteren for hver elev. Spørgsmålet: påvirker studiemetoden den gennemsnitlige karakter?</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Metode</th><th class="num">Karakterer</th><th class="num">Gennemsnit</th></tr></thead>
+          <tbody>
+            <tr><td>Gruppe 1</td><td class="num">85, 88, 82, 90, 87</td><td class="num">86,4</td></tr>
+            <tr><td>Gruppe 2</td><td class="num">78, 75, 80, 82, 79</td><td class="num">78,8</td></tr>
+            <tr><td>Gruppe 3</td><td class="num">92, 95, 90, 94, 91</td><td class="num">92,4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><strong>Gennemsnit og samlet gennemsnit:</strong> gruppegennemsnittene er 86,4, 78,8 og 92,4; det samlede gennemsnit af de 15 karakterer er 85,87.</li>
+        <li><strong>Variation mellem grupper:</strong> gruppegennemsnittene ligger langt fra det samlede gennemsnit, hvilket giver en stor kvadratsum mellem — et tegn på at metoderne kan adskille sig.</li>
+        <li><strong>Variation indenfor grupperne:</strong> indenfor hver klasse svinger karaktererne kun lidt, så kvadratsummen indenfor er lille.</li>
+        <li><strong>F-teststørrelse:</strong> med en variansen mellem grupperne meget større end variansen indenfor, bliver F højt, og p-værdien ryger godt under 0,001.</li>
+      </ol>
+      <p>Da p-værdien er meget mindre end 0,05, er konklusionen, at <strong>mindst én metode afviger</strong> fra de andre: studiemetoden hænger sammen med karakteren. Eta-i-anden, tæt på 0,9, viser en stor effekt — en stor del af variationen i karaktererne forklares af gruppen. ANOVA siger dog ikke, om alle tre metoder adskiller sig fra hinanden, eller om kun én skiller sig ud; det kræver en post hoc-test. Brug knappen <em>"Udfyld med eksempel"</em> for at se hele udregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er ANOVA?</summary>
+          <div class="faq__answer"><p>Envejs-ANOVA (variansanalyse) er en hypotesetest, der sammenligner gennemsnit fra tre eller flere grupper på én gang. Den tjekker, om mindst én gruppe afviger fra de andre, ved at sammenligne variationen mellem grupperne med variationen indenfor dem.</p></div>
+        </details>
+        <details>
+          <summary>Hvorfor ikke køre flere t-tests i stedet for ANOVA?</summary>
+          <div class="faq__answer"><p>Fordi hver t-test bærer en risiko for falsk positiv, og disse risici hober sig op, når du laver mange tests. At sammenligne alle par af tre grupper hæver chancen for type I-fejl til omkring 14% — langt over de tilstræbte 5%. ANOVA laver én samlet sammenligning og holder fejlen under kontrol. Se <a href="/t-test.html">t-testen</a>, hvis det kun er to grupper.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen på ANOVA og Kruskal-Wallis?</summary>
+          <div class="faq__answer"><p>ANOVA er parametrisk: den antager nogenlunde normalfordelte data og lignende varianser. Kruskal-Wallis er det ikke-parametriske alternativ, baseret på rangordener, og er velegnet når disse antagelser ikke holder, eller når data er ordinale. Den svarer for k grupper til <a href="/wilcoxon.html">Mann-Whitney</a> testen.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder et signifikant resultat?</summary>
+          <div class="faq__answer"><p>En p-værdi under signifikansniveauet viser, at mindst én gruppe afviger fra de andre. Hverken ANOVA eller Kruskal-Wallis siger hvilken gruppe der afviger — til det bruges post hoc-tests som Tukeys eller Dunns test.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er eta-i-anden?</summary>
+          <div class="faq__answer"><p>Eta-i-anden (η²) er et mål for effektstørrelsen: den andel af den samlede variation i data, der forklares af forskellen mellem grupperne. Værdier omkring 0,01 er små, 0,06 er mellem og 0,14 eller mere er store. Den supplerer p-værdien, som alene ikke afslører styrken af effekten.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg bruge ANOVA med kun to grupper?</summary>
+          <div class="faq__answer"><p>Ja — og resultatet svarer matematisk til t-testen for to stikprøver (F er lig med t i anden). Men med kun to grupper er <a href="/t-test.html">t-testen</a> mere direkte og giver desuden konfidensintervallet for forskellen. ANOVA brillerer først rigtigt fra tre grupper og opefter.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>Students t-test</h3><p>Til at sammenligne gennemsnit fra kun to grupper.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/wilcoxon.html"><h3>Wilcoxon og Mann-Whitney</h3><p>Ikke-parametriske tests for to grupper.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/guides/vaelg-test.html"><h3>Hvilken test skal jeg bruge?</h3><p>En guide til at vælge den rette statistiske test.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>I tvivl om hvilken test du skal bruge?</h2>
+        <p>Se guiden, der hjælper dig med at vælge den rette statistiske test til din datatype.</p>
+        <a class="btn btn--light btn--lg" href="/guides/vaelg-test.html">Åbn guiden til valg af test</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ka-form'), result = $('ka-result'), errBox = $('ka-error');
+  var list = $('ka-groups');
+  var G = 3, MING = 2, MAXG = 6;
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  // Læser den tekst, der lige nu er indtastet i hver gruppes textarea
+  function readState() {
+    var texts = [];
+    var areas = list.querySelectorAll('textarea[data-group]');
+    for (var i = 0; i < areas.length; i++) {
+      texts[parseInt(areas[i].getAttribute('data-group'), 10)] = areas[i].value;
+    }
+    return texts;
+  }
+
+  // (Gen)opbygger gruppelisten og bevarer den allerede indtastede tekst
+  function buildGroups(preset) {
+    var texts = preset || (list.querySelector('textarea') ? readState() : []);
+    var h = '';
+    for (var i = 0; i < G; i++) {
+      var v = (texts[i] != null) ? texts[i] : '';
+      h += '<div class="field">' +
+        '<label for="ka-g' + i + '">Gruppe ' + (i + 1) + '</label>' +
+        '<textarea class="input" id="ka-g' + i + '" data-group="' + i + '" rows="3" ' +
+        'inputmode="decimal" autocomplete="off" ' +
+        'placeholder="F.eks.: 12, 15, 11, 14">' + esc(v) + '</textarea>' +
+        '</div>';
+    }
+    list.innerHTML = h;
+  }
+  buildGroups();
+
+  $('ka-add').addEventListener('click', function () {
+    if (G < MAXG) { G++; buildGroups(); }
+  });
+  $('ka-del').addEventListener('click', function () {
+    if (G > MING) { G--; buildGroups(); }
+  });
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  // Konverterer en tekst til en liste af tal (mellemrum, komma eller ; som separator)
+  function parseList(text) {
+    var parts = String(text == null ? '' : text).split(/[\s,;]+/);
+    var out = [];
+    for (var i = 0; i < parts.length; i++) {
+      if (parts[i] === '') continue;
+      var v = parseNum(parts[i]);
+      if (!isNaN(v)) out.push(v);
+    }
+    return out;
+  }
+
+  $('ka-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    G = 3;
+    document.querySelector('input[name="ka-method"][value="anova"]').checked = true;
+    buildGroups(['85, 88, 82, 90, 87', '78, 75, 80, 82, 79', '92, 95, 90, 94, 91']);
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var texts = readState();
+    var groups = [];
+    for (var i = 0; i < G; i++) {
+      var vals = parseList(texts[i]);
+      if (vals.length < 2) {
+        showError('Gruppe ' + (i + 1) + ' skal indeholde mindst 2 numeriske værdier. ' +
+          'Indsæt værdierne adskilt af mellemrum, komma eller linjeskift.');
+        return;
+      }
+      groups.push(vals);
+    }
+    var conf = parseFloat(Fmt.radio('ka-conf'));
+    var method = Fmt.radio('ka-method');
+    var r = method === 'kruskal'
+      ? Stats.kruskalWallisTest({ groups: groups, confidence: conf })
+      : Stats.anovaTest({ groups: groups, confidence: conf });
+    if (r.error) { showError(r.error); return; }
+    render(r, method, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  // Effektstørrelse for eta-i-anden (Cohens referencer)
+  function etaForca(v) {
+    if (v < 0.01) return 'ubetydelig';
+    if (v < 0.06) return 'lille';
+    if (v < 0.14) return 'mellem';
+    return 'stor';
+  }
+
+  function render(r, method, conf) {
+    var sig = r.significant;
+    var isKruskal = method === 'kruskal';
+
+    var metrics;
+    if (isKruskal) {
+      metrics =
+        metric('H-teststørrelse', Fmt.num(r.H, 3)) +
+        metric('Frihedsgrader', Fmt.int(r.df)) +
+        metric('P-værdi', Fmt.p(r.pValue)) +
+        metric('Antal grupper', Fmt.int(r.k)) +
+        metric('Samlet antal observationer', Fmt.int(r.N));
+    } else {
+      metrics =
+        metric('F-teststørrelse', Fmt.num(r.F, 3)) +
+        metric('df mellem grupper', Fmt.int(r.dfB)) +
+        metric('df indenfor grupperne', Fmt.int(r.dfW)) +
+        metric('P-værdi', Fmt.p(r.pValue)) +
+        metric('Eta-i-anden (η²)', Fmt.num(r.etaSquared, 3), etaForca(r.etaSquared) + ' effekt') +
+        metric('Antal grupper', Fmt.int(r.k));
+    }
+
+    var headline = sig ? 'Statistisk signifikant forskel'
+                       : 'Ikke-signifikant forskel';
+    var sub = sig
+      ? 'Mindst én gruppe skiller sig ud fra de andre — variationen ser ikke ud til at være tilfældig.'
+      : 'Der er ikke tilstrækkelig evidens for forskel mellem grupperne.';
+
+    var testNome = isKruskal ? 'Kruskal-Wallis testen' : 'envejs-ANOVA';
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + Fmt.pct(conf, 0) + ' konfidens</strong> er resultatet af ' +
+        testNome + ' <strong>statistisk signifikant</strong>: p-værdien (' +
+        Fmt.p(r.pValue) + ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) +
+        '). Det viser, at <strong>mindst én af de ' + r.k + ' grupper</strong> ';
+      if (isKruskal) {
+        interp += 'har en tendens til systematisk at vise andre værdier end de øvrige — konklusionen ' +
+          'bygger på observationernes rangordener.</p>';
+      } else {
+        interp += 'har et gennemsnit, der adskiller sig fra de andre. Eta-i-anden på <strong>' +
+          Fmt.num(r.etaSquared, 3) + '</strong> peger på en <strong>' +
+          etaForca(r.etaSquared) + '</strong> effektstørrelse.</p>';
+      }
+      interp += '<p><strong>Vigtigt:</strong> testen afslører ikke <em>hvilken</em> gruppe der afviger, ' +
+        'eller hvilke par der er forskellige fra hinanden. Til det kræves en post hoc-test ' +
+        '— fx Tukeys test efter ANOVA eller Dunns test efter Kruskal-Wallis.</p>';
+    } else {
+      interp = '<p>Med ' + Fmt.pct(conf, 0) + ' konfidens er resultatet af ' + testNome +
+        ' <strong>ikke statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'Data er forenelige med hypotesen om, at ';
+      interp += isKruskal
+        ? 'de ' + r.k + ' grupper har ens fordelinger.</p>'
+        : 'de ' + r.k + ' grupper har samme gennemsnit.</p>';
+      interp += '<p>At man ikke finder en forskel beviser ikke, at den ikke findes: små stikprøver ' +
+        'reducerer testens styrke. Det er værd at overveje en større stikprøvestørrelse.</p>';
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

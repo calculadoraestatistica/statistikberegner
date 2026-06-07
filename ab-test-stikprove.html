@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Beregner af Stikprøvestørrelse til A/B-test — Gratis</title>
+<meta name="description" content="Beregn, hvor mange besøgende din A/B-test kræver, og hvor mange dage den skal køre. Gratis beregner på dansk med statistisk styrke og konfidensniveau.">
+<link rel="canonical" href="https://statistikberegner.dk/ab-test-stikprove.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Beregner af Stikprøvestørrelse til A/B-test">
+<meta property="og:description" content="Find ud af, hvor mange besøgende og hvor mange dage din A/B-test kræver, før du går i gang.">
+<meta property="og:url" content="https://statistikberegner.dk/ab-test-stikprove.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Beregner af Stikprøvestørrelse til A/B-test",
+  "url": "https://statistikberegner.dk/ab-test-stikprove.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Beregner af stikprøvestørrelse og varighed til A/B-tests."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Stikprøvestørrelse til A/B-test","item":"https://statistikberegner.dk/ab-test-stikprove.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvorfor beregne stikprøvestørrelsen før A/B-testen?","acceptedAnswer":{"@type":"Answer","text":"Fordi du uden et fast mål ikke ved, hvornår du skal stoppe. At fastlægge stikprøven på forhånd forhindrer både at stoppe for tidligt (falsk positiv) og for sent og gør resultatet pålideligt."}},
+    {"@type":"Question","name":"Hvad er statistisk styrke?","acceptedAnswer":{"@type":"Answer","text":"Det er sandsynligheden for, at testen opdager en effekt, der faktisk findes. Standarden er 80%: en test med 80% styrke finder den reelle forbedring i 80% af tilfældene."}},
+    {"@type":"Question","name":"Hvad er den mindste detekterbare effekt (MDE)?","acceptedAnswer":{"@type":"Answer","text":"Det er den mindste forbedring, der er værd at opdage. Jo mindre effekt du vil fange, jo større stikprøve skal du bruge."}},
+    {"@type":"Question","name":"Hvor længe skal en A/B-test køre?","acceptedAnswer":{"@type":"Answer","text":"Lang tid nok til at nå den beregnede stikprøvestørrelse, og som minimum én til to hele uger, så den dækker variationen mellem ugedage."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Stikprøvestørrelse til A/B-test</li>
+        </ol>
+      </nav>
+      <h1>Beregner af Stikprøvestørrelse til A/B-test</h1>
+      <p class="lead">Find ud af, <strong>hvor mange besøgende</strong> din test kræver, og <strong>hvor mange dage</strong> den skal køre — før du indsamler det første datapunkt.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="ss-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Planlæg A/B-testen
+      </h2>
+      <p class="calculator__hint">Indtast din nuværende konverteringsrate og størrelsen på den forbedring, du skal kunne opdage.</p>
+
+      <fieldset class="field-group">
+        <legend>Din konvertering i dag</legend>
+        <div class="field-row field-row--single">
+          <div class="field">
+            <label for="baseline">Nuværende konverteringsrate</label>
+            <div class="input-affix">
+              <input class="input" type="text" inputmode="decimal" id="baseline" placeholder="F.eks. 5" autocomplete="off">
+              <span class="input-affix__unit">%</span>
+            </div>
+            <span class="help">Raten for din nuværende version (kontrol).</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Hvad du vil opdage</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Type af mindste effekt</label>
+            <div class="segmented" role="radiogroup" aria-label="Type af mindste effekt">
+              <label><input type="radio" name="ss-mde-type" value="rel" checked><span>Relativ</span></label>
+              <label><input type="radio" name="ss-mde-type" value="abs"><span>Absolut</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="mde">Mindste detekterbare effekt</label>
+            <div class="input-affix">
+              <input class="input" type="text" inputmode="decimal" id="mde" placeholder="F.eks. 10" autocomplete="off">
+              <span class="input-affix__unit" id="mde-unit">%</span>
+            </div>
+            <span class="help" id="mde-help">Relativ stigning oven på den nuværende rate.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Testens stringens</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="ss-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="ss-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="ss-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Statistisk styrke</label>
+            <div class="segmented" role="radiogroup" aria-label="Statistisk styrke">
+              <label><input type="radio" name="ss-power" value="0.80" checked><span>80%</span></label>
+              <label><input type="radio" name="ss-power" value="0.90"><span>90%</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Type test</label>
+            <div class="segmented" role="radiogroup" aria-label="Type test">
+              <label><input type="radio" name="ss-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="ss-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="daily">Besøgende pr. dag <span class="muted">(valgfrit)</span></label>
+            <input class="input" type="text" inputmode="numeric" id="daily" placeholder="F.eks. 800" autocomplete="off">
+            <span class="help">De to grupper lagt sammen, til at estimere varigheden.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="ss-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn stikprøve</button>
+        <button class="btn btn--ghost" type="button" id="ss-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="ss-result" hidden aria-live="polite"></section>
+    </form>
+
+    <p class="muted text-sm">Har du allerede indsamlet data? Se, om forskellen er signifikant, i <a href="/ab-test.html">A/B-test-beregneren</a>.</p>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#por-que">Hvorfor beregne stikprøven på forhånd</a></li>
+          <li><a href="#como">Sådan virker beregneren</a></li>
+          <li><a href="#poder">Hvad er statistisk styrke</a></li>
+          <li><a href="#efeito-minimo">Sådan vælger du den mindste effekt</a></li>
+          <li><a href="#duracao">Hvor længe testen skal køre</a></li>
+          <li><a href="#exemplo">Løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="por-que">Hvorfor beregne stikprøven før testen</h2>
+      <p>Den mest almindelige fejl i A/B-tests ligger ikke i regnestykket — den ligger i at gå i gang uden en plan. Den, der starter en test uden at fastlægge stikprøvestørrelsen, ender altid i en af to fælder. Enten kigger man på dashboardet hver dag og <strong>stopper i det første øjeblik, hvor der står "signifikant"</strong>, hvilket pumper risikoen for en falsk positiv enormt op. Eller også lader man den køre i det uendelige og spilder trafik på en test, der aldrig bliver afsluttet.</p>
+      <p>At beregne stikprøvestørrelsen på forhånd løser begge dele. Du fastlægger et mål — "jeg skal bruge 12.000 besøgende pr. variant" — og træffer først beslutningen, når du har nået det tal. Resultatet bliver pålideligt, fordi stopkriteriet blev defineret <em>før</em>, du så et eneste datapunkt.</p>
+
+      <h2 id="como">Sådan virker beregneren</h2>
+      <p>Stikprøvestørrelsen til en A/B-test afhænger af fire ingredienser. Ændrer du på én af dem, ændrer tallet sig:</p>
+      <ul>
+        <li><strong>Nuværende konverteringsrate</strong> — udgangspunktet. Meget lave rater kræver større stikprøver.</li>
+        <li><strong>Mindste detekterbare effekt (MDE)</strong> — den mindste forbedring, du vil kunne få øje på. Jo mindre, jo større stikprøve.</li>
+        <li><strong>Konfidensniveau</strong> — styrer risikoen for falsk positiv. 95% er standarden.</li>
+        <li><strong>Statistisk styrke</strong> — styrer risikoen for falsk negativ. 80% er standarden.</li>
+      </ul>
+      <p>Beregneren kombinerer disse værdier i den klassiske formel for sammenligning af to proportioner (baseret på normaltilnærmelsen), idet den antager de to grupper er lige store:</p>
+      <div class="formula">n pr. variant = [ z<sub>α</sub>·√(2·p̄·q̄) + z<sub>β</sub>·√(p₁·q₁ + p₂·q₂) ]² ÷ (p₂ − p₁)²
+        <span class="formula__where">p₁ er den nuværende rate, p₂ målraten, q = 1 − p, p̄ gennemsnittet af de to; z<sub>α</sub> og z<sub>β</sub> kommer fra konfidens og styrke.</span>
+      </div>
+
+      <h2 id="poder">Hvad er statistisk styrke</h2>
+      <p>Hvis konfidensniveauet beskytter mod at "se" en effekt, der ikke findes, så beskytter <strong>statistisk styrke</strong> mod det modsatte: <em>ikke at se</em> en effekt, der findes. Styrken er sandsynligheden for, at testen opdager en reel forbedring.</p>
+      <p>Standarden er <strong>80%</strong>. Det betyder, at hvis din variant virkelig er bedre i den størrelsesorden, du har defineret, så vil testen opdage det i 80% af tilfældene — og fejle (falsk negativ) i 20%. At gå op til 90% styrke giver mere sikkerhed, men kræver en del større stikprøve. For de fleste teams er 80% den rette balance.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Konfidens og styrke
+        </div>
+        <p>95% konfidens og 80% styrke er udgangsindstillingerne for stort set enhver A/B-test. Du bør kun ændre dem, hvis du har en klar grund: mere konfidens, når en fejl koster dyrt, mere styrke, når det er uacceptabelt at gå glip af en reel gevinst.</p>
+      </div>
+
+      <h2 id="efeito-minimo">Sådan vælger du den mindste detekterbare effekt</h2>
+      <p>MDE er den mest strategiske beslutning — og den, der oftest forvirrer. Den svarer på: "hvad er den mindste forbedring, der stadig er værd at have for min forretning?"</p>
+      <p>Du kan angive den på to måder:</p>
+      <ul>
+        <li><strong>Relativ:</strong> en procentvis stigning oven på den nuværende rate. En relativ MDE på 10% af en konvertering på 5% sigter på 5,5%.</li>
+        <li><strong>Absolut:</strong> en stigning målt i procentpoint. En absolut MDE på 1 point af 5% sigter på 6%.</li>
+      </ul>
+      <p>Fristelsen er at vælge en lille MDE for "ikke at gå glip af noget". Problemet er, at det er dyrt at opdage små forbedringer: at halvere MDE'en <strong>firdobler</strong> den nødvendige stikprøve. Vær realistisk — sigt efter den mindste forbedring, der faktisk ville retfærdiggøre at implementere ændringen.</p>
+
+      <h2 id="duracao">Hvor længe testen skal køre</h2>
+      <p>Stikprøvestørrelsen svarer på "hvor mange personer". Varigheden svarer på "hvor mange dage" — du dividerer bare den samlede stikprøve med den daglige trafik. Men der er en ekstra regel: <strong>enhver test bør køre i mindst én til to hele uger</strong>, selv hvis stikprøven nås før.</p>
+      <p>Grunden er, at adfærden ændrer sig hen over ugen. Den, der besøger et site mandag morgen, er ikke det samme publikum som fredag aften. At afslutte en test efter tre løbende dage kan kun fange én "type" besøgende og skævvride resultatet. Luk altid testen ved afslutningen af hele uger.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="exemplo">Løst eksempel</h2>
+      <p>En butik konverterer i dag <strong>5%</strong> af de besøgende og vil opdage en <strong>relativ forbedring på 10%</strong> (altså komme op på 5,5%), med 95% konfidens og 80% styrke, i en tosidet test.</p>
+      <ol class="steps">
+        <li>Nuværende rate p₁ = 0,05; målrate p₂ = 0,05 × 1,10 = 0,055.</li>
+        <li>Med z<sub>α</sub> ≈ 1,96 (95%, tosidet) og z<sub>β</sub> ≈ 0,84 (80% styrke) giver formlen omkring <strong>31.234 besøgende pr. variant</strong>.</li>
+        <li>Samlet stikprøve ≈ 62.468 besøgende (A og B lagt sammen).</li>
+        <li>Med 800 besøgende pr. dag skal testen køre ≈ 79 dage — cirka 11 uger.</li>
+      </ol>
+      <p>Det tal plejer at overraske, og det er netop derfor, det er en god idé at beregne det først: små forbedringer i lave rater kræver meget trafik. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvorfor skal jeg beregne stikprøven før testen?</summary>
+          <div class="faq__answer"><p>Fordi du uden et fast mål ikke ved, hvornår du skal stoppe. At fastlægge stikprøven på forhånd forhindrer "peeking" — at stoppe ved det første gunstige resultat — som gør en 5%-falsk-positiv-test til noget langt mindre pålideligt.</p></div>
+        </details>
+        <details>
+          <summary>Hvad sker der, hvis konverteringsraten er meget lav?</summary>
+          <div class="faq__answer"><p>Jo lavere rate, jo større stikprøve skal du bruge. Konverteringer på 1-2% kræver typisk titusinder eller hundredetusinder af besøgende for at opdage moderate forbedringer.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg bruge relativ eller absolut MDE?</summary>
+          <div class="faq__answer"><p>Den relative er mest intuitiv for de fleste teams ("jeg vil vokse 10%"). Den absolutte er nyttig, når du tænker i procentpoint. Beregneren accepterer begge — vælg den, der falder dig mest naturligt.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg stoppe, før jeg har nået den beregnede stikprøve?</summary>
+          <div class="faq__answer"><p>Nej, hvis du vil have et pålideligt resultat. At stoppe tidligt er hovedårsagen til falske positive i A/B-tests. Vent, til du har nået stikprøven, og kør mindst én til to hele uger.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/ab-test.html"><h3>A/B-test</h3><p>Har du allerede indsamlet data? Se, om forskellen er signifikant.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/stikprovestorrelse.html"><h3>Stikprøvestørrelse</h3><p>Til undersøgelser og spørgeskemaer, ikke A/B-tests.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign proportioner uden for konverteringsverdenen.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Testen er planlagt — nu skal der måles</h2>
+        <p>Når testen når stikprøven, så tag tallene med over i signifikansberegneren.</p>
+        <a class="btn btn--light btn--lg" href="/ab-test.html">Åbn A/B-test-beregneren</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ss-form'), result = $('ss-result'), errBox = $('ss-error');
+
+  // Opdaterer enheden for MDE alt efter valgt type
+  function syncMdeType() {
+    var t = Fmt.radio('ss-mde-type');
+    if (t === 'abs') {
+      $('mde-unit').textContent = 'pp';
+      $('mde-help').textContent = 'Absolut stigning, målt i procentpoint.';
+    } else {
+      $('mde-unit').textContent = '%';
+      $('mde-help').textContent = 'Relativ stigning oven på den nuværende rate.';
+    }
+  }
+  var typeRadios = document.querySelectorAll('input[name="ss-mde-type"]');
+  for (var i = 0; i < typeRadios.length; i++) {
+    typeRadios[i].addEventListener('change', syncMdeType);
+  }
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('ss-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    $('baseline').value = '5';
+    $('mde').value = '10';
+    $('daily').value = '800';
+    document.querySelector('input[name="ss-mde-type"][value="rel"]').checked = true;
+    syncMdeType();
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var baseline = parseNum($('baseline').value);
+    var mde = parseNum($('mde').value);
+    if (isNaN(baseline) || isNaN(mde)) {
+      showError('Udfyld den nuværende konverteringsrate og den mindste detekterbare effekt.');
+      return;
+    }
+    if (baseline <= 0 || baseline >= 100) {
+      showError('Den nuværende konverteringsrate skal være mellem 0% og 100%.');
+      return;
+    }
+    var p1 = baseline / 100, p2;
+    var mdeType = Fmt.radio('ss-mde-type');
+    if (mdeType === 'abs') {
+      p2 = p1 + mde / 100;
+    } else {
+      p2 = p1 * (1 + mde / 100);
+    }
+    if (p2 <= 0 || p2 >= 1) {
+      showError('Målraten ligger uden for 0%-100%. Tjek den mindste effekt.');
+      return;
+    }
+    var conf = parseFloat(Fmt.radio('ss-conf'));
+    var power = parseFloat(Fmt.radio('ss-power'));
+    var tails = parseInt(Fmt.radio('ss-tails'), 10);
+    var r = Stats.abSampleSize({ p1: p1, p2: p2, confidence: conf, power: power, tails: tails });
+    if (r.error) { showError(r.error); return; }
+
+    var daily = parseNum($('daily').value);
+    render(r, p1, p2, conf, power, daily);
+  }
+
+  var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, p1, p2, conf, power, daily) {
+    var metrics =
+      metric('Stikprøve pr. variant', Fmt.int(r.perVariant), 'besøgende i hver version') +
+      metric('Samlet stikprøve', Fmt.int(r.total), 'A og B lagt sammen') +
+      metric('Målrate', Fmt.pct(p2, 2), 'fra ' + Fmt.pct(p1, 2) + ' og opefter');
+
+    var durationTxt = '';
+    if (!isNaN(daily) && daily > 0) {
+      var days = Math.ceil(r.total / daily);
+      var weeks = days / 7;
+      var weekTxt = weeks >= 1 ? ' (~' + Fmt.num(weeks, 1) + ' uger)' : '';
+      metrics += metric('Anslået varighed', days + ' dage', weekTxt ? weekTxt.replace(/[()~]/g, '').trim() : 'kør i mindst 1 uge');
+      durationTxt = ' Med ' + Fmt.int(daily) + ' besøgende pr. dag skal testen køre i cirka <strong>' +
+        days + ' dage</strong>' + weekTxt + '. Kør den i hele uger og stop ikke før.';
+    } else {
+      durationTxt = ' Angiv antal besøgende pr. dag for også at estimere varigheden.';
+    }
+
+    var interp = '<p>For at opdage et skift i raten fra <strong>' + Fmt.pct(p1, 2) +
+      '</strong> til <strong>' + Fmt.pct(p2, 2) + '</strong>, med ' + Fmt.pct(conf, 0) +
+      ' konfidens og ' + Fmt.pct(power, 0) + ' statistisk styrke, skal du bruge <strong>' +
+      Fmt.int(r.perVariant) + ' besøgende pr. variant</strong> (i alt ' + Fmt.int(r.total) +
+      ').' + durationTxt + '</p>';
+
+    result.className = 'result result--neutral';
+    result.innerHTML =
+      '<div class="result__banner">' + ICON +
+        '<div><div class="result__headline">Plan for A/B-testen</div>' +
+        '<div class="result__sub">Det er de tal, du skal nå, før du beslutter dig.</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

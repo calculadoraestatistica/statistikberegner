@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Chi-i-anden Beregner (Uafhængighedstest) — Gratis</title>
+<meta name="description" content="Gratis chi-i-anden beregner på dansk. Uafhængighedstest mellem kategoriske variabler ud fra en krydstabel: χ²-statistik, frihedsgrader, p-værdi og Cramérs V.">
+<link rel="canonical" href="https://statistikberegner.dk/chi-test.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Chi-i-anden Beregner (Uafhængighedstest)">
+<meta property="og:description" content="Uafhængighedstest mellem kategoriske variabler ud fra en krydstabel. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/chi-test.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Chi-i-anden Beregner",
+  "url": "https://statistikberegner.dk/chi-test.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Beregner til chi-i-anden uafhængighedstesten ud fra en krydstabel."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Chi-i-anden Beregner","item":"https://statistikberegner.dk/chi-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er chi-i-anden testen?","acceptedAnswer":{"@type":"Answer","text":"Det er en hypotesetest, der undersøger, om to kategoriske variabler er forbundet, ved at sammenligne de observerede frekvenser i en krydstabel med de frekvenser, der ville være forventet under uafhængighed."}},
+    {"@type":"Question","name":"Hvornår skal man bruge chi-i-anden testen?","acceptedAnswer":{"@type":"Answer","text":"Brug chi-i-anden uafhængighedstesten, når du har to kategoriske variabler og vil vide, om de er relaterede — for eksempel køn og præference, behandling og udfald, region og holdning."}},
+    {"@type":"Question","name":"Hvad er frihedsgrader i chi-i-anden?","acceptedAnswer":{"@type":"Answer","text":"I en krydstabel beregnes frihedsgraderne som (antal rækker minus 1) gange (antal kolonner minus 1)."}},
+    {"@type":"Question","name":"Hvad er den mindste forventede værdi pr. celle?","acceptedAnswer":{"@type":"Answer","text":"Chi-i-anden tilnærmelsen fungerer godt, når alle forventede frekvenser er mindst 5. Med lavere forventede værdier bør man vælge Fishers eksakte test."}},
+    {"@type":"Question","name":"Hvad er Cramérs V?","acceptedAnswer":{"@type":"Answer","text":"Det er et mål for effektstørrelse, der går fra 0 til 1. Det angiver styrken af sammenhængen mellem variablerne: omkring 0,1 er svag, 0,3 er moderat og 0,5 eller mere er stærk."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Chi-i-anden Beregner</li>
+        </ol>
+      </nav>
+      <h1>Chi-i-anden Beregner</h1>
+      <p class="lead">Find ud af, om <strong>to kategoriske variabler er forbundet</strong> — uafhængighedstesten ud fra en krydstabel, med p-værdi og effektstørrelse.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="qq-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+        Beregn chi-i-anden testen
+      </h2>
+      <p class="calculator__hint">Byg krydstabellen med de <strong>observerede frekvenser</strong> (optællinger). Brug knapperne til at justere antallet af rækker og kolonner.</p>
+
+      <fieldset class="field-group">
+        <legend>Krydstabel</legend>
+        <p class="help help--block">Overskrifterne kan redigeres. Hver celle skal indeholde en optælling (antal tilfælde).</p>
+        <div class="table-wrap" id="qq-table-wrap" aria-live="polite"></div>
+        <div class="matrix-controls">
+          <button type="button" class="btn btn--ghost btn--sm" id="qq-add-row">+ Række</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="qq-del-row">− Række</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="qq-add-col">+ Kolonne</button>
+          <button type="button" class="btn btn--ghost btn--sm" id="qq-del-col">− Kolonne</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row field-row--single">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="qq-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="qq-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="qq-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="qq-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn chi-i-anden</button>
+        <button class="btn btn--ghost" type="button" id="qq-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="qq-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er chi-i-anden testen</a></li>
+          <li><a href="#quando">Hvornår skal man bruge den</a></li>
+          <li><a href="#tabela">Krydstabellen</a></li>
+          <li><a href="#como">Sådan virker beregningen</a></li>
+          <li><a href="#pressupostos">Forudsætninger for testen</a></li>
+          <li><a href="#interpretar">Sådan fortolker du resultatet</a></li>
+          <li><a href="#exemplo">Løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er chi-i-anden testen</h2>
+      <p><strong>Chi-i-anden uafhængighedstesten</strong> (χ²) svarer på et meget almindeligt spørgsmål i forskning: <strong>er to kategoriske variabler forbundet, eller er de uafhængige?</strong> Med andre ord — ændrer kendskab til den ene variabels værdi sandsynligheden for den anden?</p>
+      <p>Tænk på situationer som: påvirker personens køn præferencen for et produkt? Er regionen i landet forbundet med stemmeintentionen? Er behandlingstypen relateret til det kliniske udfald? I alle disse tilfælde har du ikke tal at måle med — du har <strong>kategorier</strong> at tælle. Chi-i-anden testen er det rette værktøj til den slags data.</p>
+      <p>Logikken er elegant. Hvis de to variabler var fuldstændig uafhængige, kunne man forudsige, hvor mange tilfælde der ville falde i hver kombination af kategorier, alene ud fra totalerne. Testen sammenligner disse <strong>forventede frekvenser</strong> med de <strong>faktisk observerede frekvenser</strong>. Hvis forskellen mellem det observerede og det forventede er for stor til at være tilfældig, konkluderer man, at der findes en sammenhæng.</p>
+
+      <h2 id="quando">Hvornår skal man bruge den</h2>
+      <p>Chi-i-anden uafhængighedstesten er den rigtige, når:</p>
+      <ul>
+        <li><strong>De to variabler er kategoriske</strong> — køn, region, aldersgruppe, foretrukket mærke, udfald (helbredt / ikke helbredt). Kontinuerte numeriske variabler duer ikke.</li>
+        <li><strong>Du har optællinger, ikke gennemsnit</strong> — data er "hvor mange personer i hver kombination", ikke "hvad er gennemsnittet i hver gruppe". Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</li>
+        <li><strong>Observationerne er uafhængige</strong> — hver person indgår i én eneste celle i tabellen, og én person påvirker ikke en anden.</li>
+      </ul>
+      <p>Vil du blot sammenligne <em>to proportioner</em> (for eksempel succesraten i to grupper), så når <a href="/proportionstest.html">proportionstesten</a> og chi-i-anden samme konklusion — i en 2×2-tabel er χ² matematisk ækvivalent med z-testen for to proportioner.</p>
+
+      <h2 id="tabela">Krydstabellen</h2>
+      <p>Testens udgangspunkt er <strong>krydstabellen</strong> (også kaldet kontingenstabel). Den krydser kategorierne for de to variabler: hver række er en kategori for den første variabel, hver kolonne er en kategori for den anden, og hver celle indeholder <strong>antallet</strong> af tilfælde i den kombination.</p>
+      <p>Beregneren ovenfor bygger tabellen for dig. Start med størrelsen 2×2, og brug knapperne til at tilføje rækker og kolonner, alt efter dine kategorier. Læg altid <em>optællinger</em> ind — antal personer, antal svar, antal tilfælde — aldrig procenter eller gennemsnit.</p>
+
+      <h2 id="como">Sådan virker beregningen</h2>
+      <p>Testen har fire trin. Det første er at beregne, for hver celle, den <strong>forventede frekvens</strong> under uafhængighedshypotesen. Den afhænger kun af række- og kolonnetotalerne:</p>
+      <div class="formula">E<sub>ij</sub> = (række i's total × kolonne j's total) ÷ samlet total</div>
+      <p>Andet trin er at måle, hvor meget hver observeret celle (O) afviger fra dens forventede værdi (E). <strong>Chi-i-anden statistikken</strong> summerer disse forskelle i anden potens, vægtet med den forventede værdi:</p>
+      <div class="formula">χ² = Σ (O<sub>ij</sub> − E<sub>ij</sub>)² ÷ E<sub>ij</sub>
+        <span class="formula__where">Summen løber over alle celler i tabellen. Jo større χ², jo større misforhold mellem observeret og forventet.</span>
+      </div>
+      <p>Tredje trin er <strong>frihedsgraderne</strong>, som kun afhænger af tabellens form:</p>
+      <div class="formula">df = (antal rækker − 1) × (antal kolonner − 1)</div>
+      <p>Til sidst omdanner beregneren χ² og frihedsgraderne til en <strong>p-værdi</strong> ved hjælp af chi-i-anden fordelingen. En lille p-værdi betyder, at et så stort misforhold ville være meget sjældent, hvis variablerne var uafhængige — altså er der en sammenhæng.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="pressupostos">Forudsætninger for testen</h2>
+      <p>Chi-i-anden er praktisk, men dens præcision afhænger af en vigtig betingelse om <strong>størrelsen af de forventede frekvenser</strong>:</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Reglen om forventede frekvenser
+        </div>
+        <p>Chi-i-anden tilnærmelsen er pålidelig, når <strong>alle forventede frekvenser er mindst 5</strong>. Beregneren viser den mindste forventede frekvens i tabellen; hvis den ligger under 5, bør resultatet fortolkes med varsomhed. I så fald er <strong>Fishers eksakte test</strong> det anbefalede alternativ, særligt for 2×2-tabeller.</p>
+      </div>
+      <p>Derudover kræver testen <strong>uafhængige observationer</strong> (hvert tilfælde tæller én gang) og <strong>absolutte optællinger</strong> i cellerne. Brug aldrig chi-i-anden på procenter, gennemsnit eller data, hvor samme person optræder i mere end én celle.</p>
+
+      <h2 id="interpretar">Sådan fortolker du resultatet</h2>
+      <p>Beregneren returnerer et kort med konklusionen og seks nøgletal:</p>
+      <ul>
+        <li><strong>Chi-i-anden (χ²)</strong> — den samlede størrelse af misforholdet mellem observeret og forventet. Alene siger det lidt; det skal sammenlignes med fordelingen.</li>
+        <li><strong>Frihedsgrader</strong> — afgør, hvilken chi-i-anden fordeling der bruges til at finde p-værdien.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at se et så stort misforhold ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er der en signifikant sammenhæng.</li>
+        <li><strong>Cramérs V</strong> — effektstørrelsen. Går fra 0 til 1 og måler <em>styrken</em> af sammenhængen: omkring 0,1 er svag, 0,3 er moderat og 0,5 eller mere er stærk.</li>
+        <li><strong>Antal tilfælde i alt</strong> — summen af alle celler i tabellen.</li>
+        <li><strong>Mindste forventede frekvens</strong> — til at tjekke forudsætningen: hvis den er under 5, fortolk med varsomhed.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Signifikans og styrke er to ting
+        </div>
+        <p>En lille p-værdi bekræfter, at der <em>findes</em> en sammenhæng, men siger ikke, om den er <em>stærk</em>. Med meget store stikprøver bliver trivielle sammenhænge "signifikante". Kig derfor altid på Cramérs V: den svarer på det spørgsmål, der virkelig betyder noget — hvor stor er sammenhængen?</p>
+      </div>
+
+      <h2 id="exemplo">Løst eksempel</h2>
+      <p>Et hospital testede en ny vejledningsprotokol til patienter. Af <strong>60 patienter</strong>, der modtog protokollen, <strong>forbedrede 45</strong> deres efterlevelse af behandlingen; af <strong>60 patienter</strong> i kontrolgruppen <strong>forbedrede 30</strong> sig. Er forbedringen forbundet med protokollen?</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th></th><th class="num">Forbedrede sig</th><th class="num">Forbedrede sig ikke</th><th class="num">I alt</th></tr></thead>
+          <tbody>
+            <tr><td>Gruppe med protokol</td><td class="num">45</td><td class="num">15</td><td class="num">60</td></tr>
+            <tr><td>Kontrolgruppe</td><td class="num">30</td><td class="num">30</td><td class="num">60</td></tr>
+            <tr><td>I alt</td><td class="num">75</td><td class="num">45</td><td class="num">120</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><strong>Forventede frekvenser:</strong> for cellen "protokol × forbedrede sig" er E = (60 × 75) ÷ 120 = 37,5. Alle fire forventede celleværdier er 37,5 eller 22,5.</li>
+        <li><strong>χ²-statistik:</strong> ved at lægge (O − E)² ÷ E sammen for de fire celler: 1,5 + 2,5 + 1,5 + 2,5 = <strong>8,0</strong>.</li>
+        <li><strong>Frihedsgrader:</strong> df = (2 − 1) × (2 − 1) = 1.</li>
+        <li><strong>P-værdi:</strong> for χ² = 8,0 og df = 1 er p-værdien ≈ 0,0047.</li>
+      </ol>
+      <p>Da 0,0047 &lt; 0,05, er sammenhængen <strong>statistisk signifikant</strong>: forbedringen i efterlevelse er forbundet med protokollen. Cramérs V ≈ 0,26 indikerer en sammenhæng af moderat styrke. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er chi-i-anden testen?</summary>
+          <div class="faq__answer"><p>Det er en hypotesetest, der undersøger, om to kategoriske variabler er forbundet. Den sammenligner de observerede frekvenser i en krydstabel med de frekvenser, der ville være forventet, hvis variablerne var uafhængige.</p></div>
+        </details>
+        <details>
+          <summary>Hvornår skal jeg bruge chi-i-anden?</summary>
+          <div class="faq__answer"><p>Når du har to kategoriske variabler og vil vide, om de er relaterede — som køn og præference, behandling og udfald, uddannelse og holdning. Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er frihedsgrader i chi-i-anden?</summary>
+          <div class="faq__answer"><p>De beregnes som (antal rækker − 1) × (antal kolonner − 1). En 2×2-tabel har 1 frihedsgrad; en 3×4-tabel har 6. De afgør den fordeling, der bruges til p-værdien.</p></div>
+        </details>
+        <details>
+          <summary>Hvad hvis de forventede frekvenser er mindre end 5?</summary>
+          <div class="faq__answer"><p>Chi-i-anden tilnærmelsen mister præcision. Beregneren advarer, når den mindste forventede frekvens er under 5. I de tilfælde bør du vælge Fishers eksakte test, særligt i 2×2-tabeller.</p></div>
+        </details>
+        <details>
+          <summary>Beviser chi-i-anden årsag og virkning?</summary>
+          <div class="faq__answer"><p>Nej. Testen viser, at der er en <em>sammenhæng</em> mellem variablerne, men sammenhæng er ikke kausalitet. Andre variabler kan forklare den observerede relation.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen mellem chi-i-anden og proportionstesten?</summary>
+          <div class="faq__answer"><p>I en 2×2-tabel er de ækvivalente — de når frem til samme p-værdi. Chi-i-anden er mere generel: den fungerer med tabeller af enhver størrelse og sammenligner mange kategorier på én gang.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Til at sammenligne to proportioner direkte.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/anova.html"><h3>ANOVA og k stikprøver</h3><p>Til at sammenligne gennemsnit i tre eller flere grupper.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/guides/vaelg-test.html"><h3>Hvilken test skal jeg bruge?</h3><p>En guide til at vælge den rigtige statistiske test.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>I tvivl om hvilken test du skal bruge?</h2>
+        <p>Se guiden, der hjælper dig med at vælge den rigtige statistiske test til din datatype.</p>
+        <a class="btn btn--light btn--lg" href="/guides/vaelg-test.html">Åbn valgguiden</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('qq-form'), result = $('qq-result'), errBox = $('qq-error');
+  var wrap = $('qq-table-wrap');
+  var R = 2, C = 2, MAXR = 6, MAXC = 6;
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  function readState() {
+    var st = { rowLab: [], colLab: [], cells: {} };
+    var cl = wrap.querySelectorAll('[data-col-label]');
+    for (var i = 0; i < cl.length; i++) st.colLab[i] = cl[i].value;
+    var rl = wrap.querySelectorAll('[data-row-label]');
+    for (var i = 0; i < rl.length; i++) st.rowLab[i] = rl[i].value;
+    var cells = wrap.querySelectorAll('[data-cell]');
+    for (var i = 0; i < cells.length; i++) {
+      st.cells[cells[i].getAttribute('data-cell')] = cells[i].value;
+    }
+    return st;
+  }
+
+  function buildTable(preset) {
+    var st = preset || (wrap.querySelector('table') ? readState() : { rowLab: [], colLab: [], cells: {} });
+    var defCol = ['Kategori 1', 'Kategori 2', 'Kategori 3', 'Kategori 4', 'Kategori 5', 'Kategori 6'];
+    var defRow = ['Gruppe 1', 'Gruppe 2', 'Gruppe 3', 'Gruppe 4', 'Gruppe 5', 'Gruppe 6'];
+    var h = '<table class="matrix-grid"><thead><tr><th class="matrix-corner"></th>';
+    for (var c = 0; c < C; c++) {
+      var cl = (st.colLab[c] != null && st.colLab[c] !== '') ? st.colLab[c] : defCol[c];
+      h += '<th><input class="input" type="text" data-col-label aria-label="Etiket for kolonne ' +
+        (c + 1) + '" value="' + esc(cl) + '"></th>';
+    }
+    h += '</tr></thead><tbody>';
+    for (var r = 0; r < R; r++) {
+      var rl = (st.rowLab[r] != null && st.rowLab[r] !== '') ? st.rowLab[r] : defRow[r];
+      h += '<tr><th><input class="input" type="text" data-row-label aria-label="Etiket for række ' +
+        (r + 1) + '" value="' + esc(rl) + '"></th>';
+      for (var c = 0; c < C; c++) {
+        var key = r + '_' + c;
+        var v = st.cells[key] != null ? st.cells[key] : '';
+        h += '<td><input class="input" type="text" inputmode="numeric" data-cell="' + key +
+          '" aria-label="Optælling række ' + (r + 1) + ' kolonne ' + (c + 1) + '" value="' + esc(v) + '"></td>';
+      }
+      h += '</tr>';
+    }
+    h += '</tbody></table>';
+    wrap.innerHTML = h;
+  }
+  buildTable();
+
+  $('qq-add-row').addEventListener('click', function () { if (R < MAXR) { R++; buildTable(); } });
+  $('qq-del-row').addEventListener('click', function () { if (R > 2) { R--; buildTable(); } });
+  $('qq-add-col').addEventListener('click', function () { if (C < MAXC) { C++; buildTable(); } });
+  $('qq-del-col').addEventListener('click', function () { if (C > 2) { C--; buildTable(); } });
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('qq-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    R = 2; C = 2;
+    buildTable({
+      rowLab: ['Gruppe med protokol', 'Kontrolgruppe'],
+      colLab: ['Forbedrede sig', 'Forbedrede sig ikke'],
+      cells: { '0_0': '45', '0_1': '15', '1_0': '30', '1_1': '30' }
+    });
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var st = readState();
+    var table = [];
+    for (var r = 0; r < R; r++) {
+      var row = [];
+      for (var c = 0; c < C; c++) {
+        var v = parseNum(st.cells[r + '_' + c]);
+        if (isNaN(v)) {
+          showError('Udfyld alle celler i tabellen med tal (brug 0, hvor der ikke er tilfælde).');
+          return;
+        }
+        row.push(v);
+      }
+      table.push(row);
+    }
+    var conf = parseFloat(Fmt.radio('qq-conf'));
+    var res = Stats.chiSquareTest({ table: table, confidence: conf });
+    if (res.error) { showError(res.error); return; }
+    render(res, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function cramerForca(v) {
+    if (v < 0.1) return 'ubetydelig';
+    if (v < 0.3) return 'svag';
+    if (v < 0.5) return 'moderat';
+    return 'stærk';
+  }
+
+  function render(r, conf) {
+    var sig = r.significant;
+    var lowExpected = r.minExpected < 5;
+
+    var metrics =
+      metric('Chi-i-anden (χ²)', Fmt.num(r.chi2, 3)) +
+      metric('Frihedsgrader', String(r.df)) +
+      metric('P-værdi', Fmt.p(r.pValue)) +
+      metric('Cramérs V', Fmt.num(r.cramerV, 3), cramerForca(r.cramerV) + ' effekt') +
+      metric('Antal tilfælde i alt', Fmt.int(r.n)) +
+      metric('Mindste forventede', Fmt.num(r.minExpected, 2), lowExpected ? 'under 5 — bemærk' : 'ok (≥ 5)');
+
+    var headline = sig ? 'Statistisk signifikant sammenhæng'
+                       : 'Ikke signifikant sammenhæng';
+    var sub = sig
+      ? 'Variablerne er sandsynligvis relaterede — misforholdet er ikke tilfældighed.'
+      : 'Der er ikke tilstrækkelige belæg for en sammenhæng mellem variablerne.';
+
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + Fmt.pct(conf, 0) + ' konfidens</strong> findes der ' +
+        '<strong>en statistisk signifikant sammenhæng</strong> mellem de to variabler: ' +
+        'p-værdien (' + Fmt.p(r.pValue) + ') er mindre end signifikansniveauet (' +
+        Fmt.pct(r.alpha, 0) + '). Cramérs V på <strong>' + Fmt.num(r.cramerV, 3) +
+        '</strong> indikerer en <strong>' + cramerForca(r.cramerV) + '</strong> sammenhæng.</p>';
+    } else {
+      interp = '<p>Med ' + Fmt.pct(conf, 0) + ' konfidens er der <strong>ingen ' +
+        'statistisk signifikant sammenhæng</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'De observerede frekvenser er forenelige med hypotesen om uafhængighed mellem variablerne.</p>';
+    }
+    if (lowExpected) {
+      interp += '<p><strong>Bemærk:</strong> den mindste forventede frekvens (' +
+        Fmt.num(r.minExpected, 2) + ') ligger under 5. Chi-i-anden tilnærmelsen ' +
+        'kan være upræcis — overvej Fishers eksakte test, særligt i 2×2-tabeller.</p>';
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

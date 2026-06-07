@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Pearson korrelationsberegner — r, r², p-værdi og graf</title>
+<meta name="description" content="Gratis Pearson korrelationsberegner: indsæt to talrækker og få r, r², p-værdi, konfidensinterval og et spredningsdiagram med regressionslinjen.">
+<link rel="canonical" href="https://statistikberegner.dk/korrelation.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Pearson korrelationsberegner">
+<meta property="og:description" content="Beregn r, r², p-værdi og spredningsdiagrammet for korrelationen. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/korrelation.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pearson korrelationsberegner",
+  "url": "https://statistikberegner.dk/korrelation.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Pearson korrelationsberegner med r, r², p-værdi, konfidensinterval, lineær regression og spredningsdiagram."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Korrelationsberegner","item":"https://statistikberegner.dk/korrelation.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er Pearsons korrelationskoefficient (r)?","acceptedAnswer":{"@type":"Answer","text":"Det er et mål, der går fra -1 til +1, for styrken og retningen af den lineære sammenhæng mellem to numeriske variable. Værdier tæt på 0 viser ingen lineær sammenhæng; tæt på +1 eller -1 viser en stærk lineær sammenhæng."}},
+    {"@type":"Question","name":"Betyder korrelation årsag?","acceptedAnswer":{"@type":"Answer","text":"Nej. En stærk og statistisk signifikant korrelation viser kun, at de to variable varierer sammen — der kan være en tredje variabel, der forårsager begge, det kan være tilfældigt (spuriøs korrelation), eller sammenhængen kan være omvendt."}},
+    {"@type":"Question","name":"Hvad er R² (forklaringsgraden)?","acceptedAnswer":{"@type":"Answer","text":"Det er r i anden og repræsenterer den andel af variansen i én variabel, der forklares af den anden. Et R² på 0,64 betyder, at 64% af variationen i Y kan forklares af en lineær sammenhæng med X."}},
+    {"@type":"Question","name":"Hvordan tolker man korrelationens p-værdi?","acceptedAnswer":{"@type":"Answer","text":"P-værdien tester nulhypotesen om, at den sande korrelation i populationen er nul. En lav p-værdi (typisk < 0,05) tyder på, at den observerede korrelation næppe er opstået ved et tilfælde, givet stikprøvestørrelsen."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Korrelationsberegner</li>
+        </ol>
+      </nav>
+      <h1>Pearson korrelationsberegner</h1>
+      <p class="lead">Indsæt to talrækker og få <strong>r</strong>, <strong>r²</strong>, <strong>p-værdi</strong>, konfidensinterval og <strong>spredningsdiagram</strong> med regressionslinjen.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="calc-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Parrede data
+      </h2>
+      <p class="calculator__hint">Hver række i X svarer til samme række i Y. Du kan indsætte direkte fra Excel eller Google Sheets (én kolonne ad gangen). Komma eller punktum som decimaltegn.</p>
+
+      <fieldset class="field-group">
+        <legend>Variable</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="varX">X (variabel 1)</label>
+            <textarea class="input" id="varX" rows="9" placeholder="F.eks.:&#10;1&#10;2&#10;3&#10;4&#10;5" autocomplete="off"></textarea>
+          </div>
+          <div class="field">
+            <label for="varY">Y (variabel 2)</label>
+            <textarea class="input" id="varY" rows="9" placeholder="F.eks.:&#10;2,1&#10;3,9&#10;6,2&#10;7,8&#10;9,5" autocomplete="off"></textarea>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="varXLabel">Navn på X-akse (valgfri)</label>
+            <input class="input" type="text" id="varXLabel" placeholder="F.eks.: År" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="varYLabel">Navn på Y-akse (valgfri)</label>
+            <input class="input" type="text" id="varYLabel" placeholder="F.eks.: Salg (kr.)" autocomplete="off">
+          </div>
+        </div>
+        <div class="field">
+          <label for="confidence">Konfidensniveau</label>
+          <select class="input" id="confidence">
+            <option value="0.90">90%</option>
+            <option value="0.95" selected>95%</option>
+            <option value="0.99">99%</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="calc-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn korrelation</button>
+        <button class="btn btn--ghost" type="button" id="calc-example">Udfyld med eksempel</button>
+        <button class="btn btn--ghost" type="button" id="calc-clear">Ryd</button>
+      </div>
+
+      <section class="result" id="calc-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <h2>Hvad er Pearson-korrelation</h2>
+      <p><strong>Pearson-korrelationen (r)</strong> er et mål, der i ét enkelt tal mellem <strong>−1 og +1</strong> opsummerer styrken og retningen af den <em>lineære</em> sammenhæng mellem to numeriske variable. Når r er tæt på +1, stiger de to variable sammen; når den er tæt på −1, stiger den ene og falder den anden; når den er tæt på 0, er der ingen tydelig lineær sammenhæng.</p>
+
+      <h2>Sådan tolker du resultatet</h2>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>|r|</th><th>Korrelationens styrke</th></tr></thead>
+          <tbody>
+            <tr><td>0,00 – 0,10</td><td>Praktisk talt ingen</td></tr>
+            <tr><td>0,10 – 0,30</td><td>Svag</td></tr>
+            <tr><td>0,30 – 0,50</td><td>Moderat</td></tr>
+            <tr><td>0,50 – 0,70</td><td>Stærk</td></tr>
+            <tr><td>0,70 – 0,90</td><td>Meget stærk</td></tr>
+            <tr><td>0,90 – 1,00</td><td>Næsten perfekt</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>R² (forklaringsgraden)</strong> er r i anden og repræsenterer den andel af variationen i Y, der kan <em>forklares af en linje</em> som funktion af X. Et R² på 0,81 betyder, at 81% af den observerede variation i Y er forenelig med en lineær sammenhæng med X.</p>
+      <p><strong>P-værdien</strong> tester nulhypotesen om, at den sande korrelation i populationen er nul. En lav p-værdi (typisk under 0,05) tyder på, at den observerede korrelation næppe er opstået ved et tilfælde, givet stikprøvestørrelsen.</p>
+
+      <h2>Sådan fungerer beregningen</h2>
+      <div class="formula">r = Σ(xᵢ − x̄)(yᵢ − ȳ) ÷ √[Σ(xᵢ − x̄)² · Σ(yᵢ − ȳ)²]</div>
+      <p>Signifikansen vurderes med t-testen med <strong>n − 2 frihedsgrader</strong>:</p>
+      <div class="formula">t = r · √(n − 2) ÷ √(1 − r²)</div>
+      <p>Konfidensintervallet for r bruger <strong>Fishers z-transformation</strong> (atanh), som tilnærmer fordelingen af r til normalfordelingen og giver gyldige intervaller for enhver stikprøvestørrelse ≥ 4.</p>
+
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Korrelation er ikke årsag
+        </div>
+        <p>En stærk korrelation siger kun, at de to variable varierer sammen — ikke hvorfor. Der kan være en <strong>tredje variabel</strong>, der forårsager begge, sammenhængen kan være <strong>omvendt</strong>, eller det kan være rent <strong>tilfælde</strong>. Jo flere tidsserier du sammenligner, jo lettere er det at finde stærke <em>fuldstændig spuriøse</em> korrelationer.</p>
+      </div>
+
+      <h2>Praktiske eksempler</h2>
+      <p>Brug denne beregner til at undersøge sammenhænge mellem numeriske variable: prøvekarakter × studietimer, pris × kvadratmeter på boliger, temperatur × isforbrug, vægt × højde, marketing × salg. Inden du drager årsagskonklusioner, så husk afsnittet ovenfor.</p>
+
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Spuriøse korrelationer til at grine af
+        </div>
+        <p>Det klassiske eksempel: osteforbruget pr. indbygger i USA og antallet af mennesker, der døde indviklet i lagner, har en korrelation på 0,95 mellem 2000 og 2009. Snart kommer en dansk version i projektet <strong>Data Folia</strong>.</p>
+      </div>
+
+      <h2>Begrænsninger</h2>
+      <ul>
+        <li>Måler kun <strong>lineær</strong> sammenhæng. En U-formet eller eksponentiel sammenhæng kan fremstå med r ≈ 0, selv om den er stærk.</li>
+        <li>Er følsom over for <strong>outliers</strong>: en enkelt ekstrem værdi kan vende r's fortegn.</li>
+        <li>Antager, at mindst en af variablene har nogenlunde normalfordeling for at p-værdien er præcis; i store stikprøver (n ≥ 30) er afvigelser fra denne antagelse ubetydelige.</li>
+      </ul>
+
+      <h2>Referencer</h2>
+      <ol class="ref-list">
+        <li>Cohen J. <cite>Statistical Power Analysis for the Behavioral Sciences</cite>. 2. udg. Hillsdale: Lawrence Erlbaum; 1988.</li>
+        <li>Fisher RA. On the "probable error" of a coefficient of correlation deduced from a small sample. <cite>Metron</cite>. 1921;1:3–32.</li>
+      </ol>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>T-test</h3><p>Sammenlign gennemsnit fra to stikprøver.</p></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Sandsynligt interval for et gennemsnit eller en proportion.</p></a>
+          <a class="card" href="/chi-test.html"><h3>Chi-i-anden test</h3><p>Sammenhæng mellem kategoriske variable.</p></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('calc-form'), result = $('calc-result'), errBox = $('calc-error');
+
+  function showError(msg) { errBox.textContent = msg; errBox.classList.add('is-visible'); result.hidden = true; }
+  function clearError() { errBox.textContent = ''; errBox.classList.remove('is-visible'); }
+
+  function parseSeries(raw) {
+    if (!raw) return [];
+    var lines = String(raw).split(/[\r\n,;\t]+/);
+    var out = [];
+    for (var i = 0; i < lines.length; i++) {
+      var s = lines[i].trim().replace(/\s+/g, '');
+      if (!s) continue;
+      var n = parseNum(s);
+      if (isFinite(n)) out.push(n);
+    }
+    return out;
+  }
+
+  $('calc-example').addEventListener('click', function () {
+    $('varX').value = '12\n14\n16\n18\n20\n22\n24\n26\n28\n30';
+    $('varY').value = '23\n26\n31\n34\n40\n42\n47\n51\n54\n60';
+    $('varXLabel').value = 'Alder (år)';
+    $('varYLabel').value = 'Højde (cm)';
+    compute();
+  });
+  $('calc-clear').addEventListener('click', function () {
+    $('varX').value = ''; $('varY').value = '';
+    $('varXLabel').value = ''; $('varYLabel').value = '';
+    clearError(); result.hidden = true;
+  });
+  form.addEventListener('submit', function (e) { e.preventDefault(); compute(); });
+
+  function compute() {
+    clearError();
+    var x = parseSeries($('varX').value);
+    var y = parseSeries($('varY').value);
+    var confidence = parseFloat($('confidence').value) || 0.95;
+    if (x.length === 0 || y.length === 0) {
+      showError('Indsæt de to talrækker (mindst 3 par).');
+      return;
+    }
+    if (x.length !== y.length) {
+      showError('De to rækker skal have samme antal værdier. X har ' + x.length + ', Y har ' + y.length + '.');
+      return;
+    }
+    var r = Stats.pearsonCorrelation({ x: x, y: y, confidence: confidence });
+    if (r.error) { showError(r.error); return; }
+    render(r, x, y);
+  }
+
+  var ICONS = {
+    ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    warn: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    neutral: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>'
+  };
+
+  function render(r, x, y) {
+    var cls = r.significant ? (Math.abs(r.r) >= 0.5 ? 'ok' : 'warn') : 'neutral';
+    var headline =
+      'r = ' + Fmt.num(r.r, 4) +
+      ' · ' + r.forca + ' korrelation' + (Math.abs(r.r) > 0 ? ' og ' + r.sinal : '');
+    var sub = 'n = ' + r.n + ' · ' +
+      (r.significant ? 'Statistisk signifikant' : 'Ikke-signifikant') +
+      ' (α = ' + Fmt.num(r.alpha, 2) + ')';
+
+    var ic = '';
+    if (r.ciLow !== null && r.ciHigh !== null) {
+      ic = '<tr><td>KI ' + Math.round(r.confidence * 100) + '% for ρ</td>' +
+           '<td>[' + Fmt.num(r.ciLow, 4) + ' ; ' + Fmt.num(r.ciHigh, 4) + ']</td></tr>';
+    }
+
+    var rows =
+      '<tr><td><strong>r</strong> (Pearson)</td><td>' + Fmt.num(r.r, 4) + '</td></tr>' +
+      '<tr><td><strong>R²</strong> (forklaringsgrad)</td><td>' + Fmt.num(r.r2, 4) + ' (' + Fmt.num(r.r2 * 100, 1) + '%)</td></tr>' +
+      '<tr><td>n (par)</td><td>' + r.n + '</td></tr>' +
+      '<tr><td>Frihedsgrader</td><td>' + r.df + '</td></tr>' +
+      '<tr><td>T-teststørrelse</td><td>' + Fmt.num(r.t, 3) + '</td></tr>' +
+      '<tr><td>P-værdi (tosidet)</td><td>' + (r.pValue < 0.0001 ? '< 0,0001' : Fmt.num(r.pValue, 4)) + '</td></tr>' +
+      ic +
+      '<tr><td>Regressionslinje</td><td>y = ' + Fmt.num(r.intercept, 3) + ' + ' + Fmt.num(r.slope, 3) + ' · x</td></tr>';
+
+    var labelX = $('varXLabel').value.trim() || 'X';
+    var labelY = $('varYLabel').value.trim() || 'Y';
+
+    result.className = 'result result--' + cls;
+    result.innerHTML =
+      '<div class="result__banner">' + ICONS[cls] +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body">' +
+        '<canvas id="corr-canvas" width="800" height="500" style="width:100%;height:auto;max-width:100%;display:block;border:1px solid var(--c-line);border-radius:8px;background:#fff"></canvas>' +
+        '<div class="table-wrap" style="margin-top:1rem"><table class="data">' +
+          '<thead><tr><th>Mål</th><th>Værdi</th></tr></thead>' +
+          '<tbody>' + rows + '</tbody></table></div>' +
+        '<div class="result__interpretation" style="margin-top:1rem"><p>' + interpret(r) + '</p></div>' +
+      '</div>';
+    result.hidden = false;
+    drawScatter($('corr-canvas'), x, y, r, labelX, labelY);
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function interpret(r) {
+    var abs = Math.abs(r.r);
+    var sigTxt = r.significant
+      ? '<strong>Denne korrelation er statistisk signifikant</strong> (p-værdi ' +
+        (r.pValue < 0.0001 ? '< 0,0001' : '= ' + Fmt.num(r.pValue, 4)) +
+        '): hvis korrelationen i populationen var nul, ville det være meget usandsynligt at se et så ekstremt r som dette ved et tilfælde.'
+      : '<strong>Denne korrelation er ikke statistisk signifikant</strong> på niveau ' + Fmt.num(r.alpha, 2) +
+        ': med de ' + r.n + ' par, du har indtastet, kan man ikke sige, at korrelationen i populationen er forskellig fra nul.';
+    var r2Txt = 'R² på <strong>' + Fmt.num(r.r2, 4) + '</strong> viser, at omkring <strong>' + Fmt.num(r.r2 * 100, 1) +
+      '%</strong> af variationen i Y er forenelig med en lineær sammenhæng med X.';
+    return sigTxt + ' ' + r2Txt + ' Husk at korrelation ikke betyder årsag: undersøg tredjevariable og mekanismer, før du konkluderer.';
+  }
+
+  /* --------------------------------------------------------------------
+     Scatter plot — rent canvas
+     -------------------------------------------------------------------- */
+  function drawScatter(canvas, x, y, r, labelX, labelY) {
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    // HiDPI-understøttelse
+    var W = canvas.width, H = canvas.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    canvas.style.width = '100%'; canvas.style.maxWidth = '100%';
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, W, H);
+
+    // Indre padding
+    var pad = { l: 60, r: 18, t: 22, b: 50 };
+    var plotW = W - pad.l - pad.r, plotH = H - pad.t - pad.b;
+
+    // Områder med 5% margin
+    var minX = Math.min.apply(null, x), maxX = Math.max.apply(null, x);
+    var minY = Math.min.apply(null, y), maxY = Math.max.apply(null, y);
+    if (minX === maxX) { minX -= 0.5; maxX += 0.5; }
+    if (minY === maxY) { minY -= 0.5; maxY += 0.5; }
+    var marginX = (maxX - minX) * 0.05;
+    var marginY = (maxY - minY) * 0.05;
+    minX -= marginX; maxX += marginX;
+    minY -= marginY; maxY += marginY;
+
+    function px(v) { return pad.l + (v - minX) / (maxX - minX) * plotW; }
+    function py(v) { return pad.t + (1 - (v - minY) / (maxY - minY)) * plotH; }
+
+    // Gitter
+    ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+    var nT = 5;
+    for (var i = 0; i <= nT; i++) {
+      var gx = pad.l + plotW * (i / nT);
+      var gy = pad.t + plotH * (i / nT);
+      ctx.beginPath(); ctx.moveTo(gx, pad.t); ctx.lineTo(gx, pad.t + plotH); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(pad.l, gy); ctx.lineTo(pad.l + plotW, gy); ctx.stroke();
+    }
+
+    // Akser
+    ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, pad.t + plotH); ctx.lineTo(pad.l + plotW, pad.t + plotH); ctx.stroke();
+
+    // Tick-tekster
+    ctx.fillStyle = '#64748b'; ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    function fmt(v) {
+      if (Math.abs(v) >= 1000) return v.toLocaleString('da-DK', { maximumFractionDigits: 0 });
+      if (Math.abs(v) >= 10)   return v.toLocaleString('da-DK', { maximumFractionDigits: 1 });
+      return v.toLocaleString('da-DK', { maximumFractionDigits: 2 });
+    }
+    for (var i = 0; i <= nT; i++) {
+      var yv = maxY - (maxY - minY) * (i / nT);
+      ctx.fillText(fmt(yv), pad.l - 8, pad.t + plotH * (i / nT));
+    }
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    for (var j = 0; j <= nT; j++) {
+      var xv = minX + (maxX - minX) * (j / nT);
+      ctx.fillText(fmt(xv), pad.l + plotW * (j / nT), pad.t + plotH + 6);
+    }
+
+    // Aksetekster
+    ctx.fillStyle = '#0f172a'; ctx.font = '600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText(labelX, pad.l + plotW / 2, H - 10);
+    ctx.save();
+    ctx.translate(16, pad.t + plotH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText(labelY, 0, 0);
+    ctx.restore();
+
+    // Regressionslinje (strækker sig langs den synlige X-akse)
+    var slope = r.slope, intercept = r.intercept;
+    var x1 = minX, y1 = intercept + slope * x1;
+    var x2 = maxX, y2 = intercept + slope * x2;
+    // Clip til plotområdet
+    ctx.save();
+    ctx.beginPath(); ctx.rect(pad.l, pad.t, plotW, plotH); ctx.clip();
+    ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(px(x1), py(y1)); ctx.lineTo(px(x2), py(y2)); ctx.stroke();
+    ctx.restore();
+
+    // Punkter
+    ctx.fillStyle = '#1d4ed8';
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1.5;
+    for (var k = 0; k < x.length; k++) {
+      ctx.beginPath();
+      ctx.arc(px(x[k]), py(y[k]), 5, 0, 2 * Math.PI);
+      ctx.fill(); ctx.stroke();
+    }
+
+    // r-tekst i hjørnet
+    ctx.fillStyle = '#1e40af'; ctx.font = '700 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('r = ' + r.r.toFixed(3), pad.l + 8, pad.t + 6);
+  }
+})();
+</script>
+</body>
+</html>

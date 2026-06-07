@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>t-test Beregner (Student) — Online og Gratis</title>
+<meta name="description" content="Gratis t-test beregner på dansk: én stikprøve, to uafhængige stikprøver eller parrede data. t-statistik, frihedsgrader, p-værdi og fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/t-test.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="t-test Beregner (Student)">
+<meta property="og:description" content="Sammenlign gennemsnit med t-testen: én stikprøve, to stikprøver eller parret. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/t-test.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "t-test Beregner (Student)",
+  "url": "https://statistikberegner.dk/t-test.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "t-test beregner til én stikprøve, to stikprøver og parrede data."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"t-test Beregner","item":"https://statistikberegner.dk/t-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvornår skal man bruge t-testen (Student)?","acceptedAnswer":{"@type":"Answer","text":"Brug t-testen til at sammenligne gennemsnit, når populationens standardafvigelse er ukendt og standardafvigelsen estimeres ud fra data. Det er det mest almindelige tilfælde i praksis."}},
+    {"@type":"Question","name":"Hvad er forskellen mellem t-test og z-test?","acceptedAnswer":{"@type":"Answer","text":"Z-testen kræver, at populationens standardafvigelse er kendt; t-testen bruger den estimerede standardafvigelse fra stikprøven og t-fordelingen, som har bredere haler for at kompensere for den usikkerhed."}},
+    {"@type":"Question","name":"Hvad er frihedsgrader i en t-test?","acceptedAnswer":{"@type":"Answer","text":"Det er antallet af værdier, der frit kan variere i beregningen. For én stikprøve er det n minus 1. De afgør formen på den t-fordeling, der bruges til at finde p-værdien."}},
+    {"@type":"Question","name":"Hvad er en parret t-test?","acceptedAnswer":{"@type":"Answer","text":"Det er testen til gentagne målinger på de samme personer, fx før og efter en behandling. Den analyserer gennemsnittet af de individuelle forskelle."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>t-test Beregner</li>
+        </ol>
+      </nav>
+      <h1>t-test Beregner (Student)</h1>
+      <p class="lead">Sammenlign <strong>gennemsnit</strong> og find ud af, om forskellen er statistisk signifikant — for én stikprøve, to uafhængige stikprøver eller parrede data.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="t-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Beregn t-testen
+      </h2>
+      <p class="calculator__hint">Vælg type test, og indtast gennemsnit, standardafvigelse og størrelse for hver stikprøve.</p>
+
+      <fieldset class="field-group">
+        <legend>Type t-test</legend>
+        <div class="segmented" role="radiogroup" aria-label="Type t-test">
+          <label><input type="radio" name="t-mode" value="one" checked><span>Én stikprøve</span></label>
+          <label><input type="radio" name="t-mode" value="two"><span>To stikprøver</span></label>
+          <label><input type="radio" name="t-mode" value="paired"><span>Parret</span></label>
+        </div>
+      </fieldset>
+
+      <div data-panel="one">
+        <fieldset class="field-group">
+          <legend>Din stikprøve</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="o-mean">Gennemsnit af stikprøven</label>
+              <input class="input" type="text" inputmode="decimal" id="o-mean" placeholder="F.eks. 138" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="o-sd">Standardafvigelse</label>
+              <input class="input" type="text" inputmode="decimal" id="o-sd" placeholder="F.eks. 16" autocomplete="off">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="o-n">Stikprøvestørrelse (n)</label>
+              <input class="input" type="text" inputmode="numeric" id="o-n" placeholder="F.eks. 40" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="o-mu0">Sammenligningsværdi (μ₀)</label>
+              <input class="input" type="text" inputmode="decimal" id="o-mu0" placeholder="F.eks. 130" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div data-panel="two" hidden>
+        <fieldset class="field-group">
+          <legend>Gruppe 1</legend>
+          <div class="field-row">
+            <div class="field"><label for="t1-mean">Gennemsnit</label><input class="input" type="text" inputmode="decimal" id="t1-mean" placeholder="F.eks. 10" autocomplete="off"></div>
+            <div class="field"><label for="t1-sd">Standardafvigelse</label><input class="input" type="text" inputmode="decimal" id="t1-sd" placeholder="F.eks. 2" autocomplete="off"></div>
+          </div>
+          <div class="field-row field-row--single">
+            <div class="field"><label for="t1-n">Størrelse (n₁)</label><input class="input" type="text" inputmode="numeric" id="t1-n" placeholder="F.eks. 30" autocomplete="off"></div>
+          </div>
+        </fieldset>
+        <fieldset class="field-group">
+          <legend>Gruppe 2</legend>
+          <div class="field-row">
+            <div class="field"><label for="t2-mean">Gennemsnit</label><input class="input" type="text" inputmode="decimal" id="t2-mean" placeholder="F.eks. 8.5" autocomplete="off"></div>
+            <div class="field"><label for="t2-sd">Standardafvigelse</label><input class="input" type="text" inputmode="decimal" id="t2-sd" placeholder="F.eks. 2.5" autocomplete="off"></div>
+          </div>
+          <div class="field-row field-row--single">
+            <div class="field"><label for="t2-n">Størrelse (n₂)</label><input class="input" type="text" inputmode="numeric" id="t2-n" placeholder="F.eks. 30" autocomplete="off"></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div data-panel="paired" hidden>
+        <fieldset class="field-group">
+          <legend>Forskelle (efter − før)</legend>
+          <div class="field-row">
+            <div class="field"><label for="p-mean">Gennemsnit af forskelle</label><input class="input" type="text" inputmode="decimal" id="p-mean" placeholder="F.eks. 4.2" autocomplete="off"></div>
+            <div class="field"><label for="p-sd">Standardafvigelse af forskelle</label><input class="input" type="text" inputmode="decimal" id="p-sd" placeholder="F.eks. 6.5" autocomplete="off"></div>
+          </div>
+          <div class="field-row field-row--single">
+            <div class="field"><label for="p-n">Antal par (n)</label><input class="input" type="text" inputmode="numeric" id="p-n" placeholder="F.eks. 25" autocomplete="off"></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="t-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="t-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="t-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Type test</label>
+            <div class="segmented" role="radiogroup" aria-label="Type test">
+              <label><input type="radio" name="t-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="t-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="t-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn t-test</button>
+        <button class="btn btn--ghost" type="button" id="t-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="t-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er t-testen (Student)</a></li>
+          <li><a href="#tipos">De tre typer t-test</a></li>
+          <li><a href="#como">Sådan virker beregningen</a></li>
+          <li><a href="#pressupostos">Forudsætninger for t-testen</a></li>
+          <li><a href="#interpretar">Sådan fortolker du resultatet</a></li>
+          <li><a href="#exemplo">Løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er t-testen (Student)</h2>
+      <p><strong>T-testen (Student)</strong> er den mest brugte statistiske procedure til at sammenligne <strong>gennemsnit</strong>. Den svarer på et direkte spørgsmål: er forskellen mellem to gennemsnit — eller mellem et gennemsnit og en referenceværdi — stor nok til at blive opfattet som reel, eller kan det bare være tilfældig variation i stikprøven?</p>
+      <p>Navnet stammer fra William Sealy Gosset, der offentliggjorde metoden i 1908 under pseudonymet "Student", mens han arbejdede på Guinness-bryggeriet. Hans problem var praktisk: at drage konklusioner ud fra <em>små stikprøver</em>, uden at kende populationens sande standardafvigelse. Det er præcis det, t-testen er til — og det er derfor, den er så udbredt i sundhedsforskning, psykologi, undervisning og kvalitetsstyring.</p>
+      <p>Forskellen i forhold til <a href="/z-test.html">z-testen</a> ligger der: z-testen kræver, at du kender populationens standardafvigelse; t-testen arbejder med standardafvigelsen <em>estimeret</em> ud fra selve stikprøven. For at kompensere for den ekstra usikkerhed bruger den <strong>t-fordelingen</strong>, der ligner normalfordelingen, men har lidt bredere haler — mere konservativ.</p>
+
+      <h2 id="tipos">De tre typer t-test</h2>
+      <p>At vælge den rigtige type er det vigtigste trin. Denne beregner tilbyder alle tre:</p>
+      <h3>1. t-test for én stikprøve</h3>
+      <p>Sammenligner gennemsnittet af én enkelt gruppe med en <strong>kendt referenceværdi</strong> (μ₀). Eksempel: er gennemsnitsvægten af pakkerne fra en produktionslinje virkelig 500 g? Afviger en klasses gennemsnitskarakter fra skolens historiske gennemsnit?</p>
+      <h3>2. t-test for to uafhængige stikprøver</h3>
+      <p>Sammenligner gennemsnittene fra <strong>to forskellige, uafhængige grupper</strong>. Eksempel: er restitueringstiden forskellig mellem dem, der fik behandling A, og dem, der fik B? Denne beregner bruger <strong>Welchs test</strong>, som ikke kræver, at de to grupper har samme varians — den moderne anbefaling som standard.</p>
+      <h3>3. Parret t-test</h3>
+      <p>Sammenligner <strong>to målinger foretaget på de samme personer</strong>, typisk før og efter en intervention. Da hver person er sin egen kontrol, analyseres gennemsnittet af de individuelle forskelle. Eksempel: er de samme patienters blodtryk faldet efter otte ugers medicin?</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Parret eller uafhængig?
+        </div>
+        <p>Hvis de samme personer er målt to gange, er testen <strong>parret</strong> — at bruge den som uafhængig spilder information og statistisk styrke. Hvis det er to forskellige grupper af personer, er den <strong>uafhængig</strong>.</p>
+      </div>
+
+      <h2 id="como">Sådan virker beregningen</h2>
+      <p>Trods de tre typer er ideen altid den samme: divider den observerede forskel med <strong>standardfejlen</strong> — et mål for, hvor meget tilfældig variation der kan forventes. Resultatet er <strong>t-statistikken</strong>:</p>
+      <div class="formula">t = (observeret forskel) ÷ (standardfejl)
+        <span class="formula__where">Jo større |t|, jo længere er du fra hypotesen om "ingen forskel".</span>
+      </div>
+      <p>For testen med én stikprøve er den observerede forskel f.eks. (gennemsnit − μ₀), og standardfejlen er standardafvigelsen divideret med kvadratroden af n:</p>
+      <div class="formula">t = (x̄ − μ₀) ÷ (s ÷ √n)</div>
+      <p>Derefter har beregneren brug for <strong>frihedsgraderne</strong> (df) — for én stikprøve er df = n − 1. De bestemmer den nøjagtige form af t-fordelingen. Til sidst omsætter <strong>p-værdien</strong> t og df til en sandsynlighed via t-fordelingens fordelingsfunktion (her beregnet med den ufuldstændige beta-funktion for høj præcision).</p>
+
+      <h2 id="pressupostos">Forudsætninger for t-testen</h2>
+      <p>T-testen er robust, men der er betingelser for, at den fungerer godt:</p>
+      <ul>
+        <li><strong>Kvantitative data:</strong> den målte variabel er numerisk (vægt, tid, karakter, blodtryk).</li>
+        <li><strong>Tilfældig stikprøve:</strong> data repræsenterer den ønskede population.</li>
+        <li><strong>Tilnærmelsesvis normalitet:</strong> data (eller forskellene i den parrede version) følger nogenlunde en normalfordeling. Med stikprøver større end ~30 er små afvigelser ikke længere et problem.</li>
+        <li><strong>Uafhængighed:</strong> i to-stikprøvetesten må de to grupper ikke påvirke hinanden.</li>
+      </ul>
+      <p>Når forudsætningerne svigter alvorligt — meget skæve data eller meget små stikprøver — er ikke-parametriske tests (som Mann-Whitney eller Wilcoxon) gode alternativer.</p>
+
+      <h2 id="interpretar">Sådan fortolker du resultatet</h2>
+      <p>Beregneren returnerer seks nøgletal:</p>
+      <ul>
+        <li><strong>t-statistik</strong> — forskellen målt i antal standardfejl.</li>
+        <li><strong>Frihedsgrader</strong> — bestemmer den fordeling, der bruges til p-værdien.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er resultatet signifikant.</li>
+        <li><strong>Standardfejl</strong> — den tilfældige variation, der kan forventes i estimatet.</li>
+        <li><strong>Punktestimat</strong> — gennemsnittet (én stikprøve) eller forskellen i gennemsnit (to stikprøver og parret).</li>
+        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for den sande værdi. Hvis et interval for forskellen indeholder nul, er forskellen ikke signifikant.</li>
+      </ul>
+
+      <h2 id="exemplo">Løst eksempel</h2>
+      <p>Et sundhedsteam måler det systoliske blodtryk hos <strong>40 patienter</strong> på en klinik. Gennemsnittet blev <strong>138 mmHg</strong> med en standardafvigelse på <strong>16 mmHg</strong>. Referenceværdien, der betragtes som sund, er <strong>130 mmHg</strong>. Afviger gruppens gennemsnitstryk fra referenceværdien?</p>
+      <ol class="steps">
+        <li>Standardfejl: SF = 16 ÷ √40 ≈ 2,53.</li>
+        <li>t-statistik: t = (138 − 130) ÷ 2,53 ≈ 3,16.</li>
+        <li>Frihedsgrader: df = 40 − 1 = 39.</li>
+        <li>Tosidet p-værdi for t = 3,16 og df = 39: ≈ 0,003.</li>
+      </ol>
+      <p>Da 0,003 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong>: gruppens gennemsnitstryk er faktisk højere end referenceværdien. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvornår skal jeg bruge t-testen?</summary>
+          <div class="faq__answer"><p>Når du vil sammenligne gennemsnit, og populationens standardafvigelse er ukendt — hvilket er stort set altid tilfældet i praksis. Vil du sammenligne proportioner eller rater, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen mellem t-test og z-test?</summary>
+          <div class="faq__answer"><p>Z-testen kræver, at populationens standardafvigelse er kendt, og bruger normalfordelingen. T-testen bruger standardafvigelsen estimeret fra stikprøven og t-fordelingen, der har bredere haler for at kompensere for den usikkerhed. Med store stikprøver giver de to næsten identiske resultater.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er frihedsgrader?</summary>
+          <div class="faq__answer"><p>Det er antallet af værdier, der frit kan variere, når man estimerer en statistik. For én stikprøve er det n − 1. De bestemmer formen af t-fordelingen: jo flere frihedsgrader, jo mere ligner t-fordelingen normalfordelingen.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg bruge t-testen med små stikprøver?</summary>
+          <div class="faq__answer"><p>Ja — den blev faktisk skabt netop til det. Men med meget små stikprøver bliver antagelsen om normalitet vigtigere, og testen mister styrke til at opdage reelle forskelle.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/z-test.html"><h3>z-test</h3><p>Når populationens standardafvigelse er kendt.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Estimer det sandsynlige interval for et gennemsnit.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/ab-test.html"><h3>A/B-test</h3><p>Til at sammenligne rater og proportioner.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Brug for statistik inden for dit felt?</h2>
+        <p>Se de praktiske statistik-guides til sygepleje, psykologi og marketing.</p>
+        <a class="btn btn--light btn--lg" href="/#guias">Se guides efter område</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('t-form'), result = $('t-result'), errBox = $('t-error');
+  var panels = document.querySelectorAll('[data-panel]');
+
+  function currentMode() { return Fmt.radio('t-mode'); }
+
+  function syncPanels() {
+    var mode = currentMode();
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-panel') !== mode;
+    }
+  }
+  var modeRadios = document.querySelectorAll('input[name="t-mode"]');
+  for (var m = 0; m < modeRadios.length; m++) {
+    modeRadios[m].addEventListener('change', syncPanels);
+  }
+  syncPanels();
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('t-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('input[name="t-mode"][value="one"]').checked = true;
+    syncPanels();
+    $('o-mean').value = '138'; $('o-sd').value = '16';
+    $('o-n').value = '40'; $('o-mu0').value = '130';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var mode = currentMode();
+    var conf = parseFloat(Fmt.radio('t-conf'));
+    var tails = parseInt(Fmt.radio('t-tails'), 10);
+    var opts = { mode: mode, confidence: conf, tails: tails };
+    var vals;
+
+    if (mode === 'one') {
+      vals = [parseNum($('o-mean').value), parseNum($('o-sd').value),
+              parseNum($('o-n').value), parseNum($('o-mu0').value)];
+      if (vals.some(function (v) { return isNaN(v); })) {
+        showError('Udfyld gennemsnit, standardafvigelse, stikprøvestørrelse og sammenligningsværdi.');
+        return;
+      }
+      opts.mean = vals[0]; opts.sd = vals[1]; opts.n = vals[2]; opts.mu0 = vals[3];
+    } else if (mode === 'two') {
+      vals = [parseNum($('t1-mean').value), parseNum($('t1-sd').value), parseNum($('t1-n').value),
+              parseNum($('t2-mean').value), parseNum($('t2-sd').value), parseNum($('t2-n').value)];
+      if (vals.some(function (v) { return isNaN(v); })) {
+        showError('Udfyld gennemsnit, standardafvigelse og størrelse for begge grupper.');
+        return;
+      }
+      opts.mean1 = vals[0]; opts.sd1 = vals[1]; opts.n1 = vals[2];
+      opts.mean2 = vals[3]; opts.sd2 = vals[4]; opts.n2 = vals[5];
+    } else {
+      vals = [parseNum($('p-mean').value), parseNum($('p-sd').value), parseNum($('p-n').value)];
+      if (vals.some(function (v) { return isNaN(v); })) {
+        showError('Udfyld gennemsnit af forskelle, standardafvigelse og antal par.');
+        return;
+      }
+      opts.meanDiff = vals[0]; opts.sdDiff = vals[1]; opts.n = vals[2];
+    }
+
+    var r = Stats.tTest(opts);
+    if (r.error) { showError(r.error); return; }
+    render(r, mode, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, mode, conf) {
+    var sig = r.significant;
+    var dfTxt = Number.isInteger(r.df) ? String(r.df) : Fmt.num(r.df, 1);
+    var estLabel = r.estimateLabel === 'media' ? 'Gennemsnit af stikprøven' :
+                   (mode === 'paired' ? 'Gennemsnitlig forskel' : 'Forskel i gennemsnit');
+
+    var metrics =
+      metric('t-statistik', Fmt.num(r.t, 3)) +
+      metric('Frihedsgrader', dfTxt) +
+      metric('P-værdi', Fmt.p(r.pValue), r.tails === 1 ? 'ensidet' : 'tosidet') +
+      metric('Standardfejl', Fmt.num(r.se, 3)) +
+      metric(estLabel, Fmt.num(r.estimate, 3)) +
+      metric('KI ' + Fmt.pct(conf, 0), '[' + Fmt.num(r.ciLow, 2) + '; ' + Fmt.num(r.ciHigh, 2) + ']');
+
+    var headline = sig ? 'Statistisk signifikant forskel' : 'Ikke signifikant forskel';
+    var sub = sig
+      ? 'P-værdien er under signifikansniveauet — forskellen er sandsynligvis reel.'
+      : 'Der er ikke tilstrækkelige belæg for at sige, at der er en forskel.';
+
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + Fmt.pct(conf, 0) + ' konfidens</strong> er resultatet ' +
+        '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'Estimatet er <strong>' + Fmt.num(r.estimate, 3) + '</strong>, med et ' +
+        Fmt.pct(conf, 0) + ' interval mellem ' + Fmt.num(r.ciLow, 3) + ' og ' + Fmt.num(r.ciHigh, 3) + '.</p>';
+    } else {
+      interp = '<p>Med ' + Fmt.pct(conf, 0) + ' konfidens er resultatet <strong>ikke ' +
+        'statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'Konfidensintervallet (fra ' + Fmt.num(r.ciLow, 3) + ' til ' + Fmt.num(r.ciHigh, 3) +
+        ') angiver det interval af værdier, der stadig er foreneligt med dine data.</p>';
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

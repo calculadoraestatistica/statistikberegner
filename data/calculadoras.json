@@ -1,0 +1,258 @@
+[
+  {
+    "id": "teste-ab",
+    "tipo": "calculadora",
+    "titulo": "A/B-test-beregner",
+    "url": "/ab-test.html",
+    "resumo": "Sammenligner to versioner for at se, om forskellen i konverteringsrate (klik, salg, helbredelse, succes) er statistisk signifikant.",
+    "tags": ["a/b-test", "proportion", "konvertering", "klik", "to versioner", "marketing", "cro", "landingsside", "e-mail"],
+    "perguntas_exemplo": [
+      "Sammenlign konverteringsraten for to versioner af min side",
+      "Den nye landingsside konverterede bedre — er forskellen reel eller bare held?",
+      "Sammenlign klikraten for to e-mails",
+      "Sammenlign to versioner af en annonce for at se, hvilken der konverterer bedst",
+      "Find ud af, om forskellen mellem to grupper i succesrate er signifikant",
+      "Sammenlign helbredelsesrate mellem to behandlinger",
+      "Min version B fik flere klik, er det statistisk signifikant?",
+      "Sammenlign to rater: behandling og kontrol",
+      "Test om forskellen mellem to proportioner er tilfældig"
+    ]
+  },
+  {
+    "id": "tamanho-amostra-ab",
+    "tipo": "calculadora",
+    "titulo": "Stikprøvestørrelse til A/B-test",
+    "url": "/ab-test-stikprove.html",
+    "resumo": "Beregner, hvor mange besøgende eller personer A/B-testen kræver for at opdage en mindste forskel mellem to proportioner med den ønskede statistiske styrke.",
+    "tags": ["stikprøvestørrelse", "a/b-test", "statistisk styrke", "mde", "minimum detectable effect", "eksperimentplanlægning"],
+    "perguntas_exemplo": [
+      "Hvor mange besøgende kræver min A/B-test for at være pålidelig?",
+      "Hvor mange dage skal eksperimentet køre, før jeg beslutter?",
+      "Hvad er den mindste stikprøvestørrelse til en proportionstest?",
+      "Hvor mange konverteringer har jeg brug for for at opdage en forbedring på 2 %?",
+      "Beregn det mindste n til en A/B-test med 80 % styrke",
+      "Planlæg før jeg starter en A/B-test",
+      "Hvor længe skal eksperimentet køre",
+      "Jeg vil opdage en mindste forskel på X % mellem mine versioner"
+    ]
+  },
+  {
+    "id": "teste-t",
+    "tipo": "calculadora",
+    "titulo": "t-test-beregner (Student)",
+    "url": "/t-test.html",
+    "resumo": "Sammenligner gennemsnit: én stikprøve mod en referenceværdi, to uafhængige stikprøver eller parrede data (før og efter på samme person).",
+    "tags": ["t-test", "gennemsnit", "sammenlign gennemsnit", "før og efter", "parret", "uafhængige", "to stikprøver", "én stikprøve", "student"],
+    "perguntas_exemplo": [
+      "Sammenlign gennemsnit i to grupper",
+      "Sammenlign blodtryk før og efter behandling",
+      "Før og efter på samme patient — hvilken test skal jeg bruge?",
+      "Jeg har vægten af patienter før og efter en diæt og vil se, om den har ændret sig",
+      "Jeg har vægtprøver fra patienter på diæt X og diæt Y, hvilken reducerede vægten mest?",
+      "Sammenlign gennemsnit af to uafhængige stikprøver",
+      "Sammenlign gennemsnitskarakteren i to klasser",
+      "Sammenlign opgavetid mellem kontrolgruppe og eksperimentgruppe",
+      "Sammenlign mit gennemsnit med en referenceværdi fra litteraturen",
+      "Er forskellen i gennemsnit mellem to grupper signifikant?",
+      "Sammenlign gennemsnitsløn mellem to afdelinger",
+      "Parret: hver deltager målt to gange, før og efter",
+      "Sammenlign resultat før og efter træning",
+      "Parrede data fra samme person på to tidspunkter"
+    ]
+  },
+  {
+    "id": "teste-z",
+    "tipo": "calculadora",
+    "titulo": "Z-test-beregner",
+    "url": "/z-test.html",
+    "resumo": "Tester et gennemsnit mod en referenceværdi, når populationens standardafvigelse er kendt, og stikprøven er stor (n ≥ 30).",
+    "tags": ["z-test", "gennemsnit", "kendt standardafvigelse", "population", "ét gennemsnit", "referenceværdi", "stor stikprøve"],
+    "perguntas_exemplo": [
+      "Test et gennemsnit, når populationens standardafvigelse er kendt",
+      "Sammenlign gennemsnittet af min stikprøve med en historisk referenceværdi",
+      "Tjek om min gruppes gennemsnit afviger fra en populationsstandard",
+      "Stor stikprøve og kendt populationsstandardafvigelse, hvilken test?",
+      "Test om gennemsnittet af en stikprøve er lig med en referenceværdi"
+    ]
+  },
+  {
+    "id": "teste-proporcao",
+    "tipo": "calculadora",
+    "titulo": "Proportionstest-beregner",
+    "url": "/proportionstest.html",
+    "resumo": "Sammenligner en proportion mod en referenceværdi eller to proportioner indbyrdes, med z-statistik, p-værdi og konfidensinterval.",
+    "tags": ["proportion", "procent", "rate", "én proportion", "to proportioner", "referenceværdi", "z for proportion"],
+    "perguntas_exemplo": [
+      "Sammenlign en proportion med en referenceværdi",
+      "Er min godkendelsesrate over det forventede?",
+      "Sammenlign to procenter indbyrdes",
+      "Test om 30 % adskiller sig fra målet på 25 %",
+      "Tjek om fejlraten er faldet i forhold til historikken",
+      "Sammenlign andelen af kvinder mellem to grupper"
+    ]
+  },
+  {
+    "id": "qui-quadrado",
+    "tipo": "calculadora",
+    "titulo": "Chi²-beregner",
+    "url": "/chi-test.html",
+    "resumo": "Tester sammenhængen mellem to kategoriske variable ud fra en kontingenstabel (chi², p-værdi og Cramérs V).",
+    "tags": ["chi²", "chi i anden", "χ²", "kontingenstabel", "sammenhæng", "kategoriske variable", "uafhængighed", "cramérs v"],
+    "perguntas_exemplo": [
+      "Tjek om to kategoriske variable hænger sammen",
+      "Varierer mærkepræference med køn?",
+      "Sammenlign fordeling mellem kategoriske grupper",
+      "Kontingenstabel — hvilken test skal jeg bruge?",
+      "Test sammenhæng mellem uddannelse og stemmeafgivelse",
+      "Hænger alder og købt produkttype sammen?",
+      "Forskel i fordeling af kategoriske svar mellem grupper"
+    ]
+  },
+  {
+    "id": "k-amostras",
+    "tipo": "calculadora",
+    "titulo": "ANOVA og k-stikprøver-beregner",
+    "url": "/anova.html",
+    "resumo": "Sammenligner gennemsnit i tre eller flere grupper med ANOVA (parametrisk) eller Kruskal-Wallis (ikke-parametrisk).",
+    "tags": ["anova", "kruskal-wallis", "k-stikprøver", "tre grupper", "flere grupper", "sammenlign gennemsnit", "flere grupper"],
+    "perguntas_exemplo": [
+      "Sammenlign gennemsnit i tre eller flere grupper",
+      "Jeg har fire behandlinger og vil se, hvilken der er bedst",
+      "Sammenlign tre klasser i samme prøve",
+      "Jeg vil bruge ANOVA, hvilken beregner?",
+      "Sammenlign fem forskellige doser",
+      "Test til at sammenligne flere grupper på én gang",
+      "Kruskal-Wallis til mere end to grupper uden normalitet"
+    ]
+  },
+  {
+    "id": "wilcoxon",
+    "tipo": "calculadora",
+    "titulo": "Wilcoxon og Mann-Whitney-beregner",
+    "url": "/wilcoxon.html",
+    "resumo": "Sammenligner to grupper uden at antage normalfordeling — Wilcoxon parret eller Mann-Whitney til to uafhængige stikprøver.",
+    "tags": ["wilcoxon", "mann-whitney", "ikke-parametrisk", "uden normalitet", "sammenlign medianer", "lille stikprøve", "ordinale data"],
+    "perguntas_exemplo": [
+      "Sammenlign to grupper uden at antage normalfordeling",
+      "Lille stikprøve uden normalitet — hvilken test?",
+      "Ordinale data, hvilken test bruger jeg til at sammenligne to grupper?",
+      "Mann-Whitney mellem to uafhængige grupper",
+      "Wilcoxon parret til før og efter uden normalitet",
+      "Sammenlign medianer mellem to grupper",
+      "Ikke-parametrisk test til to stikprøver",
+      "Mine data bestod ikke normalitetstesten, hvad er alternativet?"
+    ]
+  },
+  {
+    "id": "correlacao",
+    "tipo": "calculadora",
+    "titulo": "Pearson-korrelations-beregner",
+    "url": "/korrelation.html",
+    "resumo": "Beregner Pearsons r, R², p-værdi, konfidensinterval og regressionslinje mellem to numeriske talrækker, med spredningsdiagram.",
+    "tags": ["korrelation", "pearson", "r", "r i anden", "lineær regression", "spredning", "scatter plot", "lineær sammenhæng", "p-værdi"],
+    "perguntas_exemplo": [
+      "Hvad er korrelationen mellem to numeriske variable?",
+      "Beregn Pearsons r mellem X og Y",
+      "Jeg har to kolonner af tal, er der en sammenhæng?",
+      "Hvor meget af variationen i Y forklares af X?",
+      "Er der en lineær sammenhæng mellem mine to variable?",
+      "Spredningsdiagram med regressionslinje",
+      "Signifikant korrelation mellem karakter og studietimer",
+      "R² og p-værdi for en korrelation",
+      "Sammenhæng mellem vægt og højde, marketing og salg, pris og areal"
+    ]
+  },
+  {
+    "id": "intervalo-confianca",
+    "tipo": "calculadora",
+    "titulo": "Konfidensinterval-beregner",
+    "url": "/konfidensinterval.html",
+    "resumo": "Beregner konfidensintervallet for et gennemsnit (med Students t) eller en proportion med 90 %, 95 % eller 99 % konfidens.",
+    "tags": ["konfidensinterval", "ki", "fejlmargin", "estimat", "gennemsnit", "proportion", "95 % konfidens"],
+    "perguntas_exemplo": [
+      "Beregn konfidensintervallet for et gennemsnit",
+      "Konfidensinterval for en proportion",
+      "Fejlmargin for et estimat",
+      "Hvad er 95 %-KI for mit stikprøvegennemsnit?",
+      "Estimer det sandsynlige interval for en populationsproportion",
+      "Variationsinterval for stikprøvegennemsnittet",
+      "Øvre og nedre grænser for gennemsnittet"
+    ]
+  },
+  {
+    "id": "tamanho-amostra",
+    "tipo": "calculadora",
+    "titulo": "Stikprøvestørrelse-beregner (undersøgelse)",
+    "url": "/stikprovestorrelse.html",
+    "resumo": "Beregner, hvor mange personer du skal interviewe i en meningsmåling for en ønsket fejlmargin med konfidensniveau og korrektion for endelig population.",
+    "tags": ["stikprøvestørrelse", "meningsmåling", "spørgeskema", "fejlmargin", "endelig population", "gallup", "survey"],
+    "perguntas_exemplo": [
+      "Hvor mange personer skal jeg interviewe i min meningsmåling?",
+      "Stikprøvestørrelse til et spørgeskema",
+      "Fejlmargin på 3 % — hvor mange respondenter?",
+      "Hvor mange spørgeskemaer skal jeg bruge til en valgundersøgelse?",
+      "Dimensionér en survey",
+      "Hvor mange svar har jeg brug for fra en population på 5000 personer?",
+      "Stikprøvestørrelse til undersøgelse med korrektion for endelig population"
+    ]
+  },
+  {
+    "id": "guia-como-escolher",
+    "tipo": "guia",
+    "titulo": "Sådan vælger du den statistiske test",
+    "url": "/guides/vaelg-test.html",
+    "resumo": "Beslutningsguide til at vælge den rigtige hypotesetest ud fra datatype, antal grupper og forudsætninger. Oversigtstabel og eksempler.",
+    "tags": ["hvilken test", "vælg test", "beslutningsflow", "datatype", "forudsætninger", "guide"],
+    "perguntas_exemplo": [
+      "Jeg ved ikke, hvilken statistisk test jeg skal bruge i mit tilfælde",
+      "Hvordan vælger jeg mellem t-test og chi²?",
+      "Hvilken test er rigtig for min datatype?",
+      "Jeg vil have en beslutningstabel til at vælge testen",
+      "Sammenlign parametriske og ikke-parametriske test"
+    ]
+  },
+  {
+    "id": "guia-enfermagem",
+    "tipo": "guia",
+    "titulo": "Statistik for sygepleje",
+    "url": "/guides/statistik-sygepleje.html",
+    "resumo": "Statistik-guide til sygepleje — p-værdi, KI, relativ risiko, NNT og læsning af videnskabelige artikler til evidensbaseret praksis.",
+    "tags": ["sygepleje", "sundhed", "evidens", "relativ risiko", "nnt", "kritisk læsning", "guide"],
+    "perguntas_exemplo": [
+      "Hvordan fortolker jeg p-værdien i en sygeplejeartikel?",
+      "Hvad er NNT, relativ risiko?",
+      "Statistik til evidensbaseret praksis",
+      "Kritisk læsning af videnskabelige artikler i sygepleje"
+    ]
+  },
+  {
+    "id": "guia-psicologia",
+    "tipo": "guia",
+    "titulo": "Statistik for psykologi",
+    "url": "/guides/statistik-psykologi.html",
+    "resumo": "Statistik-guide til psykologi — t-test, Cohens d (effektstørrelse), statistisk styrke og fortolkning anvendt i forskning og bacheloropgaver.",
+    "tags": ["psykologi", "effektstørrelse", "cohens d", "statistisk styrke", "bacheloropgave", "psykologisk forskning", "guide"],
+    "perguntas_exemplo": [
+      "Statistik til min bacheloropgave i psykologi",
+      "Hvad er Cohens d?",
+      "Hvordan fortolker jeg effektstørrelse i psykologisk forskning",
+      "Statistisk styrke i eksperimentelt studie",
+      "Psykologisk forskning — hvilken test?"
+    ]
+  },
+  {
+    "id": "guia-marketing-cro",
+    "tipo": "guia",
+    "titulo": "Statistik for marketing og CRO",
+    "url": "/guides/statistik-marketing-cro.html",
+    "resumo": "Statistik-guide til marketing og CRO — A/B-test uden fejl, p-værdi, statistisk styrke, MDE og fælder, der ugyldiggør eksperimenter.",
+    "tags": ["marketing", "cro", "konverteringsoptimering", "a/b-test", "eksperimentering", "mde", "fælder", "guide"],
+    "perguntas_exemplo": [
+      "Hvordan kører jeg en A/B-test uden fejl?",
+      "Almindelige fælder i marketingeksperimenter",
+      "Hvad er MDE i konverteringsoptimering?",
+      "Statistik anvendt på digital marketing",
+      "CRO-guide med statistisk grundlag"
+    ]
+  }
+]

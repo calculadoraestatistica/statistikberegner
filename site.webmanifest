@@ -1,0 +1,19 @@
+{
+  "name": "Statistik Beregner",
+  "short_name": "Statistik Beregner",
+  "description": "Online statistik beregner — t-test, A/B-test, p-værdi, konfidensinterval.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "lang": "da-DK",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

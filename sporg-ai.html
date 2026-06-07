@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Spørg AI — Statistik Beregner</title>
+<meta name="description" content="Beskriv dit problem i naturligt sprog, og AI'en finder den rette statistikberegner. Alt kører i din browser, intet sendes til en server.">
+<link rel="canonical" href="https://statistikberegner.dk/sporg-ai.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Spørg AI — Statistik Beregner">
+<meta property="og:description" content="Fortæl med ord, hvad du har brug for at teste, og AI'en peger på den rette beregner.">
+<meta property="og:url" content="https://statistikberegner.dk/sporg-ai.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  /* Specifikke stilarter til busca-ia siden */
+  .ai-search { background:#fff; border:1px solid #e5e7eb; border-radius:18px;
+    box-shadow:0 4px 14px rgba(15,23,42,.08); padding:1.4rem; margin-block:1.2rem; }
+  .ai-search__head { display:flex; align-items:center; gap:.55rem; margin-bottom:.4rem; }
+  .ai-search__head svg { width:24px; height:24px; color:#2563eb; }
+  .ai-search__head h2 { font-size:1.2rem; color:#0f172a; }
+  .ai-search__hint { color:#64748b; font-size:.95rem; margin-bottom:1rem; }
+  .ai-search__textarea { width:100%; min-height:96px; padding:.9rem 1rem;
+    font:inherit; color:#0f172a; background:#f8fafc;
+    border:1px solid #cbd5e1; border-radius:12px; resize:vertical; }
+  .ai-search__textarea:focus { outline:none; border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+  .ai-search__actions { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.8rem; align-items:center; }
+  .ai-search__status { color:#64748b; font-size:.9rem; flex:1; }
+  .ai-search__status.is-error { color:#b91c1c; }
+
+  .ai-progress { margin-top:.7rem; height:8px; background:#e5e7eb;
+    border-radius:4px; overflow:hidden; }
+  .ai-progress__bar { height:100%; background:linear-gradient(90deg,#2563eb,#3b82f6);
+    width:0%; transition:width .25s ease; }
+
+  .ai-examples { margin-top:1rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+  .ai-examples__label { width:100%; font-size:.85rem; color:#64748b; }
+  .ai-example {
+    background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; border-radius:999px;
+    padding:.35rem .7rem; font-size:.85rem; cursor:pointer;
+  }
+  .ai-example:hover { background:#dbeafe; }
+
+  .ai-result { margin-top:1.4rem; }
+  .ai-result h3 { font-size:.95rem; text-transform:uppercase; letter-spacing:.05em;
+    color:#64748b; margin-bottom:.5rem; }
+  .ai-result__primary {
+    display:block; background:linear-gradient(135deg,#eff6ff,#fff);
+    border:2px solid #2563eb; border-radius:14px; padding:1.2rem; margin-bottom:1rem;
+    color:#0f172a; text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .ai-result__primary:hover { transform:translateY(-2px); text-decoration:none;
+    box-shadow:0 10px 28px rgba(37,99,235,.18); }
+  .ai-result__badge {
+    display:inline-block; background:#2563eb; color:#fff; font-size:.72rem;
+    font-weight:700; padding:.18rem .55rem; border-radius:999px;
+    text-transform:uppercase; letter-spacing:.04em; margin-bottom:.5rem;
+  }
+  .ai-result__title { font-size:1.2rem; font-weight:700; color:#0f172a; }
+  .ai-result__summary { color:#475569; margin-top:.35rem; }
+  .ai-result__cta { color:#1d4ed8; font-weight:700; margin-top:.7rem; display:inline-block; }
+  .ai-result__score { float:right; font-size:.78rem; color:#64748b; font-weight:600; }
+
+  .ai-alts { display:grid; gap:.6rem; grid-template-columns:1fr; }
+  @media (min-width: 720px) { .ai-alts { grid-template-columns:1fr 1fr; } }
+  .ai-alt {
+    display:block; background:#fff; border:1px solid #e5e7eb; border-radius:12px;
+    padding:.9rem 1rem; color:#0f172a; text-decoration:none;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .ai-alt:hover { border-color:#bfdbfe; transform:translateY(-2px); text-decoration:none; }
+  .ai-alt__title { font-weight:700; font-size:1rem; color:#0f172a; }
+  .ai-alt__summary { color:#64748b; font-size:.88rem; margin-top:.2rem; }
+  .ai-alt__type { font-size:.7rem; color:#1d4ed8; text-transform:uppercase;
+    letter-spacing:.04em; font-weight:700; }
+
+  .ai-privacy { background:#f0fdf4; border:1px solid #bbf7d0; border-left:4px solid #15803d;
+    border-radius:8px; padding:.85rem 1rem; margin-block:1rem;
+    color:#14532d; font-size:.92rem; display:flex; gap:.6rem; align-items:flex-start; }
+  .ai-privacy svg { width:20px; height:20px; flex:none; color:#15803d; margin-top:.1rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/sporg-ai.html">Spørg AI</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Spørg AI</li>
+        </ol>
+      </nav>
+      <h1>Spørg AI hvilken beregner der løser dit problem</h1>
+      <p class="lead">Beskriv dit problem i naturligt sprog — sammenligne to grupper, før og efter, konverteringsrate, konfidensinterval — og AI'en peger på den rette beregner.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <section class="ai-search">
+      <div class="ai-search__head">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3"/></svg>
+        <h2>Beskriv dit problem</h2>
+      </div>
+      <p class="ai-search__hint">F.eks.: "Jeg har patienters vægt før og efter to forskellige diæter — hvilken har reduceret mest, og er det statistisk signifikant?"</p>
+
+      <textarea class="ai-search__textarea" id="ai-query" placeholder="Skriv her i naturligt sprog..." aria-label="Beskriv problemet"></textarea>
+
+      <div class="ai-search__actions">
+        <button class="btn btn--primary btn--lg" type="button" id="ai-go">Find beregneren</button>
+        <span class="ai-search__status" id="ai-status">Klar til at modtage dit spørgsmål.</span>
+      </div>
+      <div class="ai-progress" id="ai-progress-wrap" hidden>
+        <div class="ai-progress__bar" id="ai-progress-bar"></div>
+      </div>
+
+      <div class="ai-examples" id="ai-examples">
+        <span class="ai-examples__label">Ingen idé til at starte? Tryk på et eksempel:</span>
+        <button class="ai-example" type="button">Sammenlign vægt før og efter en diæt i to grupper</button>
+        <button class="ai-example" type="button">Version B konverterede mere — er det bare held, eller er det signifikant?</button>
+        <button class="ai-example" type="button">Hvor mange personer skal jeg spørge for 3% fejlmargin?</button>
+        <button class="ai-example" type="button">Sammenlign tre klasser i samme prøve</button>
+        <button class="ai-example" type="button">Lille stikprøve, ingen normalfordeling — hvilken test?</button>
+      </div>
+    </section>
+
+    <div class="ai-result" id="ai-result"></div>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+      <h2>Sådan fungerer det</h2>
+      <p>Hver beregner og guide har en profil skrevet af os — formål, nøgleord og eksempelspørgsmål. Dit spørgsmål sammenlignes med disse profiler af AI'en, som kører direkte i din browser: teksten sendes ikke til nogen server. Når én beregner vinder med klar margin, viser vi kun den; når dit tilfælde kan dækkes af flere — fx kan "før og efter mellem to grupper" kræve en uafhængig <a href="/t-test.html">t-test</a> på forskellene eller en parret indenfor hver gruppe — viser vi den primære og op til tre nærtliggende alternativer.</p>
+
+      <p class="u-mt-md"><a href="/#calculadoras">Se alle beregnere</a> · <a href="/guides/vaelg-test.html">Guide: sådan vælger du testen</a></p>
+    </article>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/ai-search.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var input = $('ai-query'), btn = $('ai-go'), status = $('ai-status');
+  var pwrap = $('ai-progress-wrap'), pbar = $('ai-progress-bar');
+  var resultEl = $('ai-result');
+
+  // Vi forsoger altid at indlaese AI'en, saa snart siden aabner, i baggrunden.
+  // Hvis brugeren sender en forespoergsel, foer modellen er klar, svarer BM25
+  // omgaaende, og AI'en finpudser bagefter.
+  CalcAISearch.ensureReady(onProgress).catch(function (e) {
+    console.warn('Kunne ikke indlaese AI, vi fortsaetter kun med BM25:', e);
+  });
+
+  function setStatus(msg, isError) {
+    status.textContent = msg;
+    status.classList.toggle('is-error', !!isError);
+  }
+  function onProgress(p) {
+    pwrap.hidden = false;
+    pbar.style.width = Math.round(p.progress * 100) + '%';
+    if (p.stage === 'ready') {
+      setTimeout(function(){ pwrap.hidden = true; }, 600);
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c];
+    });
+  }
+
+  function renderResult(res, mode) {
+    // mode: 'bm25-pending' | 'ai' | 'ai-confirmed'
+    if (!res) {
+      resultEl.innerHTML = '<h3>Svar</h3><p class="ai-search__hint">Intet fundet. Pr&oslash;v at omformulere sp&oslash;rgsm&aring;let med andre ord.</p>';
+      return;
+    }
+    var alts = res.alternativas.length
+      ? '<h3>Kan ogs&aring; passe</h3><div class="ai-alts">' +
+        res.alternativas.map(function (r) {
+          var tag = r.tipo === 'guia' ? 'GUIDE' : 'BEREGNER';
+          return '<a class="ai-alt" href="' + r.url + '">' +
+            '<div class="ai-alt__type">' + tag + '</div>' +
+            '<div class="ai-alt__title">' + escapeHtml(r.titulo) + '</div>' +
+            '<div class="ai-alt__summary">' + escapeHtml(r.resumo) + '</div>' +
+          '</a>';
+        }).join('') + '</div>'
+      : '';
+
+    var heading, badge, scoreLine = '';
+    if (mode === 'bm25-pending') {
+      heading = 'Hurtigt svar (finpudses af AI...)';
+      badge = res.top.tipo === 'guia' ? 'Bedste guide (BM25)' : 'Bedste beregner (BM25)';
+    } else if (mode === 'ai-confirmed') {
+      heading = 'Svar fra AI';
+      badge = (res.top.tipo === 'guia' ? 'Bedste guide' : 'Bedste beregner') + ' · bekraeftet af AI';
+      scoreLine = '<span class="ai-result__score">match ' + CalcAISearch.fmtPct(res.top.score) + '</span>';
+    } else {
+      heading = 'Svar fra AI';
+      badge = (res.top.tipo === 'guia' ? 'Bedste guide' : 'Bedste beregner') + ' · finpudset af AI';
+      scoreLine = '<span class="ai-result__score">match ' + CalcAISearch.fmtPct(res.top.score) + '</span>';
+    }
+    var cta = res.top.tipo === 'guia' ? 'L&aelig;s guiden &rarr;' : '&Aring;bn beregneren &rarr;';
+    resultEl.innerHTML =
+      '<h3>' + heading + '</h3>' +
+      '<a class="ai-result__primary" href="' + res.top.url + '">' +
+        '<span class="ai-result__badge">' + badge + '</span>' +
+        scoreLine +
+        '<div class="ai-result__title">' + escapeHtml(res.top.titulo) + '</div>' +
+        '<div class="ai-result__summary">' + escapeHtml(res.top.resumo) + '</div>' +
+        '<div class="ai-result__cta">' + cta + '</div>' +
+      '</a>' + alts;
+  }
+
+  async function run() {
+    var q = input.value.trim();
+    if (!q) { setStatus('Skriv et spoergsmaal foerst.', true); return; }
+    btn.disabled = true;
+    try {
+      var aiAvailable = CalcAISearch.isReady();
+      var bm25Res = null;
+
+      if (!aiAvailable) {
+        // Omgaaende svar via BM25, mens AI'en faerdiggoer indlaesningen.
+        setStatus('Hurtigt svar — AI er stadig ved at indlaese...');
+        bm25Res = await CalcAISearch.searchBM25(q);
+        renderResult(bm25Res, 'bm25-pending');
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Vent paa AI (hvis den allerede er indlaest, returnerer den straks; ellers venter den).
+      setStatus('Finpudser med AI...');
+      await CalcAISearch.ensureReady(onProgress);
+      var aiRes = await CalcAISearch.searchAI(q);
+
+      var sameTop = bm25Res && aiRes && bm25Res.top.id === aiRes.top.id;
+      renderResult(aiRes, sameTop ? 'ai-confirmed' : 'ai');
+      setStatus(aiRes && aiRes.alternativas.length
+        ? 'Der er flere mulige svar — den primaere og alternativerne vises.'
+        : 'Klar.');
+    } catch (e) {
+      console.error(e);
+      // Hvis AI fejlede, men BM25 allerede har givet et svar, beholder vi det.
+      if (!resultEl.innerHTML) {
+        try {
+          var fallback = await CalcAISearch.searchBM25(input.value.trim());
+          if (fallback) renderResult(fallback, 'bm25-pending');
+        } catch (e2) {}
+      }
+      setStatus('Kunne ikke indlaese AI, men den hurtige soegning virkede. (' + e.message + ')', true);
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) run();
+  });
+
+  // Eksempelknapper
+  document.querySelectorAll('.ai-example').forEach(function (b) {
+    b.addEventListener('click', function () {
+      input.value = b.textContent;
+      input.focus();
+      run();
+    });
+  });
+})();
+</script>
+</body>
+</html>

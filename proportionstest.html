@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Proportionstest Beregner — Online og Gratis</title>
+<meta name="description" content="Gratis beregner til proportionstest på dansk: sammenlign en proportion med en referenceværdi eller to proportioner indbyrdes. z-statistik, p-værdi, konfidensinterval og fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/proportionstest.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Proportionstest Beregner">
+<meta property="og:description" content="Sammenlign en proportion med en referenceværdi eller to proportioner indbyrdes, med p-værdi. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/proportionstest.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Proportionstest Beregner",
+  "url": "https://statistikberegner.dk/proportionstest.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Proportionstest til at sammenligne en proportion med en referenceværdi eller to proportioner indbyrdes."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Proportionstest Beregner","item":"https://statistikberegner.dk/proportionstest.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er proportionstesten?","acceptedAnswer":{"@type":"Answer","text":"Det er en hypotesetest, der undersøger, om en proportion observeret i en stikprøve adskiller sig fra en referenceværdi, eller om to proportioner fra forskellige grupper er forskellige fra hinanden. Den arbejder med optællingsdata af typen succes eller fiasko."}},
+    {"@type":"Question","name":"Hvad er forskellen mellem proportionstest og t-test?","acceptedAnswer":{"@type":"Answer","text":"Proportionstesten sammenligner rater eller procenttal beregnet ud fra optælling af succes og fiasko. T-testen sammenligner gennemsnit af kvantitative variabler som vægt, tid eller karakter. Hvis dine data er en procentdel af personer, så brug proportionstesten."}},
+    {"@type":"Question","name":"Er proportionstesten det samme som en A/B-test?","acceptedAnswer":{"@type":"Answer","text":"En A/B-test er præcis en proportionstest med to grupper: den sammenligner konverteringsraten for to varianter. Proportionstest-beregneren laver i to-proportions-tilstand samme udregning som A/B-test-beregneren."}},
+    {"@type":"Question","name":"Hvad betyder et signifikant resultat i proportionstesten?","acceptedAnswer":{"@type":"Answer","text":"Det betyder, at p-værdien er under det valgte signifikansniveau, typisk 5%. Det er usandsynligt, at forskellen mellem den observerede proportion og referenceværdien, eller mellem de to grupper, er opstået ved ren tilfældighed."}},
+    {"@type":"Question","name":"Hvad er den mindste stikprøvestørrelse til proportionstesten?","acceptedAnswer":{"@type":"Answer","text":"Den normaltilnærmelse, testen bruger, fungerer godt, når der er mindst cirka 5-10 forventede succeser og 5-10 forventede fiaskoer i hver gruppe. Med meget små stikprøver eller proportioner tæt på 0% eller 100% bør man bruge eksakte tests, som binomialtesten."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Proportionstest Beregner</li>
+        </ol>
+      </nav>
+      <h1>Proportionstest Beregner</h1>
+      <p class="lead">Find ud af, om en <strong>proportion</strong> adskiller sig fra en referenceværdi — eller om <strong>to proportioner</strong> er forskellige fra hinanden — med p-værdi og automatisk fortolkning.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="prop-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+        Beregn proportionstesten
+      </h2>
+      <p class="calculator__hint">Vælg type test, og indtast antal succeser og størrelsen for hver stikprøve. En succes er den hændelse, du tæller: stemmer for, klik, helbredelser osv.</p>
+
+      <fieldset class="field-group">
+        <legend>Type test</legend>
+        <div class="segmented" role="radiogroup" aria-label="Type test">
+          <label><input type="radio" name="prop-mode" value="one" checked><span>Én proportion</span></label>
+          <label><input type="radio" name="prop-mode" value="two"><span>To proportioner</span></label>
+        </div>
+      </fieldset>
+
+      <div data-panel="one">
+        <fieldset class="field-group">
+          <legend>Din stikprøve</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="one-x">Succeser</label>
+              <input class="input" type="text" inputmode="numeric" id="one-x" placeholder="F.eks. 540" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="one-n">Stikprøvestørrelse (n)</label>
+              <input class="input" type="text" inputmode="numeric" id="one-n" placeholder="F.eks. 1000" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="field-group">
+          <legend>Hypotese</legend>
+          <div class="field-row field-row--single">
+            <div class="field">
+              <label for="one-p0">Hypotetisk proportion p₀ (i %)</label>
+              <input class="input" type="text" inputmode="decimal" id="one-p0" placeholder="F.eks. 50" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div data-panel="two" hidden>
+        <fieldset class="field-group">
+          <legend>Gruppe 1</legend>
+          <div class="field-row">
+            <div class="field"><label for="two-x1">Succeser</label><input class="input" type="text" inputmode="numeric" id="two-x1" placeholder="F.eks. 1840" autocomplete="off"></div>
+            <div class="field"><label for="two-n1">Størrelse (n₁)</label><input class="input" type="text" inputmode="numeric" id="two-n1" placeholder="F.eks. 16450" autocomplete="off"></div>
+          </div>
+        </fieldset>
+        <fieldset class="field-group">
+          <legend>Gruppe 2</legend>
+          <div class="field-row">
+            <div class="field"><label for="two-x2">Succeser</label><input class="input" type="text" inputmode="numeric" id="two-x2" placeholder="F.eks. 2010" autocomplete="off"></div>
+            <div class="field"><label for="two-n2">Størrelse (n₂)</label><input class="input" type="text" inputmode="numeric" id="two-n2" placeholder="F.eks. 16320" autocomplete="off"></div>
+          </div>
+        </fieldset>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="prop-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="prop-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="prop-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Type test</label>
+            <div class="segmented" role="radiogroup" aria-label="Type test">
+              <label><input type="radio" name="prop-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="prop-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="prop-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn proportionstest</button>
+        <button class="btn btn--ghost" type="button" id="prop-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="prop-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er proportionstesten</a></li>
+          <li><a href="#um-ou-dois">Én proportion vs to proportioner</a></li>
+          <li><a href="#quando">Hvornår skal man bruge den</a></li>
+          <li><a href="#como">Sådan virker beregningen</a></li>
+          <li><a href="#ab">Forholdet til A/B-testen</a></li>
+          <li><a href="#interpretar">Sådan fortolker du resultatet</a></li>
+          <li><a href="#exemplo">Løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er proportionstesten</h2>
+      <p><strong>Proportionstesten</strong> er den statistiske procedure, der bruges til at drage konklusioner om <strong>procenttal og rater</strong>. Den svarer på et enkelt spørgsmål: er den proportion, du har observeret i en stikprøve, forenelig med en forventet værdi — eller er forskellen stor nok til at blive opfattet som reel?</p>
+      <p>Forskellen i forhold til <a href="/t-test.html">t-testen (Student)</a> ligger i datatypen. T-testen håndterer <em>kvantitative</em> variabler som vægt, tid eller karakter: hver observation er et tal på en kontinuert skala. Proportionstesten håndterer <strong>kategoriske data af typen succes eller fiasko</strong>: hver observation er simpelthen et "ja" eller "nej". Du måler ikke hvor meget, du tæller hvor mange.</p>
+      <p>Eksempler på proportioner findes overalt: den procentdel af vælgere, der støtter en kandidat, andelen af patienter, der reagerer på en behandling, brøkdelen af besøgende, der klikker på en knap, andelen af defekte emner på en produktionslinje. Hver gang dine data er en <strong>optælling af hændelser i forhold til en sum</strong>, er proportionstesten det rigtige værktøj.</p>
+      <p>Teknisk bruger denne beregner en <strong>z-test for proportioner</strong>. Når stikprøven er rimeligt stor, ligger fordelingen af den observerede proportion meget tæt på en normalkurve — og det gør det muligt at beregne p-værdien hurtigt og præcist uden tabeller.</p>
+
+      <h2 id="um-ou-dois">Én proportion vs to proportioner</h2>
+      <p>Proportionstesten optræder i to forskellige situationer, og beregneren tilbyder dem begge i separate tilstande. At vælge den rigtige tilstand er første skridt.</p>
+      <h3>1. Test for én proportion</h3>
+      <p>Sammenligner den observerede proportion i én enkelt gruppe med en <strong>kendt referenceværdi</strong> (p₀). Du har én stikprøve og en fast hypotese at sammenligne med. Eksempler: adskiller andelen af vælgere, der støtter et forslag, sig fra 50%? Er fejlraten i et parti virkelig 2% som målsætningen? Adskiller andelen af beståede til en eksamen sig fra det historiske gennemsnit på 70%?</p>
+      <h3>2. Test for to proportioner</h3>
+      <p>Sammenligner proportionerne for <strong>to forskellige, uafhængige grupper</strong>, uden nogen ekstern referenceværdi. Her er der ingen p₀: det, der testes, er, om den ene gruppes rate er forskellig fra den andens. Eksempler: er helbredelsesraten forskellig mellem dem, der fik medicinen, og dem, der fik placebo? Adskiller andelen af kunder, der køber igen, sig mellem to salgskanaler?</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          En referenceværdi eller en anden gruppe?
+        </div>
+        <p>Hvis du sammenligner din stikprøve med et fast, kendt tal — en målsætning, et historisk gennemsnit, de 50% fra "plat eller krone" — så brug tilstanden <strong>én proportion</strong>. Hvis du har to grupper indsamlet parallelt og vil vide, hvem der har den højeste rate, så brug tilstanden <strong>to proportioner</strong>.</p>
+      </div>
+
+      <h2 id="quando">Hvornår skal man bruge den</h2>
+      <p>Proportionstesten er den rigtige, når alle disse betingelser er opfyldt:</p>
+      <ul>
+        <li><strong>Binære optællingsdata:</strong> hver observation kan kun være succes eller fiasko — der er ingen mellemværdier.</li>
+        <li><strong>Tilfældig stikprøve:</strong> observationerne repræsenterer den ønskede population (eller proces).</li>
+        <li><strong>Uafhængige observationer:</strong> resultatet af én observation påvirker ikke de andre.</li>
+        <li><strong>Tilstrækkelig stikprøve:</strong> normaltilnærmelsen fungerer godt, når der er mindst cirka 5-10 forventede succeser <em>og</em> 5-10 forventede fiaskoer. Med proportioner meget tæt på 0% eller 100% eller meget små stikprøver bør man vælge en eksakt binomialtest.</li>
+      </ul>
+      <p>Hvis du i stedet for en proportion vil sammenligne <strong>gennemsnit</strong> — tid, vægt, omsætning, karakter — er det rigtige valg <a href="/t-test.html">t-testen</a> (eller <a href="/z-test.html">z-testen</a>, når populationens standardafvigelse er kendt). Og hvis du blot vil estimere det sandsynlige interval for en proportion uden at teste en hypotese, så brug <a href="/konfidensinterval.html">konfidensintervallet</a>.</p>
+
+      <h2 id="como">Sådan virker beregningen</h2>
+      <p>Logikken er den samme som i enhver hypotesetest: mål afstanden mellem det, der er observeret, og det, nulhypotesen forudsiger, i enheder af <strong>standardfejl</strong>. Resultatet er <strong>z-statistikken</strong>.</p>
+      <p>I tilstanden <strong>én proportion</strong> er nulhypotesen "den sande proportion er lig med p₀". Beregneren sammenligner den observerede proportion (p̂ = succeser ÷ n) med p₀:</p>
+      <div class="formula">z = (p̂ − p₀) ÷ √[ p₀ · (1 − p₀) ÷ n ]
+        <span class="formula__where">p̂ er den observerede proportion; p₀ er den hypotetiske proportion; n er stikprøvestørrelsen. Standardfejlen bruger p₀, fordi det under nulhypotesen er den sande værdi.</span>
+      </div>
+      <p>I tilstanden <strong>to proportioner</strong> er nulhypotesen "de to grupper har samme proportion". Da begge grupper under den hypotese kommer fra samme population, samles de to i én pooled rate (p̄) for at estimere standardfejlen:</p>
+      <div class="formula">p̄ = (x₁ + x₂) ÷ (n₁ + n₂)<br>
+        z = (p̂₂ − p̂₁) ÷ √[ p̄ · (1 − p̄) · (1/n₁ + 1/n₂) ]
+      </div>
+      <p>Derefter omdanner beregneren z til <strong>p-værdi</strong> ved hjælp af standardnormalfordelingen. Jo større |z|, jo længere fra scenariet "ingen forskel", og jo mindre p-værdi. Til slut returnerer den et <strong>konfidensinterval</strong>: i tilstanden én proportion bruges Wilson-intervallet for den observerede proportion; i tilstanden to proportioner intervallet for forskellen mellem grupperne.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="ab">Forholdet til A/B-testen</h2>
+      <p>Hvis du allerede kender <a href="/ab-test.html">A/B-testen</a>, har du måske bemærket, at tilstanden <strong>to proportioner</strong> beskriver præcis det, en A/B-test gør. Det er ikke tilfældigt: <strong>en A/B-test er en proportionstest med to grupper</strong>.</p>
+      <p>I en A/B-test er "succes" konverteringen — et køb, en tilmelding, et klik — og "stikprøvestørrelse" er antallet af besøgende i hver variant. At sammenligne konverteringsraten i variant A med den i variant B er ord for ord at sammenligne to proportioner. Z-statistikken, den poolede proportion og p-værdien beregnes med samme formel som vist ovenfor.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Hvilken beregner skal jeg bruge?
+        </div>
+        <p>De to veje ender med samme resultat. Hvis din kontekst er konverteringsoptimering — sider, e-mails, annoncer — bruger <a href="/ab-test.html">A/B-test-beregneren</a> det rigtige sprog og de rigtige metrikker (besøgende, konverteringer, uplift). Til en mere generel kontekst — sundhed, forskning, kvalitet — taler tilstanden "to proportioner" her om succeser og stikprøver.</p>
+      </div>
+
+      <h2 id="interpretar">Sådan fortolker du resultatet</h2>
+      <p>Når du har beregnet, ser du et farvet kort med konklusionen og seks nøgletal. Beslutningens kerne er sammenligningen mellem <strong>p-værdien</strong> og <strong>signifikansniveauet</strong> (α, alfa) — komplementet til konfidensniveauet: 95% konfidens svarer til α = 0,05.</p>
+      <ul>
+        <li><strong>P-værdi &lt; α</strong> → <strong>statistisk signifikant</strong> resultat. Den observerede forskel — mellem din proportion og p₀, eller mellem de to grupper — er sandsynligvis reel.</li>
+        <li><strong>P-værdi ≥ α</strong> → <strong>ikke signifikant</strong> resultat. Der er ikke tilstrækkelige belæg for at sige, at der er en forskel; det kan bare være tilfældig variation.</li>
+      </ul>
+      <p>De øvrige nøgletal hjælper med at forstå effektens størrelse:</p>
+      <ul>
+        <li><strong>Observeret proportion</strong> — den målte rate i din stikprøve (tilstand én proportion) eller raten for hver gruppe (tilstand to proportioner).</li>
+        <li><strong>Z-statistik</strong> — forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 signifikans.</li>
+        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for den sande værdi. I tilstanden to proportioner: hvis intervallet for forskellen indeholder nul, er forskellen ikke signifikant.</li>
+      </ul>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Signifikans er ikke det samme som vigtighed
+        </div>
+        <p>Et signifikant resultat garanterer ikke, at forskellen er <em>stor</em> eller <em>relevant</em>. Med en enorm stikprøve kan selv en lillebitte forskel mellem proportioner blive "signifikant". Kig altid på forskellens størrelse og på konfidensintervallet, ikke kun p-værdiens dom.</p>
+      </div>
+
+      <h2 id="exemplo">Løst eksempel</h2>
+      <p>En meningsmåling interviewede <strong>1.000 vælgere</strong> om et nyt forslag. <strong>540</strong> erklærede sig som tilhængere. Inden målingen var forventningen et delt billede med <strong>50%</strong> opbakning. Adskiller den observerede proportion sig fra denne referenceværdi?</p>
+      <p>Det er et klassisk tilfælde for tilstanden <strong>én proportion</strong>: én stikprøve sammenlignet med et fast tal, p₀ = 0,50.</p>
+      <ol class="steps">
+        <li><strong>Observeret proportion:</strong> p̂ = 540 ÷ 1000 = 0,540 (54%).</li>
+        <li><strong>Standardfejl under nulhypotesen:</strong> SF = √[0,50 · 0,50 ÷ 1000] = √0,00025 ≈ 0,01581.</li>
+        <li><strong>Z-statistik:</strong> z = (0,540 − 0,500) ÷ 0,01581 ≈ 2,53.</li>
+        <li><strong>Tosidet p-værdi:</strong> for z ≈ 2,53 er p-værdien ≈ 0,011 — under 0,05.</li>
+      </ol>
+      <p>Da 0,011 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong>: opbakningen til forslaget er faktisk større end de forventede 50%. De 4 procentpoint over referencen er næppe et resultat af tilfældig variation. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er proportionstesten?</summary>
+          <div class="faq__answer"><p>Det er en hypotesetest, der undersøger, om en proportion observeret i en stikprøve adskiller sig fra en referenceværdi, eller om to proportioner fra forskellige grupper er forskellige fra hinanden. Den arbejder med optællingsdata af typen succes eller fiasko.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen mellem proportionstest og t-test?</summary>
+          <div class="faq__answer"><p>Proportionstesten sammenligner rater og procenttal beregnet ud fra optælling af succes og fiasko. <a href="/t-test.html">T-testen</a> sammenligner gennemsnit af kvantitative variabler som vægt, tid eller karakter. Hvis dine data er en procentdel af personer eller emner, så brug proportionstesten.</p></div>
+        </details>
+        <details>
+          <summary>Er proportionstesten det samme som A/B-testen?</summary>
+          <div class="faq__answer"><p><a href="/ab-test.html">A/B-testen</a> er præcis en proportionstest med to grupper: den sammenligner konverteringsraten for to varianter. Tilstanden "to proportioner" i denne beregner laver samme udregning — kun sproget på felter og resultater er anderledes.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder et signifikant resultat?</summary>
+          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau, typisk 5%. Det er usandsynligt, at forskellen mellem den observerede proportion og referenceværdien — eller mellem de to grupper — er opstået ved ren tilfældighed.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er den mindste stikprøvestørrelse til testen?</summary>
+          <div class="faq__answer"><p>Normaltilnærmelsen fungerer godt, når der er mindst cirka 5-10 forventede succeser og 5-10 forventede fiaskoer i hver gruppe. Ved meget små stikprøver eller proportioner tæt på 0% eller 100% bør man vælge eksakte tests, som binomialtesten.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg bruge tosidet eller ensidet test?</summary>
+          <div class="faq__answer"><p>Brug tosidet, når du vil opdage enhver forskel — opadgående eller nedadgående. Det er den sikreste mulighed og anbefales. Den ensidede tester kun én retning og er kun gyldig, hvis den retning blev fastlagt før dataindsamlingen.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/ab-test.html"><h3>A/B-test</h3><p>Sammenlign konverteringsraten i to varianter.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/z-test.html"><h3>z-test</h3><p>Sammenlign gennemsnit, når populationens standardafvigelse er kendt.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Estimer det sandsynlige interval for en proportion eller et gennemsnit.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Brug for statistik inden for dit felt?</h2>
+        <p>Se de praktiske statistik-guides til sygepleje, psykologi og marketing.</p>
+        <a class="btn btn--light btn--lg" href="/#guias">Se guides efter område</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('prop-form'), result = $('prop-result'), errBox = $('prop-error');
+  var panels = document.querySelectorAll('[data-panel]');
+
+  function currentMode() { return Fmt.radio('prop-mode'); }
+
+  function syncPanels() {
+    var mode = currentMode();
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-panel') !== mode;
+    }
+  }
+  var modeRadios = document.querySelectorAll('input[name="prop-mode"]');
+  for (var m = 0; m < modeRadios.length; m++) {
+    modeRadios[m].addEventListener('change', syncPanels);
+  }
+  syncPanels();
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('prop-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('input[name="prop-mode"][value="one"]').checked = true;
+    syncPanels();
+    $('one-x').value = '540'; $('one-n').value = '1000';
+    $('one-p0').value = '50';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var mode = currentMode();
+    var conf = parseFloat(Fmt.radio('prop-conf'));
+    var tails = parseInt(Fmt.radio('prop-tails'), 10);
+    var r;
+
+    if (mode === 'one') {
+      var x = parseNum($('one-x').value);
+      var n = parseNum($('one-n').value);
+      var p0pct = parseNum($('one-p0').value);
+      if ([x, n, p0pct].some(function (v) { return isNaN(v); })) {
+        showError('Udfyld succeser, stikprøvestørrelse og den hypotetiske proportion.');
+        return;
+      }
+      r = Stats.oneProportionTest({
+        x: x, n: n, p0: p0pct / 100, confidence: conf, tails: tails
+      });
+    } else {
+      var x1 = parseNum($('two-x1').value);
+      var n1 = parseNum($('two-n1').value);
+      var x2 = parseNum($('two-x2').value);
+      var n2 = parseNum($('two-n2').value);
+      if ([x1, n1, x2, n2].some(function (v) { return isNaN(v); })) {
+        showError('Udfyld succeser og størrelse for begge grupper.');
+        return;
+      }
+      r = Stats.abTest({
+        nA: n1, xA: x1, nB: n2, xB: x2, confidence: conf, tails: tails
+      });
+    }
+
+    if (r.error) { showError(r.error); return; }
+    render(r, mode, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, mode, conf) {
+    var sig = r.significant;
+    var confTxt = Fmt.pct(conf, 0);
+    var tailTxt = r.tails === 1 ? 'ensidet' : 'tosidet';
+    var metrics, interp;
+
+    if (mode === 'one') {
+      metrics =
+        metric('Observeret proportion', Fmt.pct(r.phat, 2)) +
+        metric('Z-statistik', Fmt.num(r.z, 3)) +
+        metric('P-værdi', Fmt.p(r.pValue), tailTxt + ' test') +
+        metric('Signifikansniveau', Fmt.pct(r.alpha, 0), 'α') +
+        metric('Konfidens', confTxt) +
+        metric('KI ' + confTxt + ' for proportionen',
+          '[' + Fmt.pct(r.ciLow, 2) + '; ' + Fmt.pct(r.ciHigh, 2) + ']');
+    } else {
+      metrics =
+        metric('Proportion gruppe 1', Fmt.pct(r.pA, 2)) +
+        metric('Proportion gruppe 2', Fmt.pct(r.pB, 2)) +
+        metric('Forskel', Fmt.pct(r.absDiff, 2), 'gruppe 2 − gruppe 1') +
+        metric('Z-statistik', Fmt.num(r.z, 3)) +
+        metric('P-værdi', Fmt.p(r.pValue), tailTxt + ' test') +
+        metric('KI ' + confTxt + ' for forskellen',
+          '[' + Fmt.pct(r.ciLow, 2) + '; ' + Fmt.pct(r.ciHigh, 2) + ']');
+    }
+
+    var headline = sig ? 'Statistisk signifikant forskel'
+                       : 'Ikke signifikant forskel';
+    var sub = sig
+      ? 'P-værdien er under signifikansniveauet — forskellen er sandsynligvis reel.'
+      : 'Der er ikke tilstrækkelige belæg for at sige, at der er en forskel.';
+
+    if (mode === 'one') {
+      if (sig) {
+        interp = '<p>Med <strong>' + confTxt + ' konfidens</strong> er resultatet ' +
+          '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+          ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+          'Den observerede proportion på <strong>' + Fmt.pct(r.phat, 2) + '</strong> adskiller sig fra den ' +
+          'hypotetiske værdi — forskellen er næppe et resultat af tilfældig variation.</p>' +
+          '<p>Konfidensintervallet på ' + confTxt + ' for den sande proportion går fra ' +
+          '<strong>' + Fmt.pct(r.ciLow, 2) + '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) +
+          '</strong>.</p>';
+      } else {
+        interp = '<p>Med ' + confTxt + ' konfidens er resultatet <strong>ikke ' +
+          'statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+          ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+          'Den observerede proportion (' + Fmt.pct(r.phat, 2) + ') er forenelig med den ' +
+          'hypotetiske værdi — forskellen kan blot være tilfældig variation.</p>' +
+          '<p>Konfidensintervallet på ' + confTxt + ' (fra <strong>' + Fmt.pct(r.ciLow, 2) +
+          '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>) viser intervallet af ' +
+          'værdier, der stadig er foreneligt med dine data.</p>';
+      }
+    } else {
+      if (sig) {
+        interp = '<p>Med <strong>' + confTxt + ' konfidens</strong> er forskellen mellem de ' +
+          'to grupper <strong>statistisk signifikant</strong>: p-værdien (' +
+          Fmt.p(r.pValue) + ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) +
+          '). Det er usandsynligt, at forskellen på <strong>' + Fmt.pct(r.absDiff, 2) +
+          '</strong> mellem proportionerne er opstået ved tilfældighed.</p>' +
+          '<p>Konfidensintervallet på ' + confTxt + ' for den reelle forskel ' +
+          '(gruppe 2 − gruppe 1) går fra <strong>' + Fmt.pct(r.ciLow, 2) + '</strong> til <strong>' +
+          Fmt.pct(r.ciHigh, 2) + '</strong>.</p>';
+      } else {
+        interp = '<p>Med ' + confTxt + ' konfidens er forskellen mellem de to grupper ' +
+          '<strong>ikke statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+          ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+          'Den observerede forskel kan være tilfældighed.</p>' +
+          '<p>Konfidensintervallet for forskellen går fra <strong>' + Fmt.pct(r.ciLow, 2) +
+          '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>. Da det inkluderer nul, ' +
+          'kan man ikke afgøre, hvilken gruppe der har den højeste proportion.</p>';
+      }
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

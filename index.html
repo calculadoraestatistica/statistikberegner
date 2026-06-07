@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Gratis statistik beregner online — A/B-test, t-test, z-test</title>
+<meta name="description" content="Gratis statistik beregner online på dansk. Lav A/B-test, t-test, z-test, proportionstest, konfidensinterval og stikprøvestørrelse med forklaring du forstår.">
+<link rel="canonical" href="https://statistikberegner.dk/">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Gratis statistik beregner online — på dansk">
+<meta property="og:description" content="A/B-test, t-test, z-test, konfidensinterval og stikprøvestørrelse. Gratis beregnere med forklaring du forstår, på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Statistik Beregner",
+  "url": "https://statistikberegner.dk/",
+  "inLanguage": "da",
+  "description": "Gratis statistiske beregnere online på dansk, med forklaring du forstår for hver test."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Er beregnerne gratis?","acceptedAnswer":{"@type":"Answer","text":"Ja. Alle beregnere er 100% gratis, kører i browseren og kræver hverken registrering eller installation."}},
+    {"@type":"Question","name":"Kan jeg stole på beregningerne?","acceptedAnswer":{"@type":"Answer","text":"Ja. Vi bruger de samme formler som lærebøgerne (normalfordeling, Students t-fordeling og den ufuldstændige beta-funktion) implementeret med præcise numeriske algoritmer og tjekket mod kendte referenceværdier."}},
+    {"@type":"Question","name":"Skal jeg være god til statistik for at bruge dem?","acceptedAnswer":{"@type":"Answer","text":"Nej. Hver beregner forklarer resultatet i et almindeligt sprog, og hver side har en artikel der gennemgår teorien med konkrete eksempler fra forskellige fagområder."}},
+    {"@type":"Question","name":"Hvilken statistisk test skal jeg bruge?","acceptedAnswer":{"@type":"Answer","text":"To muligheder: brug Spørg AI-siden, hvor du beskriver dit problem i almindeligt sprog og får den rigtige beregner, eller læs den fulde guide til at vælge testen (datatype, antal grupper, antagelser). Som tommelfingerregel: for rater og procenter brug A/B-test eller proportionstest; for gennemsnit brug t-test."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero__eyebrow">100% gratis · Uden registrering · Direkte i browseren</span>
+      <h1>Gratis statistik beregner online</h1>
+      <p class="lead">Lav hypotesetest direkte i browseren: <strong>A/B-test</strong>, t-test, z-test, proportionstest, konfidensinterval og stikprøvestørrelse. Hver beregner kommer med en forklaring du forstår og praktiske eksempler.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="/ab-test.html">Beregn A/B-test</a>
+        <a class="btn btn--ghost btn--lg" href="#calculadoras">Se alle beregnere</a>
+      </div>
+      <p class="hero__ai-link"><a href="/sporg-ai.html">✨ Ved du ikke hvilken du skal bruge? <strong>Spørg AI</strong> i almindeligt sprog →</a></p>
+      <div class="hero__badges">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Resultat med det samme</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Forklaring der lærer dig det</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Virker på mobilen</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ingen installation</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="calculadoras">
+    <div class="container">
+      <div class="section-title">
+        <h2>Vælg din statistik beregner</h2>
+        <p>Elleve værktøjer, hver med trin-for-trin-vejledning og automatisk fortolkning af resultatet.</p>
+      </div>
+      <div class="card-grid card-grid--3">
+
+        <a class="card" href="/ab-test.html">
+          <span class="card__tag">Mest brugt</span>
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></span>
+          <h3>A/B-test-beregner</h3>
+          <p>Find ud af, om forskellen mellem to versioner (side, e-mail, annonce) er statistisk signifikant.</p>
+          <span class="card__cta">Beregn signifikans →</span>
+        </a>
+
+        <a class="card" href="/ab-test-stikprove.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3>Stikprøvestørrelse til A/B-test</h3>
+          <p>Beregn hvor mange besøgende du har brug for, og hvor mange dage testen skal køre, før du tager en beslutning.</p>
+          <span class="card__cta">Planlæg testen →</span>
+        </a>
+
+        <a class="card" href="/t-test.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span>
+          <h3>Students t-test-beregner</h3>
+          <p>Sammenlign gennemsnit: én stikprøve, to uafhængige stikprøver eller parrede data (før og efter).</p>
+          <span class="card__cta">Sammenlign gennemsnit →</span>
+        </a>
+
+        <a class="card" href="/z-test.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+          <h3>Z-test-beregner</h3>
+          <p>Test et gennemsnit, når populationens standardafvigelse er kendt, og stikprøven er stor.</p>
+          <span class="card__cta">Lav z-test →</span>
+        </a>
+
+        <a class="card" href="/proportionstest.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
+          <h3>Proportionstest-beregner</h3>
+          <p>Sammenlign procenter og rater: én proportion mod en referenceværdi eller to proportioner indbyrdes.</p>
+          <span class="card__cta">Test proportioner →</span>
+        </a>
+
+        <a class="card" href="/chi-test.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+          <h3>Chi-i-anden-beregner</h3>
+          <p>Tjek om to kategoriske variabler hænger sammen, ud fra en kontingenstabel.</p>
+          <span class="card__cta">Test sammenhæng →</span>
+        </a>
+
+        <a class="card" href="/anova.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5"/><rect x="12" y="9" width="3" height="9"/><rect x="17" y="5" width="3" height="13"/></svg></span>
+          <h3>ANOVA og k stikprøver-beregner</h3>
+          <p>Sammenlign gennemsnit fra tre eller flere grupper med ANOVA eller Kruskal-Wallis.</p>
+          <span class="card__cta">Sammenlign k grupper →</span>
+        </a>
+
+        <a class="card" href="/wilcoxon.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/><polyline points="4 8 7 5 10 8"/><line x1="7" y1="5" x2="7" y2="19"/></svg></span>
+          <h3>Wilcoxon og Mann-Whitney-beregner</h3>
+          <p>Sammenlign to grupper uden at antage normalfordeling — de ikke-parametriske tests.</p>
+          <span class="card__cta">Sammenlign uden normalitet →</span>
+        </a>
+
+        <a class="card" href="/korrelation.html">
+          <span class="card__tag">Nyt</span>
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="1.5"/><circle cx="10" cy="14" r="1.5"/><circle cx="14" cy="10" r="1.5"/><circle cx="18" cy="6" r="1.5"/><line x1="3" y1="21" x2="21" y2="3"/></svg></span>
+          <h3>Pearson-korrelations-beregner</h3>
+          <p>Indsæt to talrækker og se r, R², p-værdi og spredningsdiagrammet med regressionslinjen.</p>
+          <span class="card__cta">Beregn korrelation →</span>
+        </a>
+
+        <a class="card" href="/konfidensinterval.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></span>
+          <h3>Konfidensinterval-beregner</h3>
+          <p>Estimer det sandsynlige interval for et gennemsnit eller en proportion, med 90%, 95% eller 99% sikkerhed.</p>
+          <span class="card__cta">Beregn intervallet →</span>
+        </a>
+
+        <a class="card" href="/stikprovestorrelse.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>Stikprøvestørrelse-beregner</h3>
+          <p>Find ud af, hvor mange du skal spørge i en undersøgelse for den fejlmargin, du ønsker.</p>
+          <span class="card__cta">Planlæg undersøgelsen →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="ad-slot" data-ad-slot=""></div></div>
+
+  <section class="section section--soft" id="guias">
+    <div class="container">
+      <div class="section-title">
+        <h2>Statistik anvendt på dit område</h2>
+        <p>Komplette guides til at bruge statistik i praksis — og vælge den rigtige test.</p>
+      </div>
+      <div class="card-grid card-grid--3">
+
+        <a class="card" href="/guides/statistik-sygepleje.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          <h3>Statistik for sygepleje</h3>
+          <p>Sådan læser du videnskabelige artikler, fortolker p-værdier og bruger statistik i evidensbaseret praksis.</p>
+          <span class="card__cta">Læs guiden →</span>
+        </a>
+
+        <a class="card" href="/guides/statistik-psykologi.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a5 5 0 0 0-5 5c0 1-1 2-2 3s-1 3 0 4c0 3 3 5 7 5s7-2 7-6c1-1 1-3 0-4s-2-2-2-3a5 5 0 0 0-5-4z"/><path d="M9 9h.01M15 9h.01"/></svg></span>
+          <h3>Statistik for psykologi</h3>
+          <p>T-test, effektstørrelse og hvad et signifikant resultat faktisk betyder i forskning.</p>
+          <span class="card__cta">Læs guiden →</span>
+        </a>
+
+        <a class="card" href="/guides/statistik-marketing-cro.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 16.5 8.5 11.5 1 19"/><polyline points="17 6 23 6 23 12"/></svg></span>
+          <h3>Statistik for marketing og CRO</h3>
+          <p>A/B-test uden fejl: signifikans, statistisk styrke og fælderne, der gør eksperimenter ubrugelige.</p>
+          <span class="card__cta">Læs guiden →</span>
+        </a>
+
+        <a class="card" href="/guides/vaelg-test.html">
+          <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+          <h3>Sådan vælger du den statistiske test</h3>
+          <p>En beslutningsguide, der hjælper dig med at finde den rigtige test ud fra din datatype.</p>
+          <span class="card__cta">Læs guiden →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hvorfor bruge Statistik Beregner</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <span class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <div><h3>Forklaring der lærer dig det</h3><p>Hver test kommer med en fuld artikel: teorien, formlerne og løste eksempler.</p></div>
+        </div>
+        <div class="feature">
+          <span class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+          <div><h3>Tydeligt resultat</h3><p>Konklusionen vises i et klart kort: signifikant eller ej, med p-værdi og fortolkning.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container narrow prose">
+      <h2>Hvad en statistisk test er (og hvorfor den betyder noget)</h2>
+      <p>Hver gang du sammenligner to grupper — to versioner af en side, to behandlinger, to klasser — dukker det samme spørgsmål op: <strong>er den forskel, jeg ser, ægte, eller er det bare tilfældigheder?</strong> En statistisk test findes netop for at svare på det objektivt i stedet for at stole på din mavefornemmelse.</p>
+      <p>Logikken er altid den samme. Du starter med en <strong>nulhypotese</strong> — den forsigtige antagelse om, at der ingen forskel er. Derefter beregner du en teststørrelse (en z- eller t-værdi), der måler, hvor langt dine data ligger fra det "ingen forskel"-scenarie. Til sidst oversætter <strong>p-værdien</strong> den afstand til en sandsynlighed: den fortæller, hvor stor chancen ville være for at observere et lige så ekstremt resultat som dit, <em>hvis nulhypotesen var sand</em>.</p>
+      <p>Når p-værdien er mindre end en grænse, der er valgt på forhånd (typisk 5%, det berømte signifikansniveau), siger vi, at resultatet er <strong>statistisk signifikant</strong>: det er usandsynligt, det er opstået ved ren tilfældighed. Når p-værdien er større, er der ikke nok evidens — hvilket ikke er det samme som "at bevise, at der ingen forskel er".</p>
+      <p>Det er her, mange tager fejl. Statistisk signifikans er ikke det samme som praktisk betydning, og en test med en lille stikprøve kan godt overse en reel forskel. Derfor viser hver beregner på siden — ud over dommen — også <a href="/konfidensinterval.html">konfidensintervallet</a> og hjælper dig med at planlægge <a href="/ab-test-stikprove.html">stikprøvestørrelsen</a>, før du samler data.</p>
+      <p>Hvis du er ny i det, så start med <a href="/ab-test.html">A/B-test-beregneren</a>: den er den mest intuitive, og artiklen forklarer fra bunden alle de begreber, som dukker op i de andre værktøjer.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <div class="section-title">
+        <h2>Ofte stillede spørgsmål</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Er beregnerne gratis?</summary>
+          <div class="faq__answer"><p>Ja. Alle beregnere er 100% gratis, kører i din browser og kræver hverken registrering, login eller installation. Siden er finansieret af diskrete annoncer.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg stole på beregningerne?</summary>
+          <div class="faq__answer"><p>Ja. Vi bruger de samme formler som lærebøgerne i statistik — normalfordelingen, Students t-fordeling og den ufuldstændige beta-funktion — implementeret med præcise numeriske algoritmer og tjekket mod kendte referenceværdier.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg være god til statistik for at bruge dem?</summary>
+          <div class="faq__answer"><p>Nej. Du udfylder bare de tal, du allerede har. Beregneren fortolker resultatet i et almindeligt sprog, og hver side har en artikel, der gennemgår teorien bagved med konkrete eksempler.</p></div>
+        </details>
+        <details>
+          <summary>Hvilken statistisk test skal jeg bruge?</summary>
+          <div class="faq__answer"><p>To muligheder: Hvis du bare vil have svaret, så brug <a href="/sporg-ai.html"><strong>Spørg AI</strong></a> og beskriv dit problem i almindeligt sprog ("sammenlign vægt før og efter mellem to grupper", "min konvertering steg 1%, er det signifikant?") — den peger på den rigtige beregner og foreslår alternativer, når flere kan bruges. Hvis du vil forstå logikken bag valget (datatype, antal grupper, antagelser), så læs <a href="/guides/vaelg-test.html"><strong>den fulde beslutningsguide</strong></a>. Som hurtig reference: til <em>rater</em> eller <em>procenter</em> brug <a href="/ab-test.html">A/B-test</a> eller <a href="/proportionstest.html">proportionstest</a>; til <em>gennemsnit</em> brug <a href="/t-test.html">t-test</a>.</p></div>
+        </details>
+        <details>
+          <summary>Bliver mine data gemt nogen steder?</summary>
+          <div class="faq__answer"><p>Nej. Alle beregninger sker i din egen browser. De tal, du skriver ind, sendes ikke til nogen server.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Har du et spørgsmål, der skal løses nu?</h2>
+        <p>Start med A/B-test-beregneren — den er gratis og tager mindre end et minut.</p>
+        <a class="btn btn--light btn--lg" href="/ab-test.html">Åbn A/B-test-beregneren</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med forklaring du forstår for hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger — kliniske, akademiske eller forretningsmæssige.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+<script>
+  // Preload da IA do buscador em segundo plano, depois que a home pintou.
+  // Carrega ai-search.js no idle e dispara o download do modelo so se a
+  // conexao for boa (nao 2G/3G, sem Save-Data). Quem nunca clicar em
+  // "Pergunte a IA" so paga 3 KB pelo ai-search.js — o modelo de ~30 MB
+  // so vem se passar pela checagem de conexao.
+  (function () {
+    function startPreload() {
+      var s = document.createElement('script');
+      s.src = '/js/ai-search.js';
+      s.async = true;
+      s.onload = function () {
+        if (window.CalcAISearch && CalcAISearch.preload) CalcAISearch.preload();
+      };
+      document.head.appendChild(s);
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startPreload, { timeout: 4000 });
+    } else {
+      setTimeout(startPreload, 2500);
+    }
+  })();
+</script>
+</body>
+</html>

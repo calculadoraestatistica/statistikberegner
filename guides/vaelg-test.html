@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Sådan vælger du den rigtige statistiske test — praktisk guide</title>
+<meta name="description" content="Guide til at vælge den rette hypotesetest ud fra datatype, antal grupper og forudsætninger. Oversigtstabel og eksempler til at vælge mellem t-test, chi², ANOVA og flere.">
+<link rel="canonical" href="https://statistikberegner.dk/guides/vaelg-test.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Sådan vælger du den rigtige statistiske test — praktisk guide">
+<meta property="og:description" content="Lær at vælge den rette hypotesetest ud fra datatype, antal grupper og forudsætninger, med oversigtstabel og eksempler.">
+<meta property="og:url" content="https://statistikberegner.dk/guides/vaelg-test.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sådan vælger du den rigtige statistiske test — praktisk guide",
+  "inLanguage": "da",
+  "url": "https://statistikberegner.dk/guides/vaelg-test.html",
+  "image": "https://statistikberegner.dk/og-image.png",
+  "description": "Guide til at vælge den rette hypotesetest ud fra datatype, antal grupper og forudsætninger, med oversigtstabel og eksempler.",
+  "author": {"@type": "Organization", "name": "Statistik Beregner"},
+  "publisher": {"@type": "Organization", "name": "Statistik Beregner"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Guides","item":"https://statistikberegner.dk/#guias"},
+    {"@type":"ListItem","position":3,"name":"Sådan vælger du den statistiske test","item":"https://statistikberegner.dk/guides/vaelg-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvordan ved jeg, hvilken statistisk test jeg skal bruge?","acceptedAnswer":{"@type":"Answer","text":"Svar på fire spørgsmål i rækkefølge: hvilken type data har du (kategorisk eller numerisk), hvad vil du gøre (estimere eller sammenligne), hvor mange grupper sammenligner du (1, 2 eller 3+) og om grupperne er uafhængige eller parrede. Svarene fører direkte til en test. Hvis du er i tvivl om forudsætningerne, så brug oversigtstabellen i denne guide."}},
+    {"@type":"Question","name":"Hvad er forskellen på en parametrisk og en ikke-parametrisk test?","acceptedAnswer":{"@type":"Answer","text":"Parametriske test som t-test og ANOVA antager, at data følger en omtrent normalfordeling, og sammenligner gennemsnit. Ikke-parametriske test som Wilcoxon, Mann-Whitney og Kruskal-Wallis kræver ikke normalitet og arbejder med rangordenen af værdierne. Brug den ikke-parametriske version, når stikprøven er lille, der er ekstreme værdier, eller fordelingen tydeligt er skæv."}},
+    {"@type":"Question","name":"Hvornår bruger man chi² og hvornår proportionstest?","acceptedAnswer":{"@type":"Answer","text":"Brug proportionstesten, når du vil sammenligne to proportioner direkte eller sammenligne en proportion med en referenceværdi. Brug chi² (chi-i-anden), når du vil tjekke sammenhængen mellem to kategoriske variable i en kontingenstabel, især med mere end to kategorier. I en 2x2-tabel giver de to test den samme konklusion."}},
+    {"@type":"Question","name":"Skal jeg bruge z-test eller t-test for at sammenligne med en referenceværdi?","acceptedAnswer":{"@type":"Answer","text":"Brug z-test, når populationens standardafvigelse er kendt — hvilket er sjældent i praksis. Brug t-test, når standardafvigelsen estimeres ud fra selve stikprøven, hvilket næsten altid er tilfældet. Derfor er enkeltstikprøve-t-testen det rigtige valg i de fleste virkelige undersøgelser."}},
+    {"@type":"Question","name":"Hvad er forskellen på uafhængige og parrede grupper?","acceptedAnswer":{"@type":"Answer","text":"Uafhængige grupper består af forskellige personer uden forbindelse mellem målingerne. Parrede grupper er forbundne målinger, fx den samme person målt før og efter, eller par matchet på egenskaber. Parrede data kræver en parret t-test eller Wilcoxon signed-rank; bruger man testen for uafhængige grupper, smider man information væk og kan komme til en forkert konklusion."}},
+    {"@type":"Question","name":"Hvad sker der, hvis jeg vælger den forkerte test?","acceptedAnswer":{"@type":"Answer","text":"Den forkerte test kan give en forkert p-værdi og dermed en forkert konklusion: at erklære en forskel, der ikke findes, eller at overse en reel forskel. De hyppigste fejl er at bruge en middelværditest på kategoriske data, at ignorere parring og at insistere på en parametrisk test, når forudsætningerne er brudt. At fastlægge datatypen og undersøgelsens design før beregning undgår de fleste af disse fejl."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/#guias">Guides</a></li>
+          <li>Sådan vælger du den statistiske test</li>
+        </ol>
+      </nav>
+      <h1>Sådan vælger du den rigtige statistiske test</h1>
+      <p class="lead">En beslutningsguide, der hjælper dig med at finde den <strong>rette hypotesetest</strong> til din datatype, antallet af grupper du sammenligner, og forudsætningerne i din undersøgelse — med oversigtstabel og praktiske eksempler.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <div class="callout callout--tip u-mt-md">
+      <div class="callout__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3"/></svg>
+        Genvej: beskriv din situation for AI'en
+      </div>
+      <p>Vil du bare hurtigt frem til den rigtige beregner, så brug siden <a href="/sporg-ai.html"><strong>Spørg AI</strong></a> — skriv dit problem i én sætning ("sammenligne vægt før og efter mellem to grupper", "min konvertering steg 1 %, er det signifikant?"), så peger den på den rette beregner, med alternativer når flere kan bruges. Vil du hellere forstå logikken bag valget, så følg guiden nedenfor.</p>
+    </div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#por-que">Hvorfor det er vigtigt at vælge den rigtige test</a></li>
+          <li><a href="#perguntas">Spørgsmålene, der afgør testen</a></li>
+          <li><a href="#categoricos">Kategoriske data: proportioner og chi²</a></li>
+          <li><a href="#referencia">Numeriske data: sammenligne med en referenceværdi</a></li>
+          <li><a href="#dois-grupos">Numeriske data: sammenligne to grupper</a></li>
+          <li><a href="#tres-grupos">Numeriske data: sammenligne tre eller flere grupper</a></li>
+          <li><a href="#parametrico">Parametrisk eller ikke-parametrisk?</a></li>
+          <li><a href="#estimar">Estimere i stedet for at teste</a></li>
+          <li><a href="#tabela">Oversigtstabel: hvilken test bruger du</a></li>
+          <li><a href="#erros">Almindelige fejl, når man vælger test</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="por-que">Hvorfor det er vigtigt at vælge den rigtige test</h2>
+      <p>Enhver statistisk analyse ender med et tal — næsten altid <strong>p-værdien</strong> — der understøtter en konklusion: "der er en forskel", "der er ingen forskel", "variablerne hænger sammen". Men tallet er kun pålideligt, hvis testen, der producerede det, er den <em>rigtige</em> for datatypen og undersøgelsens design. Bruger du den forkerte test, kommer der ingen fejlmeddelelse: du får en p-værdi, der ser helt normal ud — og er fuldstændig vildledende.</p>
+      <p>Konsekvenserne er konkrete. En upassende test kan erklære en forskel signifikant, som ikke findes, og få dig til at ændre en procedure, lancere et produkt eller publicere en konklusion uden reelt grundlag. Eller den kan skjule en reel forskel, så man kasserer en behandling, der faktisk virker. I et bachelorprojekt eller en artikel er den forkerte test en af de hyppigste grunde til, at vejleder eller reviewer kræver rettelser.</p>
+      <p>Den gode nyhed er, at valg af test hverken handler om hukommelse eller held. Det er resultatet af <strong>en kort række objektive spørgsmål</strong> om dine data. Svar på dem i den rigtige rækkefølge, så vælger testen sig selv. Denne guide går gennem spørgsmålene og slutter med en oversigtstabel, der kobler hver situation til den tilsvarende beregner.</p>
+
+      <h2 id="perguntas">Spørgsmålene, der afgør testen</h2>
+      <p>Før du tænker på en formel, så svar på fem spørgsmål. De fungerer som en huskeliste: hvert svar fjerner muligheder og indsnævrer vejen til én test.</p>
+      <p><strong>1. Hvilken type data har du?</strong> Det er det vigtigste spørgsmål. <em>Kategoriske</em> (eller kvalitative) data repræsenterer kategorier, som du tæller: køn, region, "købte eller købte ikke", "blev rask eller ej". Det rå resultat er en optælling eller en proportion. <em>Numeriske</em> (eller kvantitative) data er værdier, du måler: højde, tid, tilfredshedsscore, omsætning, blodtryk. Det rå resultat er et gennemsnit. At bruge en middelværditest på kategoriske data — eller omvendt — invaliderer analysen fra start.</p>
+      <p><strong>2. Hvad vil du gøre med dataene?</strong> Der findes tre typiske formål. <em>Estimere</em> en populationsværdi — fx "hvad er kundernes gennemsnitlige tilfredshed?" — kræver et konfidensinterval, ikke en test. <em>Sammenligne med en referenceværdi</em> — "afviger min proces' gennemsnit fra målet på 100?" — kræver en enkeltstikprøvetest. <em>Sammenligne grupper indbyrdes</em> — "adskiller gruppe A sig fra gruppe B?" — kræver en test for to eller flere stikprøver.</p>
+      <p><strong>3. Hvor mange grupper sammenligner du?</strong> Hvis svaret er at sammenligne grupper, så tæl dem. <em>Én</em> gruppe mod en fast værdi, <em>to</em> grupper mod hinanden, eller <em>tre eller flere</em> grupper på én gang. Antallet af grupper ændrer testen: at sammenligne to grupper er en opgave for t-testen; at sammenligne tre eller flere er en opgave for ANOVA. Man bør ikke sammenligne mange grupper parvis med flere t-test, for det pumper risikoen for en falsk positiv op.</p>
+      <p><strong>4. Er grupperne uafhængige eller parrede?</strong> <em>Uafhængige</em> grupper består af forskellige personer uden forbindelse mellem målingerne — fx patienter i gruppe A og patienter i gruppe B. <em>Parrede</em> (eller afhængige) grupper har sammenkædede målinger: den samme person målt før og efter en behandling, eller par dannet med vilje. Parrede data har en egen test, der udnytter forbindelsen mellem målingerne og er mere følsom.</p>
+      <p><strong>5. Holder de parametriske forudsætninger?</strong> De klassiske parametriske test — t-test, ANOVA — antager, at de numeriske data omtrent følger en <em>normalfordeling</em>, og når man sammenligner grupper, at varianserne er nogenlunde ens. Når disse forudsætninger holder, er de parametriske test de stærkeste. Når de ikke holder — lille stikprøve, skæv fordeling, ekstreme værdier — findes der ikke-parametriske versioner, der ikke afhænger af normalitet.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Huskelisten i én sætning
+        </div>
+        <p>Datatype → formål → antal grupper → uafhængige eller parrede → forudsætninger. Svar i den rækkefølge, så halverer hvert spørgsmål mulighederne. Når du når det sidste, står der typisk én test tilbage — og den findes i oversigtstabellen sidst i guiden.</p>
+      </div>
+
+      <h2 id="categoricos">Kategoriske data: proportioner og chi²</h2>
+      <p>Når dataene er en <strong>kategori, du tæller</strong>, og ikke et tal, du måler, ændrer testuniverset sig helt. Her er der ingen gennemsnit eller standardafvigelser: der er optællinger og proportioner. To test på sitet dækker de fleste af disse situationer, og valget mellem dem afhænger af, hvad du vil finde ud af.</p>
+      <p>Brug <a href="/proportionstest.html">proportionstesten</a>, når fokus er på en proportion i sig selv. Den løser to tilfælde. Det første er at <em>sammenligne to proportioner</em>: adskiller konverteringsraten på side A sig fra side B? Adskiller andelen af patienter, der følger behandlingen, sig mellem to protokoller? Det andet er at <em>sammenligne en proportion med en referenceværdi</em>: er fejlraten i min proces på 3 % anderledes end den kontraktlige målsætning på 2 %?</p>
+      <p>Brug <a href="/chi-test.html">chi²</a>, når fokus er på <em>sammenhængen</em> mellem to kategoriske variable i en kontingenstabel. Det typiske spørgsmål er "hænger region sammen med foretrukket mærke?" eller "hænger behandlingstype sammen med det kliniske udfald?". Chi² er stærk, når der er mere end to kategorier i mindst én af variablerne — noget proportionstesten ikke dækker.</p>
+      <div class="callout callout--example">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          De to giver samme konklusion i 2x2
+        </div>
+        <p>Når du kun sammenligner to proportioner, vil en 2x2-tabel kørt gennem chi² give præcis samme p-værdi som proportionstesten — i en 2x2-tabel er de to test matematisk ækvivalente. Vælg proportionstesten, hvis du også vil have effektstørrelsen mellem de to rater; vælg chi², når der er tre kategorier eller flere.</p>
+      </div>
+      <p>Et særligt og meget almindeligt tilfælde af sammenligning mellem to proportioner er <strong>A/B-testen</strong> i marketing og produktudvikling. Til netop det scenarie — to versioner, én konverteringsmetrik — har sitet et dedikeret værktøj, <a href="/ab-test.html">A/B-test-beregneren</a>, som leverer uplift og konfidens i resultatet på det sprog, eksperimenterne taler.</p>
+
+      <h2 id="referencia">Numeriske data: sammenligne med en referenceværdi</h2>
+      <p>Lad os gå til de <strong>numeriske data</strong>. Det første mulige formål er ikke at sammenligne to grupper, men at konfrontere gennemsnittet i <em>én enkelt gruppe</em> med en fast, kendt værdi — et mål, en standard, en historisk reference. Eksempler: er gennemsnitsvægten af pakker fra linjen anderledes end de erklærede 500 g? Adskiller call-centrets gennemsnitlige svartid sig fra målet på 4 minutter?</p>
+      <p>Der findes to værktøjer til det, og valget mellem dem afhænger af ét spørgsmål: <em>kender du populationens standardafvigelse?</em></p>
+      <ul>
+        <li><strong>Populationens standardafvigelse er kendt</strong> → <a href="/z-test.html">z-test</a>. Det er tilfældet, når en proces er så veldokumenteret, at populationens variabilitet (σ) regnes som en fast, kendt størrelse. I praksis er det sjældent.</li>
+        <li><strong>Standardafvigelse estimeret fra stikprøven selv</strong> → <a href="/t-test.html">enkeltstikprøve-t-test</a>. Det er det næsten universelle tilfælde: du kender ikke populationens σ og udregner den fra de indsamlede data. T-testen indregner den ekstra usikkerhed ved estimatet.</li>
+      </ul>
+      <p>I langt de fleste virkelige undersøgelser er populationens standardafvigelse ukendt — så <strong>enkeltstikprøve-t-testen er standardvalget</strong>. Z-testen er forbeholdt meget kontrollerede industrielle sammenhænge eller didaktiske øvelser. I store stikprøver er resultaterne praktisk talt ens, men i små stikprøver er t-testen den eneste korrekte.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="dois-grupos">Numeriske data: sammenligne to grupper</h2>
+      <p>Det er langt det hyppigste scenarie: du har en numerisk variabel og vil vide, om dens gennemsnit adskiller sig mellem <strong>to grupper</strong>. Er den gennemsnitlige smerte lavere med forbinding A eller B? Er tiden på sitet højere i den nye version eller den gamle? Ændrede den gennemsnitlige butiksomsætning sig efter træningen?</p>
+      <p>To beslutninger afgør testen. Den første er, om grupperne er <em>uafhængige eller parrede</em>; den anden er, om de <em>parametriske forudsætninger</em> holder.</p>
+      <p><strong>Uafhængige grupper.</strong> Det er forskellige personer i hver gruppe uden forbindelse mellem målingerne. Hvis de numeriske data er omtrent normalfordelte, så brug <a href="/t-test.html">t-test for uafhængige stikprøver</a>. Den sammenligner de to gennemsnit og leverer p-værdi og konfidensinterval for forskellen.</p>
+      <p><strong>Parrede grupper.</strong> Målingerne er sammenkædede: den samme person før og efter, eller par dannet med vilje. Her er den korrekte test <a href="/t-test.html">parret t-test</a>, som analyserer <em>forskellene</em> inden for hvert par. At behandle parrede data som uafhængige spilder den største styrke ved det parrede design og skjuler ofte en reel effekt.</p>
+      <p><strong>Når normaliteten svigter.</strong> Hvis stikprøven er lille, der er ekstreme værdier, eller fordelingen tydeligt er skæv, så skift t-testen ud med det ikke-parametriske alternativ, samlet på sitet under <a href="/wilcoxon.html">Wilcoxon og Mann-Whitney-beregneren</a>. For to <em>uafhængige</em> grupper er testen <strong>Mann-Whitney</strong>; for to <em>parrede</em> grupper er det <strong>Wilcoxon signed-rank</strong>. Begge arbejder med rangordenen af værdierne i stedet for gennemsnit og kræver ikke normalfordeling.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Ignorer ikke parringen
+        </div>
+        <p>Den dyreste fejl her er at forveksle parrede data med uafhængige. "Før og efter" på samme person er altid parret. At bruge testen for uafhængige grupper i det tilfælde smider informationen væk om, at hvert par starter fra forskellige udgangspunkter — og det sænker typisk testens følsomhed og kan maskere en reel forskel.</p>
+      </div>
+
+      <h2 id="tres-grupos">Numeriske data: sammenligne tre eller flere grupper</h2>
+      <p>Når der er en numerisk variabel og <strong>tre eller flere grupper</strong> at sammenligne, dukker en farlig fristelse op: at køre flere t-test parvis. Lad være. Hver t-test bærer en risiko for en falsk positiv; lægger man dem sammen, hober risikoen sig op, og sandsynligheden for at "finde" en ikke-eksisterende forskel skyder i vejret. Løsningen er en enkelt test, der vurderer alle grupperne på én gang.</p>
+      <p>Denne test er <strong>ANOVA</strong> (variansanalyse), tilgængelig under <a href="/anova.html">ANOVA og k-stikprøver-beregneren</a>. ANOVA besvarer et globalt spørgsmål: "er der nogen forskel mellem gennemsnittene i disse grupper?". Den er den naturlige udvidelse af t-testen til tre eller flere grupper og antager, ligesom den, at data omtrent er normalfordelte, og at gruppevarianserne ligner hinanden.</p>
+      <p>Når disse forudsætninger ikke holder — skæv fordeling, små stikprøver, ekstreme værdier — er alternativet <strong>Kruskal-Wallis</strong>, også tilgængelig i <a href="/anova.html">samme k-stikprøver-beregner</a>. Kruskal-Wallis er den ikke-parametriske pendant til ANOVA: arbejder med værdiernes rangorden og kræver ikke normalitet. Det er i praksis generaliseringen af Mann-Whitney-testen til tre grupper eller flere.</p>
+      <p>Det er værd at bemærke, hvad disse test <em>ikke</em> siger: både ANOVA og Kruskal-Wallis fortæller kun, at der findes <em>en eller anden</em> forskel mellem grupperne, uden at pege på <em>hvilke</em> par der adskiller sig. At identificere de specifikke par er opgaven for de såkaldte multiple sammenligninger (post hoc-test), et trin der kommer bagefter og kun giver mening, når den globale test allerede har vist signifikans.</p>
+
+      <h2 id="parametrico">Parametrisk eller ikke-parametrisk?</h2>
+      <p>Valget mellem den parametriske og den ikke-parametriske version af en test er dukket op i alle de tidligere afsnit. Det er værd at samle det ét sted, fordi det er en af de beslutninger, der skaber mest tvivl.</p>
+      <p><strong>Parametriske test</strong> — z-test, t-test, ANOVA — sammenligner <em>gennemsnit</em> og hviler på antagelser om datafordelingen, især <em>normalitet</em>. Når man sammenligner grupper, forventer de også, at varianserne er ens (homogenitet). Når disse forudsætninger holder, er de parametriske test de mest <em>styrke</em>fulde: de opdager reelle forskelle med mindre stikprøver.</p>
+      <p><strong>Ikke-parametriske test</strong> — Mann-Whitney, Wilcoxon, Kruskal-Wallis — kræver ikke normalitet. I stedet for at bruge de rå værdier ordner de dem og arbejder med <em>rangene</em> (positionen for hver værdi i den ordnede række). Derfor er de robuste over for ekstreme værdier og fungerer fint med skæve fordelinger, men på bekostning af lidt mindre styrke, når data <em>ville have været</em> normale.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Hvornår skal man bruge rangtest
+        </div>
+        <p>Foretræk den ikke-parametriske version når: <strong>stikprøven er lille</strong> (få dusin observationer), og du ikke kan bekræfte normaliteten; der er <strong>ekstreme værdier</strong>, der trækker gennemsnittet; fordelingen er <strong>tydeligt skæv</strong> (indkomster, ventetider, optællinger); eller dataene er <strong>ordinale</strong> — en skala af positioner som "dårlig, middel, god, fremragende", uden garanteret numerisk afstand mellem niveauerne. Med store stikprøver og en rimelig symmetrisk fordeling er den parametriske test sikker og mere følsom.</p>
+      </div>
+      <p>Parrene er lette at huske: Mann-Whitney erstatter t-testen for uafhængige grupper; Wilcoxon signed-rank erstatter den parrede t-test; Kruskal-Wallis erstatter ANOVA. I alle tilfælde er nulhypotesen ikke længere "gennemsnittene er ens", men i essensen "fordelingerne er ens" — en subtil forskel i fortolkning, der er værd at notere i rapporten.</p>
+
+      <h2 id="estimar">Estimere i stedet for at teste</h2>
+      <p>Ikke alle statistiske spørgsmål er hypotesetest. Ofte vil du slet ikke sammenligne noget — du vil bare <strong>estimere en værdi</strong> i populationen med en usikkerhedsmargin. "Hvad er kundernes gennemsnitlige tilfredshed?" "Hvad er prævalensen af et problem?" Til de spørgsmål er instrumentet <a href="/konfidensinterval.html">konfidensintervallet</a>, ikke en p-værdi.</p>
+      <p>Konfidensintervallet leverer et <em>interval</em> af plausible værdier for populationens reelle parameter, i stedet for et "ja eller nej"-svar. Det er mere informativt end testen selv: det viser samtidig effektstørrelsen og estimatets præcision. Et smalt interval betyder et præcist estimat; et bredt interval betyder stor usikkerhed — typisk på grund af en lille stikprøve.</p>
+      <p>Og der er et tidspunkt, hvor statistik skal ind <em>før</em> dataindsamlingen: planlægningen af stikprøvestørrelsen. For lidt indsamling giver et studie uden styrke til at opdage effekten; for meget indsamling spilder tid og ressourcer. For at dimensionere stikprøven korrekt har sitet en <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a> til generelle studier og en <a href="/ab-test-stikprove.html">stikprøveberegner til A/B-test</a>, specifikt rettet mod konverteringseksperimenter.</p>
+      <div class="recommend">
+        <div class="recommend__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Omsæt beslutningen til praksis
+        </div>
+        <p>Når du har identificeret den rigtige test ud fra guidens huskeliste, så åbn den tilsvarende beregner:</p>
+        <ul>
+          <li><a href="/t-test.html">t-test-beregner</a> — sammenlign et gennemsnit med en referenceværdi eller to gennemsnit indbyrdes.</li>
+          <li><a href="/chi-test.html">Chi²-beregner</a> — tjek sammenhængen mellem to kategoriske variable.</li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver-beregner</a> — sammenlign tre eller flere grupper, med mulighed for Kruskal-Wallis.</li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval-beregner</a> — estimer en populationsværdi med usikkerhedsmargin.</li>
+        </ul>
+        <p class="disclosure">Linkene ovenfor fører til indhold på selve sitet. Skulle de senere indeholde partnerlinks, vil dette afsnit oplyse om samarbejdet.</p>
+      </div>
+
+      <h2 id="tabela">Oversigtstabel: hvilken test bruger du</h2>
+      <p>Tabellen nedenfor samler hele guiden. Find rækken, der beskriver din situation, tjek datatypen, og gå videre til den anbefalede test — navnet på hver beregner er et direkte link til værktøjet.</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr><th>Situation</th><th>Datatype</th><th>Anbefalet test</th><th>Beregner</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sammenligne to proportioner (fx konvertering A vs. B)</td>
+              <td>Kategorisk</td>
+              <td>z-test for to proportioner</td>
+              <td><a href="/proportionstest.html">Proportionstest</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne en proportion med en referenceværdi</td>
+              <td>Kategorisk</td>
+              <td>Enkeltstikprøve-proportionstest</td>
+              <td><a href="/proportionstest.html">Proportionstest</a></td>
+            </tr>
+            <tr>
+              <td>Sammenhæng mellem to kategoriske variable</td>
+              <td>Kategorisk</td>
+              <td>Chi² uafhængighedstest</td>
+              <td><a href="/chi-test.html">Chi²</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne et gennemsnit med en referenceværdi (σ kendt)</td>
+              <td>Numerisk</td>
+              <td>Enkeltstikprøve-z-test</td>
+              <td><a href="/z-test.html">Z-test</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne et gennemsnit med en referenceværdi (σ ukendt)</td>
+              <td>Numerisk</td>
+              <td>Enkeltstikprøve-t-test</td>
+              <td><a href="/t-test.html">t-test (Student)</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne to gennemsnit fra uafhængige grupper</td>
+              <td>Numerisk</td>
+              <td>t-test for uafhængige stikprøver</td>
+              <td><a href="/t-test.html">t-test (Student)</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne to parrede gennemsnit (før og efter)</td>
+              <td>Numerisk</td>
+              <td>Parret t-test</td>
+              <td><a href="/t-test.html">t-test (Student)</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne to grupper uden normalitet</td>
+              <td>Numerisk eller ordinal</td>
+              <td>Mann-Whitney (uafhængige) eller Wilcoxon (parrede)</td>
+              <td><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne tre eller flere grupper (normale data)</td>
+              <td>Numerisk</td>
+              <td>Enkeltfaktor-ANOVA</td>
+              <td><a href="/anova.html">ANOVA og k-stikprøver</a></td>
+            </tr>
+            <tr>
+              <td>Sammenligne tre eller flere grupper uden normalitet</td>
+              <td>Numerisk eller ordinal</td>
+              <td>Kruskal-Wallis</td>
+              <td><a href="/anova.html">ANOVA og k-stikprøver</a></td>
+            </tr>
+            <tr>
+              <td>Estimere et gennemsnit eller en proportion i populationen</td>
+              <td>Numerisk eller kategorisk</td>
+              <td>Konfidensinterval</td>
+              <td><a href="/konfidensinterval.html">Konfidensinterval</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="erros">Almindelige fejl, når man vælger test</h2>
+      <p>Selv med huskelisten ved hånden går nogle fejltrin igen. At kende dem på forhånd beskytter din analyse:</p>
+      <ol>
+        <li><strong>At bruge en middelværditest på kategoriske data.</strong> Grundfejlen. "Købte eller købte ikke" er kategorisk og kræver proportionstest eller chi², aldrig t-test. Fastlæg variabeltypen før alt andet.</li>
+        <li><strong>At ignorere parringen i dataene.</strong> Målinger "før og efter" på samme person er parrede. At behandle dem som uafhængige spilder information og skjuler typisk effekten. Det samme gælder par dannet med vilje.</li>
+        <li><strong>At sammenligne tre eller flere grupper med flere t-test.</strong> Hver ekstra t-test øger risikoen for en falsk positiv. Til tre eller flere grupper, brug ANOVA eller Kruskal-Wallis, der vurderer det hele på én gang.</li>
+        <li><strong>At fastholde den parametriske test, når forudsætningerne er brudt.</strong> En lille skæv stikprøve med ekstreme værdier er ikke terræn for t-testen. Når normaliteten ikke holder, så skift til rangversionen.</li>
+        <li><strong>At bruge z-test, når standardafvigelsen er ukendt.</strong> Hvis du estimerede standardafvigelsen ud fra selve stikprøven, er den korrekte test t, ikke z — især med små stikprøver.</li>
+        <li><strong>At forveksle signifikans med effektstørrelse.</strong> At vælge den rigtige test giver en pålidelig p-værdi, men p-værdien siger ikke, om forskellen er stor. Kig altid på effektstørrelsen eller konfidensintervallet for at vurdere den praktiske relevans.</li>
+        <li><strong>At vælge testen efter at have set dataene.</strong> At beslutte testen først efter at have kigget på, hvilken der "giver signifikans", skævvrider resultatet. Fastlæg testen ud fra datatypen og undersøgelsens design, helst før indsamlingen.</li>
+      </ol>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvordan ved jeg, hvilken statistisk test jeg skal bruge?</summary>
+          <div class="faq__answer"><p>Svar på fire spørgsmål i rækkefølge: hvilken type data har du (kategorisk eller numerisk), hvad vil du gøre (estimere eller sammenligne), hvor mange grupper sammenligner du (1, 2 eller 3+) og om grupperne er uafhængige eller parrede. Svarene fører direkte til en test. Hvis du er i tvivl om forudsætningerne, så slå op i <a href="#tabela">oversigtstabellen</a> i guiden.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen på en parametrisk og en ikke-parametrisk test?</summary>
+          <div class="faq__answer"><p>Parametriske test som <a href="/t-test.html">t-testen</a> og <a href="/anova.html">ANOVA</a> antager, at data følger en omtrent normalfordeling, og sammenligner gennemsnit. Ikke-parametriske test som <a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a> og Kruskal-Wallis kræver ikke normalitet og arbejder med rangordenen af værdierne. Brug den ikke-parametriske version, når stikprøven er lille, der er ekstreme værdier, eller fordelingen tydeligt er skæv.</p></div>
+        </details>
+        <details>
+          <summary>Hvornår bruger man chi² og hvornår proportionstest?</summary>
+          <div class="faq__answer"><p>Brug <a href="/proportionstest.html">proportionstesten</a>, når du vil sammenligne to proportioner direkte eller sammenligne en proportion med en referenceværdi. Brug <a href="/chi-test.html">chi²</a>, når du vil tjekke sammenhængen mellem to kategoriske variable i en kontingenstabel, især med mere end to kategorier. I en 2x2-tabel giver de to test den samme konklusion.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg bruge z-test eller t-test til at sammenligne med en referenceværdi?</summary>
+          <div class="faq__answer"><p>Brug <a href="/z-test.html">z-test</a>, når populationens standardafvigelse er kendt — hvilket er sjældent i praksis. Brug <a href="/t-test.html">t-test</a>, når standardafvigelsen estimeres ud fra stikprøven, hvilket næsten altid er tilfældet. Derfor er enkeltstikprøve-t-testen det rigtige valg i de fleste virkelige undersøgelser.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen på uafhængige og parrede grupper?</summary>
+          <div class="faq__answer"><p>Uafhængige grupper består af forskellige personer uden forbindelse mellem målingerne. Parrede grupper er forbundne målinger, fx den samme person målt før og efter, eller par matchet på egenskaber. Parrede data kræver parret t-test eller Wilcoxon signed-rank; bruger man testen for uafhængige grupper, smider man information væk og kan komme til en forkert konklusion.</p></div>
+        </details>
+        <details>
+          <summary>Hvad sker der, hvis jeg vælger den forkerte test?</summary>
+          <div class="faq__answer"><p>Den forkerte test kan give en forkert p-værdi og dermed en forkert konklusion: at erklære en forskel, der ikke findes, eller at overse en reel forskel. De hyppigste fejl er at bruge en middelværditest på kategoriske data, at ignorere parring og at fastholde en parametrisk test, når forudsætningerne er brudt. At fastlægge datatypen og undersøgelsens design før beregning undgår de fleste af disse fejl.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Sammenlign et gennemsnit med en reference eller to gennemsnit indbyrdes.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/chi-test.html"><h3>Chi²</h3><p>Tjek sammenhængen mellem to kategoriske variable.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/anova.html"><h3>ANOVA og k-stikprøver</h3><p>Sammenlign tre eller flere grupper på én gang.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Ved du allerede, hvilken test du skal bruge?</h2>
+        <p>Åbn den rigtige beregner og få p-værdi, konfidensinterval og fortolkning — gratis og på få sekunder.</p>
+        <a class="btn btn--light btn--lg" href="/#calculadoras">Se alle beregnere</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistik-beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi²</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et didaktisk og informativt formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør du bekræfte resultaterne med en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

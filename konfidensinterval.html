@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Konfidensinterval beregner — Online og gratis</title>
+<meta name="description" content="Gratis konfidensinterval beregner på dansk. Estimér det sandsynlige interval for et gennemsnit eller en proportion med 90%, 95% eller 99% konfidens — fejlmargin og fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/konfidensinterval.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Konfidensinterval beregner">
+<meta property="og:description" content="Estimér det sandsynlige interval for et gennemsnit eller en proportion med 90%, 95% eller 99% konfidens. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/konfidensinterval.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Konfidensinterval beregner",
+  "url": "https://statistikberegner.dk/konfidensinterval.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Konfidensinterval beregner for gennemsnittet og for proportionen, med 90%, 95% eller 99% konfidens."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Konfidensinterval beregner","item":"https://statistikberegner.dk/konfidensinterval.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er et konfidensinterval?","acceptedAnswer":{"@type":"Answer","text":"Det er et interval af værdier, beregnet ud fra en stikprøve, som sandsynligvis indeholder den sande værdi af en populationsparameter — som et gennemsnit eller en proportion. I stedet for et enkelt tal viser det estimatets usikkerhed."}},
+    {"@type":"Question","name":"Hvad betyder 95% konfidens?","acceptedAnswer":{"@type":"Answer","text":"Det betyder, at den metode, der bruges til at konstruere intervallet, rammer den sande værdi i 95% af de mulige stikprøver. Det betyder ikke, at der er 95% sandsynlighed for, at den rigtige værdi ligger i netop dette interval — det indeholder allerede eller indeholder ikke værdien."}},
+    {"@type":"Question","name":"Er et konfidensinterval en hypotesetest?","acceptedAnswer":{"@type":"Answer","text":"Nej. Konfidensintervallet estimerer kun det sandsynlige interval for en parameter; det giver ikke en dom om signifikant eller ikke-signifikant. De to begreber er beslægtede, men intervallet er et estimeringsværktøj, ikke et beslutningsværktøj."}},
+    {"@type":"Question","name":"Skal jeg bruge t- eller normalfordelingen?","acceptedAnswer":{"@type":"Answer","text":"Til gennemsnittet skal du bruge Students t-fordeling, når standardafvigelsen er estimeret fra selve stikprøven (det mest almindelige). Brug kun normalfordelingen (z), når populationens standardafvigelse faktisk er kendt. Med store stikprøver er de to praktisk talt identiske."}},
+    {"@type":"Question","name":"Hvordan gør jeg konfidensintervallet smallere?","acceptedAnswer":{"@type":"Answer","text":"Øg stikprøvestørrelsen: fejlmarginen falder med kvadratroden af n. At reducere konfidensniveauet (fx fra 99% til 95%) gør også intervallet smallere, men på bekostning af en mindre garanti."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Konfidensinterval beregner</li>
+        </ol>
+      </nav>
+      <h1>Konfidensinterval beregner</h1>
+      <p class="lead">Estimér det <strong>sandsynlige interval</strong> for et gennemsnit eller en proportion i populationen med 90%, 95% eller 99% konfidens — og se fejlmarginen for dit estimat.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="ic-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+        Beregn konfidensintervallet
+      </h2>
+      <p class="calculator__hint">Vælg, hvad du vil estimere, indtast data fra din stikprøve og det ønskede konfidensniveau.</p>
+
+      <fieldset class="field-group">
+        <legend>Hvad vil du estimere</legend>
+        <div class="segmented" role="radiogroup" aria-label="Hvad vil du estimere">
+          <label><input type="radio" name="ic-mode" value="mean" checked><span>Gennemsnit</span></label>
+          <label><input type="radio" name="ic-mode" value="proportion"><span>Proportion</span></label>
+        </div>
+      </fieldset>
+
+      <div data-panel="mean">
+        <fieldset class="field-group">
+          <legend>Din stikprøve</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="m-mean">Stikprøvegennemsnit</label>
+              <input class="input" type="text" inputmode="decimal" id="m-mean" placeholder="F.eks.: 72" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="m-sd">Standardafvigelse</label>
+              <input class="input" type="text" inputmode="decimal" id="m-sd" placeholder="F.eks.: 8" autocomplete="off">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="m-n">Stikprøvestørrelse (n)</label>
+              <input class="input" type="text" inputmode="numeric" id="m-n" placeholder="F.eks.: 30" autocomplete="off">
+            </div>
+            <div class="field">
+              <label>Type af standardafvigelse</label>
+              <div class="segmented" role="radiogroup" aria-label="Type af standardafvigelse">
+                <label><input type="radio" name="ic-sdtype" value="sample" checked><span>Stikprøvens</span></label>
+                <label><input type="radio" name="ic-sdtype" value="population"><span>Populationens</span></label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div data-panel="proportion" hidden>
+        <fieldset class="field-group">
+          <legend>Din stikprøve</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="p-x">Succeser</label>
+              <input class="input" type="text" inputmode="numeric" id="p-x" placeholder="F.eks.: 240" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="p-n">Stikprøvestørrelse (n)</label>
+              <input class="input" type="text" inputmode="numeric" id="p-n" placeholder="F.eks.: 600" autocomplete="off">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row field-row--single">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="ic-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="ic-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="ic-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="ic-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn interval</button>
+        <button class="btn btn--ghost" type="button" id="ic-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="ic-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er et konfidensinterval</a></li>
+          <li><a href="#nivel">Hvad betyder konfidensniveauet</a></li>
+          <li><a href="#media">Konfidensinterval for et gennemsnit</a></li>
+          <li><a href="#proporcao">Konfidensinterval for en proportion</a></li>
+          <li><a href="#margem">Fejlmarginen</a></li>
+          <li><a href="#interpretar">Den rigtige fortolkning (og den forkerte)</a></li>
+          <li><a href="#exemplo">Gennemregnet eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er et konfidensinterval</h2>
+      <p>Når du måler noget i en stikprøve — gennemsnitshøjden for 30 personer, andelen af tilfredse kunder blandt 600 adspurgte — får du et tal. Men det tal er kun et <strong>estimat</strong> af populationens sande værdi, og estimater indeholder usikkerhed: en anden stikprøve ville give et lidt andet resultat.</p>
+      <p>Det <strong>konfidensinterval</strong> løser det. I stedet for et enkelt tal giver det et <strong>interval af plausible værdier</strong> for den parameter, du vil kende. I stedet for at sige "gennemsnittet er 72" siger det "gennemsnittet ligger sandsynligvis mellem 69,0 og 75,0". Det interval kommunikerer ærligt, hvor meget din stikprøve tillader dig at sige — og hvor meget der stadig er usikkerhed.</p>
+      <p>Ethvert konfidensinterval har tre ingredienser: <strong>punktestimatet</strong> (den centrale værdi, beregnet ud fra stikprøven), <strong>fejlmarginen</strong> (hvor meget der lægges til og trækkes fra) og <strong>konfidensniveauet</strong> (90%, 95% eller 99%, som definerer strengheden). Resultatet er altid på formen <em>estimat ± fejlmargin</em>.</p>
+      <p>En vigtig bemærkning fra start: et konfidensinterval er <strong>ikke en hypotesetest</strong>. Det giver ingen dom om "signifikant" eller "ikke-signifikant" — det estimerer kun et interval. For en beslutningsdom, se <a href="/t-test.html">t-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>. De to begreber taler sammen, men har forskellige formål.</p>
+
+      <h2 id="nivel">Hvad betyder konfidensniveauet</h2>
+      <p><strong>Konfidensniveauet</strong> er den mest misforståede del af statistik. Det svarer på et spørgsmål om <em>metoden</em>, ikke om et bestemt interval.</p>
+      <p>Forestil dig at gentage dit studie tusindvis af gange, hver gang med en ny tilfældig stikprøve, og beregne et 95%-interval i hver. Den korrekte fortolkning er: <strong>omkring 95% af disse intervaller ville indeholde populationens sande værdi</strong>, og omkring 5% ville ikke indeholde den. "95%" er metodens succesrate på lang sigt.</p>
+      <p>De tre sædvanlige niveauer repræsenterer en balance mellem garanti og præcision:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Konfidens</th><th>Betyder</th><th>Effekt på intervallet</th></tr></thead>
+          <tbody>
+            <tr><td>90%</td><td>Rammer rigtigt i 9 ud af 10 stikprøver.</td><td>Smallere, mindre garanti.</td></tr>
+            <tr><td>95%</td><td>Rammer rigtigt i 19 ud af 20 stikprøver.</td><td>Standard i de fleste områder.</td></tr>
+            <tr><td>99%</td><td>Rammer rigtigt i 99 ud af 100 stikprøver.</td><td>Bredere, større garanti.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Der er en uundgåelig afvejning: jo større konfidens, der kræves, jo <strong>bredere</strong> bliver intervallet. Et 99%-interval er mere forsigtigt, men også vagere. For de fleste arbejder er 95% den etablerede ligevægt.</p>
+
+      <h2 id="media">Konfidensinterval for et gennemsnit — Students t eller normal</h2>
+      <p>For at estimere gennemsnittet af en kvantitativ variabel (vægt, karakter, tid, omsætning) tager intervallet udgangspunkt i stikprøvegennemsnittet og lægger fejlmarginen til/trækker den fra:</p>
+      <div class="formula">KI = x̄ ± (kritisk værdi) × (standardfejl)
+        <span class="formula__where">x̄ er stikprøvens gennemsnit; standardfejlen er SF = s ÷ √n.</span>
+      </div>
+      <p><strong>Standardfejlen</strong> måler, hvor meget stikprøvens gennemsnit varierer fra stikprøve til stikprøve. Den krymper, når n vokser — derfor giver større stikprøver smallere intervaller.</p>
+      <p>Nøglespørgsmålet er, hvilken fordeling der bruges til den kritiske værdi:</p>
+      <ul>
+        <li><strong>Students t-fordeling</strong> — brug den, når standardafvigelsen er <em>estimeret fra selve stikprøven</em>. Det er næsten altid tilfældet i praksis. T-fordelingen har lidt bredere haler end normalfordelingen for at kompensere for den ekstra usikkerhed ved ikke at kende den sande standardafvigelse. Den kritiske værdi afhænger af <strong>frihedsgraderne</strong> (df = n − 1).</li>
+        <li><strong>Normalfordelingen (z)</strong> — brug den kun, når <em>populationens</em> standardafvigelse faktisk er kendt, hvilket sjældent forekommer uden for didaktiske øvelser. I denne beregner er det indstillingen "Populationens".</li>
+      </ul>
+      <p>I tvivl skal du vælge "Stikprøvens" (t-fordelingen): det er det korrekte og sikre valg i langt de fleste tilfælde. Med store stikprøver (over ~30 observationer) er t og normal praktisk talt identiske, og valget mister praktisk betydning.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="proporcao">Konfidensinterval for en proportion — Wilsons metode</h2>
+      <p>Når det, du måler, er en <strong>proportion</strong> — andelen af folk, der godkender noget, succesraten for en procedure — er punktestimatet ganske enkelt antallet af succeser delt med totalen (p̂ = x ÷ n). Spørgsmålet er, hvordan man konstruerer intervallet omkring den.</p>
+      <p>Den klassiske lærebogsmetode er <strong>Wald-intervallet</strong>: p̂ ± z × √[p̂(1−p̂)/n]. Det er enkelt, men har en alvorlig fejl: det fungerer dårligt, når proportionen er tæt på 0% eller 100%, eller når stikprøven er lille. I de tilfælde kan det endda producere umulige grænser under 0% eller over 100%, og dets reelle succesrate ligger godt under det annoncerede niveau.</p>
+      <p>Derfor bruger denne beregner <strong>Wilson-intervallet</strong> (også kaldet score-intervallet). Det er lidt mere kompliceret, men meget mere præcist: det holder dækningsgraden tæt på det nominelle niveau selv med små stikprøver eller ekstreme proportioner og overskrider aldrig 0% og 100%.</p>
+      <div class="formula">centrum = (p̂ + z²/2n) ÷ (1 + z²/n)
+        <span class="formula__where">Wilson-intervallet forskyder centrum lidt og justerer bredden — derfor er det asymmetrisk og mere pålideligt end Wald.</span>
+      </div>
+      <p>I praksis behøver du ikke huske formlen: indtast succeser og stikprøvestørrelse, og beregneren bruger Wilson-metoden automatisk.</p>
+
+      <h2 id="margem">Fejlmarginen</h2>
+      <p><strong>Fejlmarginen</strong> er halvdelen af intervallets bredde — "±" i estimatet. Når en meningsmåling siger "40%, med en fejlmargin på 2 procentpoint", beskriver den et konfidensinterval på [38%; 42%].</p>
+      <p>Tre faktorer styrer størrelsen på fejlmarginen:</p>
+      <ul>
+        <li><strong>Stikprøvestørrelsen (n).</strong> Det er den stærkeste faktor. Marginen krymper med <em>kvadratroden</em> af n: for at halvere den skal stikprøven <strong>firdobles</strong>. At fordoble n fordobler ikke præcisionen.</li>
+        <li><strong>Konfidensniveauet.</strong> At kræve 99% i stedet for 95% udvider marginen; at acceptere 90% gør den smallere.</li>
+        <li><strong>Datas variabilitet.</strong> Jo større standardafvigelse (i gennemsnitstilfældet), jo større margin. Meget spredte data kræver større stikprøver for samme præcision.</li>
+      </ul>
+      <p>Hvis du stadig planlægger dataindsamlingen og vil ramme en bestemt fejlmargin, beregn antallet af observationer, du har brug for, inden du starter, med <a href="/stikprovestorrelse.html">stikprøvestørrelse beregneren</a>.</p>
+
+      <h2 id="interpretar">Den rigtige fortolkning — og den forkerte</h2>
+      <p>Dette er sidens vigtigste afsnit. Konfidensintervallet er omgærdet af misforståelser, og at bruge det rigtigt afhænger af at tolke det præcist.</p>
+      <p>Antag, at du har beregnet et <strong>95%-interval for gennemsnittet lig med [69,0; 75,0]</strong>. Den <strong>korrekte</strong> aflæsning er:</p>
+      <ul>
+        <li>"Den metode, jeg brugte, rammer den sande værdi i 95% af de mulige stikprøver; baseret på denne stikprøve går det plausible interval for populationsgennemsnittet fra 69,0 til 75,0."</li>
+      </ul>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Den mest almindelige fortolkningsfejl
+        </div>
+        <p>Det er <strong>forkert</strong> at sige "der er 95% sandsynlighed for, at gennemsnittet ligger mellem 69,0 og 75,0". Populationens sande værdi er et fast tal: det er allerede indenfor dette bestemte interval eller udenfor — der er ingen lodtrækning. De 95% sandsynlighed beskriver <em>proceduren</em> på lang sigt, ikke dette isolerede interval efter beregningen.</p>
+      </div>
+      <p>Andre hyppige misforståelser, det er værd at undgå:</p>
+      <ul>
+        <li><strong>"95% af data ligger indenfor intervallet."</strong> Falsk. Intervallet handler om populationens <em>parameter</em> (gennemsnit eller proportion), ikke om stikprøvens individuelle værdier.</li>
+        <li><strong>"Værdier uden for intervallet er umulige."</strong> Falsk. De er blot mindre forenelige med dine data; intervallet markerer det plausible interval, ikke en absolut grænse.</li>
+        <li><strong>"Et smallere interval er altid bedre."</strong> Ikke altid. Et smalt interval opnået med lav konfidens kan ramme sjældnere. Præcision og garanti skal læses sammen.</li>
+      </ul>
+      <p>Den mest solide måde at kommunikere et resultat er at beskrive intervallet og niveauet: "med 95% konfidens estimerer vi gennemsnittet mellem 69,0 og 75,0". Enkelt, præcist og uden faldgruber.</p>
+
+      <h2 id="exemplo">Gennemregnet eksempel</h2>
+      <p>En skole vil estimere elevernes <strong>gennemsnitlige karakter</strong> ved en prøve. En stikprøve på <strong>30 prøver</strong> er udtrukket, med gennemsnit på <strong>72 point</strong> og standardafvigelse (stikprøvens) på <strong>8 point</strong>. Hvad er 95%-konfidensintervallet for hele skolens gennemsnitskarakter?</p>
+      <ol class="steps">
+        <li><strong>Standardfejl:</strong> SF = 8 ÷ √30 ≈ 1,461.</li>
+        <li><strong>Fordeling:</strong> standardafvigelsen kom fra stikprøven, så vi bruger Students t med df = 30 − 1 = 29.</li>
+        <li><strong>Kritisk værdi:</strong> for 95% konfidens og 29 frihedsgrader er t ≈ 2,045.</li>
+        <li><strong>Fejlmargin:</strong> FM = 2,045 × 1,461 ≈ 2,99.</li>
+        <li><strong>Interval:</strong> 72 ± 2,99, dvs. ca. <strong>[69,0; 75,0]</strong>.</li>
+      </ol>
+      <p>Konklusion: med 95% konfidens ligger hele skolens gennemsnitskarakter sandsynligvis mellem <strong>69,0 og 75,0 point</strong>. Brug knappen <em>"Udfyld med eksempel"</em> ovenfor for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er et konfidensinterval?</summary>
+          <div class="faq__answer"><p>Det er et interval af værdier, beregnet ud fra en stikprøve, som sandsynligvis indeholder den sande værdi af en populationsparameter — som et gennemsnit eller en proportion. I stedet for et enkelt tal viser det estimatets usikkerhed.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder 95% konfidens?</summary>
+          <div class="faq__answer"><p>Det betyder, at den anvendte metode rammer den sande værdi i 95% af de mulige stikprøver. Det betyder ikke, at der er 95% sandsynlighed for, at den rigtige værdi ligger i netop dette interval: det indeholder allerede eller indeholder ikke den sande værdi.</p></div>
+        </details>
+        <details>
+          <summary>Er et konfidensinterval en hypotesetest?</summary>
+          <div class="faq__answer"><p>Nej. Intervallet estimerer kun det sandsynlige interval for en parameter; det giver ikke en dom om "signifikant" eller "ikke-signifikant". Til det skal du bruge en hypotesetest som <a href="/t-test.html">t-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg bruge t- eller normalfordelingen?</summary>
+          <div class="faq__answer"><p>Til gennemsnittet skal du bruge Students t, når standardafvigelsen kommer fra selve stikprøven (det mest almindelige). Brug kun normalfordelingen (z), når populationens standardafvigelse faktisk er kendt. Med store stikprøver er de to praktisk talt identiske.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan gør jeg konfidensintervallet smallere?</summary>
+          <div class="faq__answer"><p>Øg stikprøvestørrelsen: fejlmarginen falder med kvadratroden af n. At reducere konfidensniveauet (fx fra 99% til 95%) gør også intervallet smallere, men på bekostning af en mindre garanti.</p></div>
+        </details>
+        <details>
+          <summary>Hvorfor bruger beregneren Wilson-metoden til proportioner?</summary>
+          <div class="faq__answer"><p>Fordi den klassiske Wald-metode mister præcision med små stikprøver eller proportioner tæt på 0% og 100% og endda kan generere umulige grænser. Wilson-intervallet holder dækningen tæt på det annoncerede niveau i de tilfælde og overskrider aldrig 0% eller 100%.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>Students t-test</h3><p>Sammenlign gennemsnit og test hypoteser om et gennemsnit.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/stikprovestorrelse.html"><h3>Stikprøvestørrelse</h3><p>Find ud af, hvor mange observationer du har brug for.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign en proportion med en referenceværdi.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Brug for statistik til dit område?</h2>
+        <p>Se de praktiske guides til statistik for sygepleje, psykologi og marketing.</p>
+        <a class="btn btn--light btn--lg" href="/#guias">Se guides efter område</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ic-form'), result = $('ic-result'), errBox = $('ic-error');
+  var panels = document.querySelectorAll('[data-panel]');
+
+  function currentMode() { return Fmt.radio('ic-mode'); }
+
+  function syncPanels() {
+    var mode = currentMode();
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-panel') !== mode;
+    }
+  }
+  var modeRadios = document.querySelectorAll('input[name="ic-mode"]');
+  for (var m = 0; m < modeRadios.length; m++) {
+    modeRadios[m].addEventListener('change', syncPanels);
+  }
+  syncPanels();
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('ic-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('input[name="ic-mode"][value="mean"]').checked = true;
+    document.querySelector('input[name="ic-sdtype"][value="sample"]').checked = true;
+    syncPanels();
+    $('m-mean').value = '72'; $('m-sd').value = '8'; $('m-n').value = '30';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var mode = currentMode();
+    var conf = parseFloat(Fmt.radio('ic-conf'));
+    var opts = { mode: mode, confidence: conf };
+    var vals;
+
+    if (mode === 'mean') {
+      vals = [parseNum($('m-mean').value), parseNum($('m-sd').value), parseNum($('m-n').value)];
+      if (vals.some(function (v) { return isNaN(v); })) {
+        showError('Udfyld gennemsnit, standardafvigelse og stikprøvestørrelse.');
+        return;
+      }
+      opts.mean = vals[0]; opts.sd = vals[1]; opts.n = vals[2];
+      opts.sdKnown = (Fmt.radio('ic-sdtype') === 'population');
+    } else {
+      vals = [parseNum($('p-x').value), parseNum($('p-n').value)];
+      if (vals.some(function (v) { return isNaN(v); })) {
+        showError('Udfyld antallet af succeser og stikprøvestørrelsen.');
+        return;
+      }
+      opts.x = vals[0]; opts.n = vals[1];
+    }
+
+    var r = Stats.confidenceInterval(opts);
+    if (r.error) { showError(r.error); return; }
+    render(r, conf);
+  }
+
+  var ICON_NEUTRAL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, conf) {
+    var confTxt = Fmt.pct(conf, 0);
+    var metrics, interp;
+
+    if (r.mode === 'proportion') {
+      metrics =
+        metric('Estimat', Fmt.pct(r.estimate, 2), 'stikprøvens proportion') +
+        metric('Nedre grænse', Fmt.pct(r.ciLow, 2)) +
+        metric('Øvre grænse', Fmt.pct(r.ciHigh, 2)) +
+        metric('Fejlmargin', '± ' + Fmt.pct(r.marginError, 2), 'Wilson-metoden');
+      interp = '<p>Med <strong>' + confTxt + ' konfidens</strong> ligger populationens sande ' +
+        'proportion sandsynligvis mellem <strong>' + Fmt.pct(r.ciLow, 2) + '</strong> og ' +
+        '<strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>. Punktestimatet er ' +
+        Fmt.pct(r.estimate, 2) + ', med en fejlmargin på ± ' + Fmt.pct(r.marginError, 2) + '.</p>' +
+        '<p>Vigtigt med den rigtige aflæsning: det betyder <strong>ikke</strong>, at der er ' + confTxt +
+        ' sandsynlighed for, at den rigtige værdi ligger i netop dette interval — det indeholder ' +
+        'allerede eller indeholder ikke den sande værdi. Konfidensniveauet beskriver metoden: i ' + confTxt +
+        ' af de mulige stikprøver rammer et interval konstrueret på denne måde populationsværdien.</p>';
+    } else {
+      var distTxt = r.distribution === 't' ? 'Students t' : 'normal (z)';
+      metrics =
+        metric('Punktestimat', Fmt.num(r.estimate, 3), 'stikprøvegennemsnit') +
+        metric('Nedre grænse', Fmt.num(r.ciLow, 3)) +
+        metric('Øvre grænse', Fmt.num(r.ciHigh, 3)) +
+        metric('Fejlmargin', '± ' + Fmt.num(r.marginError, 3)) +
+        metric('Standardfejl', Fmt.num(r.se, 3)) +
+        metric('Brugt fordeling', distTxt, r.distribution === 't' ? 'df = ' + Fmt.int(r.df) : 'kendt standardafvigelse');
+      interp = '<p>Med <strong>' + confTxt + ' konfidens</strong> ligger populationens sande ' +
+        'gennemsnit sandsynligvis mellem <strong>' + Fmt.num(r.ciLow, 3) + '</strong> og ' +
+        '<strong>' + Fmt.num(r.ciHigh, 3) + '</strong>. Punktestimatet er ' +
+        Fmt.num(r.estimate, 3) + ', med en fejlmargin på ± ' + Fmt.num(r.marginError, 3) +
+        ', med ' + distTxt + ' fordelingen.</p>' +
+        '<p>Vigtigt med den rigtige aflæsning: det betyder <strong>ikke</strong>, at der er ' + confTxt +
+        ' sandsynlighed for, at det rigtige gennemsnit ligger i netop dette interval — det er ' +
+        'allerede indenfor eller udenfor. Konfidensniveauet beskriver metoden: i ' + confTxt +
+        ' af de mulige stikprøver rammer et interval konstrueret på denne måde populationsværdien.</p>';
+    }
+
+    result.className = 'result result--neutral';
+    result.innerHTML =
+      '<div class="result__banner">' + ICON_NEUTRAL +
+        '<div><div class="result__headline">Konfidensinterval</div>' +
+        '<div class="result__sub">Det sandsynlige interval for dit estimat, med ' + confTxt + ' konfidens.</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

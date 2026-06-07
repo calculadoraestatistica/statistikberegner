@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>z-test Beregner — Online og Gratis</title>
+<meta name="description" content="Gratis z-test beregner på dansk til et gennemsnit, når populationens standardafvigelse er kendt. z-statistik, standardfejl, p-værdi, konfidensinterval og fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/z-test.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="z-test Beregner">
+<meta property="og:description" content="Test et gennemsnit op mod en referenceværdi, når populationens standardafvigelse er kendt. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/z-test.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "z-test Beregner",
+  "url": "https://statistikberegner.dk/z-test.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "z-test beregner til et gennemsnit med kendt populations-standardafvigelse."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"z-test Beregner","item":"https://statistikberegner.dk/z-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvornår skal man bruge z-testen?","acceptedAnswer":{"@type":"Answer","text":"Brug z-testen til at sammenligne et gennemsnit med en referenceværdi, når populationens standardafvigelse er kendt. I praksis sker det med standardiserede instrumenter og veldokumenterede processer, eller når stikprøven er stor."}},
+    {"@type":"Question","name":"Hvad er forskellen mellem z-test og t-test?","acceptedAnswer":{"@type":"Answer","text":"Z-testen bruger populationens standardafvigelse og standardnormalfordelingen. T-testen bruger standardafvigelsen estimeret fra stikprøven og t-fordelingen, med bredere haler for at kompensere for usikkerheden. Når populationens sigma er ukendt, er det t-testen, der skal bruges."}},
+    {"@type":"Question","name":"Hvad er z-statistikken?","acceptedAnswer":{"@type":"Answer","text":"Det er afstanden mellem stikprøvens gennemsnit og sammenligningsværdien, målt i antal standardfejl. Jo større |z|, jo længere er du fra hypotesen om ingen forskel."}},
+    {"@type":"Question","name":"Hvad er p-værdien i z-testen?","acceptedAnswer":{"@type":"Answer","text":"Det er sandsynligheden for at observere en så stor eller større forskel, hvis det sande gennemsnit svarer til sammenligningsværdien. Hvis p-værdien er mindre end signifikansniveauet, er resultatet statistisk signifikant."}},
+    {"@type":"Question","name":"Hvad betyder kritisk z?","acceptedAnswer":{"@type":"Answer","text":"Det er grænseværdien i normalfordelingen for det valgte konfidensniveau. Ved 95% konfidens i en tosidet test er den kritiske z cirka 1,96. Hvis den beregnede z overstiger den værdi, er resultatet signifikant."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>z-test Beregner</li>
+        </ol>
+      </nav>
+      <h1>z-test Beregner</h1>
+      <p class="lead">Sammenlign en <strong>stikprøves gennemsnit</strong> med en referenceværdi, når <strong>populationens standardafvigelse er kendt</strong> — og find ud af, om forskellen er statistisk signifikant.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="z-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Beregn z-testen
+      </h2>
+      <p class="calculator__hint">Indtast gennemsnit og stikprøvestørrelse, populationens standardafvigelse og sammenligningsværdien.</p>
+
+      <fieldset class="field-group">
+        <legend>Din stikprøve</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="z-mean">Gennemsnit af stikprøven</label>
+            <input class="input" type="text" inputmode="decimal" id="z-mean" placeholder="F.eks. 104" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="z-n">Stikprøvestørrelse (n)</label>
+            <input class="input" type="text" inputmode="numeric" id="z-n" placeholder="F.eks. 60" autocomplete="off">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Populationens parametre</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="z-sigma">Populationens standardafvigelse (σ)</label>
+            <input class="input" type="text" inputmode="decimal" id="z-sigma" placeholder="F.eks. 15" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="z-mu0">Sammenligningsværdi (μ₀)</label>
+            <input class="input" type="text" inputmode="decimal" id="z-mu0" placeholder="F.eks. 100" autocomplete="off">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="z-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="z-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="z-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Type test</label>
+            <div class="segmented" role="radiogroup" aria-label="Type test">
+              <label><input type="radio" name="z-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="z-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="z-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn z-test</button>
+        <button class="btn btn--ghost" type="button" id="z-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="z-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er z-testen</a></li>
+          <li><a href="#quando">Hvornår skal man bruge z-testen</a></li>
+          <li><a href="#z-vs-t">z-test eller t-test?</a></li>
+          <li><a href="#como">Sådan virker beregningen</a></li>
+          <li><a href="#interpretar">Sådan fortolker du resultatet</a></li>
+          <li><a href="#exemplo">Løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er z-testen</h2>
+      <p><strong>Z-testen</strong> er en hypotesetest, der sammenligner <strong>gennemsnittet af en stikprøve</strong> med en kendt <strong>referenceværdi</strong>. Den svarer på et direkte spørgsmål: er forskellen mellem det gennemsnit, du har observeret, og den forventede værdi stor nok til at være reel, eller kan det blot være tilfældig variation hos dem, der kom med i stikprøven?</p>
+      <p>Z-testens kendetegn er en forudsætning: du skal <strong>kende populationens standardafvigelse</strong> (repræsenteret med det græske bogstav σ, sigma). Ikke stikprøvens standardafvigelse — men den i hele den population, stikprøven kommer fra. Den viden er det, der gør det muligt at bruge <strong>standardnormalfordelingen</strong> direkte til at beregne sandsynlighederne uden korrektion.</p>
+      <p>Bag navnet ligger <em>z-scoren</em>: ideen, der er central i al statistik, om at måle en afstand i "antal standardafvigelser". Z-testen anvender det samme begreb på stikprøvens gennemsnit. Når resultatet ligger langt fra referenceværdien — målt i standardfejl — bliver det usandsynligt, at afstanden er opstået ved tilfældighed.</p>
+
+      <h2 id="quando">Hvornår skal man bruge z-testen</h2>
+      <p>Z-testen for et gennemsnit er den rigtige procedure, når to betingelser er opfyldt:</p>
+      <ul>
+        <li><strong>Populationens standardafvigelse er kendt.</strong> Det er mere almindeligt, end man tror: standardiserede psykometriske tests (IQ, store eksamener), kalibrerede måleinstrumenter og veldokumenterede industriprocesser har typisk et σ, som er fastlagt ud fra mange års historiske data.</li>
+        <li><strong>Stikprøven kommer fra en tilnærmelsesvis normalfordelt population — eller er stor.</strong> Med en stor stikprøve (typisk n over ~30) sikrer den centrale grænseværdisætning, at stikprøvegennemsnittet følger nogenlunde en normalfordeling, selv hvis de oprindelige data ikke er normale.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Det første spørgsmål
+        </div>
+        <p>Inden du vælger z-testen, så stil dig selv et ærligt spørgsmål: kommer standardafvigelsen, du vil bruge, fra populationen (fra en norm, en teknisk manual, mange års historik), eller blev den beregnet ud fra denne stikprøve? Hvis den er beregnet fra stikprøven, er den rigtige test t-testen.</p>
+      </div>
+
+      <h2 id="z-vs-t">z-test eller t-test?</h2>
+      <p>Det er det mest almindelige spørgsmål — og svaret er enkelt. De to tests sammenligner gennemsnit og følger samme logik; forskellen ligger i, <strong>hvor standardafvigelsen kommer fra</strong>:</p>
+      <ul>
+        <li><strong>Z-test</strong> — bruger <em>populationens</em> standardafvigelse (σ), behandlet som et fast og kendt tal. Sandsynlighederne kommer fra standardnormalfordelingen.</li>
+        <li><strong><a href="/t-test.html">T-test</a></strong> — bruger standardafvigelsen <em>estimeret fra stikprøven</em> (s). Da det estimat bærer en usikkerhed, anvender t-testen t-fordelingen, der ligner normalfordelingen, men har lidt bredere haler — mere konservativ.</li>
+      </ul>
+      <p>I praksis er populationens standardafvigelse næsten aldrig kendt, og derfor er <a href="/t-test.html">t-testen (Student)</a> den, der bruges mest i dagligdagens forskning. Z-testen er reserveret til de tilfælde, hvor σ virkelig er kendt. Der er også et beroligende punkt: efterhånden som stikprøven vokser, nærmer t-fordelingen sig normalfordelingen mere og mere. Med store stikprøver giver z- og t-tests praktisk talt identiske resultater.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Den hyppigste fejl
+        </div>
+        <p>At bruge z-testen med standardafvigelsen beregnet fra selve stikprøven undervurderer usikkerheden og gør p-værdien kunstigt lille. I små stikprøver kan det forvandle et ikke-signifikant resultat til "signifikant". I tvivlstilfælde: brug t-testen.</p>
+      </div>
+
+      <h2 id="como">Sådan virker beregningen</h2>
+      <p>Z-testen for et gennemsnit har tre trin. Først er der <strong>standardfejlen af gennemsnittet</strong> — hvor meget tilfældig variation der kan forventes fra én stikprøve til en anden. Den er populationens standardafvigelse divideret med kvadratroden af stikprøvestørrelsen:</p>
+      <div class="formula">SF = σ ÷ √n
+        <span class="formula__where">Jo større stikprøve, jo mindre standardfejl — gennemsnit fra store stikprøver er mere stabile.</span>
+      </div>
+      <p>Andet trin er <strong>z-statistikken</strong>: afstanden mellem stikprøvens gennemsnit (x̄) og sammenligningsværdien (μ₀), målt i antal standardfejl.</p>
+      <div class="formula">z = (x̄ − μ₀) ÷ (σ ÷ √n)
+        <span class="formula__where">Jo større |z|, jo længere er du fra hypotesen om "ingen forskel".</span>
+      </div>
+      <p>Tredje trin er at oversætte z til en <strong>p-værdi</strong>. Her kommer standardnormalfordelingen ind, og dens fordelingsfunktion, repræsenteret med Φ (det græske bogstav fi). Φ(z) angiver sandsynligheden for, at standardnormalfordelingen ligger under z. P-værdien kombinerer det med typen af test:</p>
+      <div class="formula">p-værdi (tosidet) = 2 · [ 1 − Φ(|z|) ]</div>
+      <p>I den tosidede test spørger du, om gennemsnittet simpelthen er <em>forskelligt</em> fra referenceværdien. I den ensidede test spørger du, om det er <em>større</em> (eller <em>mindre</em>) — og p-værdien er halvdelen af den tosidede. Beregneren returnerer også den <strong>kritiske z</strong>, grænseværdien i normalfordelingen for det valgte konfidensniveau: ved 95% tosidet er den cirka 1,96.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="interpretar">Sådan fortolker du resultatet</h2>
+      <p>Beregneren returnerer seks nøgletal. Her er, hvad hvert af dem betyder:</p>
+      <ul>
+        <li><strong>z-statistik</strong> — forskellen mellem gennemsnittet og sammenligningsværdien, i antal standardfejl.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (α, typisk 0,05), er resultatet signifikant.</li>
+        <li><strong>Standardfejl</strong> — den tilfældige variation, der kan forventes i estimatet af gennemsnittet.</li>
+        <li><strong>Gennemsnit af stikprøven</strong> — punktestimatet: dit bedste gæt på det sande gennemsnit ud fra dine data.</li>
+        <li><strong>Kritisk z</strong> — grænseværdien i normalfordelingen for det valgte konfidensniveau. Hvis det beregnede |z| overstiger den, er resultatet signifikant.</li>
+        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for populationens sande gennemsnit. Hvis sammenligningsværdien μ₀ ligger <em>uden for</em> intervallet, er forskellen signifikant.</li>
+      </ul>
+      <p>P-værdi og konfidensinterval fortæller samme historie ad to veje. P-værdien sammenligner en sandsynlighed med α; intervallet viser intervallet af plausible værdier. Når μ₀ falder uden for intervallet, ligger p-værdien under α — de to er altid enige.</p>
+
+      <h2 id="exemplo">Løst eksempel</h2>
+      <p>En skole gennemfører en standardiseret IQ-test i en klasse på <strong>60 elever</strong>. Det observerede gennemsnit blev <strong>104</strong>. Testen er standardiseret til at have et populationsgennemsnit på <strong>100</strong> og en standardafvigelse på <strong>15</strong> — altså er σ kendt. Har klassen et gennemsnit, der adskiller sig fra populationsreferencen?</p>
+      <ol class="steps">
+        <li>Standardfejl: SF = 15 ÷ √60 ≈ 1,936.</li>
+        <li>z-statistik: z = (104 − 100) ÷ 1,936 ≈ 2,07.</li>
+        <li>Tosidet p-værdi for z = 2,07: ≈ 0,039.</li>
+        <li>95% konfidensinterval for gennemsnittet: 104 ± 1,96 · 1,936, altså fra ≈ 100,2 til ≈ 107,8.</li>
+      </ol>
+      <p>Da 0,039 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong> ved 95% konfidens: klassen har faktisk en gennemsnits-IQ over populationsreferencen. Bemærk, at værdien 100 ligger uden for konfidensintervallet — de to kriterier er enige. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvornår skal jeg bruge z-testen?</summary>
+          <div class="faq__answer"><p>Brug z-testen til at sammenligne et gennemsnit med en referenceværdi, når populationens standardafvigelse er kendt — fx ved standardiserede tests, kalibrerede instrumenter eller processer med lang datahistorik. Vil du sammenligne proportioner, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen mellem z-test og t-test?</summary>
+          <div class="faq__answer"><p>Z-testen bruger populationens standardafvigelse og standardnormalfordelingen. <a href="/t-test.html">T-testen</a> bruger standardafvigelsen estimeret fra stikprøven og t-fordelingen, med bredere haler for at kompensere for usikkerheden i det estimat. Når σ er ukendt — det almindelige tilfælde — er det t-testen, der skal bruges. Med store stikprøver giver de to næsten identiske resultater.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er z-statistikken?</summary>
+          <div class="faq__answer"><p>Det er afstanden mellem stikprøvens gennemsnit og sammenligningsværdien, målt i antal standardfejl. Et z på 2 betyder fx, at det observerede gennemsnit ligger to standardfejl fra referenceværdien. Jo større |z|, jo stærkere belæg mod hypotesen om ingen forskel.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er p-værdien i z-testen?</summary>
+          <div class="faq__answer"><p>Det er sandsynligheden for at observere en så stor eller større forskel, hvis det sande gennemsnit var lig med sammenligningsværdien. Hvis p-værdien er mindre end signifikansniveauet (typisk 0,05), er resultatet statistisk signifikant.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder kritisk z?</summary>
+          <div class="faq__answer"><p>Det er grænseværdien i standardnormalfordelingen for det valgte konfidensniveau. I en tosidet test ved 95% er den kritiske z cirka 1,96; ved 99%, cirka 2,576. Hvis det beregnede |z| overstiger den kritiske z, er resultatet signifikant på det niveau.</p></div>
+        </details>
+        <details>
+          <summary>Giver tosidet og ensidet z-test samme p-værdi?</summary>
+          <div class="faq__answer"><p>Nej. Den ensidede p-værdi er halvdelen af den tosidede. Den tosidede test undersøger, om gennemsnittet blot er <em>forskelligt</em> fra referenceværdien; den ensidede undersøger en bestemt retning (større eller mindre) og er kun gyldig, hvis den retning blev fastlagt før dataindsamlingen.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Til at sammenligne gennemsnit, når populationens standardafvigelse er ukendt.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Estimer det sandsynlige interval for et gennemsnit eller en proportion.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign en proportion med en referenceværdi.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Brug for statistik inden for dit felt?</h2>
+        <p>Se de praktiske statistik-guides til sygepleje, psykologi og marketing.</p>
+        <a class="btn btn--light btn--lg" href="/#guias">Se guides efter område</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('z-form'), result = $('z-result'), errBox = $('z-error');
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('z-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    $('z-mean').value = '104'; $('z-sigma').value = '15';
+    $('z-n').value = '60'; $('z-mu0').value = '100';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var mean = parseNum($('z-mean').value);
+    var sigma = parseNum($('z-sigma').value);
+    var n = parseNum($('z-n').value);
+    var mu0 = parseNum($('z-mu0').value);
+    if ([mean, sigma, n, mu0].some(function (v) { return isNaN(v); })) {
+      showError('Udfyld stikprøvegennemsnittet, populationens standardafvigelse, stikprøvestørrelsen og sammenligningsværdien.');
+      return;
+    }
+    var conf = parseFloat(Fmt.radio('z-conf'));
+    var tails = parseInt(Fmt.radio('z-tails'), 10);
+    var r = Stats.zTest({ mean: mean, sigma: sigma, n: n, mu0: mu0, confidence: conf, tails: tails });
+    if (r.error) { showError(r.error); return; }
+    render(r, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, conf) {
+    var sig = r.significant;
+
+    var metrics =
+      metric('z-statistik', Fmt.num(r.z, 3)) +
+      metric('P-værdi', Fmt.p(r.pValue), r.tails === 1 ? 'ensidet' : 'tosidet') +
+      metric('Standardfejl', Fmt.num(r.se, 3)) +
+      metric('Gennemsnit af stikprøven', Fmt.num(r.estimate, 3)) +
+      metric('Kritisk z', Fmt.num(r.zCritical, 3), Fmt.pct(conf, 0)) +
+      metric('KI ' + Fmt.pct(conf, 0), '[' + Fmt.num(r.ciLow, 2) + '; ' + Fmt.num(r.ciHigh, 2) + ']');
+
+    var headline = sig ? 'Statistisk signifikant forskel' : 'Ikke signifikant forskel';
+    var sub = sig
+      ? 'P-værdien er under signifikansniveauet — forskellen er sandsynligvis reel.'
+      : 'Der er ikke tilstrækkelige belæg for at sige, at gennemsnittet adskiller sig fra sammenligningsværdien.';
+
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + Fmt.pct(conf, 0) + ' konfidens</strong> er resultatet ' +
+        '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'Stikprøvens gennemsnit er <strong>' + Fmt.num(r.estimate, 3) + '</strong>, med et ' +
+        Fmt.pct(conf, 0) + ' interval mellem ' + Fmt.num(r.ciLow, 3) + ' og ' + Fmt.num(r.ciHigh, 3) + '. ' +
+        'Da intervallet ikke indeholder sammenligningsværdien, betragtes forskellen som reel.</p>';
+    } else {
+      interp = '<p>Med ' + Fmt.pct(conf, 0) + ' konfidens er resultatet <strong>ikke ' +
+        'statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        Fmt.pct(conf, 0) + '-konfidensintervallet (fra ' + Fmt.num(r.ciLow, 3) +
+        ' til ' + Fmt.num(r.ciHigh, 3) + ') er stadig foreneligt med sammenligningsværdien — ' +
+        'man kan ikke sige, at populationens gennemsnit adskiller sig fra den.</p>';
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

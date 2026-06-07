@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Wilcoxon og Mann-Whitney beregner — Online og gratis</title>
+<meta name="description" content="Gratis Wilcoxon og Mann-Whitney beregner på dansk: ikke-parametriske tests til at sammenligne to grupper, uafhængige eller parrede, uden antagelse om normalfordeling. U- eller W-teststørrelse, p-værdi og fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/wilcoxon.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Wilcoxon og Mann-Whitney beregner">
+<meta property="og:description" content="Ikke-parametriske tests til at sammenligne to grupper, uafhængige eller parrede, uden antagelse om normalfordeling. Gratis og på dansk.">
+<meta property="og:url" content="https://statistikberegner.dk/wilcoxon.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Wilcoxon og Mann-Whitney beregner",
+  "url": "https://statistikberegner.dk/wilcoxon.html",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Beregner til de ikke-parametriske Wilcoxon- og Mann-Whitney-tests til at sammenligne to uafhængige eller parrede grupper uden antagelse om normalfordeling."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Wilcoxon og Mann-Whitney beregner","item":"https://statistikberegner.dk/wilcoxon.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er forskellen på Wilcoxon- og Mann-Whitney-testen?","acceptedAnswer":{"@type":"Answer","text":"Mann-Whitney testen sammenligner to uafhængige grupper (forskellige personer i hver gruppe); Wilcoxons test af fortegnsrangordener sammenligner to målinger på de samme individer, fx før og efter en intervention."}},
+    {"@type":"Question","name":"Hvornår skal man bruge en ikke-parametrisk test?","acceptedAnswer":{"@type":"Answer","text":"Brug Wilcoxon eller Mann-Whitney, når data ikke følger en normalfordeling, når der er ekstreme værdier, når stikprøven er lille, eller når data er ordinale. De er alternativet til t-testen i disse situationer."}},
+    {"@type":"Question","name":"Hvad er Mann-Whitneys U-teststørrelse?","acceptedAnswer":{"@type":"Answer","text":"U-teststørrelsen måler, hvor meget rangordenerne fra én gruppe overlapper dem fra den anden. Ekstreme værdier af U viser, at én gruppe har en tendens til at have systematisk større værdier end den anden."}},
+    {"@type":"Question","name":"Sammenligner Mann-Whitney testen gennemsnit eller medianer?","acceptedAnswer":{"@type":"Answer","text":"Testen sammenligner de to gruppers fordelinger via rangordener. Når fordelingerne har samme form, kan den tolkes som en sammenligning af medianer."}},
+    {"@type":"Question","name":"Skal jeg antage normalfordeling for at bruge disse tests?","acceptedAnswer":{"@type":"Answer","text":"Nej. Det er netop fordelen ved ikke-parametriske tests: de kræver ikke, at data følger en normalfordeling, fordi de arbejder med værdiernes rækkefølge (rangordener) og ikke selve målingerne."}},
+    {"@type":"Question","name":"Hvor mange data skal der til testen?","acceptedAnswer":{"@type":"Answer","text":"Denne beregner kræver mindst 2 værdier pr. gruppe. Da p-værdien bruger normalapproksimationen, gør stikprøver med omkring 8 til 10 observationer eller flere resultatet mere pålideligt."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Wilcoxon og Mann-Whitney beregner</li>
+        </ol>
+      </nav>
+      <h1>Wilcoxon og Mann-Whitney beregner</h1>
+      <p class="lead">Sammenlign <strong>to grupper uden antagelse om normalfordeling</strong> — ikke-parametriske tests for uafhængige stikprøver (Mann-Whitney) eller parrede (Wilcoxon), med p-værdi og fortolkning.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="wx-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Beregn den ikke-parametriske test
+      </h2>
+      <p class="calculator__hint">Vælg testtype og indsæt data fra de to grupper. Testen arbejder med <strong>værdiernes rækkefølge</strong> og kræver ikke en normalfordeling.</p>
+
+      <fieldset class="field-group">
+        <legend>Testtype</legend>
+        <div class="segmented" role="radiogroup" aria-label="Testtype">
+          <label><input type="radio" name="wx-mode" value="ind" checked><span>To uafhængige stikprøver</span></label>
+          <label><input type="radio" name="wx-mode" value="paired"><span>Parrede stikprøver</span></label>
+        </div>
+      </fieldset>
+
+      <div data-panel="ind">
+        <fieldset class="field-group">
+          <legend>Dine data</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="wx-g1">Gruppe 1</label>
+              <textarea class="input" id="wx-g1" rows="4" placeholder="F.eks.: 12 15 14 18 11 16" autocomplete="off"></textarea>
+            </div>
+            <div class="field">
+              <label for="wx-g2">Gruppe 2</label>
+              <textarea class="input" id="wx-g2" rows="4" placeholder="F.eks.: 20 22 19 25 21 23" autocomplete="off"></textarea>
+            </div>
+          </div>
+          <p class="help">Indsæt værdierne adskilt af mellemrum, komma eller linjeskift.</p>
+        </fieldset>
+      </div>
+
+      <div data-panel="paired" hidden>
+        <fieldset class="field-group">
+          <legend>Dine parrede data</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="wx-before">Før</label>
+              <textarea class="input" id="wx-before" rows="4" placeholder="F.eks.: 8 7 9 6 8 7" autocomplete="off"></textarea>
+            </div>
+            <div class="field">
+              <label for="wx-after">Efter</label>
+              <textarea class="input" id="wx-after" rows="4" placeholder="F.eks.: 6 5 8 5 6 4" autocomplete="off"></textarea>
+            </div>
+          </div>
+          <p class="help">Indsæt værdierne i samme rækkefølge som parrene; de to kolonner skal have samme antal tal.</p>
+        </fieldset>
+      </div>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="wx-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="wx-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="wx-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Testtype</label>
+            <div class="segmented" role="radiogroup" aria-label="Testtype">
+              <label><input type="radio" name="wx-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="wx-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="wx-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn</button>
+        <button class="btn btn--ghost" type="button" id="wx-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="wx-result" hidden aria-live="polite"></section>
+    </form>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er Wilcoxon- og Mann-Whitney-tests</a></li>
+          <li><a href="#nomes">Navnene forklaret</a></li>
+          <li><a href="#quando">Hvornår skal de bruges</a></li>
+          <li><a href="#como">Sådan fungerer de</a></li>
+          <li><a href="#interpretar">Sådan tolker du resultatet</a></li>
+          <li><a href="#exemplo">Gennemregnet eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er Wilcoxon- og Mann-Whitney-tests</h2>
+      <p><strong>Mann-Whitney</strong>- og <strong>Wilcoxon</strong>-testen er <strong>ikke-parametriske</strong> procedurer til at sammenligne to grupper. De besvarer det samme spørgsmål som <a href="/t-test.html">t-testen</a> — adskiller de to grupper sig? — men uden at kræve, at data følger en normalfordeling.</p>
+      <p>Ordet "ikke-parametrisk" betyder, at testen ikke afhænger af parametre som gennemsnit og standardafvigelse i en normalkurve. I stedet for at arbejde med de oprindelige værdier arbejder disse tests med <strong>rækkefølgen</strong> af værdierne — de såkaldte <strong>rangordener</strong> (eller <em>ranks</em>). Det er nøgleidéen: hvis du sorterer alle data fra mindst til størst, og én gruppe systematisk ligger på de højeste pladser, er der evidens for, at den gruppe har en tendens til at have større værdier.</p>
+      <p>Fordi de arbejder med pladser, ikke med selve målingerne, er disse tests <strong>robuste over for ekstreme værdier</strong> og fungerer godt selv med små stikprøver eller med ordinale data (karakterer fra 1 til 5, tilfredshedsgrader, smerteskalaer). De er i praksis de mest brugte alternativer til t-testen, når dens antagelser ikke holder.</p>
+      <p>Denne beregner dækker begge scenarier: <strong>Mann-Whitney</strong> testen til <strong>to uafhængige grupper</strong> og <strong>Wilcoxons test af fortegnsrangordener</strong> til <strong>parrede stikprøver</strong> (de samme enheder målt to gange).</p>
+
+      <h2 id="nomes">Navnene forklaret</h2>
+      <p>Navngivningen af disse tests forvirrer mange, fordi navnet "Wilcoxon" optræder flere steder. Det er værd at gennemgå roligt:</p>
+      <ul>
+        <li><strong>Mann-Whitney testen (eller Mann-Whitneys U):</strong> sammenligner <em>to uafhængige grupper</em>. Den blev foreslået af Henry Mann og Donald Whitney i 1947 som en generalisering af en tidligere idé fra Frank Wilcoxon. Derfor kaldes den også <strong>Wilcoxons rangsumstest</strong> — de to navne betegner præcis samme test og giver samme p-værdi.</li>
+        <li><strong>Wilcoxons test af fortegnsrangordener:</strong> sammenligner <em>to parrede målinger</em> på de samme individer. Den er det ikke-parametriske svar på den parrede t-test. "Fortegns" kommer af, at testen tager højde for <em>fortegnet</em> af hver forskel (om den steg eller faldt).</li>
+      </ul>
+      <p>Kort sagt: <strong>"rangsum"</strong> er testen for uafhængige grupper (Mann-Whitney); <strong>"fortegnsrangordener"</strong> er testen for parrede data (parret Wilcoxon). At vælge mellem dem er samme valg som mellem t-testen for to stikprøver og den parrede t-test — det afhænger af, om data er målt på samme enheder eller ej.</p>
+
+      <h2 id="quando">Hvornår skal de bruges</h2>
+      <p>Wilcoxon og Mann-Whitney er det <strong>ikke-parametriske alternativ til <a href="/t-test.html">t-testen</a></strong>. Overvej at bruge dem, når:</p>
+      <ul>
+        <li><strong>Data ikke er normalfordelte.</strong> Skæve fordelinger, lange haler eller flere toppunkter bryder t-testens antagelse om normalitet. Rangtests gør ikke den antagelse.</li>
+        <li><strong>Der er ekstreme værdier (outliers).</strong> Da beregningen bruger pladser og ikke selve værdierne, forvrænger et meget stort eller meget lille tal ikke resultatet i samme grad, som det ville forvrænge et gennemsnit.</li>
+        <li><strong>Stikprøven er lille.</strong> Med få data er det svært at tjekke normalitet, og t-testen bliver sårbar. Rangtests er et mere sikkert valg.</li>
+        <li><strong>Data er ordinale.</strong> Når variablen er en orden eller en skala (tilfredshed, grad af enighed, smerteniveau), giver det mening at sammenligne pladser, ikke gennemsnit.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Og hvis data er normalfordelte?
+        </div>
+        <p>Når t-testens antagelser er rimelige, så foretræk <a href="/t-test.html">t-testen</a>: den har en smule mere styrke til at opdage reelle forskelle. Rangtests brillerer netop, når disse antagelser brydes — og selv her mister de oftest meget lidt styrke.</p>
+      </div>
+      <p>Hvis du skal sammenligne <strong>tre eller flere grupper</strong> uden antagelse om normalfordeling, er vejen Kruskal-Wallis testen, der findes i <a href="/anova.html">k-stikprøver beregneren</a>.</p>
+
+      <h2 id="como">Sådan fungerer de</h2>
+      <p>Mekanikken i de to tests starter med samme idé: erstat værdierne med deres <strong>rangordener</strong>. Rangordener er datas pladser, når alt er sorteret fra mindst til størst — den mindste værdi får rang 1, den næste rang 2, og så videre. Når der er ens værdier (ties), får de alle den <em>gennemsnitlige rang</em> for de pladser, de ville have indtaget.</p>
+      <p><strong>I Mann-Whitney testen</strong> (uafhængige grupper) lægges de to grupper sammen, alt sorteres, og rangordenerne fra hver gruppe summeres. Ud fra denne sum beregnes <strong>U-teststørrelsen</strong>, som måler graden af overlap mellem grupperne:</p>
+      <div class="formula">U = R<sub>1</sub> − n<sub>1</sub>(n<sub>1</sub> + 1) ÷ 2
+        <span class="formula__where">R<sub>1</sub> er summen af rangordener for gruppe 1 og n<sub>1</sub> dens størrelse. Testen bruger den mindste af U₁ og U₂.</span>
+      </div>
+      <p><strong>I den parrede Wilcoxon-test</strong> beregnes forskellen for hvert par, disse forskelle sorteres efter den absolutte værdi, og rangordenerne for henholdsvis de positive og negative forskelle summeres separat. <strong>W-teststørrelsen</strong> er den mindste af de to summer. Forskelle, der er præcis nul, fjernes.</p>
+      <p>For at finde <strong>p-værdien</strong> konverterer denne beregner til sidst U eller W til en z-score ved hjælp af <strong>normalapproksimationen</strong> — gyldig fordi fordelingen af U og W med rimelig stikprøvestørrelse nærmer sig normalfordelingen:</p>
+      <div class="formula">z = (teststørrelse − forventet middelværdi) ÷ standardfejl
+        <span class="formula__where">Middelværdien og standardfejlen afhænger af stikprøvestørrelserne og af en korrektion for ties.</span>
+      </div>
+      <p>Z-scoren oversættes derefter til en p-værdi via normalkurven. En lille p-værdi viser, at det observerede overlap mellem grupperne ville være usandsynligt, hvis de to kom fra samme fordeling.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="interpretar">Sådan tolker du resultatet</h2>
+      <p>Beregneren returnerer et kort med konklusionen og nogle nøgletal. De vigtigste:</p>
+      <ul>
+        <li><strong>U- eller W-teststørrelse</strong> — det numeriske resumé af overlappet mellem grupperne (U for uafhængige stikprøver, W for parrede). Alene siger den lidt; den skal sammenlignes med fordelingen.</li>
+        <li><strong>Z-teststørrelse</strong> — den standardiserede teststørrelse, der bruges i normalapproksimationen.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved et tilfælde, hvis de to grupper kom fra samme fordeling. Hvis den er mindre end signifikansniveauet (normalt 0,05), er resultatet signifikant.</li>
+        <li><strong>Medianer (uafhængig tilstand)</strong> — medianen for hver gruppe hjælper med at se <em>retningen</em> af forskellen: hvilken gruppe der har en tendens til større værdier.</li>
+        <li><strong>Stikprøvestørrelser</strong> — antallet af observationer brugt i testen.</li>
+      </ul>
+      <p>Konklusionen er direkte: hvis p-værdien er under signifikansniveauet, er der en <strong>statistisk signifikant forskel</strong> mellem grupperne — de kommer sandsynligvis fra forskellige fordelinger. Ellers er der ikke tilstrækkelig evidens til at sige, at de adskiller sig.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Sammenligner fordelinger, ikke ligefrem gennemsnit
+        </div>
+        <p>Strengt taget sammenligner disse tests de to gruppers <strong>fordelinger</strong>. Kun når fordelingerne har samme form, kan konklusionen læses som en sammenligning af <strong>medianer</strong>. Derfor viser beregneren medianerne: de giver den mest almindelige praktiske aflæsning. Husk også, at p-værdien her bruger normalapproksimationen — med meget små stikprøver skal resultatet behandles som vejledende.</p>
+      </div>
+
+      <h2 id="exemplo">Gennemregnet eksempel</h2>
+      <p>En forsker sammenligner tilfredshedsscoren hos kunder i to butikker. <strong>Butik A</strong> fik karaktererne <strong>12, 15, 14, 18, 11, 16</strong>; <strong>Butik B</strong> fik <strong>20, 22, 19, 25, 21, 23</strong>. Da det er forskellige kunder, er den rette test Mann-Whitney. Adskiller karaktererne sig mellem butikkerne?</p>
+      <ol class="steps">
+        <li><strong>Sortér og tildel rangordener:</strong> ved at sammenlægge de 12 værdier og sortere ligger karaktererne fra Butik A (11 til 18) på de laveste pladser, og dem fra Butik B (19 til 25) på de højeste. Summen af rangordener for Butik A er 1+2+3+4+5+6 = 21; for Butik B er det 7+8+9+10+11+12 = 57.</li>
+        <li><strong>U-teststørrelse:</strong> U₁ = 21 − 6·7÷2 = 0 og U₂ = 6·6 − 0 = 36. Testen bruger U = 0 — der er intet overlap mellem grupperne.</li>
+        <li><strong>Normalapproksimation:</strong> med n₁ = n₂ = 6 er den forventede middelværdi for U 18, og standardfejlen ≈ 6,24, hvilket giver en z-score ≈ −2,88.</li>
+        <li><strong>P-værdi:</strong> for z ≈ −2,88 er den tosidede p-værdi ≈ 0,004.</li>
+      </ol>
+      <p>Da 0,004 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong>: tilfredsheden adskiller sig mellem butikkerne, hvor Butik B systematisk viser højere karakterer (median 21,5 mod 14,5 for Butik A). Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er forskellen på Wilcoxon- og Mann-Whitney-testen?</summary>
+          <div class="faq__answer"><p>Mann-Whitney testen sammenligner to uafhængige grupper — forskellige personer i hver gruppe. Wilcoxons test af fortegnsrangordener sammenligner to målinger på de samme individer, fx før og efter en intervention. Det er det samme valg, som man har mellem <a href="/t-test.html">t-testen</a> for to stikprøver og den parrede t-test.</p></div>
+        </details>
+        <details>
+          <summary>Hvornår skal jeg bruge en ikke-parametrisk test?</summary>
+          <div class="faq__answer"><p>Når data ikke følger en normalfordeling, når der er ekstreme værdier, når stikprøven er lille, eller når variablen er ordinal. I de tilfælde er Wilcoxon og Mann-Whitney mere pålidelige end t-testen.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er Mann-Whitneys U-teststørrelse?</summary>
+          <div class="faq__answer"><p>Det er et tal, der måler, hvor meget rangordenerne fra én gruppe overlapper dem fra den anden. Når de to grupper blander sig meget, ligger U tæt på den forventede værdi; når én gruppe dominerer de høje pladser, ligger U yderst — et tegn på forskel mellem grupperne.</p></div>
+        </details>
+        <details>
+          <summary>Sammenligner disse tests gennemsnit eller medianer?</summary>
+          <div class="faq__answer"><p>Teknisk set sammenligner de hele fordelingerne via rangordener. Når de to fordelinger har samme form, kan resultatet tolkes som en sammenligning af medianer — den mest almindelige praktiske aflæsning.</p></div>
+        </details>
+        <details>
+          <summary>Skal jeg antage normalfordeling?</summary>
+          <div class="faq__answer"><p>Nej. Det er hovedfordelen ved ikke-parametriske tests: de arbejder med værdiernes rækkefølge (rangordener) og ikke med selve målingerne, så de kræver ikke, at data følger en normalkurve.</p></div>
+        </details>
+        <details>
+          <summary>Hvor mange data skal der til?</summary>
+          <div class="faq__answer"><p>Denne beregner kræver mindst 2 værdier pr. gruppe. Da p-værdien bruger normalapproksimationen, gør stikprøver med omkring 8 til 10 observationer eller flere resultatet mere pålideligt. Med meget små stikprøver bør p-værdien tolkes som vejledende.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>Students t-test</h3><p>Den parametriske version til at sammenligne gennemsnit.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/anova.html"><h3>ANOVA og k-stikprøver</h3><p>Til at sammenligne tre eller flere grupper.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/guides/vaelg-test.html"><h3>Hvilken test skal jeg bruge?</h3><p>En guide til at vælge den rette statistiske test.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>I tvivl om hvilken test du skal bruge?</h2>
+        <p>Se guiden, der hjælper dig med at vælge den rette statistiske test til din datatype.</p>
+        <a class="btn btn--light btn--lg" href="/guides/vaelg-test.html">Åbn guiden til valg af test</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('wx-form'), result = $('wx-result'), errBox = $('wx-error');
+  var panels = document.querySelectorAll('[data-panel]');
+
+  function currentMode() { return Fmt.radio('wx-mode'); }
+
+  function syncPanels() {
+    var mode = currentMode();
+    for (var i = 0; i < panels.length; i++) {
+      panels[i].hidden = panels[i].getAttribute('data-panel') !== mode;
+    }
+  }
+  var modeRadios = document.querySelectorAll('input[name="wx-mode"]');
+  for (var m = 0; m < modeRadios.length; m++) {
+    modeRadios[m].addEventListener('change', syncPanels);
+  }
+  syncPanels();
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  // Konverterer en fri tekst til et array af tal.
+  function parseList(texto) {
+    var partes = String(texto).split(/[\s,;]+/);
+    var nums = [];
+    for (var i = 0; i < partes.length; i++) {
+      if (partes[i] === '') continue;
+      var v = parseNum(partes[i]);
+      if (!isNaN(v)) nums.push(v);
+    }
+    return nums;
+  }
+
+  // Median for et array af tal.
+  function median(arr) {
+    if (!arr.length) return NaN;
+    var s = arr.slice().sort(function (a, b) { return a - b; });
+    var mid = Math.floor(s.length / 2);
+    return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+  }
+
+  $('wx-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('input[name="wx-mode"][value="ind"]').checked = true;
+    syncPanels();
+    $('wx-g1').value = '12, 15, 14, 18, 11, 16';
+    $('wx-g2').value = '20, 22, 19, 25, 21, 23';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var mode = currentMode();
+    var conf = parseFloat(Fmt.radio('wx-conf'));
+    var tails = parseInt(Fmt.radio('wx-tails'), 10);
+    var r, extra;
+
+    if (mode === 'ind') {
+      var g1 = parseList($('wx-g1').value);
+      var g2 = parseList($('wx-g2').value);
+      if (g1.length < 2 || g2.length < 2) {
+        showError('Indsæt mindst 2 gyldige tal i hver gruppe.');
+        return;
+      }
+      r = Stats.mannWhitneyTest({ group1: g1, group2: g2, confidence: conf, tails: tails });
+      if (r.error) { showError(r.error); return; }
+      extra = { med1: median(g1), med2: median(g2) };
+    } else {
+      var before = parseList($('wx-before').value);
+      var after = parseList($('wx-after').value);
+      if (before.length < 2 || after.length < 2) {
+        showError('Indsæt mindst 2 gyldige tal i hver kolonne.');
+        return;
+      }
+      if (before.length !== after.length) {
+        showError('Kolonnerne "Før" og "Efter" skal have samme antal tal.');
+        return;
+      }
+      r = Stats.wilcoxonSignedRankTest({ before: before, after: after, confidence: conf, tails: tails });
+      if (r.error) { showError(r.error); return; }
+      extra = {};
+    }
+    render(r, mode, conf, extra);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, mode, conf, extra) {
+    var sig = r.significant;
+    var tailTxt = r.tails === 1 ? 'ensidet' : 'tosidet';
+    var metrics, testName;
+
+    if (mode === 'ind') {
+      testName = 'Mann-Whitney testen';
+      metrics =
+        metric('U-teststørrelse', Fmt.num(r.U, 2)) +
+        metric('Z-teststørrelse', Fmt.num(r.z, 3)) +
+        metric('P-værdi', Fmt.p(r.pValue), tailTxt) +
+        metric('Median gruppe 1', Fmt.num(extra.med1, 2)) +
+        metric('Median gruppe 2', Fmt.num(extra.med2, 2)) +
+        metric('Stikprøvestørrelser', 'n₁ = ' + Fmt.int(r.n1) + ', n₂ = ' + Fmt.int(r.n2));
+    } else {
+      testName = 'Wilcoxons test af fortegnsrangordener';
+      metrics =
+        metric('W-teststørrelse', Fmt.num(r.W, 2)) +
+        metric('Sum af positive rangordener', Fmt.num(r.wPlus, 1)) +
+        metric('Sum af negative rangordener', Fmt.num(r.wMinus, 1)) +
+        metric('Z-teststørrelse', Fmt.num(r.z, 3)) +
+        metric('P-værdi', Fmt.p(r.pValue), tailTxt) +
+        metric('Gyldige par', Fmt.int(r.n));
+    }
+
+    var headline = sig ? 'Statistisk signifikant forskel' : 'Ikke-signifikant forskel';
+    var sub = sig
+      ? 'P-værdien faldt under signifikansniveauet — grupperne adskiller sig sandsynligvis.'
+      : 'Der er ikke tilstrækkelig evidens til at sige, at grupperne adskiller sig.';
+
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + Fmt.pct(conf, 0) + ' konfidens</strong> peger ' + testName +
+        ' på en <strong>statistisk signifikant forskel</strong> mellem grupperne: ' +
+        'p-værdien (' + Fmt.p(r.pValue) + ') er mindre end signifikansniveauet (' +
+        Fmt.pct(r.alpha, 0) + '). De to fordelinger er sandsynligvis ikke ens.</p>';
+    } else {
+      interp = '<p>Med ' + Fmt.pct(conf, 0) + ' konfidens peger ' + testName +
+        ' <strong>ikke</strong> på en statistisk signifikant forskel: ' +
+        'p-værdien (' + Fmt.p(r.pValue) + ') er større end eller lig med signifikansniveauet (' +
+        Fmt.pct(r.alpha, 0) + '). Data er forenelige med hypotesen om, at de to grupper ' +
+        'kommer fra samme fordeling.</p>';
+    }
+    if (mode === 'ind') {
+      interp += '<p>De observerede medianer var <strong>' + Fmt.num(extra.med1, 2) +
+        '</strong> i gruppe 1 og <strong>' + Fmt.num(extra.med2, 2) + '</strong> i gruppe 2.</p>';
+    }
+    interp += '<p>Denne test sammenligner de to gruppers <strong>fordelinger</strong> (og, når de har ' +
+      'samme form, deres <strong>medianer</strong>), uden at antage normalfordeling. ' +
+      'P-værdien er fundet via <strong>normalapproksimationen</strong> af testens teststørrelse.</p>';
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

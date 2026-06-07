@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Statistik for psykologi: praktisk og letforståelig guide</title>
+<meta name="description" content="Statistik-guide til psykologi på dansk: t-test, effektstørrelse (Cohens d), p-værdi og statistisk styrke anvendt i forskning, bacheloropgaver og klinik.">
+<link rel="canonical" href="https://statistikberegner.dk/guides/statistik-psykologi.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Statistik for psykologi: praktisk og letforståelig guide">
+<meta property="og:description" content="T-test, effektstørrelse, p-værdi og statistisk styrke forklaret letforståeligt for psykologisk forskning.">
+<meta property="og:url" content="https://statistikberegner.dk/guides/statistik-psykologi.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Statistik for psykologi: praktisk og letforståelig guide",
+  "description": "Letforståelig statistik-guide til psykologi: t-test, effektstørrelse, p-værdi og statistisk styrke i empirisk forskning.",
+  "inLanguage": "da",
+  "mainEntityOfPage": "https://statistikberegner.dk/guides/statistik-psykologi.html",
+  "image": "https://statistikberegner.dk/og-image.png",
+  "author": {"@type": "Organization", "name": "Statistik Beregner"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Statistik Beregner",
+    "logo": {"@type": "ImageObject", "url": "https://statistikberegner.dk/og-image.png"}
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Guides","item":"https://statistikberegner.dk/#guias"},
+    {"@type":"ListItem","position":3,"name":"Statistik for psykologi","item":"https://statistikberegner.dk/guides/statistik-psykologi.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Skal man kunne statistik for at læse psykologi?","acceptedAnswer":{"@type":"Answer","text":"Ja. Selv i klinisk arbejde kræver det at læse videnskabelige artikler, vurdere en interventions effekt og lave bacheloropgaver, specialer eller ph.d.-afhandlinger, at man forstår p-værdi, effektstørrelse og stikprøvestørrelse. Statistik er sproget for empirisk forskning i psykologi."}},
+    {"@type":"Question","name":"Hvad betyder p < 0,05 i psykologisk forskning?","acceptedAnswer":{"@type":"Answer","text":"Det betyder, at hvis der ikke var nogen reel effekt, ville sandsynligheden for at opnå et resultat så ekstremt som dit være under 5 %. Det er ikke sandsynligheden for, at hypotesen er sand, og siger intet om effektens størrelse eller betydning."}},
+    {"@type":"Question","name":"Hvad er forskellen på p-værdi og effektstørrelse?","acceptedAnswer":{"@type":"Answer","text":"P-værdien viser, om en effekt sandsynligvis findes; effektstørrelsen viser, hvor stor den er. Med stor stikprøve bliver lillebitte forskelle signifikante. Derfor anbefaler APA altid at rapportere effektstørrelsen, fx Cohens d."}},
+    {"@type":"Question","name":"Hvad er Cohens d?","acceptedAnswer":{"@type":"Answer","text":"Det er et standardiseret mål for effektstørrelse for forskellen mellem to gennemsnit. Det udtrykker forskellen i standardafvigelser. Som referencepunkt er 0,2 en lille effekt, 0,5 mellem og 0,8 stor."}},
+    {"@type":"Question","name":"Hvorfor er statistisk styrke på 0,80 standarden?","acceptedAnswer":{"@type":"Answer","text":"En styrke på 0,80 betyder 80 % chance for at opdage en effekt, der faktisk findes. Det er en konvention, der balancerer omkostningen ved at indsamle flere deltagere med risikoen for et falsk negativt (type II-fejl) på 20 %."}},
+    {"@type":"Question","name":"Hvilken statistisk test skal jeg bruge i min undersøgelse?","acceptedAnswer":{"@type":"Answer","text":"Det afhænger af formålet: t-test til at sammenligne gennemsnit i to grupper, ANOVA til tre eller flere grupper, Pearson-korrelation til sammenhængen mellem to numeriske variable og chi² til sammenhængen mellem to kategoriske variable."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/#guias">Guides</a></li>
+          <li>Statistik for psykologi</li>
+        </ol>
+      </nav>
+      <h1>Statistik for psykologi</h1>
+      <p class="lead">En letforståelig guide til <strong>t-test, p-værdi, effektstørrelse og statistisk styrke</strong> — værktøjerne, der omsætter adfærdsdata til troværdige konklusioner i psykologisk forskning.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#por-que">Hvorfor psykologi afhænger af statistik</a></li>
+          <li><a href="#variaveis">Variable og målestoksforhold</a></li>
+          <li><a href="#hipotese">Hypotesetesten trin for trin</a></li>
+          <li><a href="#p-significa">Hvad p &lt; 0,05 virkelig betyder</a></li>
+          <li><a href="#tamanho-efeito">Effektstørrelse: ud over signifikansen</a></li>
+          <li><a href="#poder">Statistisk styrke og stikprøvestørrelse</a></li>
+          <li><a href="#replicacao">Replikationskrisen i psykologien</a></li>
+          <li><a href="#testes">Oversigt over de mest brugte test</a></li>
+          <li><a href="#exemplo">Et praktisk løst eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="por-que">Hvorfor psykologi afhænger af statistik</h2>
+      <p>Psykologi er en empirisk videnskab: dens udsagn om sind og adfærd gælder ikke ved intuition eller autoritet, men fordi de er afprøvet med data. Og dér ligger udfordringen. I modsætning til at måle en persons højde indebærer det at måle <strong>angst</strong>, <strong>hukommelse</strong>, <strong>motivation</strong> eller <strong>trivsel</strong> meget variation: folk er forskellige, og samme person varierer fra dag til dag. Statistik er præcis det værktøj, der gør det muligt at se et reelt mønster midt i variationen — at adskille <em>signalet</em> (en sand effekt) fra <em>støjen</em> (den tilfældige variation).</p>
+      <p>Derfor optræder statistik i praktisk talt alle faser af psykologens uddannelse og praksis:</p>
+      <ul>
+        <li><strong>Læse videnskabelige artikler.</strong> At følge litteraturen — en grundbetingelse for evidensbaseret praksis — kræver at man kan tolke tabeller, p-værdier, konfidensintervaller og effektstørrelser.</li>
+        <li><strong>Bacheloropgave, kandidatspeciale og ph.d.</strong> Næsten alle bachelorprojekter og alle specialer eller afhandlinger i psykologi indsamler data og skal analysere dem korrekt for at understøtte konklusionerne.</li>
+        <li><strong>Vurdere interventioner.</strong> At vide, om en terapi, et kognitivt træningsprogram eller et forebyggelsesprogram virkelig virker, er et statistisk spørgsmål.</li>
+        <li><strong>Bygge og bruge psykologiske test.</strong> Psykometri — fundamentet under vurderingsinstrumenter — er anvendt statistik på måling.</li>
+      </ul>
+      <p>Den gode nyhed: du behøver ikke blive matematiker. Du skal forstå <em>hvad hvert tal betyder</em>, og <em>hvornår hver test passer</em>. Det er det, denne guide udfolder.</p>
+
+      <h2 id="variaveis">Variable og målestoksforhold</h2>
+      <p>Enhver analyse starter med at forstå, <strong>hvad</strong> du måler. En <strong>variabel</strong> er enhver egenskab, der kan antage forskellige værdier mellem personer eller situationer — alder, score på en depressionsskala, type behandling. I et studie skelner vi mellem to roller:</p>
+      <ul>
+        <li><strong>Uafhængig variabel (UV):</strong> den, forskeren manipulerer eller bruger til at danne grupper — fx interventionstype (terapi A vs. terapi B).</li>
+        <li><strong>Afhængig variabel (AV):</strong> den, der måles som resultat, og som forventes at "afhænge" af UV'en — fx angstscoren ved studiets afslutning.</li>
+      </ul>
+      <p>Det andet nøglebegreb er <strong>målestoksforhold</strong>, fordi det afgør, hvilke beregninger der giver mening. De tre mest relevante i psykologi er:</p>
+      <ul>
+        <li><strong>Nominal:</strong> kategorier uden rækkefølge. Køn, civilstand, eksperimentel gruppe. Du kan kun tælle hyppigheder — der findes ikke et "gennemsnit af civilstand".</li>
+        <li><strong>Ordinal:</strong> kategorier med rækkefølge, men uden defineret afstand mellem dem. Uddannelsesniveau (grundskole, gymnasium, videregående) eller en rangordning af præferencer. Vi kender rækkefølgen, ikke "trinstørrelsen".</li>
+        <li><strong>Interval:</strong> numeriske værdier med lige store og meningsfulde afstande. Den samlede score på et depressionsinventar behandles i praksis som interval — en forskel på 5 point betyder det samme på et hvilket som helst punkt på skalaen.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Konstrukter og psykometriske skalaer
+        </div>
+        <p>Psykologien måler <strong>konstrukter</strong> — abstrakte begreber som intelligens, selvværd eller stress — som ingen observerer direkte. Løsningen er at bruge en <strong>psykometrisk skala</strong>: flere items (spørgsmål), hvis sum estimerer konstruktet. For at kunne stole på den sum skal instrumentet have god <em>reliabilitet</em> (måler konsistent) og <em>validitet</em> (måler faktisk det, det skal).</p>
+      </div>
+
+      <h2 id="hipotese">Hypotesetesten trin for trin</h2>
+      <p><strong>Hypotesetesten</strong> er den centrale procedure i statistisk inferens: den gør det muligt med forsigtighed at generalisere fra en <em>stikprøve</em> til en <em>population</em>. Logikken ligner en retssag — vi starter med formodningen om "uskyld" og opgiver den kun ved stærk evidens. Trinene er:</p>
+      <ol class="steps">
+        <li><strong>Formulér hypoteserne.</strong> <strong>Nulhypotesen (H₀)</strong> hævder, at der <em>ikke er nogen effekt</em> — fx at den gennemsnitlige angst er ens i de to grupper. <strong>Alternativhypotesen (H₁)</strong> hævder, at der <em>er</em> en forskel. Det er H₀, der bliver afprøvet.</li>
+        <li><strong>Definér signifikansniveauet (α).</strong> Før man ser data, vælger man den acceptable risiko for at tage fejl. I psykologi er standarden α = 0,05 (5 %).</li>
+        <li><strong>Indsaml data og beregn teststatistikken.</strong> Ud fra stikprøven beregnes en værdi (fx t-statistikken), der opsummerer, hvor langt data ligger fra H₀.</li>
+        <li><strong>Find p-værdien.</strong> <strong>P-værdien</strong> er sandsynligheden for at observere et resultat så eller mere ekstremt end dit, hvis H₀ er sand.</li>
+        <li><strong>Beslut.</strong> Hvis p-værdi &lt; α, <em>forkastes</em> H₀ — resultatet er statistisk signifikant. Ellers <em>forkastes H₀ ikke</em>.</li>
+      </ol>
+      <p>I psykologisk praksis er den mest brugte test til at sammenligne gennemsnit i to grupper <a href="/t-test.html">t-test (Student)</a>. Forestil dig et klassisk eksperiment: du vil vide, om en intervention reducerer angsten. Du måler angstscoren i <strong>kontrolgruppen</strong> (uden intervention) og i <strong>interventionsgruppen</strong> og vil finde ud af, om forskellen mellem de to gennemsnit er reel. Det er det typiske scenarie for t-testen — bare indsæt gennemsnit, standardafvigelser og gruppestørrelser i <a href="/t-test.html">t-test-beregneren</a>, så får du t-statistikken og p-værdien automatisk.</p>
+
+      <h2 id="p-significa">Hvad p &lt; 0,05 virkelig betyder</h2>
+      <p>P-værdien er samtidig det mest citerede og det mest misforståede tal i psykologisk forskning. Lad os være præcise. En <strong>p-værdi på 0,03</strong> betyder: <em>"Hvis nulhypotesen var sand (hvis der ikke var nogen effekt), ville der kun være 3 % chance for at få et resultat så ekstremt som dette — eller mere ekstremt — alene ved tilfældig stikprøveudtræk."</em></p>
+      <p>Da et sådant scenarie ville være sjældent, konkluderer vi, at det er mere plausibelt, at H₀ er forkert, og at der faktisk findes en effekt. Grænsen på 0,05 er blot en konvention: under den kalder vi resultatet <strong>statistisk signifikant</strong>. Indtil videre fint. Problemet er fejlfortolkningerne, der gentages selv i publicerede arbejder.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Fire myter om p-værdien
+        </div>
+        <p><strong>Myte 1 — "p = 0,03 betyder 3 % chance for, at hypotesen er forkert."</strong> Falsk. P-værdien beregnes ud fra <em>antagelsen</em> om, at H₀ er sand; den tilskriver ikke sandsynligheder til hypoteserne.</p>
+        <p><strong>Myte 2 — "p &gt; 0,05 beviser, at der ikke er en effekt."</strong> Falsk. Mangel på signifikans kan betyde, at der manglede deltagere til at opdage en reel effekt. At undlade at forkaste H₀ er ikke det samme som at acceptere den.</p>
+        <p><strong>Myte 3 — "Mindre p betyder større eller vigtigere effekt."</strong> Falsk. P-værdien afhænger både af effektens størrelse og af stikprøvens størrelse. En triviel effekt bliver "signifikant" med en stikprøve, der er stor nok.</p>
+        <p><strong>Myte 4 — "Statistisk signifikans er det samme som praktisk relevans."</strong> Falsk. Signifikans svarer på "findes effekten?"; relevans svarer på "betyder effekten noget?". Det er forskellige spørgsmål.</p>
+      </div>
+      <p>Lektien er klar: p-værdien er nyttig, men utilstrækkelig alene. Den skal følges af <strong>effektstørrelse</strong> og <strong>konfidensinterval</strong> — emnerne i de næste afsnit.</p>
+
+      <h2 id="tamanho-efeito">Effektstørrelse: ud over signifikansen</h2>
+      <p>Hvis p-værdien siger <em>om</em> der er en effekt, så siger <strong>effektstørrelsen</strong> <em>hvor stor</em> den er. Den sondring er så vigtig, at APA (American Psychological Association) i sine publikationsregler kræver, at hvert studie rapporterer effektstørrelsen, ikke kun p-værdien.</p>
+      <p>For forskellen mellem to gennemsnit — t-test-tilfældet — er det mest brugte mål <strong>Cohens d</strong>. Idéen er enkel og elegant: i stedet for at udtrykke forskellen i den oprindelige enhed på skalaen (der varierer fra instrument til instrument), udtrykkes den i <strong>standardafvigelser</strong>. Så betyder d = 0,5, at "de to gruppers gennemsnit er en halv standardafvigelse fra hinanden", uanset hvilken skala der er tale om.</p>
+      <div class="formula">d = (M<sub>1</sub> − M<sub>2</sub>) ÷ SD<sub>pooled</sub>
+        <span class="formula__where">M<sub>1</sub> og M<sub>2</sub> er gennemsnittene i de to grupper; SD<sub>pooled</sub> er den samlede (pooled) standardafvigelse for de to stikprøver.</span>
+      </div>
+      <p>For at fortolke værdien foreslog Cohen referencepunkter — nyttige som vejledning, så længe de ikke behandles som absolutte sandheder, da hvad der tæller som "stort" varierer mellem felter:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Cohens d</th><th>Effektstørrelse</th><th>Praktisk fortolkning</th></tr></thead>
+          <tbody>
+            <tr><td>≈ 0,20</td><td>Lille</td><td>Subtil forskel, kun synlig ved omhyggelig analyse.</td></tr>
+            <tr><td>≈ 0,50</td><td>Mellem</td><td>Forskel synlig for en opmærksom iagttager.</td></tr>
+            <tr><td>≈ 0,80</td><td>Stor</td><td>Substantiel og tydelig forskel mellem grupperne.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Når formålet ikke er at sammenligne gennemsnit, men at måle <strong>sammenhængen mellem to numeriske variable</strong> — fx mellem søvntimer og præstation i en opmærksomhedstest — er effektstørrelsen <strong>Pearsons korrelationskoefficient r</strong>. Den ligger mellem −1 og +1: som omtrentlig reference indikerer r omkring 0,10 en svag sammenhæng, 0,30 moderat og 0,50 stærk. I begge tilfælde er beskeden den samme: at rapportere effektstørrelsen omdanner et vagt "det blev signifikant" til en information, andre forskere kan sammenligne og samle.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="poder">Statistisk styrke og stikprøvestørrelse</h2>
+      <p>Enhver hypotesetest kan tage fejl på to måder. <strong>Type I-fejl</strong> er falsk positiv: at forkaste H₀, når den er sand (at hævde en effekt, der ikke findes). Sandsynligheden er netop α — typisk 5 %. <strong>Type II-fejl</strong> er falsk negativ: <em>ikke</em> at forkaste H₀, når den er falsk (at lade en eksisterende effekt slippe forbi). Sandsynligheden betegnes β.</p>
+      <p><strong>Statistisk styrke</strong> er komplementet til type II-fejlen: styrke = 1 − β. Med ord er det <strong>sandsynligheden for, at dit studie opdager en effekt, hvis den faktisk findes</strong>. En styrke på 0,80 — den værdi der er adopteret som standard i psykologi — betyder 80 % chance for at finde en reel effekt (og dermed 20 % risiko for ikke at finde den). Niveauet 0,80 er en konvention, der balancerer omkostningen ved at rekruttere flere deltagere mod skaden ved et inkonklusivt studie.</p>
+      <p>Styrken afhænger af tre faktorer: signifikansniveauet (α), den forventede effektstørrelse og — den eneste fuldstændigt under din kontrol — <strong>stikprøvestørrelsen</strong>. Jo større stikprøve, jo større styrke. Det er derfor, stikprøveberegningen skal foretages <strong>før</strong> dataindsamlingen:</p>
+      <div class="callout callout--example">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Hvorfor du skal beregne stikprøven på forhånd
+        </div>
+        <p>Et <em>underdimensioneret</em> studie har lav styrke: selv hvis interventionen virker, vil resultatet sandsynligvis komme ud som "ikke signifikant" — og spilde alle deltagernes indsats. Et alt for stort studie bruger ressourcer uden grund. At fastlægge stikprøvestørrelsen i planlægningsfasen ud fra den mindste effekt af interesse undgår begge problemer. Brug <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregneren</a> til at estimere, hvor mange deltagere du har brug for.</p>
+      </div>
+      <p>At beregne styrken <em>efter</em> et studie er afsluttet (den såkaldte observerede styrke) har ringe værdi. Det rette sted for styrkeanalysen er forskningsprojektet — også fordi etiske komitéer og bedømmelsesudvalg typisk beder om den begrundelse.</p>
+
+      <div class="recommend">
+        <div class="recommend__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Værktøjer til din undersøgelse
+        </div>
+        <p>Disse beregnere dækker de hyppigste analyser i en bacheloropgave eller et speciale i psykologi:</p>
+        <ul>
+          <li><a href="/t-test.html">t-test-beregner (Student)</a> — sammenlign gennemsnit i to grupper (kontrol og intervention).</li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse-beregner</a> — planlæg, hvor mange deltagere du skal rekruttere, før du starter dataindsamlingen.</li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval-beregner</a> — rapportér det plausible interval for dine resultater, som APA anbefaler.</li>
+        </ul>
+        <p class="disclosure">Linkene ovenfor fører til indhold på selve sitet. Skulle de senere indeholde partnerlinks, vil dette afsnit oplyse om samarbejdet.</p>
+      </div>
+
+      <h2 id="replicacao">Replikationskrisen i psykologien</h2>
+      <p>Fra 2011 stod psykologien over for et chok kendt som <strong>replikationskrisen</strong>: store kollektive bestræbelser forsøgte at gentage klassiske studier og opdagede, at en betragtelig del af resultaterne <em>ikke holdt</em>, når eksperimentet blev gentaget. Årsagen var generelt ikke svindel — det var tilsyneladende uskyldige analysepraksisser, der tilsammen oppumper de falske positive. Det er værd at kende dem for ikke at gentage dem:</p>
+      <ul>
+        <li><strong>P-hacking.</strong> At pille ved data eller analyser, indtil p-værdien krydser 0,05: at teste flere variable og kun rapportere dem, der "lykkedes", at ekskludere deltagere bekvemt, eller at indsamle mere data og stoppe, så snart signifikans dukker op. Hver af de beslutninger øger risikoen for et tilfældigt fund.</li>
+        <li><strong>HARKing</strong> (<em>Hypothesizing After the Results are Known</em>). At se på resultaterne først og derefter præsentere det, som om hypotesen var formuleret på forhånd. Det forvandler en — legitim — udforskning til en falsk bekræftelse.</li>
+      </ul>
+      <p>Forskersamfundets svar var et sæt <strong>god praksis</strong>, som enhver begyndende forsker i dag bør indføre:</p>
+      <ul>
+        <li><strong>Præregistrering.</strong> Offentligt at registrere — før dataindsamlingen — hypoteserne, den planlagte stikprøvestørrelse og analyseplanen. Det adskiller tydeligt konfirmatorisk test fra udforskning.</li>
+        <li><strong>Rapportér effektstørrelsen.</strong> Oplys altid Cohens d, r eller et tilsvarende mål — aldrig kun p-værdien.</li>
+        <li><strong>Rapportér konfidensintervaller.</strong> I stedet for en "ja eller nej"-dom viser <a href="/konfidensinterval.html">konfidensintervallet</a> intervallet af plausible værdier for effekten og kommunikerer ærligt usikkerheden i estimatet. Du kan beregne det i <a href="/konfidensinterval.html">konfidensinterval-beregneren</a>.</li>
+        <li><strong>Gennemsigtighed.</strong> Stil data og materialer til rådighed, så andre kan tjekke og replikere.</li>
+      </ul>
+      <p>Mere end en dårlig nyhed har replikationskrisen gjort psykologien til en mere stringent videnskab — og gjort de forholdsregler til en del af godt udført arbejde.</p>
+
+      <h2 id="testes">Oversigt over de mest brugte test</h2>
+      <p>At vælge den rigtige test handler oftest om at svare på to spørgsmål: <em>hvad er formålet (sammenligne grupper eller måle sammenhæng)?</em> og <em>hvilken type variabel er i spil?</em>. Tabellen nedenfor opsummerer de fire test, du oftest møder i psykologisk forskning:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Test</th><th>Hvornår bruge den</th><th>Eksempel i psykologi</th></tr></thead>
+          <tbody>
+            <tr><td><strong>t-test</strong></td><td>Sammenligne gennemsnit i <strong>to</strong> grupper.</td><td>Gennemsnitlig angst i kontrolgruppen vs. interventionsgruppen.</td></tr>
+            <tr><td><strong>ANOVA</strong></td><td>Sammenligne gennemsnit i <strong>tre eller flere</strong> grupper.</td><td>Trivsel i tre forskellige terapimodaliteter.</td></tr>
+            <tr><td><strong>Pearson-korrelation</strong></td><td>Måle sammenhængen mellem <strong>to numeriske variable</strong>.</td><td>Sammenhæng mellem søvntimer og opmærksomhedspræstation.</td></tr>
+            <tr><td><strong>Chi²</strong></td><td>Måle sammenhængen mellem <strong>to kategoriske variable</strong>.</td><td>Sammenhæng mellem køn og foretrukken behandlingstype.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Det er værd at fremhæve sammenhængen mellem de to første. <a href="/t-test.html">T-testen</a> sammenligner præcis <strong>to</strong> grupper. Når studiet har <strong>tre eller flere</strong> grupper, er fristelsen at lave flere parvise t-test — men det mangedobler risikoen for falsk positiv. Løsningen er <strong>ANOVA</strong> (variansanalyse), som sammenligner alle gennemsnit på én gang med en enkelt test og kontrollerer den risiko. Pearson-korrelation og chi² svarer derimod på spørgsmål om <em>sammenhæng</em>, ikke om sammenligning af gennemsnit.</p>
+
+      <h2 id="exemplo">Et praktisk løst eksempel</h2>
+      <p>Lad os samle det hele i et typisk bacheloropgave-tilfælde. En forsker vil vurdere, om et otte ugers mindfulnessprogram reducerer angst. Hun rekrutterer 60 universitetsstuderende og fordeler dem tilfældigt i to grupper. Til sidst besvarer alle et angstinventar (score fra 0 til 60, hvor mere er værre). Resultaterne:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Gruppe</th><th class="num">n</th><th class="num">Gennemsnit</th><th class="num">Standardafvigelse</th></tr></thead>
+          <tbody>
+            <tr><td>Kontrol (venteliste)</td><td class="num">30</td><td class="num">32,4</td><td class="num">8,1</td></tr>
+            <tr><td>Intervention (mindfulness)</td><td class="num">30</td><td class="num">26,7</td><td class="num">7,6</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><strong>Hypoteser.</strong> H₀: gennemsnitlig angst er ens i de to grupper. H₁: gennemsnittene er forskellige. Signifikansniveauet fastlægges til α = 0,05.</li>
+        <li><strong>Valgt test.</strong> Der er to uafhængige gennemsnit at sammenligne — tilfældet for <a href="/t-test.html">t-test for uafhængige stikprøver</a>.</li>
+        <li><strong>Beregning af t-statistikken.</strong> Indsætter man gennemsnittene (32,4 og 26,7), standardafvigelserne (8,1 og 7,6) og størrelserne (30 og 30) i beregneren, fås t ≈ 2,81 med 58 frihedsgrader.</li>
+        <li><strong>P-værdi.</strong> For den t er den tosidede p-værdi ≈ 0,007 — under 0,05. H₀ forkastes: forskellen er statistisk signifikant.</li>
+        <li><strong>Effektstørrelse.</strong> Cohens d er d = (32,4 − 26,7) ÷ 7,85 ≈ 0,73 — en effekt tæt på "stor", altså praktisk og relevant, ikke kun signifikant.</li>
+        <li><strong>Konklusion.</strong> Der er evidens for, at mindfulnessprogrammet reducerede angst, og effekten er af betragtelig størrelse. En fuld rapport ville også oplyse konfidensintervallet for forskellen mellem gennemsnittene.</li>
+      </ol>
+      <p>Læg mærke til, hvordan trin 5 giver mening til trin 4: p-værdien bekræftede, at effekten findes, men det var Cohens d, der viste, at den <em>betyder noget</em>. Det er mønsteret i en velfuldført analyse i psykologi.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Skal man kunne statistik for at læse psykologi?</summary>
+          <div class="faq__answer"><p>Ja. Selv i klinisk arbejde kræver det at læse videnskabelige artikler, vurdere om en intervention virker, og lave bacheloropgaver, specialer eller ph.d.-afhandlinger, at man forstår p-værdi, effektstørrelse og stikprøvestørrelse. Statistik er sproget for empirisk forskning i psykologi — du behøver ikke mestre matematikken, men du skal kunne fortolke resultaterne.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder p &lt; 0,05 i psykologisk forskning?</summary>
+          <div class="faq__answer"><p>Det betyder, at hvis der ikke var nogen reel effekt (nulhypotesen sand), ville sandsynligheden for at få et resultat så ekstremt som dit være under 5 %. Det er ikke sandsynligheden for, at hypotesen er rigtig eller forkert, og siger intet om effektens størrelse eller betydning.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen på p-værdi og effektstørrelse?</summary>
+          <div class="faq__answer"><p>P-værdien viser, <em>om</em> en effekt sandsynligvis findes; effektstørrelsen viser, <em>hvor stor</em> den er. Med en stor stikprøve bliver lillebitte forskelle signifikante. Derfor anbefaler APA altid at rapportere effektstørrelsen, fx Cohens d, sammen med p-værdien.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er Cohens d, og hvordan fortolker man den?</summary>
+          <div class="faq__answer"><p>Det er et standardiseret mål for effektstørrelse for forskellen mellem to gennemsnit, udtrykt i standardafvigelser. Som reference er d ≈ 0,2 en lille effekt, d ≈ 0,5 mellem og d ≈ 0,8 stor. Værdierne er vejledende, ikke faste regler — hvad der er "stort", afhænger af forskningsfeltet.</p></div>
+        </details>
+        <details>
+          <summary>Hvorfor er statistisk styrke på 0,80 standarden?</summary>
+          <div class="faq__answer"><p>En styrke på 0,80 betyder 80 % chance for at opdage en effekt, der faktisk findes — og dermed 20 % risiko for et falsk negativt. Det er en konvention, der balancerer omkostningen ved at rekruttere flere deltagere med skaden ved et inkonklusivt studie. Styrkeberegningen bør foretages i planlægningen, før dataindsamlingen.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan vælger man den rigtige statistiske test?</summary>
+          <div class="faq__answer"><p>Det afhænger af formålet og variabeltypen: brug <a href="/t-test.html">t-test</a> til at sammenligne gennemsnit i to grupper, ANOVA til tre eller flere grupper, Pearson-korrelation til sammenhængen mellem to numeriske variable og chi² til sammenhængen mellem to kategoriske variable.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Sammenlign gennemsnit i to grupper, fx kontrol og intervention.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Rapportér det plausible interval for dine resultater, som APA beder om.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/stikprovestorrelse.html"><h3>Stikprøvestørrelse</h3><p>Planlæg, hvor mange deltagere du skal rekruttere, før dataindsamlingen.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Klar til at analysere din undersøgelse</h2>
+        <p>Sammenlign gennemsnit i din kontrol- og interventionsgruppe på få sekunder, med p-værdi og letforståelig fortolkning.</p>
+        <a class="btn btn--light btn--lg" href="/t-test.html">Åbn t-test-beregneren</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistik-beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi²</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et didaktisk og informativt formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør du bekræfte resultaterne med en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

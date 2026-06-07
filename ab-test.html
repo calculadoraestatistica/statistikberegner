@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>A/B-test Beregner — Statistisk Signifikans Gratis</title>
+<meta name="description" content="Gratis A/B-test beregner på dansk. Find ud af, om forskellen mellem to versioner er statistisk signifikant: p-værdi, konfidensinterval og automatisk fortolkning.">
+<link rel="canonical" href="https://statistikberegner.dk/ab-test.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="A/B-test Beregner — Statistisk Signifikans">
+<meta property="og:description" content="Find ud af, om forskellen mellem to versioner er statistisk signifikant. Gratis, på dansk, med forklaring du forstår.">
+<meta property="og:url" content="https://statistikberegner.dk/ab-test.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "A/B-test Beregner",
+  "url": "https://statistikberegner.dk/ab-test.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Beregner af statistisk signifikans til A/B-tests."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"A/B-test Beregner","item":"https://statistikberegner.dk/ab-test.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er en A/B-test?","acceptedAnswer":{"@type":"Answer","text":"Det er et eksperiment, der sammenligner to versioner (A og B) af en side, e-mail eller annonce for at finde ud af, hvilken der giver flest konverteringer. Statistikken bruges til at skelne en reel forskel fra ren tilfældighed."}},
+    {"@type":"Question","name":"Hvad betyder et statistisk signifikant resultat?","acceptedAnswer":{"@type":"Answer","text":"Det betyder, at p-værdien er under det valgte signifikansniveau (typisk 5%). Det er usandsynligt, at den observerede forskel mellem varianterne er opstået ved ren tilfældighed."}},
+    {"@type":"Question","name":"Hvilket konfidensniveau skal jeg bruge i en A/B-test?","acceptedAnswer":{"@type":"Answer","text":"95% er standarden. Brug 99%, når en forkert beslutning koster dyrt, og 90% kun til eksplorative tests."}},
+    {"@type":"Question","name":"Hvor mange besøgende skal jeg bruge til en A/B-test?","acceptedAnswer":{"@type":"Answer","text":"Det afhænger af din nuværende konverteringsrate og af den effekt, du vil opdage. Beregn stikprøvestørrelsen, før du starter testen."}},
+    {"@type":"Question","name":"Kan jeg stoppe testen, så snart den bliver signifikant?","acceptedAnswer":{"@type":"Answer","text":"Nej. At kigge på resultatet flere gange og stoppe i det første gunstige øjeblik (peeking) puster falsk-positiv-raten kraftigt op. Fastlæg stikprøvestørrelsen på forhånd, og beslut først, når du har nået den."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>A/B-test Beregner</li>
+        </ol>
+      </nav>
+      <h1>A/B-test Beregner</h1>
+      <p class="lead">Sammenlign to versioner og find ud af på få sekunder, om forskellen mellem dem er <strong>statistisk signifikant</strong> — eller om det bare kan være tilfældighed.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="ab-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>
+        Beregn signifikans af testen
+      </h2>
+      <p class="calculator__hint">Indtast besøgende og konverteringer for hver variant. En konvertering er den handling, du måler: køb, tilmelding, klik osv.</p>
+
+      <fieldset class="field-group">
+        <legend>Variant A — Kontrol</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="visA">Besøgende</label>
+            <input class="input" type="text" inputmode="numeric" id="visA" placeholder="F.eks. 16450" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="convA">Konverteringer</label>
+            <input class="input" type="text" inputmode="numeric" id="convA" placeholder="F.eks. 1840" autocomplete="off">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Variant B — Variation</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="visB">Besøgende</label>
+            <input class="input" type="text" inputmode="numeric" id="visB" placeholder="F.eks. 16320" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="convB">Konverteringer</label>
+            <input class="input" type="text" inputmode="numeric" id="convB" placeholder="F.eks. 2010" autocomplete="off">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Indstillinger</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="ab-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="ab-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="ab-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Type test</label>
+            <div class="segmented" role="radiogroup" aria-label="Type test">
+              <label><input type="radio" name="ab-tails" value="2" checked><span>Tosidet</span></label>
+              <label><input type="radio" name="ab-tails" value="1"><span>Ensidet</span></label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="ab-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn signifikans</button>
+        <button class="btn btn--ghost" type="button" id="ab-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="ab-result" hidden aria-live="polite"></section>
+    </form>
+
+    <p class="muted text-sm">Vil du planlægge testen, før du går i gang? Brug <a href="/ab-test-stikprove.html">beregneren til stikprøvestørrelse for A/B-tests</a> og find ud af, hvor mange besøgende du har brug for.</p>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er en A/B-test</a></li>
+          <li><a href="#significancia">Hvad er statistisk signifikans</a></li>
+          <li><a href="#como-funciona">Sådan regner beregneren</a></li>
+          <li><a href="#interpretar">Sådan fortolker du resultatet</a></li>
+          <li><a href="#caudas">Tosidet, ensidet og konfidensniveau</a></li>
+          <li><a href="#exemplo">Eksempel trin for trin</a></li>
+          <li><a href="#erros">7 fejl der ødelægger en A/B-test</a></li>
+          <li><a href="#areas">A/B-test ud over marketing</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er en A/B-test</h2>
+      <p>En <strong>A/B-test</strong> er et kontrolleret eksperiment, der sammenligner to versioner af noget for at finde ud af, hvilken der klarer sig bedst. Version A er <em>kontrollen</em> — typisk det, der allerede findes. Version B er <em>variationen</em> — den ændring, du vil teste. Du fordeler publikum tilfældigt mellem de to og måler en bestemt metrik, næsten altid <strong>konverteringsraten</strong>.</p>
+      <p>Det klassiske eksempel kommer fra digital marketing: to versioner af en salgsside, to e-mail-emnelinjer, to knapper i forskellige farver. Men den samme logik gælder alle områder. Et hospital kan sammenligne to vejledningsprotokoller; en app kan sammenligne to tilmeldingsflows; en skole kan sammenligne to undervisningsmetoder. Hver gang der er to grupper og en succesrate, er der en mulig A/B-test.</p>
+      <p>Problemet er, at når du kigger på to tal — lad os sige 11% konvertering mod 12% — er det umuligt at se med det blotte øje, om forskellen er reel, eller om det var held. Hvis du kaster to ærlige mønter 100 gange hver, vil den ene næsten altid give flere "krone" end den anden; det betyder ikke, at den er "bedre". A/B-testen bruger statistik netop til at skelne <strong>signal</strong> (en virkelig forskel) fra <strong>støj</strong> (tilfældig variation).</p>
+
+      <h2 id="significancia">Hvad er statistisk signifikans</h2>
+      <p><strong>Statistisk signifikans</strong> er det kriterium, der adskiller en pålidelig forskel fra en forskel, der kan være opstået ved en tilfældighed. For at nå dertil tager enhver hypotesetest udgangspunkt i en pessimistisk antagelse, der hedder <strong>nulhypotesen</strong>: at <em>der ingen forskel er</em> mellem A og B, og at enhver observeret afstand er ren stikprøvestøj.</p>
+      <p>Beregneren måler så, hvor meget dine data "er uenige" med den hypotese, og opsummerer det i ét tal, <strong>p-værdien</strong>. P-værdien svarer på et meget specifikt spørgsmål:</p>
+      <div class="callout callout--example">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Hvad p-værdien måler
+        </div>
+        <p>"Hvis A og B virkelig var ens, hvad ville så sandsynligheden være for at observere en forskel så stor som den, jeg har målt — eller endnu større — bare ved tilfældighed?"</p>
+      </div>
+      <p>En lille p-værdi betyder, at dit resultat ville være meget sjældent i en verden, hvor A og B er ens. Så er det mere sandsynligt, at de <em>ikke</em> er ens. Du sammenligner p-værdien med en grænse, der er fastlagt <strong>før</strong> testen, <strong>signifikansniveauet</strong> (repræsenteret med det græske bogstav α, alfa). Standarden er α = 5% (0,05):</p>
+      <ul>
+        <li><strong>p-værdi &lt; 0,05</strong> → <strong>statistisk signifikant</strong> resultat. Forskellen er sandsynligvis reel.</li>
+        <li><strong>p-værdi ≥ 0,05</strong> → <strong>ikke signifikant</strong> resultat. Der er ikke tilstrækkelige belæg for at sige, at A og B er forskellige.</li>
+      </ul>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Pas på fortolkningen
+        </div>
+        <p>P-værdien er <strong>ikke</strong> sandsynligheden for, at din variant er bedre, og "ikke signifikant" beviser <strong>ikke</strong>, at A og B er ens — det betyder bare, at der mangler data. Statistisk signifikans er heller ikke det samme som praktisk betydning: med en kæmpe stikprøve kan selv en lillebitte og ligegyldig forskel blive "signifikant".</p>
+      </div>
+
+      <h2 id="como-funciona">Sådan regner beregneren</h2>
+      <p>Under motorhjelmen bruger denne beregner en <strong>z-test for to proportioner</strong>. Det er standardproceduren til at sammenligne to konverteringsrater. Der er fire trin:</p>
+      <p><strong>1. Konverteringsrate for hver variant.</strong> Du dividerer simpelthen konverteringerne med besøgende:</p>
+      <div class="formula">p<sub>A</sub> = konverteringer<sub>A</sub> ÷ besøgende<sub>A</sub>  &nbsp;og&nbsp;  p<sub>B</sub> = konverteringer<sub>B</sub> ÷ besøgende<sub>B</sub></div>
+      <p><strong>2. Samlet proportion.</strong> Under nulhypotesen kommer A og B fra samme population. Derfor samler vi det hele i én rate, den såkaldte poolede proportion:</p>
+      <div class="formula">p̄ = (konverteringer<sub>A</sub> + konverteringer<sub>B</sub>) ÷ (besøgende<sub>A</sub> + besøgende<sub>B</sub>)</div>
+      <p><strong>3. Standardfejl og z-statistik.</strong> Standardfejlen måler, hvor meget tilfældig variation der kan forventes i forskellen mellem de to rater. Z-statistikken dividerer den observerede forskel med standardfejlen — altså måler forskellen i "antal standardfejl":</p>
+      <div class="formula">SF = √[ p̄ · (1 − p̄) · (1/n<sub>A</sub> + 1/n<sub>B</sub>) ]<br>
+        z = (p<sub>B</sub> − p<sub>A</sub>) ÷ SF
+        <span class="formula__where">n<sub>A</sub> og n<sub>B</sub> er antallet af besøgende i hver variant.</span>
+      </div>
+      <p><strong>4. P-værdi.</strong> Jo større |z|, jo længere er du fra scenariet "ingen forskel". Beregneren omdanner z til p-værdi ved hjælp af standardnormalfordelingen (Φ er dens fordelingsfunktion):</p>
+      <div class="formula">p-værdi (tosidet) = 2 · [ 1 − Φ(|z|) ]</div>
+      <p>Ud over dommen giver beregneren også <strong>konfidensintervallet for forskellen</strong> — det interval af plausible værdier for den reelle gevinst i konvertering. Det interval er mere informativt end "ja eller nej"-signifikansen, fordi det viser <em>størrelsen</em> af den sandsynlige effekt.</p>
+
+      <div class="recommend">
+        <div class="recommend__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Lær mere
+        </div>
+        <p>A/B-testen er din indgang til anvendt statistik. For at få styr på emnet inden for dit område:</p>
+        <ul>
+          <li><a href="/guides/statistik-marketing-cro.html">Guide til statistik for Marketing og CRO</a> — statistisk styrke, MDE og de typiske fælder i eksperimenter.</li>
+          <li><a href="/ab-test-stikprove.html">Beregner til stikprøvestørrelse</a> — planlæg testen, før du indsamler et eneste data.</li>
+        </ul>
+        <p class="disclosure">Links ovenfor fører til indhold her på siden. Hvis vi senere tilføjer partnerhenvisninger, vil dette afsnit gøre opmærksom på samarbejdet.</p>
+      </div>
+
+      <h2 id="interpretar">Sådan fortolker du resultatet fra beregneren</h2>
+      <p>Når du har beregnet, ser du et farvet kort med konklusionen og seks nøgletal. Her er, hvad hvert af dem fortæller:</p>
+      <ul>
+        <li><strong>Konverteringsrate A og B</strong> — den rå performance for hver version, i procent.</li>
+        <li><strong>Relativ forskel (uplift)</strong> — hvor meget variant B er steget (eller faldet) i forhold til A. En uplift på +10% betyder, at B konverterer 10% bedre end A i relative tal.</li>
+        <li><strong>P-værdi</strong> — sandsynligheden for at se denne forskel ved tilfældighed. Jo mindre, jo stærkere belæg.</li>
+        <li><strong>Z-statistik</strong> — forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 allerede signifikans.</li>
+        <li><strong>Konfidens i resultatet</strong> — det er simpelthen 1 − p-værdi. En p-værdi på 0,02 bliver til "98% konfidens". Bemærk: det er <em>ikke</em> sandsynligheden for, at B vinder; det er kun komplementet til p-værdien.</li>
+        <li><strong>Konfidensinterval for forskellen</strong> — det sandsynlige interval for den reelle gevinst. Hvis intervallet krydser nul, er fordelen stadig usikker.</li>
+      </ul>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Den gyldne regel
+        </div>
+        <p>Beslut, hvem der vinder, ud fra det samlede billede: signifikansdommen, upliftens størrelse og konfidensintervallet. Et signifikant resultat med en lillebitte uplift er måske ikke værd at implementere. Et ikke-signifikant resultat med lovende uplift kan bare have brug for flere data.</p>
+      </div>
+
+      <h2 id="caudas">Tosidet, ensidet og konfidensniveau</h2>
+      <p>To indstillinger ændrer testens stringens. Den første er <strong>typen af test</strong>:</p>
+      <ul>
+        <li><strong>Tosidet</strong> — tester, om B er <em>forskellig</em> fra A, enten i opadgående eller nedadgående retning. Det er den sikreste mulighed og anbefales i de fleste tilfælde, fordi en A/B-test også kan forværre konverteringen.</li>
+        <li><strong>Ensidet</strong> — tester kun, om B er <em>bedre</em> end A. Den opdager forskelle lettere, men er kun gyldig, hvis du har fastlagt den retning <strong>før</strong> dataindsamlingen og accepterer at se bort fra muligheden for forværring.</li>
+      </ul>
+      <p>Den anden indstilling er <strong>konfidensniveauet</strong>, komplementet til signifikansniveauet:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Konfidens</th><th>Signifikans (α)</th><th>Hvornår bruges det</th></tr></thead>
+          <tbody>
+            <tr><td>90%</td><td>0,10</td><td>Eksplorative tests, lav omkostning ved fejl.</td></tr>
+            <tr><td>95%</td><td>0,05</td><td>Standarden. Brug det, når du er i tvivl.</td></tr>
+            <tr><td>99%</td><td>0,01</td><td>Dyre eller højrisiko-beslutninger.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Jo højere konfidens du kræver, jo sværere er det at opnå signifikans — og jo større stikprøve skal du bruge. Højere konfidens reducerer risikoen for <strong>falsk positiv</strong> (type I-fejl: at udråbe en vinder, der ikke er en vinder), men øger risikoen for <strong>falsk negativ</strong> (type II-fejl: at overse en forbedring, der faktisk findes).</p>
+
+      <h2 id="exemplo">Eksempel trin for trin</h2>
+      <p>En webshop testede en ny produktside. Her er tallene fra to ugers indsamling:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Variant</th><th class="num">Besøgende</th><th class="num">Konverteringer</th><th class="num">Rate</th></tr></thead>
+          <tbody>
+            <tr><td>A — nuværende side</td><td class="num">16.450</td><td class="num">1.840</td><td class="num">11,19%</td></tr>
+            <tr><td>B — ny side</td><td class="num">16.320</td><td class="num">2.010</td><td class="num">12,32%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><strong>Rater:</strong> p<sub>A</sub> = 1840 ÷ 16450 = 0,1119 (11,19%); p<sub>B</sub> = 2010 ÷ 16320 = 0,1232 (12,32%).</li>
+        <li><strong>Samlet proportion:</strong> p̄ = (1840 + 2010) ÷ (16450 + 16320) = 3850 ÷ 32770 = 0,1175.</li>
+        <li><strong>Standardfejl:</strong> SF = √[0,1175 · 0,8825 · (1/16450 + 1/16320)] ≈ 0,00356.</li>
+        <li><strong>Z-statistik:</strong> z = (0,1232 − 0,1119) ÷ 0,00356 ≈ 3,18.</li>
+        <li><strong>P-værdi:</strong> for z = 3,18 er den tosidede p-værdi ≈ 0,0015 — langt under 0,05.</li>
+      </ol>
+      <p>Konklusion: forskellen er <strong>statistisk signifikant</strong> ved 95% konfidens. Variant B konverterer omkring 10% bedre (relativ uplift), og resultatet er næppe en tilfældighed. Brug knappen <em>"Udfyld med eksempel"</em> ovenfor for at se beregningen i beregneren.</p>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="erros">7 fejl der ødelægger en A/B-test</h2>
+      <p>Mere farligt end ikke at lave en test er at lave en dårlig test — den giver en falsk følelse af sikkerhed. Undgå disse fælder:</p>
+      <ol>
+        <li><strong>Stoppe testen ved det første gunstige øjeblik (peeking).</strong> At kigge på resultatet hele tiden og afslutte, så snart der står "signifikant", puster den falske positive rate op fra 5% til 20%, 30% eller mere. Fastlæg stikprøvestørrelsen på forhånd, og beslut først, når du har nået den.</li>
+        <li><strong>Ikke beregne stikprøvestørrelsen.</strong> Uden at vide hvor mange besøgende du skal bruge, bliver testen til lotteri. Brug <a href="/ab-test-stikprove.html">stikprøveberegneren</a>, før du går i gang.</li>
+        <li><strong>Køre testen for kort tid.</strong> En test skal dække komplette cyklusser — inklusive weekender og lønningsdage. Det bedste er at lade den køre i mindst én til to hele uger.</li>
+        <li><strong>Teste flere variationer uden justering.</strong> Jo flere versioner du sammenligner samtidig, jo større er chancen for, at én "vinder" af held. Med mange varianter skal signifikansniveauet korrigeres.</li>
+        <li><strong>Ændre testen undervejs.</strong> At ændre siden, trafikken eller publikum midt under eksperimentet forurener dataene. Frys alt indtil slut.</li>
+        <li><strong>Forveksle signifikans med relevans.</strong> En uplift på 0,1% kan være "signifikant" med en enorm stikprøve og stadig ikke betale omkostningen ved ændringen. Kig altid på effektstørrelsen.</li>
+        <li><strong>Ignorere segmenteringen.</strong> En variant kan vinde på mobil og tabe på computer. Et samlet gennemsnit kan skjule det — analyser segmenterne, når det giver mening.</li>
+      </ol>
+
+      <h2 id="areas">A/B-test ud over marketing</h2>
+      <p>Selvom A/B-testen er blevet synonym med konverteringsoptimering (CRO), er den i bund og grund en <strong>sammenligning af to proportioner</strong> — og det dukker op overalt:</p>
+      <ul>
+        <li><strong>Sundhed og sygepleje:</strong> sammenligne andelen, der følger en behandling, mellem to grupper, eller komplikationsraten mellem to protokoller. Se <a href="/guides/statistik-sygepleje.html">guiden til statistik for sygepleje</a>.</li>
+        <li><strong>Psykologi og forskning:</strong> sammenligne andelen af deltagere, der udviser en bestemt adfærd, i to eksperimentelle betingelser. Se <a href="/guides/statistik-psykologi.html">guiden til statistik for psykologi</a>.</li>
+        <li><strong>Produkt og teknologi:</strong> sammenligne retention-, aktiverings- eller fejlraten mellem to versioner af en app.</li>
+      </ul>
+      <p>Når det, du sammenligner, ikke er rater, men <strong>gennemsnit</strong> — tid, karakter, blodtryk, omsætning pr. kunde — er den rigtige test i stedet <a href="/t-test.html">t-testen (Student)</a>. Og hvis du vil sammenligne én enkelt proportion med en referenceværdi, så brug <a href="/proportionstest.html">proportionstesten</a>.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er en A/B-test?</summary>
+          <div class="faq__answer"><p>Det er et eksperiment, der fordeler publikum tilfældigt mellem to versioner — A (kontrol) og B (variation) — og måler, hvilken der giver flest konverteringer. Statistikken sikrer, at den observerede forskel er reel og ikke tilfældighed.</p></div>
+        </details>
+        <details>
+          <summary>Hvad betyder "statistisk signifikant"?</summary>
+          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau (typisk 5%). Det er usandsynligt, at forskellen mellem varianterne er opstået ved ren tilfældighed — der er belæg for en reel effekt.</p></div>
+        </details>
+        <details>
+          <summary>Hvilket konfidensniveau skal jeg bruge?</summary>
+          <div class="faq__answer"><p>95% er standarden og fungerer i de fleste tilfælde. Brug 99%, når en forkert beslutning bliver dyr, og 90% kun i eksplorative tests, hvor en falsk positiv har små konsekvenser.</p></div>
+        </details>
+        <details>
+          <summary>Hvor mange besøgende skal jeg bruge til en A/B-test?</summary>
+          <div class="faq__answer"><p>Det afhænger af din nuværende konverteringsrate og af, hvor stor en effekt du vil opdage. Jo mindre forbedring du forventer, jo større stikprøve. Beregn det først i <a href="/ab-test-stikprove.html">beregneren til stikprøvestørrelse</a>.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg afslutte testen, så snart den bliver signifikant?</summary>
+          <div class="faq__answer"><p>Nej. At tjekke resultatet gentagne gange og stoppe i det første gunstige øjeblik (peeking) puster falsk-positiv-raten kraftigt op. Fastlæg stikprøvestørrelsen fra starten, og træf først beslutningen, når du har nået den.</p></div>
+        </details>
+        <details>
+          <summary>Resultatet blev ikke signifikant. Hvad nu?</summary>
+          <div class="faq__answer"><p>Ikke signifikant beviser ikke, at versionerne er ens — det betyder typisk, at der mangler data. Tjek, om du har nået den planlagte stikprøvestørrelse. Hvis ja, har ændringen sandsynligvis haft for lille en effekt til at være indsatsen værd.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/ab-test-stikprove.html"><h3>Stikprøvestørrelse A/B</h3><p>Find ud af, hvor mange besøgende du skal bruge, før du går i gang.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign en proportion med en referenceværdi.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Til at sammenligne gennemsnit i stedet for konverteringsrater.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Planlæg næste test med sikkerhed</h2>
+        <p>Før du indsamler data, så find ud af, hvor mange besøgende og hvor mange dage din A/B-test kræver.</p>
+        <a class="btn btn--light btn--lg" href="/ab-test-stikprove.html">Beregn stikprøvestørrelse</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ab-form'), result = $('ab-result'), errBox = $('ab-error');
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('ab-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    $('visA').value = '16450'; $('convA').value = '1840';
+    $('visB').value = '16320'; $('convB').value = '2010';
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var nA = parseNum($('visA').value), xA = parseNum($('convA').value);
+    var nB = parseNum($('visB').value), xB = parseNum($('convB').value);
+    if ([nA, xA, nB, xB].some(function (v) { return isNaN(v); })) {
+      showError('Udfyld de fire felter med besøgende og konverteringer som tal.');
+      return;
+    }
+    var conf = parseFloat(Fmt.radio('ab-conf'));
+    var tails = parseInt(Fmt.radio('ab-tails'), 10);
+    var r = Stats.abTest({ nA: nA, xA: xA, nB: nB, xB: xB, confidence: conf, tails: tails });
+    if (r.error) { showError(r.error); return; }
+    render(r, conf);
+  }
+
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+  var ICON_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+
+  function metric(label, value, cls, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value' + (cls ? ' ' + cls : '') + '">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, conf) {
+    var sig = r.significant;
+    var winner = r.winner === 'B' ? 'B (variation)' : (r.winner === 'A' ? 'A (kontrol)' : null);
+    var confTxt = Fmt.pct(conf, 0);
+    var headline, sub;
+
+    if (sig && winner) {
+      headline = 'Statistisk signifikant resultat';
+      sub = 'Variant ' + winner + ' klarede sig bedst — forskellen er sandsynligvis ikke tilfældig.';
+    } else if (sig) {
+      headline = 'Statistisk signifikant resultat';
+      sub = 'Forskellen mellem varianterne er sandsynligvis ikke tilfældig.';
+    } else {
+      headline = 'Stadig ikke statistisk signifikant';
+      sub = 'Den observerede forskel kan være tilfældighed. Det er værd at indsamle flere data.';
+    }
+
+    var upliftCls = r.relUplift == null ? '' : (r.relUplift >= 0 ? 'is-pos' : 'is-neg');
+    var upliftTxt = r.relUplift == null ? '—' :
+      (r.relUplift >= 0 ? '+' : '') + Fmt.pct(r.relUplift, 1);
+
+    var metrics =
+      metric('Konverteringsrate A', Fmt.pct(r.pA, 2)) +
+      metric('Konverteringsrate B', Fmt.pct(r.pB, 2)) +
+      metric('Relativ forskel', upliftTxt, upliftCls, 'B i forhold til A') +
+      metric('P-værdi', Fmt.p(r.pValue), '', r.tails === 1 ? 'ensidet test' : 'tosidet test') +
+      metric('Z-statistik', Fmt.num(r.z, 2)) +
+      metric('Konfidens i resultatet', Fmt.pct(Math.max(0, 1 - r.pValue), 2), '', '= 1 − p-værdi');
+
+    var interp;
+    if (sig) {
+      interp = '<p>Med <strong>' + confTxt + ' konfidens</strong> er forskellen mellem varianterne ' +
+        '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
+        ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
+        'Det er usandsynligt, at forskellen er opstået ved tilfældighed' +
+        (winner ? ' — variant <strong>' + winner + '</strong> vandt' : '') + '.</p>' +
+        '<p>Konfidensintervallet på ' + confTxt + ' angiver, at den reelle forskel i konvertering ' +
+        '(B − A) sandsynligvis ligger mellem <strong>' + Fmt.pct(r.ciLow, 2) + '</strong> og <strong>' +
+        Fmt.pct(r.ciHigh, 2) + '</strong> i procentpoint.</p>';
+    } else {
+      interp = '<p>Med ' + confTxt + ' konfidens er der <strong>endnu ikke statistisk signifikans</strong>: ' +
+        'p-værdien (' + Fmt.p(r.pValue) + ') er større end eller lig med signifikansniveauet (' +
+        Fmt.pct(r.alpha, 0) + '). Den observerede forskel kan være tilfældighed.</p>' +
+        '<p>Konfidensintervallet for forskellen går fra <strong>' + Fmt.pct(r.ciLow, 2) +
+        '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>. Da det inkluderer nul, ' +
+        'kan man ikke afgøre, hvilken variant der er bedst. Tjek, om du har nået den ' +
+        '<a href="/ab-test-stikprove.html">planlagte stikprøvestørrelse</a>, før du opgiver testen.</p>';
+    }
+
+    result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
+    result.innerHTML =
+      '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
+        '<div><div class="result__headline">' + headline + '</div>' +
+        '<div class="result__sub">' + sub + '</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>

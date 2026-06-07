@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Stikprøvestørrelse beregner til spørgeundersøgelser — Gratis</title>
+<meta name="description" content="Find ud af, hvor mange du skal spørge i din undersøgelse for at ramme en bestemt fejlmargin. Gratis stikprøvestørrelse beregner på dansk, med konfidensniveau og korrektion for endelig population.">
+<link rel="canonical" href="https://statistikberegner.dk/stikprovestorrelse.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Stikprøvestørrelse beregner til spørgeundersøgelser">
+<meta property="og:description" content="Find ud af, hvor mange du skal spørge i din undersøgelse for at ramme den fejlmargin, du ønsker.">
+<meta property="og:url" content="https://statistikberegner.dk/stikprovestorrelse.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Stikprøvestørrelse beregner til spørgeundersøgelser",
+  "url": "https://statistikberegner.dk/stikprovestorrelse.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "da",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "description": "Stikprøvestørrelse beregner til spørgeundersøgelser og spørgeskemaer."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Hjem","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Stikprøvestørrelse beregner","item":"https://statistikberegner.dk/stikprovestorrelse.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvor mange personer skal jeg spørge i en undersøgelse?","acceptedAnswer":{"@type":"Answer","text":"Det afhænger af den fejlmargin og det konfidensniveau, du ønsker. For en fejlmargin på 5% med 95% konfidens er der brug for omkring 385 svar — uafhængigt af populationens størrelse, så længe den er stor."}},
+    {"@type":"Question","name":"Hvad er fejlmargin i en undersøgelse?","acceptedAnswer":{"@type":"Answer","text":"Det er usikkerhedsintervallet omkring resultatet. En margin på 3% betyder, at hvis 60% har svaret ja, ligger den rigtige værdi sandsynligvis mellem 57% og 63%. Jo mindre margin, jo større stikprøve."}},
+    {"@type":"Question","name":"Hvorfor bruge 50% som forventet proportion?","acceptedAnswer":{"@type":"Answer","text":"Fordi 50% er det mest konservative scenarie: det er den proportion, der kræver den største stikprøve. Hvis du ikke ved, hvilken procentdel du kan forvente i svarene, sikrer 50%, at stikprøven er tilstrækkelig i alle tilfælde."}},
+    {"@type":"Question","name":"Påvirker populationens størrelse stikprøven?","acceptedAnswer":{"@type":"Answer","text":"Lidt, når populationen er stor. Den nødvendige stikprøve ændrer sig næsten ikke mellem en population på 100.000 og en på 10 millioner. Korrektionen for endelig population gør kun en reel forskel i små populationer, under nogle tusinde."}},
+    {"@type":"Question","name":"Hvad er forskellen mellem undersøgelsesstikprøve og A/B-test-stikprøve?","acceptedAnswer":{"@type":"Answer","text":"Undersøgelsesstikprøven estimerer en proportion med en fejlmargin. A/B-test-stikprøven sammenligner to proportioner og afhænger af den mindste effekt, der skal kunne registreres, og den statistiske styrke. Det er forskellige formler og beregnere."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrummesti">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Stikprøvestørrelse beregner</li>
+        </ol>
+      </nav>
+      <h1>Stikprøvestørrelse beregner</h1>
+      <p class="lead">Find ud af <strong>hvor mange du skal spørge</strong> i din undersøgelse for at ramme den fejlmargin, du har brug for — inden du sender det første spørgeskema af sted.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <form class="calculator" id="ta-form" novalidate>
+      <h2 class="calculator__title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11H3v10h6V11z"/><path d="M15 3H9v18h6V3z"/><path d="M21 7h-6v14h6V7z"/></svg>
+        Beregn stikprøvens størrelse
+      </h2>
+      <p class="calculator__hint">Indtast den fejlmargin, du accepterer, og det ønskede konfidensniveau. Beregneren viser, hvor mange svar din undersøgelse har brug for.</p>
+
+      <fieldset class="field-group">
+        <legend>Undersøgelsens parametre</legend>
+        <div class="field-row">
+          <div class="field">
+            <label>Konfidensniveau</label>
+            <div class="segmented" role="radiogroup" aria-label="Konfidensniveau">
+              <label><input type="radio" name="ta-conf" value="0.90"><span>90%</span></label>
+              <label><input type="radio" name="ta-conf" value="0.95" checked><span>95%</span></label>
+              <label><input type="radio" name="ta-conf" value="0.99"><span>99%</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ta-margin">Fejlmargin</label>
+            <div class="input-affix">
+              <input class="input" type="text" inputmode="decimal" id="ta-margin" placeholder="F.eks.: 5" autocomplete="off">
+              <span class="input-affix__unit">%</span>
+            </div>
+            <span class="help">Den usikkerhed, du accepterer i resultatet, op eller ned.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Justeringer (valgfri)</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="ta-prop">Forventet proportion</label>
+            <div class="input-affix">
+              <input class="input" type="text" inputmode="decimal" id="ta-prop" placeholder="F.eks.: 50" autocomplete="off">
+              <span class="input-affix__unit">%</span>
+            </div>
+            <span class="help">Lad stå på 50%, hvis du ikke ved det — det er det mest konservative scenarie.</span>
+          </div>
+          <div class="field">
+            <label for="ta-pop">Populationens størrelse</label>
+            <input class="input" type="text" inputmode="numeric" id="ta-pop" placeholder="F.eks.: 20000" autocomplete="off">
+            <span class="help">Lad være tomt, hvis populationen er meget stor eller ukendt.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <p class="field-error" id="ta-error" role="alert"></p>
+
+      <div class="calculator__actions">
+        <button class="btn btn--primary btn--lg" type="submit">Beregn stikprøvestørrelse</button>
+        <button class="btn btn--ghost" type="button" id="ta-example">Udfyld med eksempel</button>
+      </div>
+
+      <section class="result" id="ta-result" hidden aria-live="polite"></section>
+    </form>
+
+    <p class="muted text-sm">Skal du sammenligne to versioner i stedet for at estimere en proportion? Brug <a href="/ab-test-stikprove.html">stikprøvestørrelse beregneren til A/B-test</a>.</p>
+
+    <div class="ad-slot" data-ad-slot=""></div>
+
+    <article class="prose">
+
+      <nav class="toc" aria-label="Artiklens indhold">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#o-que-e">Hvad er stikprøvestørrelse</a></li>
+          <li><a href="#como">Sådan fungerer beregneren</a></li>
+          <li><a href="#margem">Fejlmargin og konfidensniveau</a></li>
+          <li><a href="#proporcao">Hvorfor bruge 50%, når man ikke kender proportionen</a></li>
+          <li><a href="#populacao">Korrektion for endelig population</a></li>
+          <li><a href="#ab">Undersøgelsesstikprøve vs. A/B-test-stikprøve</a></li>
+          <li><a href="#exemplo">Gennemregnet eksempel</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="o-que-e">Hvad er stikprøvestørrelse</h2>
+      <p>Når du vil kende holdningen hos en stor gruppe — en virksomheds kunder, en bys vælgere, beboerne i et kvarter — er det urealistisk at spørge alle. I stedet spørger du en del: <strong>stikprøven</strong>. <strong>Stikprøvestørrelsen</strong> er ganske enkelt antallet af personer, du skal høre, for at stikprøvens resultat repræsenterer helheden godt.</p>
+      <p>Det centrale punkt — og det, der ofte overrasker — er, at dette tal ikke afhænger af populationens størrelse. En meningsmåling, der spørger omkring 1.100 personer, har praktisk talt samme præcision i en by med 200.000 indbyggere og i et helt land. Det, der definerer stikprøven, er <strong>den præcision, du ønsker</strong>, ikke størrelsen af det undersøgte univers.</p>
+      <p>At beregne stikprøven <em>før</em> spørgeskemaet sendes ud forhindrer to klassiske fejl. At spørge for få giver et resultat med en fejlmargin, der er for stor til at være nyttig. At spørge for mange spilder tid og penge på en præcision, ingen vil bruge. Denne beregner finder det rigtige tal: den mindste stikprøvestørrelse, der opnår den ønskede præcision.</p>
+
+      <h2 id="como">Sådan fungerer beregneren</h2>
+      <p>Beregneren estimerer, hvor mange svar du har brug for til at måle en <strong>proportion</strong> — andelen af personer, der vælger et bestemt svar — med den fejlmargin og konfidens, du angiver. Den klassiske formel for en stor population er:</p>
+      <div class="formula">n = z² · p · (1 − p) ÷ E²
+        <span class="formula__where">n er stikprøvestørrelsen; z kommer fra konfidensniveauet; p er den forventede proportion; E er fejlmarginen (begge som proportion, fra 0 til 1).</span>
+      </div>
+      <p>Hver ingrediens har en klar rolle. Ændr en hvilken som helst af dem, og tallet ændrer sig:</p>
+      <ul>
+        <li><strong>Konfidensniveau</strong> — definerer z's værdi. Ved 95% konfidens er z ≈ 1,96; ved 99% er z ≈ 2,58. Mere konfidens kræver større stikprøve.</li>
+        <li><strong>Fejlmargin (E)</strong> — indgår i anden potens i nævneren. At halvere marginen <strong>firdobler</strong> stikprøven.</li>
+        <li><strong>Forventet proportion (p)</strong> — leddet p·(1−p) er størst ved p = 0,5. Uden forhåndsinformation bruges 50% for en sikkerheds skyld.</li>
+      </ul>
+      <p>Hvis du angiver <strong>populationens størrelse</strong>, anvender beregneren også korrektionen for endelig population, som reducerer tallet, når universet er lille. Detaljerne følger i afsnittene nedenfor.</p>
+
+      <h2 id="margem">Fejlmargin og konfidensniveau</h2>
+      <p>Disse to begreber går hånd i hånd og definerer undersøgelsens præcision. Det er almindeligt at forveksle dem, men de svarer på forskellige spørgsmål.</p>
+      <p><strong>Fejlmarginen</strong> er størrelsen på usikkerhedsintervallet omkring resultatet. Hvis en undersøgelse viser, at 60% af kunderne er tilfredse, med en fejlmargin på 3%, ligger den rigtige værdi sandsynligvis mellem <strong>57% og 63%</strong>. Jo mindre margin du kræver, jo flere skal du spørge.</p>
+      <p><strong>Konfidensniveauet</strong> fortæller, hvor ofte dette interval rammer rigtigt. En konfidens på 95% betyder, at hvis samme undersøgelse blev gentaget mange gange, ville intervallet i 95% af dem indeholde den sande værdi. Det er standarden i de fleste meningsmålinger og markedsundersøgelser.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Start med fejlmarginen
+        </div>
+        <p>Det praktiske spørgsmål er: "hvilken usikkerhed accepterer jeg i resultatet?". Markedsundersøgelser arbejder typisk med 5%; studier, der kræver mere præcision, bruger 3% eller endda 2% — på bekostning af en meget større stikprøve. Bliv ved 95% konfidens, medmindre der er en klar grund til at ændre.</p>
+      </div>
+
+      <h2 id="proporcao">Hvorfor bruge 50%, når man ikke kender proportionen</h2>
+      <p>Formlen kræver et estimat af den forventede proportion, p — den procentdel af folk, du forestiller dig vil give et bestemt svar. Men der er et cirkulært problem: ofte er den procentdel netop det, undersøgelsen vil afdække. Hvordan angiver man p, før data er indsamlet?</p>
+      <p>Svaret ligger i leddet <strong>p · (1 − p)</strong>, som måler variabiliteten i svarene. Det produkt rammer sit maksimum præcis ved p = 0,5 (50%):</p>
+      <ul>
+        <li>p = 0,5 → p·(1−p) = 0,25 — <strong>maksimal</strong> variabilitet</li>
+        <li>p = 0,3 → p·(1−p) = 0,21</li>
+        <li>p = 0,1 → p·(1−p) = 0,09 — lille variabilitet</li>
+      </ul>
+      <p>Da dette led står i tælleren, giver det at bruge 50% den <strong>størst mulige stikprøve</strong>. Det er det mest konservative scenarie: hvis du dimensionerer undersøgelsen til p = 50%, og den faktiske proportion viser sig at være en hvilken som helst anden, vil fejlmarginen kun blive <em>bedre</em> end planlagt, aldrig værre.</p>
+      <div class="callout callout--example">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Hvornår det er værd at angive p
+        </div>
+        <p>Hvis en tidligere undersøgelse eller et pilotstudie allerede har vist en værdi — fx at kun 15% af kunderne bruger en funktion — så reducerer det at angive p = 15% den nødvendige stikprøve betydeligt. Brug kun denne mulighed, når du har et pålideligt estimat; i tvivl bliv ved 50%.</p>
+      </div>
+
+      <h2 id="populacao">Korrektion for endelig population</h2>
+      <p>Den grundlæggende formel antager en "uendelig" population — stor nok til at det ikke gør en forskel at spørge nogle hundrede personer. For de fleste undersøgelser holder det stik: den nødvendige stikprøve er næsten identisk for et univers på 100.000 eller 10 millioner.</p>
+      <p>Men når populationen er <strong>lille</strong>, kommer <strong>korrektionen for endelig population</strong> i spil. Idéen er intuitiv: hvis din virksomhed kun har 300 medarbejdere, giver det ingen mening at beregne en stikprøve på 385 — du justerer tallet nedad. Korrektionen er:</p>
+      <div class="formula">n = n₀ ÷ [ 1 + (n₀ − 1) ÷ N ]
+        <span class="formula__where">n₀ er stikprøven fra den grundlæggende formel, og N er populationens størrelse.</span>
+      </div>
+      <p>Se effekten for en margin på 5% ved 95% konfidens, hvor n₀ ≈ 385:</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Population (N)</th><th class="num">Justeret stikprøve</th></tr></thead>
+          <tbody>
+            <tr><td>500</td><td class="num">218</td></tr>
+            <tr><td>2.000</td><td class="num">323</td></tr>
+            <tr><td>10.000</td><td class="num">370</td></tr>
+            <tr><td>100.000 eller mere</td><td class="num">≈ 385</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Korrektionen ændrer næsten intet for store populationer, men sparer mange interviews i små grupper. Derfor er feltet valgfrit: udfyld det kun, når universet er begrænset og kendt.</p>
+
+      <h2 id="ab">Undersøgelsesstikprøve vs. A/B-test-stikprøve</h2>
+      <p>Denne beregner løser <strong>hvor mange du skal spørge i en undersøgelse</strong> — et spørgeskema, en afstemning, en tilfredshedsundersøgelse. Formålet er at <em>estimere en proportion</em> (hvor mange % der mener X) med en bestemt fejlmargin.</p>
+      <p>Det er et andet problem end <strong>stikprøvestørrelse til A/B-test</strong>. I en A/B-test estimerer du ikke et tal, du <em>sammenligner to versioner</em> — side A mod side B — for at se, hvilken der konverterer bedst. Den beregning afhænger af andre ingredienser: den nuværende konverteringsrate, den mindste effekt, der skal kunne registreres, og den statistiske styrke. Formlen er en anden, og det samme er resultatet.</p>
+      <div class="callout callout--tip">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+          Hvilken skal jeg bruge
+        </div>
+        <p>Skal du sende et spørgeskema og måle en procentdel? Det er denne beregner. Skal du sammenligne to varianter og måle, hvilken der præsterer bedst? Brug <a href="/ab-test-stikprove.html">stikprøvestørrelse beregneren til A/B-test</a>.</p>
+      </div>
+
+      <div class="ad-slot" data-ad-slot=""></div>
+
+      <h2 id="exemplo">Gennemregnet eksempel</h2>
+      <p>En virksomhed vil lave en tilfredshedsundersøgelse blandt sine kunder — en stor base med hundredtusinder af personer. Den accepterer en <strong>fejlmargin på 5%</strong>, vil have <strong>95% konfidens</strong> og har ingen anelse om, hvilken procentdel der vil sige sig at være tilfreds, så den bruger den konservative proportion på <strong>50%</strong>.</p>
+      <ol class="steps">
+        <li>Konvertér til proportioner: margin E = 0,05; proportion p = 0,50.</li>
+        <li>Konfidensniveau 95% → z ≈ 1,96.</li>
+        <li>Anvend formlen: n = 1,96² × 0,5 × 0,5 ÷ 0,05² = 0,9604 ÷ 0,0025.</li>
+        <li>Resultat: n ≈ 384,16, som rundes op → <strong>385 svar</strong>.</li>
+      </ol>
+      <p>Virksomheden har brug for <strong>385 gyldige svar</strong>. Da kundebasen er enorm, ændrer korrektionen for endelig population ikke det tal. Hvis basen havde fx 2.000 kunder, ville stikprøven falde til omkring 323. Brug knappen <em>"Udfyld med eksempel"</em> for at se beregningen i beregneren.</p>
+      <div class="callout callout--warning">
+        <div class="callout__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Tag højde for svarprocenten
+        </div>
+        <p>Tallet fra beregneren er antallet af <strong>gyldige</strong> svar, ikke antallet af afsendte invitationer. Hvis du forventer, at kun 1 ud af 4 svarer, skal du invitere omkring fire gange så mange for at nå de 385 svar.</p>
+      </div>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvor mange personer skal jeg spørge i en undersøgelse?</summary>
+          <div class="faq__answer"><p>Det afhænger af den ønskede fejlmargin og konfidens, ikke af populationens størrelse. For en margin på 5% ved 95% konfidens er det omkring 385 svar. For 3% margin stiger tallet til ca. 1.067.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er fejlmargin?</summary>
+          <div class="faq__answer"><p>Det er usikkerhedsintervallet omkring resultatet. Med 3% margin betyder et resultat på 60%, at den rigtige værdi sandsynligvis ligger mellem 57% og 63%. Jo mindre margin der kræves, jo større stikprøve.</p></div>
+        </details>
+        <details>
+          <summary>Hvorfor bruger beregneren 50% som forventet proportion?</summary>
+          <div class="faq__answer"><p>Fordi leddet p·(1−p) i formlen er størst ved 50%, hvilket giver den størst mulige stikprøve. Det er det mest konservative scenarie: hvis den faktiske proportion er en anden, bliver fejlmarginen bare bedre end planlagt.</p></div>
+        </details>
+        <details>
+          <summary>Betyder populationens størrelse noget?</summary>
+          <div class="faq__answer"><p>Lidt, når populationen er stor — stikprøven er næsten den samme for 100.000 eller 10 millioner personer. Korrektionen for endelig population reducerer kun stikprøven betydeligt i små universer på nogle tusinde eller mindre.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen på denne beregner og A/B-test-beregneren?</summary>
+          <div class="faq__answer"><p>Denne estimerer en proportion med en fejlmargin (hvor mange personer at spørge). <a href="/ab-test-stikprove.html">A/B-test-beregneren</a> sammenligner to versioner og afhænger af den mindste effekt, der skal kunne registreres, og den statistiske styrke. Det er forskellige formler til forskellige formål.</p></div>
+        </details>
+        <details>
+          <summary>Har jeg brug for en større stikprøve ved 99% konfidens?</summary>
+          <div class="faq__answer"><p>Ja. At gå fra 95% til 99% konfidens øger z-værdien fra 1,96 til 2,58 og hæver stikprøven med omkring 73%. Brug kun 99%, når en fejl har en høj omkostning; 95% er standarden for de fleste undersøgelser.</p></div>
+        </details>
+      </div>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/ab-test-stikprove.html"><h3>Stikprøvestørrelse A/B-test</h3><p>Til at sammenligne to versioner, ikke til at estimere en proportion.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Har du indsamlet data? Beregn den faktiske fejlmargin for dit resultat.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign en proportion med en referenceværdi.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Undersøgelse klar, tid til at analysere</h2>
+        <p>Når du har indsamlet svarene, så beregn den faktiske fejlmargin for dit resultat.</p>
+        <a class="btn btn--light btn--lg" href="/konfidensinterval.html">Åbn konfidensinterval beregneren</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis online statistikberegnere med forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøvestørrelse A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/stats.js"></script>
+<script src="/js/app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('ta-form'), result = $('ta-result'), errBox = $('ta-error');
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('is-visible');
+    result.hidden = true;
+  }
+  function clearError() {
+    errBox.textContent = '';
+    errBox.classList.remove('is-visible');
+  }
+
+  $('ta-example').addEventListener('click', function (e) {
+    e.preventDefault();
+    $('ta-margin').value = '5';
+    $('ta-prop').value = '50';
+    $('ta-pop').value = '';
+    document.querySelector('input[name="ta-conf"][value="0.95"]').checked = true;
+    compute();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    compute();
+  });
+
+  function compute() {
+    clearError();
+    var conf = parseFloat(Fmt.radio('ta-conf'));
+
+    var marginPct = parseNum($('ta-margin').value);
+    if (isNaN(marginPct)) {
+      showError('Indtast den ønskede fejlmargin.');
+      return;
+    }
+    if (marginPct <= 0 || marginPct >= 100) {
+      showError('Fejlmarginen skal være mellem 0% og 100%.');
+      return;
+    }
+    var margin = marginPct / 100;
+
+    var propPct = parseNum($('ta-prop').value);
+    if (isNaN(propPct)) propPct = 50;
+    if (propPct < 0 || propPct > 100) {
+      showError('Den forventede proportion skal være mellem 0% og 100%.');
+      return;
+    }
+    var proportion = propPct / 100;
+
+    var pop = parseNum($('ta-pop').value);
+    var opts = { confidence: conf, marginError: margin, proportion: proportion };
+    var hasPop = !isNaN(pop);
+    if (hasPop) {
+      if (pop <= 0) {
+        showError('Populationens størrelse skal være større end nul.');
+        return;
+      }
+      opts.population = pop;
+    }
+
+    var r = Stats.surveySampleSize(opts);
+    if (r.error) { showError(r.error); return; }
+    render(r, conf, margin, proportion, hasPop ? pop : null);
+  }
+
+  var ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>';
+
+  function metric(label, value, cls, note) {
+    return '<div class="metric"><div class="metric__label">' + label + '</div>' +
+      '<div class="metric__value' + (cls ? ' ' + cls : '') + '">' + value + '</div>' +
+      (note ? '<div class="metric__note">' + note + '</div>' : '') + '</div>';
+  }
+
+  function render(r, conf, margin, proportion, pop) {
+    var metrics =
+      metric('Nødvendig stikprøve', Fmt.int(r.n), 'is-pos', 'gyldige svar') +
+      metric('Konfidensniveau', Fmt.pct(conf, 0)) +
+      metric('Fejlmargin', Fmt.pct(margin, 1), '', 'op eller ned');
+
+    if (pop != null) {
+      metrics += metric('Uden korrektion', Fmt.int(r.nInfinite), '',
+        'stikprøve for stor population');
+    }
+
+    var interp =
+      '<p>For at estimere en proportion med <strong>' + Fmt.pct(margin, 1) +
+      ' fejlmargin</strong> og <strong>' + Fmt.pct(conf, 0) +
+      ' konfidens</strong> skal din undersøgelse have <strong>' + Fmt.int(r.n) +
+      ' gyldige svar</strong>. Beregningen bruger en forventet proportion på ' +
+      Fmt.pct(proportion, 0) +
+      (proportion === 0.5 ? ' — det mest konservative scenarie, som kræver den største stikprøve' : '') +
+      '.</p>';
+
+    if (pop != null) {
+      interp += '<p>Da du har angivet en population på <strong>' + Fmt.int(pop) +
+        ' personer</strong>, har beregneren anvendt korrektionen for endelig population. ' +
+        'Uden den korrektion ville formlen kræve ' + Fmt.int(r.nInfinite) +
+        ' svar; fordi der er tale om en begrænset population, falder det nødvendige antal til ' +
+        Fmt.int(r.n) + '.</p>';
+    } else {
+      interp += '<p>Tallet gælder for en stor eller ukendt population. ' +
+        'Hvis dit univers er lille og kendt, så angiv populationens størrelse ' +
+        'for at anvende korrektionen og muligvis reducere stikprøven.</p>';
+    }
+
+    interp += '<p>Husk, at totalen er antallet af <strong>gyldige</strong> svar. ' +
+      'Tag højde for den forventede svarprocent, og inviter nok personer til at nå det.</p>';
+
+    result.className = 'result result--neutral';
+    result.innerHTML =
+      '<div class="result__banner">' + ICON +
+        '<div><div class="result__headline">Anbefalet stikprøvestørrelse</div>' +
+        '<div class="result__sub">Dette er antallet af svar, din undersøgelse skal indsamle.</div></div></div>' +
+      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+        '<div class="result__interpretation">' + interp + '</div></div>';
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+})();
+</script>
+</body>
+</html>
