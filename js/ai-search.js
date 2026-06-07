@@ -146,11 +146,20 @@
     state.loadingPromise = (async function () {
       progressCb && progressCb({ stage: 'data', progress: 0.05, message: 'Henter katalog...' });
 
-      var [catRes, embRes] = await Promise.all([
-        ensureCatalog(),
-        fetch('/data/embeddings.json').then(function (r) { return r.json(); })
-      ]);
-      state.embeddings = embRes.items;
+      // Tenta carregar embeddings; se ausente, segue so com BM25 (fallback silencioso).
+      var catRes = await ensureCatalog();
+      try {
+        var embRes = await fetch('/data/embeddings.json').then(function (r) {
+          if (!r.ok) throw new Error('embeddings.json indisponivel');
+          return r.json();
+        });
+        state.embeddings = embRes.items;
+      } catch (e) {
+        state.embeddings = null;
+        progressCb && progressCb({ stage: 'data', progress: 1, message: 'AI ikke tilgaengelig - bruger tekstsoegning.' });
+        state.ready = true;
+        return null;
+      }
 
       progressCb && progressCb({ stage: 'model', progress: 0.1, message: 'Indlæser AI (~30 MB første gang, derefter cachet)...' });
 
@@ -192,7 +201,7 @@
      Busca semantica (embeddings)
      ------------------------------------------------------------------------ */
   async function searchAI(query) {
-    if (!state.extractor) throw new Error('Model ikke indlæst. Kald ensureReady().');
+    if (!state.embeddings || !state.extractor) return null;  // fallback silencioso pra BM25
     var q = (query || '').trim();
     if (!q) return null;
     var out = await state.extractor('query: ' + q, { pooling: 'mean', normalize: true });
