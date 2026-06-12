@@ -27,6 +27,19 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forsiden","item":"https://statistikberegner.dk/"},{"@type":"ListItem","position":2,"name":"Støt projektet","item":"https://statistikberegner.dk/stot-projektet.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvor går pengene hen?","acceptedAnswer":{"@type":"Answer","text":"Bidrag via MobilePay og bankoverførsel går direkte ind på den personlige konto, som tilhører projektets vedligeholder, Vinícius Vianna, knyttet til e-mailen calculadoraestatistica@gmail.com. Bidrag via Buy Me a Coffee går gennem platformen og bliver sendt videre til samme konto. Statistikberegner.dk er ikke et registreret selskab — alle pengene bruges til at dække domænegebyret, hostingomkostninger og timer brugt på udvikling af beregnerne."}},
+    {"@type":"Question","name":"Får jeg en kvittering?","acceptedAnswer":{"@type":"Answer","text":"Vi udsteder ikke en formel kvittering eller faktura, fordi projektet drives som privatperson uden CVR-nummer, og bidragene er frivillige uden modydelse. Hvis du har brug for et bilag til personlig bogføring, kan posteringen i din netbank, MobilePay-historikken eller kvitteringen fra Buy Me a Coffee bruges som dokumentation. Skulle din institution kræve et særligt format, så skriv til calculadoraestatistica@gmail.com og beskriv, hvad du har brug for, så finder vi en løsning."}},
+    {"@type":"Question","name":"Kan jeg sponsorere en specifik beregner?","acceptedAnswer":{"@type":"Answer","text":"Ja, og det hjælper rigtig meget med at prioritere køreplanen. Hvis du gerne vil se en bestemt beregner — fx Shapiro-Wilk for normalitet, Fishers eksakte test, Cohens kappa eller logistisk regression — så skriv via /kontakt.html og fortæl, hvilket værktøj du har brug for, og i hvilken sammenhæng (speciale, artikel, klinisk forskning, marketinganalyse). Målrettet støtte køber hverken reklameplads eller ændrer det statistiske indhold: beregneren forbliver gratis, uden login og uden sporing af brugerne."}},
+    {"@type":"Question","name":"Hvad hvis jeg ikke kan donere?","acceptedAnswer":{"@type":"Answer","text":"Det er helt fint — de fleste, der bruger siden, donerer ikke, og det er helt forventet. Du kan hjælpe på mange andre måder: del linket med studiekammerater og kolleger, citér beregneren i opgaver og artikler, rapportér fejl eller upræcise formuleringer via /kontakt.html, foreslå nye beregnere, og hvis du selv er forsker eller underviser i statistik, så tilbyd at læse en specifik side igennem. Hver af disse handlinger har større langsigtet effekt, end det måske ser ud til."}},
+    {"@type":"Question","name":"Hvordan vælger I, hvad der skal forbedres?","acceptedAnswer":{"@type":"Answer","text":"Prioriteringen følger tre signaler, i denne rækkefølge: regne- eller fortolkningsfejl rapporteret af brugerne, beregnere som mere end én person efterspørger inden for områder vi endnu ikke dækker godt (sundhed, psykologi, marketing, ingeniørvidenskab), og tilgængelighedsforbedringer som gavner alle (skærmlæsere, kontrast, tastaturnavigation). Økonomisk støtte hjælper med at frigøre timer til de tungere opgaver — fx at omskrive en ældre beregner, så den understøtter parrede data, eller at tilføje et konfidensinterval, som mangler."}}
+  ]
+}
+</script>
 <!-- schema-enhanced -->
 </head>
 <body>
@@ -52,6 +65,7 @@
         <li><a href="/#calculadoras">Beregnere</a></li>
         <li><a href="/#guias">Guides efter område</a></li>
         <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/artikler/">Artikler</a></li>
         <li><a href="/om-os.html">Om os</a></li>
         <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
       </ul>
@@ -75,22 +89,110 @@
   </div>
 
   <div class="container narrow">
-    <p>Det tager tid at holde siden i luften, lave nye beregnere og forbedre dem, der findes — og dit bidrag, uanset beløb, hjælper rigtig meget.</p>
+    <article class="prose">
 
-    <div class="card-grid card-grid--1" style="margin-top:1.4rem">
+      <h2>Hvorfor vi beder om støtte</h2>
+      <p><strong>Statistikberegner.dk</strong> drives af én enkelt person — Vinícius Vianna, forsker inden for anvendt statistik og modellering — uden kommercielt formål og uden investorer bag. Der er intet betalt team, ingen venture-kapital og ingen salgsafdeling, der sælger premium-abonnementer. Det, der findes, er et domæne, en hostingkonto og et antal frie timer om ugen, som bliver til indhold, der hjælper studerende, sundhedspersonale, forskere og marketingfolk med at drage ærlige konklusioner ud fra data.</p>
+      <p>At bede om støtte er en måde at holde den model bæredygtig på, uden at gøre siden om til en udstillingsplads for invasive reklamer, kræve oprettelse for at bruge beregnerne eller gemme funktioner bag en betalingsmur. Hvert bidrag, uanset størrelse, er med til at dække de faste udgifter og frigøre tid til at skrive nye artikler, gennemgå formler og rette fejl rapporteret af brugerne selv. Pr. år ligger de faste omkostninger omkring <strong>kr 200</strong> — domænegebyret, et par hjælpeværktøjer — og resten af arbejdet er udviklingstid, som er præcis dér, hvor din hjælp gør den største forskel.</p>
 
-      <div class="card donate-card">
-        <h3>☕ Køb mig en kaffe</h3>
-        <p>Støt via Buy Me a Coffee — hurtigt og kun et par klik væk.</p>
-        <a class="btn btn--primary btn--block" href="https://buymeacoffee.com/calculadoraestatistica" target="_blank" rel="noopener">Støt på Buy Me a Coffee</a>
-        <img class="donate-qr" src="/img/bmc_qr.png" alt="QR-kode til Buy Me a Coffee" width="190" height="190" loading="lazy">
+      <h2>Sådan vedligeholdes siden</h2>
+      <p>Den tekniske infrastruktur er bevidst valgt for at være billig, gennemsigtig og robust. HTML, CSS og JavaScript ligger i et offentligt repository på <strong>GitHub</strong> og bliver leveret via <strong>GitHub Pages</strong>, der udstiller statiske sider uden omkostning. Foran det kører <strong>Cloudflare</strong>, som står for CDN, DDoS-beskyttelse og et automatisk fornyet HTTPS-certifikat via <strong>Let's Encrypt</strong>. Domænet <em>statistikberegner.dk</em> er registreret hos en dansk registrator med årlig fornyelse til omkring kr 200. Det samlede setup koster cirka kr 200-300 om året i direkte udgifter, og alt det, du ser på siden, er bygget inden for den ramme — ingen egne servere, ingen database, ingen dyre cloud-konti.</p>
+      <p>Opdateringstempoet er typisk for et uafhængigt projekt: små rettelser ryger ud i løbet af få dage, nye beregnere tager uger, og længere artikler eller revisioner af statistiske forudsætninger tager måneder. Da alle udregninger sker direkte i brugerens browser — uden at sende data til en server — er der ingen variable driftsomkostninger, og der er ingen risiko for, at oplysninger lækkes. Det tekniske valg har også en pædagogisk konsekvens: siden er let, åbner på langsomme forbindelser og virker offline, når den først er hentet en gang. Det er vigtigt for studerende på universiteter med svagt netværk og for sundhedspersonale, der arbejder i marken.</p>
+      <p>Modellen er bevidst undervisende. Hver beregner følger op med en artikel, der forklarer testen, dens forudsætninger og fortolkningen af resultatet i et sprog, der ikke kræver, at du på forhånd har taget et statistik-kursus. Det er en større investering i skrivearbejde end i kode, og det er den investering, brugerstøtten er med til at finansiere.</p>
+
+      <h2>Hvad støtten bliver brugt til</h2>
+      <p>Når nogen bidrager, går beløbet til en af følgende konkrete poster, i den rækkefølge de typisk dukker op i hverdagen:</p>
+      <ul>
+        <li><strong>Vedligeholdelse af eksisterende beregnere</strong> — gennemgang af formler, test mod tabellerede referenceværdier, opdatering når en bruger peger på et særtilfælde (meget små stikprøver, ekstreme værdier, ensidet kontra tosidet konfiguration).</li>
+        <li><strong>Nye beregnere foreslået af brugerne</strong> — blandt de hyppigste ønsker er <em>Shapiro-Wilk-testen</em> for normalitet før en t-test, <em>Fishers eksakte test</em> for små 2×2-tabeller, <em>Cohens kappa</em> til at måle overensstemmelse mellem to bedømmere (relevant for sygepleje og psykologi) og en <em>logistisk regression</em> for binær udfaldsvariabel.</li>
+        <li><strong>Fagligt review fra statistikere</strong> — at betale for kritisk gennemlæsning af specifikke sider af statistikere med klinisk eller metodisk erfaring, så indholdet bliver ved med at være pålideligt, efterhånden som siden vokser.</li>
+        <li><strong>Tilgængelighedsforbedringer</strong> — justeringer til skærmlæsere, tilstrækkelig farvekontrast efter WCAG-anbefalingerne, ren tastaturnavigation og oversættelse af fagudtryk til et sprog, der ikke udelukker nybegyndere.</li>
+        <li><strong>Hosting, domæne og værktøjer</strong> — årlig fornyelse af domænet, eventuelle opgraderinger af hjælpetjenester og licenser til den statistiske software (fx R og JASP), der bruges til at validere resultaterne uafhængigt af beregneren.</li>
+      </ul>
+      <p>Beregnerne for stikprøvestørrelse følger fx de klassiske formler fra <em>Cohen (1988), Statistical Power Analysis for the Behavioral Sciences</em>, og konfidensintervallerne for proportioner bruger Wilson-metoden, som er mere præcis for små stikprøver end den traditionelle normaltilnærmelse. At holde den slags præcision kræver læsning og test, og det er netop den tid, støtten er med til at købe.</p>
+
+      <h2>Måder at støtte på</h2>
+      <p>Der er to veje at bidrage økonomisk — MobilePay eller Buy Me a Coffee — og flere veje, der <strong>ikke koster en krone</strong> og ofte hjælper lige så meget, nogle gange mere.</p>
+
+      <h3>Måder uden penge involveret</h3>
+      <ul>
+        <li><strong>Del siden med kolleger og medstuderende</strong>, der lige er begyndt på statistik, eller som skriver bachelorprojekt, speciale eller ph.d.-afhandling. En stor del af trafikken på siden kommer fra mund til mund — i studiegrupper på Messenger, i kollegiernes læsesale og i lærergrupper på Facebook og LinkedIn.</li>
+        <li><strong>Citér beregneren i akademiske opgaver</strong>, når den faktisk er det værktøj, der er brugt til en udregning beskrevet i teksten. Det giver kredit for udviklingsarbejdet og hjælper andre forskere med at finde siden. To eksempler klar til at kopiere:
+          <ul>
+            <li><em>APA (7. udg.):</em> Vianna, V. S. (2026). <strong>Statistikberegner.dk</strong> [Online software]. https://statistikberegner.dk</li>
+            <li><em>Dansk reference-stil:</em> Vianna, V. S. (2026). <em>Statistikberegner.dk</em>. Hentet fra https://statistikberegner.dk</li>
+          </ul>
+        </li>
+        <li><strong>Rapportér fejl og forslag</strong> via formularen på <a href="/kontakt.html">/kontakt.html</a>. Regnefejl, mobilproblemer, uklare formuleringer, døde links — alt er velkomment, og det bliver næsten altid rettet i løbet af få dage.</li>
+        <li><strong>Bidrag med indhold</strong>. Hvis du selv er forsker, underviser eller viderekommen studerende i statistik og gerne vil gennemgå en bestemt side (rette en formel, forbedre en forklaring, foreslå et bedre eksempel), så tag fat — al teknisk gennemgang bliver krediteret på den side, der er blevet revideret.</li>
+        <li><strong>Anbefal siden institutionelt</strong> — i lektionsplaner, i supplerende læselister, i metode-vejledninger til specialestuderende. Den slags henvisninger rammer præcis dem, der får mest ud af beregnerne.</li>
+      </ul>
+
+      <h2>Pengeoverførsel</h2>
+      <p>Hvis du gerne vil støtte med et beløb, er der tre muligheder. Vælg det, der er nemmest for dig — der er ingen forskel på effekten for projektet.</p>
+
+      <div class="card-grid card-grid--1" style="margin-top:1.4rem">
+
+        <div class="card donate-card">
+          <h3>MobilePay</h3>
+          <p>Den hurtigste vej for danske brugere. Send et valgfrit beløb direkte via MobilePay-appen.</p>
+          <p style="margin-top:.6rem"><strong>MobilePay-nummer:</strong> tilføj her</p>
+          <p class="muted" style="font-size:.92rem">Skriv gerne en kort hilsen i meddelelsesfeltet — det er altid rart at høre, om bidraget kommer fra en studerende, en kliniker eller en marketingfolk.</p>
+        </div>
+
+        <div class="card donate-card">
+          <h3>Bankoverførsel</h3>
+          <p>Hvis du foretrækker en almindelig overførsel fra netbanken, eller hvis du skal bruge en større beløbsoverførsel uden MobilePay-grænserne.</p>
+          <p style="margin-top:.6rem"><strong>Reg.nr / Konto-nr:</strong> tilføj her</p>
+          <p style="margin-top:.4rem"><strong>Modtager:</strong> Vinícius Serra Vianna</p>
+          <p class="muted" style="font-size:.92rem">Anfør gerne "Statistikberegner" i tekst til modtager, så bidraget er nemt at identificere i kontoudtoget.</p>
+        </div>
+
+        <div class="card donate-card">
+          <h3>☕ Køb mig en kaffe</h3>
+          <p>Buy Me a Coffee er praktisk, hvis du foretrækker kort eller PayPal — hurtigt og kun et par klik væk. Platformen tager en mindre andel, og resten går til projektet.</p>
+          <a class="btn btn--primary btn--block" href="https://buymeacoffee.com/calculadoraestatistica" target="_blank" rel="noopener">Støt på Buy Me a Coffee</a>
+          <img class="donate-qr" src="/img/bmc_qr.png" alt="QR-kode til Buy Me a Coffee" width="190" height="190" loading="lazy">
+        </div>
+
       </div>
 
-    </div>
+      <p style="margin-top:1.2rem">Statistikberegner.dk drives af en privatperson uden CVR-nummer. Det betyder, at vi ikke kan udstede en formel kvittering, men kvitteringen fra MobilePay, posteringen i din netbank eller bilaget fra Buy Me a Coffee er fuldgyldigt bevis på overførslen, hvis du har brug for at vise det i en personlig regnskabsføring.</p>
 
-    <p style="margin-top:1.6rem">Mange tak for støtten! Hvis du hellere vil hjælpe uden at bruge penge, gør det også en kæmpe forskel at dele siden med kolleger og venner.</p>
+      <h2>Transparens</h2>
+      <p>For at frivillig støtte skal give mening, er det vigtigt at vise, hvor pengene rent faktisk lander. Det her afsnit er en kort opsummering — i ånden af en lille årsrapport — med omtrentlige tal og uden formel revision, men ærligt om, hvordan de modtagne bidrag er blevet brugt.</p>
+      <p>I seneste cyklus blev bidragene anvendt, i prioriteret rækkefølge, til: fornyelse af domænet <em>statistikberegner.dk</em>; timer brugt på at omskrive t-test-beregneren, så Welchs test bliver brugt som standard (mere robust, når varianserne i de to grupper er forskellige); oprettelse af områdeguides (sygepleje, psykologi, marketing og CRO); tilgængelighedsjusteringer i tastaturnavigation og i etiketter til skærmlæsere; og en gennemgang af de forklarende tekster til de ældste beregnere. Ingen midler blev brugt på betalt markedsføring — sidens vækst er udelukkende kommet fra organisk søgning og fra anbefalinger blandt brugerne.</p>
+      <p>Når mængden af bidrag tillader det, er det næste skridt at få en ekstern statistiker til at gennemgå siderne om ikke-parametriske tests (Wilcoxon, Mann-Whitney, Kruskal-Wallis) og at færdiggøre et sammenhængende sæt af beregnere for stikprøvestørrelse, der dækker proportioner, gennemsnit og forskelle mellem gennemsnit. Planen er trinvis, uden faste deadlines, og enhver større ændring bliver noteret på <a href="/om-os.html">/om-os.html</a>.</p>
 
-    <p style="margin-top:1rem">Har du spørgsmål? Skriv til <a href="mailto:calculadoraestatistica@gmail.com">calculadoraestatistica@gmail.com</a>.</p>
+      <h2>Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvor går pengene hen?</summary>
+          <div class="faq__answer"><p>Bidrag via MobilePay og bankoverførsel går direkte ind på den personlige konto, som tilhører projektets vedligeholder, Vinícius Vianna, knyttet til e-mailen <em>calculadoraestatistica@gmail.com</em>. Bidrag via Buy Me a Coffee går gennem platformen og bliver sendt videre til samme konto. Statistikberegner.dk er ikke et registreret selskab — alle pengene bruges til at dække domænegebyret, hostingomkostninger og timer brugt på udvikling af beregnerne.</p></div>
+        </details>
+        <details>
+          <summary>Får jeg en kvittering?</summary>
+          <div class="faq__answer"><p>Vi udsteder ikke en formel kvittering eller faktura, fordi projektet drives som privatperson uden CVR-nummer, og bidragene er frivillige uden modydelse. Hvis du har brug for et bilag til personlig bogføring, kan posteringen i din netbank, MobilePay-historikken eller kvitteringen fra Buy Me a Coffee bruges som dokumentation. Skulle din institution kræve et særligt format, så skriv til <a href="mailto:calculadoraestatistica@gmail.com">calculadoraestatistica@gmail.com</a> og beskriv, hvad du har brug for, så finder vi en løsning.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg sponsorere en specifik beregner?</summary>
+          <div class="faq__answer"><p>Ja, og det hjælper rigtig meget med at prioritere køreplanen. Hvis du gerne vil se en bestemt beregner — fx Shapiro-Wilk for normalitet, Fishers eksakte test, Cohens kappa eller logistisk regression — så skriv via <a href="/kontakt.html">/kontakt.html</a> og fortæl, hvilket værktøj du har brug for, og i hvilken sammenhæng (speciale, artikel, klinisk forskning, marketinganalyse). Målrettet støtte køber hverken reklameplads eller ændrer det statistiske indhold: beregneren forbliver gratis, uden login og uden sporing af brugerne.</p></div>
+        </details>
+        <details>
+          <summary>Hvad hvis jeg ikke kan donere?</summary>
+          <div class="faq__answer"><p>Det er helt fint — de fleste, der bruger siden, donerer ikke, og det er helt forventet. Du kan hjælpe på mange andre måder: del linket med studiekammerater og kolleger, citér beregneren i opgaver og artikler, rapportér fejl eller upræcise formuleringer via <a href="/kontakt.html">/kontakt.html</a>, foreslå nye beregnere, og hvis du selv er forsker eller underviser i statistik, så tilbyd at læse en specifik side igennem. Hver af disse handlinger har større langsigtet effekt, end det måske ser ud til.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan vælger I, hvad der skal forbedres?</summary>
+          <div class="faq__answer"><p>Prioriteringen følger tre signaler, i denne rækkefølge: regne- eller fortolkningsfejl rapporteret af brugerne, beregnere som mere end én person efterspørger inden for områder vi endnu ikke dækker godt (sundhed, psykologi, marketing, ingeniørvidenskab), og tilgængelighedsforbedringer som gavner alle (skærmlæsere, kontrast, tastaturnavigation). Økonomisk støtte hjælper med at frigøre timer til de tungere opgaver — fx at omskrive en ældre beregner, så den understøtter parrede data, eller at tilføje et konfidensinterval, som mangler.</p></div>
+        </details>
+      </div>
+
+      <p style="margin-top:1.6rem">Mange tak for støtten. Hvis du vil vide mere om projektet, så se <a href="/om-os.html">/om-os</a>; hvis du vil sende et forslag, et spørgsmål eller en rettelse, så brug <a href="/kontakt.html">/kontakt</a>; og hvis du gerne vil i gang med at bruge værktøjerne nu, så gå tilbage til <a href="/">forsiden</a>.</p>
+
+      <p style="margin-top:1rem">Har du spørgsmål? Skriv til <a href="mailto:calculadoraestatistica@gmail.com">calculadoraestatistica@gmail.com</a>.</p>
+
+    </article>
   </div>
 
 </main>

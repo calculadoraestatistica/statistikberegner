@@ -96,6 +96,19 @@
 </style>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forsiden","item":"https://statistikberegner.dk/"},{"@type":"ListItem","position":2,"name":"Spørg AI","item":"https://statistikberegner.dk/sporg-ai.html"}]}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Kan Spørg AI vælge testen for mig?","acceptedAnswer":{"@type":"Answer","text":"Spørg AI foreslår den beregner, der bedst passer til dit spørgsmål, men det endelige valg af test er stadig dit. AI'en kender ikke konteksten af dit studie, dine specifikke forudsætninger eller den faglige standard i dit område. Brug forslaget som et udgangspunkt, og bekræft det med en statistikfaglig person, før du tager kritiske beslutninger."}},
+    {"@type":"Question","name":"Bliver mine spørgsmål gemt?","acceptedAnswer":{"@type":"Answer","text":"Nej. Spørg AI kører helt i din browser, og dine spørgsmål sendes ikke til nogen server, gemmes ikke i en database og bruges ikke til at træne modeller. Når du lukker fanen, er din forespørgsel væk. Se vores privatlivspolitik for flere detaljer."}},
+    {"@type":"Question","name":"Kan jeg indsætte resultater jeg har fået og bede om fortolkning?","acceptedAnswer":{"@type":"Answer","text":"Spørg AI er bygget til at finde den rette beregner — ikke til at fortolke konkrete resultater. Hvis du har en p-værdi, et konfidensinterval eller en effektstørrelse og vil forstå, hvad det betyder, så åbn den relevante beregner og læs den ledsagende artikel, eller drøft fortolkningen med en statistikfaglig person, særligt hvis beslutningen er klinisk eller akademisk."}},
+    {"@type":"Question","name":"Virker det på andre sprog end dansk?","acceptedAnswer":{"@type":"Answer","text":"Beregner- og guideprofilerne er skrevet på dansk, så de bedste resultater opnås, når du skriver på dansk. AI'en kan håndtere spørgsmål med engelske statistiske termer (t-test, ANOVA, chi-square), men beskrivelser af dit problem bør være på dansk for at få det mest præcise match."}},
+    {"@type":"Question","name":"Er det gratis? Er der grænser?","acceptedAnswer":{"@type":"Answer","text":"Ja, Spørg AI er fuldstændig gratis, og der er ingen grænse for, hvor mange spørgsmål du kan stille. Da alt kører lokalt i din browser, koster det os intet pr. forespørgsel, og du behøver hverken at oprette konto eller logge ind."}}
+  ]
+}
+</script>
 <!-- schema-enhanced -->
 </head>
 <body>
@@ -120,6 +133,7 @@
       <ul>
         <li><a href="/#calculadoras">Beregnere</a></li>
         <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/artikler/">Artikler</a></li>
         <li><a href="/om-os.html">Om os</a></li>
         <li><a class="nav-cta" href="/sporg-ai.html">Spørg AI</a></li>
       </ul>
@@ -176,10 +190,95 @@
     <div class="ad-slot" data-ad-slot=""></div>
 
     <article class="prose">
-      <h2>Sådan fungerer det</h2>
-      <p>Hver beregner og guide har en profil skrevet af os — formål, nøgleord og eksempelspørgsmål. Dit spørgsmål sammenlignes med disse profiler af AI'en, som kører direkte i din browser: teksten sendes ikke til nogen server. Når én beregner vinder med klar margin, viser vi kun den; når dit tilfælde kan dækkes af flere — fx kan "før og efter mellem to grupper" kræve en uafhængig <a href="/t-test.html">t-test</a> på forskellene eller en parret indenfor hver gruppe — viser vi den primære og op til tre nærtliggende alternativer.</p>
 
-      <p class="u-mt-md"><a href="/#calculadoras">Se alle beregnere</a> · <a href="/guides/vaelg-test.html">Guide: sådan vælger du testen</a></p>
+      <nav class="toc" aria-label="Indhold på siden">
+        <strong>På denne side</strong>
+        <ol>
+          <li><a href="#hvad-er">Hvad er Spørg AI</a></li>
+          <li><a href="#saadan-hjaelper">Sådan hjælper den dig</a></li>
+          <li><a href="#bagved">Sådan fungerer den bagved</a></li>
+          <li><a href="#ikke">Hvad den IKKE gør</a></li>
+          <li><a href="#manuel">Hvornår foretrække manuel navigation</a></li>
+          <li><a href="#privatliv">Privatliv og data</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="hvad-er">Hvad er Spørg AI</h2>
+      <p><strong>Spørg AI</strong> er en søgeassistent, der hjælper dig med at finde den <strong>rigtige beregner og den rigtige test</strong> til dine data. Du beskriver dit problem med dine egne ord — på almindeligt dansk, uden statistisk jargon — og funktionen peger på den beregner, der passer bedst, plus et par alternativer, hvis dit spørgsmål kan dækkes af flere tilgange.</p>
+      <p>Det er værd at sige det ærligt fra start: det her er <strong>ikke et magisk statistisk orakel</strong>. Det er en navigationshjælp. Spørg AI læser ikke dine data, kører ikke beregningerne for dig og fortæller dig ikke, om dit studie giver mening. Den ene opgave, den løser, er at <strong>oversætte hverdagssprog til den korrekte statistiske rute</strong> — sådan at du ikke skal læse hele lærebogen for at finde ud af, at du leder efter en <a href="/t-test.html">t-test for to uafhængige stikprøver</a> eller en <a href="/chi-test.html">chi-i-anden-test</a>.</p>
+      <p>Hvorfor er det nyttigt? Fordi det tit er valget af test — ikke selve regnestykket — der står i vejen. Studerende, sundhedsfagligt personale og marketingfolk har ofte tallene, men er i tvivl om, hvilken procedure der hører til dem. Det er præcis det rum, Spørg AI udfylder: den giver dig et hurtigt, kvalificeret bud, så du kan komme videre med selve analysen.</p>
+
+      <h2 id="saadan-hjaelper">Sådan hjælper den dig</h2>
+      <p>For at gøre det konkret, her er nogle typiske spørgsmål, du kan stille — og hvad Spørg AI typisk vil pege på. Du kan kopiere et af eksemplerne ind i feltet ovenfor og se det selv, eller bruge dem som inspiration til, hvordan du formulerer dit eget problem.</p>
+      <ul>
+        <li><strong>"Jeg har to gennemsnit, hvilken test bruger jeg?"</strong> → AI'en foreslår <a href="/t-test.html">t-test for to uafhængige stikprøver</a>, eller en parret t-test, hvis de to målinger kommer fra de samme personer.</li>
+        <li><strong>"Min stikprøve er lille og ikke-normal, hvad gør jeg?"</strong> → Her peger den typisk på <a href="/wilcoxon.html">Wilcoxon eller Mann-Whitney</a>, fordi de ikke-parametriske tests ikke kræver normalfordeling og virker bedre med små n.</li>
+        <li><strong>"Hvad er minimum n for at opdage 10% forskel?"</strong> → Den retter dig mod <a href="/stikprovestorrelse.html">beregneren for stikprøvestørrelse</a>, hvor du indtaster effekt, signifikansniveau og styrke for at få det nødvendige antal observationer.</li>
+        <li><strong>"Jeg har to kategorier og vil teste, om de hænger sammen"</strong> → Det er klassisk <a href="/chi-test.html">chi-i-anden-test</a> til kontingenstabeller eller uafhængighedstest.</li>
+        <li><strong>"Hænger højde og vægt sammen i mine data?"</strong> → To kontinuerte variabler peger mod <a href="/korrelation.html">Pearson-korrelation</a> — eller mod en rangkorrelation, hvis data er skæve.</li>
+        <li><strong>"Version B konverterede mere — er det signifikant?"</strong> → AI'en foreslår A/B-test eller proportionstest, afhængigt af, om du har rådata eller bare to rater.</li>
+      </ul>
+      <p>Læg mærke til, at flere af forslagene kommer i sæt: det er fordi det <em>rette</em> svar afhænger af detaljer, som du måske ikke har nævnt i din ene sætning — er målingerne parrede eller uafhængige? Er data normalfordelt? Er stikprøven stor nok? Spørg AI viser <strong>den primære beregner</strong> og <strong>op til tre alternativer</strong> netop for at fange den slags forgreninger. Når dit spørgsmål er entydigt, viser den kun ét forslag.</p>
+
+      <h2 id="bagved">Sådan fungerer den bagved</h2>
+      <p>Uden at gå i tekniske detaljer er der i grove træk to lag. Det første lag <strong>parser dit spørgsmål</strong> — det vil sige, det udtrækker de signaler, der betyder noget for valget af test: snakker du om gennemsnit eller proportioner? Om to grupper eller flere? Om de samme personer målt to gange eller om uafhængige grupper? Om en effekt, du vil opdage, eller om en stikprøve, du vil planlægge?</p>
+      <p>Det andet lag <strong>mapper signalerne til datatyper</strong>. Statistiske tests er i bund og grund organiseret efter, hvilken slags variabler du har: kategorisk eller kontinuert, uafhængige eller parrede observationer, én gruppe eller flere. Når dit spørgsmål er placeret i det skema, ved systemet, hvilken familie af tests der er relevant — t-test, chi-i-anden, ANOVA, korrelation, proportionstest, og så videre.</p>
+      <p>Til sidst sammenlignes dit spørgsmål med <strong>profilerne</strong> for hver beregner og guide på sitet. Hver profil er en kort beskrivelse, vi har skrevet i hånden — formål, nøgleord, eksempelspørgsmål — så AI'en har noget pålideligt at matche imod. Resultatet er <em>et forslag</em>, ikke en dom. Sammen med beregneren får du også en kort huskeliste over de <strong>antagelser</strong>, du bør tjekke (normalitet, uafhængighed, varianser, minimum n), så du ikke kører testen blindt.</p>
+      <p>Det er afgørende at understrege: alt det her sker for at <strong>vise dig vejen hurtigere</strong>. Det erstatter ikke den kritiske analyse, som du som forsker eller fagperson skal lave selv — hvilken hypotese du faktisk tester, om dit design giver mening, og om dine data overhovedet er egnede til den valgte metode.</p>
+
+      <h2 id="ikke">Hvad den IKKE gør</h2>
+      <p>For at sætte forventningerne præcist, her er en liste over ting, Spørg AI <strong>med vilje ikke gør</strong>:</p>
+      <ul>
+        <li><strong>Den fortolker ikke kliniske eller forretningsmæssige resultater.</strong> Hvis du har en p-værdi på 0,03 og er i tvivl om, hvad det betyder for din patient, din kampagne eller dit speciale, skal det vurderes af en fagperson i din kontekst — ikke af en søgeassistent.</li>
+        <li><strong>Den vælger ikke testen for dig uden review.</strong> Forslaget er et udgangspunkt. Du skal stadig kontrollere, at antagelserne er opfyldt, at den foreslåede test passer til dit design, og at konklusionen giver mening fagligt.</li>
+        <li><strong>Den har ikke adgang til dine data.</strong> Spørg AI ser kun den tekst, du skriver i søgefeltet. Den læser ikke filer, regneark eller databaser. Den ved ikke, om dine målinger er normalfordelte — det er noget, du selv skal vurdere eller teste.</li>
+        <li><strong>Den erstatter ikke formel statistisk review.</strong> Et videnskabeligt arbejde, et speciale, en klinisk protokol eller en regulatorisk indsendelse skal stadig gennem en rigtig statistiker. Værktøjet her er til den daglige praksis, hvor du hurtigt skal finde den rigtige beregner — ikke til at erstatte fagfællebedømmelse.</li>
+        <li><strong>Den lover ikke 100% korrekthed.</strong> Sproglige nuancer kan misforstås. Hvis du fx skriver "to grupper" uden at præcisere, om det er de samme personer eller forskellige, gætter den på det mest sandsynlige — men du skal selv læse forslaget kritisk.</li>
+      </ul>
+      <p>Det her er bevidst — vi vil hellere have et værktøj, der er ærligt om sine grænser, end et der lader til at gøre mere, end det faktisk kan.</p>
+
+      <h2 id="manuel">Hvornår foretrække manuel navigation</h2>
+      <p>Spørg AI er nyttig, når du er i tvivl om, hvilken beregner du skal bruge. Men ved du allerede, hvad du leder efter — eller arbejder du tit med den samme test — er det hurtigere at gå direkte til siden. Her er de mest brugte beregnere:</p>
+      <ul>
+        <li><a href="/t-test.html"><strong>t-test (Student)</strong></a> — til at sammenligne gennemsnit i én eller to grupper, eller før/efter på de samme personer.</li>
+        <li><a href="/z-test.html"><strong>z-test</strong></a> — sammenligning af gennemsnit eller proportioner, når populationens standardafvigelse er kendt eller stikprøven er stor.</li>
+        <li><a href="/chi-test.html"><strong>Chi-i-anden-test</strong></a> — til kontingenstabeller, uafhængighed mellem kategoriske variabler og goodness-of-fit.</li>
+        <li><a href="/konfidensinterval.html"><strong>Konfidensinterval</strong></a> — det sandsynlige interval for et gennemsnit eller en proportion, ofte mere informativ end en ren p-værdi.</li>
+        <li><a href="/stikprovestorrelse.html"><strong>Stikprøvestørrelse</strong></a> — planlæg, hvor mange observationer du skal indsamle, før du starter dit studie.</li>
+        <li><a href="/korrelation.html"><strong>Pearson-korrelation</strong></a> — styrken og retningen af lineær sammenhæng mellem to kontinuerte variabler.</li>
+      </ul>
+      <p>Vil du have en mere systematisk indgang til selve valget mellem tests, så er <a href="/guides/vaelg-test.html">guiden "Sådan vælger du testen"</a> et godt sted at starte. Den går igennem de spørgsmål, du bør stille til dine data, før du overhovedet åbner en beregner — og dækker præcis den slags forgreninger, Spørg AI også arbejder med under motorhjelmen.</p>
+
+      <h2 id="privatliv">Privatliv og data</h2>
+      <p>Spørg AI <strong>gemmer ikke dine spørgsmål</strong>. Hele funktionen kører i din browser — den lille AI-model indlæses lokalt, dit spørgsmål forlader aldrig din enhed, og der er ingen server, der logger, hvad du leder efter. Det betyder også, at du roligt kan beskrive følsomme kontekster (kliniske scenarier, intern forretningsdata, igangværende forskning) uden at lægge dem op et sted.</p>
+      <p>Du kan læse mere om, hvordan vi behandler data på tværs af sitet, i vores <a href="/privatlivspolitik.html">privatlivspolitik</a>. Det korte er: vi indsamler ingen personlige oplysninger til den her funktion, og vi behøver ikke gøre det, fordi alt foregår lokalt.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Kan Spørg AI vælge testen for mig?</summary>
+          <div class="faq__answer"><p>Den foreslår den beregner, der bedst passer til dit spørgsmål, men det <strong>endelige valg er stadig dit</strong>. AI'en kender ikke konteksten af dit studie, dine specifikke forudsætninger eller den faglige standard i dit område. Brug forslaget som et udgangspunkt, og bekræft det med en statistikfaglig person, før du tager kritiske beslutninger. Hvis du er i tvivl, så start altid med <a href="/guides/vaelg-test.html">guiden til valg af test</a>.</p></div>
+        </details>
+        <details>
+          <summary>Bliver mine spørgsmål gemt?</summary>
+          <div class="faq__answer"><p>Nej. Spørg AI kører helt i din browser, og dine spørgsmål <strong>sendes ikke til nogen server</strong>, gemmes ikke i en database og bruges ikke til at træne modeller. Når du lukker fanen, er din forespørgsel væk. Se <a href="/privatlivspolitik.html">privatlivspolitikken</a> for flere detaljer om, hvordan vi behandler data på sitet generelt.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg indsætte resultater jeg har fået og bede om fortolkning?</summary>
+          <div class="faq__answer"><p>Spørg AI er bygget til at finde den rette beregner — <strong>ikke til at fortolke konkrete resultater</strong>. Hvis du har en p-værdi, et konfidensinterval eller en effektstørrelse og vil forstå, hvad det betyder, så åbn den relevante beregner (fx <a href="/t-test.html">t-testen</a> eller <a href="/konfidensinterval.html">konfidensintervallet</a>) og læs den ledsagende artikel. Til klinisk eller akademisk fortolkning bør du altid drøfte resultaterne med en statistikfaglig person.</p></div>
+        </details>
+        <details>
+          <summary>Virker det på andre sprog end dansk?</summary>
+          <div class="faq__answer"><p>Beregner- og guideprofilerne er skrevet på dansk, så de bedste resultater opnås, når du <strong>skriver på dansk</strong>. AI'en kan håndtere spørgsmål med engelske statistiske termer (t-test, ANOVA, chi-square), men selve beskrivelsen af dit problem bør være på dansk for at få det mest præcise match.</p></div>
+        </details>
+        <details>
+          <summary>Er det gratis? Er der grænser?</summary>
+          <div class="faq__answer"><p>Ja, Spørg AI er <strong>fuldstændig gratis</strong>, og der er ingen grænse for, hvor mange spørgsmål du kan stille. Da alt kører lokalt i din browser, koster det os intet pr. forespørgsel, og du behøver hverken at oprette konto eller logge ind. Vil du støtte projektet, så vi kan bygge flere beregnere, så er der en <a href="/stot-projektet.html">side til det</a> — men det er helt frivilligt.</p></div>
+        </details>
+      </div>
+
+      <p class="u-mt-md"><a href="/#calculadoras">Se alle beregnere</a> · <a href="/guides/vaelg-test.html">Guide: sådan vælger du testen</a> · <a href="/">Tilbage til forsiden</a></p>
     </article>
 
   </div>

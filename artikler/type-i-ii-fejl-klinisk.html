@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-7516029395999799">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Type I- og type II-fejl i klinisk praksis | Statistikberegner.dk</title>
+<meta name="description" content="Type I- og type II-fejl forklaret klinisk: hvornår afvise H0, hvornår beholde den, hvordan styrke, alpha og stikprovestorrelse pavirker beslutningen.">
+<link rel="canonical" href="https://statistikberegner.dk/artikler/type-i-ii-fejl-klinisk.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Type I- og type II-fejl i klinisk praksis">
+<meta property="og:description" content="Forsta hvornar man afviser nulhypotesen og hvornar man beholder den i kliniske forsog: alpha, beta, styrke og stikprovestorrelse i praksis.">
+<meta property="og:url" content="https://statistikberegner.dk/artikler/type-i-ii-fejl-klinisk.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Type I- og type II-fejl i klinisk praksis: hvornar afvise og hvornar beholde nulhypotesen",
+  "description": "Forsta hvornar man afviser nulhypotesen og hvornar man beholder den i kliniske forsog: alpha, beta, styrke og stikprovestorrelse i praksis.",
+  "image": "https://statistikberegner.dk/og-image.png",
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "inLanguage": "da-DK",
+  "author": {
+    "@type": "Person",
+    "name": "Vinicius Vianna"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Statistik Beregner",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://statistikberegner.dk/favicon-512.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://statistikberegner.dk/artikler/type-i-ii-fejl-klinisk.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Forsiden","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Artikler","item":"https://statistikberegner.dk/artikler/"},
+    {"@type":"ListItem","position":3,"name":"Type I og II fejl","item":"https://statistikberegner.dk/artikler/type-i-ii-fejl-klinisk.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvad er vaerst: type I eller type II fejl?","acceptedAnswer":{"@type":"Answer","text":"Det afhaenger af konteksten. I konfirmatoriske kliniske forsog for godkendelse af et nyt laegemiddel er en type I-fejl typisk mest alvorlig: man godkender en behandling, der ikke virker, og udsaetter patienter for bivirkninger uden gavn. I screeningsforsog eller tidlige fase-2 studier kan en type II-fejl vaere vaerre, fordi man kasserer en lovende behandling. Derfor saetter ICH E9 alpha lavt (5%) men kraever ogsa hoj styrke (typisk 80-90%)."}},
+    {"@type":"Question","name":"Hvorfor beregner kliniske studier styrke for de starter?","acceptedAnswer":{"@type":"Answer","text":"Fordi styrke (1-beta) bestemmer chancen for at opdage en reel effekt, og styrken afhaenger direkte af stikprovestorrelsen. Hvis n er for lille, vil studiet sandsynligvis konkludere ikke-signifikant selv om behandlingen virker - det er spild af patienter, ressourcer og tid. Videnskabsetisk Komite kraever en realistisk styrkeberegning, for et forsog godkendes."}},
+    {"@type":"Question","name":"Hvordan korrigerer Bonferroni for type I-fejl ved multiple endpoints?","acceptedAnswer":{"@type":"Answer","text":"Bonferroni dividerer signifikansniveauet med antallet af test. Hvis du tester 5 endpoints og vil bevare en samlet alpha pa 5%, sammenligner du hver p-vaerdi med 0,01 i stedet for 0,05. Det er konservativt: det beskytter mod falske positive, men kan oge type II-fejlen. Mindre konservative alternativer er Holm-Bonferroni eller Benjamini-Hochberg (FDR-kontrol)."}},
+    {"@type":"Question","name":"Hvis p > 0,05, kan jeg sa konkludere at behandlingen ikke virker?","acceptedAnswer":{"@type":"Answer","text":"Nej. P > 0,05 betyder kun, at dine data ikke giver tilstraekkeligt belaeg for at afvise nulhypotesen. Det kan vaere fordi der ikke er en effekt - eller fordi stikproven var for lille til at opdage den. For at konkludere at behandlingen ikke virker, har du brug for et aekvivalens- eller non-inferiority-design, eller et konfidensinterval der udelukker klinisk relevante effekter."}},
+    {"@type":"Question","name":"Hvad er minimum acceptabel styrke i et dansk klinisk forsog?","acceptedAnswer":{"@type":"Answer","text":"Konventionen er 80% styrke, og det er den nedre graense, de fleste danske etikkomiteer og Laegemiddelstyrelsen vil acceptere uden saerlig begrundelse. Konfirmatoriske fase-3-studier sigter typisk efter 90%. Hoj styrke betyder storre n, sa der er en praktisk og okonomisk balance, der skal forsvares i protokollen."}},
+    {"@type":"Question","name":"Hvordan pavirker stikprovestorrelsen type II-fejl?",
+"acceptedAnswer":{"@type":"Answer","text":"Direkte. Storre n giver mindre standardfejl, hvilket gor det lettere at opdage smalle effekter. Hvis du fordobler effekt og holder alpha fast, falder beta hurtigt med n. Det er derfor protokollerne skal angive den mindste klinisk relevante forskel: den fastlaegger, hvor mange patienter studiet skal rekruttere for at na 80% styrke."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="container narrow">
+    <article class="prose">
+
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Forside</a></li>
+          <li><a href="/artikler/">Artikler</a></li>
+          <li>Type I og II fejl</li>
+        </ol>
+      </nav>
+
+      <h1>Type I- og type II-fejl i klinisk praksis</h1>
+      <p class="article__lead">Når en læge skal beslutte, om en ny behandling virker, beror beslutningen sjældent på sikkerhed — den beror på <strong>sandsynlighed</strong>. Statistikken giver os to slags fejl, vi kan begå: at sige, at noget virker, når det ikke gør (type I), eller at sige, at det ikke virker, når det faktisk gør (type II). Denne artikel forklarer, hvornår man bør afvise nulhypotesen, hvornår man bør beholde den, og hvordan styrke og stikprøvestørrelse afgør, hvilken fejl der bliver den dyreste.</p>
+      <p class="article__byline">Af Vinícius Vianna · 12. juni 2026 · Læsetid: ~13 min</p>
+
+      <h2 id="kontekst">Hvorfor det betyder noget: medicin der virker × patient der lider</h2>
+      <p>I 2023 godkendte Lægemiddelstyrelsen en opdateret HPV-vaccine til danske unge, baseret på et stort fase-3-studie, der viste signifikant reduktion i forekomsten af cervikale forstadier. Bag det "signifikant" lå en konkret statistisk beslutning: forskerne afviste nulhypotesen om, at vaccinen ikke gjorde nogen forskel i forhold til placebo. Den beslutning var ikke binær eller tilfældig — den var styret af to talværdier, som protokollen havde fastlagt på forhånd: et signifikansniveau α på 5 % og en statistisk styrke på 90 %.</p>
+      <p>Hvorfor netop disse tal? Fordi de hver især repræsenterer en risiko. α på 5 % betyder, at hvis vaccinen i virkeligheden ikke virkede, ville studiet alligevel konkludere "den virker" i højst 5 % af tilfældene. Styrke på 90 % betyder, at hvis vaccinen virkede med den forventede effekt, ville studiet rigtigt opdage det 90 % af gangene. De resterende 10 % er β-risikoen — chancen for, at en reel effekt forsvinder i støjen.</p>
+      <p>Sundhedsdatastyrelsens registre over hospitalsindlæggelser, Cancerregisteret og Det Centrale Personregister giver danske forskere adgang til nogle af verdens største og mest komplette kohorter. Det er en gave til styrken: store n betyder lille β. Men selv med disse data står hver eneste kliniske beslutning over for det samme grundlæggende problem — at fortolke en p-værdi uden at glemme, hvad den ikke siger.</p>
+
+      <h2 id="hypoteser">Nulhypotesen (H₀) og den alternative hypotese (H₁): oversat til klinisk kontekst</h2>
+      <p>Al hypoteseafprøvning starter med to udsagn, der gensidigt udelukker hinanden. <strong>Nulhypotesen (H₀)</strong> er udgangspunktet — det skeptiske standpunkt, som vi forsøger at overbevise os væk fra. I et klinisk forsøg lyder den typisk: "den nye behandling har samme effekt som placebo (eller standardbehandlingen)". Den <strong>alternative hypotese (H₁)</strong> er den, vi gerne vil vise er sandsynlig: "den nye behandling har en anden effekt".</p>
+      <p>At vælge nulhypotesen som "ingen forskel" er ikke neutralt — det er et bevidst konservativt valg. Vi giver bevisbyrden til den nye behandling. Den må præsentere så stærke data, at chancen for at se det resultat ved tilfældighed er meget lille. På den måde minder klinisk statistik om en retssag: tiltalte (her: den nye behandling) er uskyldig (uden effekt), indtil det modsatte er bevist ud over rimelig tvivl.</p>
+      <p>I praksis kan H₁ være ensidet eller tosidet. Tosidet betyder, at vi er interesserede i, om behandlingen er bedre <em>eller</em> dårligere end placebo — dette er standarden i konfirmatoriske studier. Ensidet bruges kun, når en effekt i den uventede retning ville være klinisk meningsløs. Brug af ensidet test for at "spare på α" er en kendt kilde til metodologisk kritik fra Lægemiddelstyrelsen, og du bør bruge en <a href="/t-test.html">t-test-beregner</a> til at tjekke begge retninger, før du fastlægger designet.</p>
+
+      <h2 id="matrix">2×2 beslutningsmatricen</h2>
+      <p>Den enkleste måde at se de to fejl på er gennem en matrix. På den ene akse: sandheden (virker behandlingen i virkeligheden eller ej?). På den anden: beslutningen (siger vi, at den virker eller ej?). Det giver fire mulige udfald — to korrekte og to fejlagtige:</p>
+      <div class="chart" style="margin:1.5rem 0;text-align:center;">
+        <svg viewBox="0 0 420 280" width="100%" style="max-width:480px;height:auto;" role="img" aria-label="2x2 beslutningsmatrix">
+          <rect x="0" y="0" width="420" height="280" fill="#f8fafc"/>
+          <text x="210" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Sandheden</text>
+          <text x="120" y="48" text-anchor="middle" font-size="12" fill="#475569">H₀ sand (virker ikke)</text>
+          <text x="320" y="48" text-anchor="middle" font-size="12" fill="#475569">H₁ sand (virker)</text>
+          <text x="22" y="160" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b" transform="rotate(-90 22 160)">Beslutning</text>
+          <text x="50" y="105" font-size="12" fill="#475569">Afvis H₀</text>
+          <text x="50" y="200" font-size="12" fill="#475569">Behold H₀</text>
+          <rect x="80" y="65" width="160" height="90" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+          <text x="160" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#991b1b">Falsk positiv</text>
+          <text x="160" y="115" text-anchor="middle" font-size="11" fill="#7f1d1d">(Type I-fejl, α)</text>
+          <text x="160" y="135" text-anchor="middle" font-size="10" fill="#7f1d1d">Godkend uvirksom behandling</text>
+          <rect x="240" y="65" width="160" height="90" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+          <text x="320" y="95" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Sand positiv</text>
+          <text x="320" y="115" text-anchor="middle" font-size="11" fill="#166534">(Styrke, 1−β)</text>
+          <text x="320" y="135" text-anchor="middle" font-size="10" fill="#166534">Korrekt: opdager effekt</text>
+          <rect x="80" y="160" width="160" height="90" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+          <text x="160" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#14532d">Sand negativ</text>
+          <text x="160" y="210" text-anchor="middle" font-size="11" fill="#166534">(1−α)</text>
+          <text x="160" y="230" text-anchor="middle" font-size="10" fill="#166534">Korrekt: ingen effekt</text>
+          <rect x="240" y="160" width="160" height="90" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="320" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Falsk negativ</text>
+          <text x="320" y="210" text-anchor="middle" font-size="11" fill="#92400e">(Type II-fejl, β)</text>
+          <text x="320" y="230" text-anchor="middle" font-size="10" fill="#92400e">Overse virksom behandling</text>
+        </svg>
+      </div>
+      <p>De to grønne felter er hjørnerne, hvor vi har truffet den rigtige beslutning. De to farvede felter er fejlene. Bemærk asymmetrien: den røde (type I) får mest opmærksomhed, fordi den er den, vi <em>direkte</em> kontrollerer med α. Den gule (type II) er sværere at se — den lurer som en konsekvens af for lidt data, for stor støj eller for små forventede effekter.</p>
+
+      <h2 id="fejl-i">Type I-fejl (α): "behandlingen ser ud til at virke, men gør det ikke"</h2>
+      <p>En type I-fejl er, når vi afviser en sand nulhypotese. Klinisk oversat: vi konkluderer, at en behandling virker, selv om den i virkeligheden ikke gør en forskel. Konsekvenserne er konkrete — patienter får en behandling, der ikke gavner dem, men måske skader; sundhedsvæsenet bruger ressourcer på en intervention uden værdi; senere studier bygger videre på et falsk fundament.</p>
+      <p>α er sandsynligheden for præcis denne fejl, og den fastsættes på forhånd. Konventionen er 5 % (α = 0,05), men det er ikke en naturlov. I særligt risikable interventioner — onkologiske behandlinger med svære bivirkninger, kardiologiske intervention med direkte dødelighedseffekt — anvender mange protokoller α = 0,01 eller endda 0,001. Lavere α betyder mindre risiko for at godkende noget uvirksomt, men prisen er højere risiko for at overse noget, der faktisk virker (β stiger).</p>
+      <p>P-værdien er det værktøj, vi bruger til at afgøre, om type I-fejlen overskrides. Hvis p < α, afviser vi H₀. Hvis p ≥ α, beholder vi H₀ — men kun fordi vi <em>ikke har bevis nok</em>, ikke fordi vi har bevis for det modsatte. Denne forskel er det, mange begynderfortolkninger overser, og det fører os til den næste fejl.</p>
+
+      <h2 id="fejl-ii">Type II-fejl (β): "behandlingen virker, men vi siger den ikke gør"</h2>
+      <p>Type II-fejlen er det modsatte: vi beholder en falsk nulhypotese. Klinisk: vi konkluderer, at den nye behandling ikke virker, selv om den i virkeligheden gør. Konsekvenserne kan være lige så alvorlige — patienter får ikke en effektiv behandling, lovende lægemidler skrottes for tidligt, og forskningsindsatsen flytter sig væk fra et område, der burde være udforsket videre.</p>
+      <p>Den klassiske formulering kommer fra Carl Sagan og er central i kritisk fortolkning af kliniske studier: <strong>"Absence of evidence is not evidence of absence"</strong>. At vi ikke har fundet en signifikant effekt, betyder ikke, at der ikke <em>er</em> en. Det betyder, at vores data — med den stikprøvestørrelse, den variabilitet og den effektstørrelse, vi havde — ikke kunne adskille en reel effekt fra støjen.</p>
+      <p>β kvantificerer denne risiko. Hvis β = 0,20, betyder det, at hvis behandlingen <em>i virkeligheden</em> har den effekt, vi har antaget i designet, vil studiet kun lykkes med at vise det 80 % af gangene. De resterende 20 % vil ende som "ikke signifikant" — selv om sandheden er, at behandlingen virker. β kontrolleres ikke direkte af forsøget; det styres indirekte gennem stikprøvestørrelsen, effektstørrelsen og det valgte α. Det er hele grunden til, at en seriøs <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a> er uundværlig i designfasen.</p>
+
+      <h2 id="styrke">Statistisk styrke (1−β): den glemte metrik i danske kliniske studier</h2>
+      <p>Styrke er det positive modstykke til β. Hvor β er sandsynligheden for at overse en reel effekt, er styrke (1−β) sandsynligheden for at <em>finde</em> den. Med β = 0,20 har vi en styrke på 0,80 — eller 80 %. Det er den uskrevne minimumsstandard for kliniske forsøg, og det er den værdi, etikkomiteer normalt forventer at se begrundet i protokollen.</p>
+      <p>Styrke afhænger af fire ting: signifikansniveauet α (lavere α → lavere styrke), effektstørrelsen (større effekt → højere styrke), variabiliteten (mere støj → lavere styrke) og stikprøvestørrelsen (større n → højere styrke). Det er en pakke, og man kan ikke ændre én ting uden konsekvens for de andre. Designfasen handler i bund og grund om at finde balancen, der er etisk forsvarlig og logistisk gennemførlig.</p>
+      <div class="chart" style="margin:1.5rem 0;text-align:center;">
+        <svg viewBox="0 0 440 280" width="100%" style="max-width:500px;height:auto;" role="img" aria-label="Styrkekurve som funktion af effektstoerrelse">
+          <rect x="0" y="0" width="440" height="280" fill="#f8fafc"/>
+          <line x1="60" y1="240" x2="420" y2="240" stroke="#475569" stroke-width="1.2"/>
+          <line x1="60" y1="40" x2="60" y2="240" stroke="#475569" stroke-width="1.2"/>
+          <text x="240" y="268" text-anchor="middle" font-size="11" fill="#475569">Effektstørrelse (Cohen's d)</text>
+          <text x="20" y="140" text-anchor="middle" font-size="11" fill="#475569" transform="rotate(-90 20 140)">Statistisk styrke (1−β)</text>
+          <g font-size="10" fill="#64748b">
+            <text x="60" y="255" text-anchor="middle">0,0</text>
+            <text x="180" y="255" text-anchor="middle">0,5</text>
+            <text x="300" y="255" text-anchor="middle">1,0</text>
+            <text x="420" y="255" text-anchor="middle">1,5</text>
+            <text x="52" y="243" text-anchor="end">0,0</text>
+            <text x="52" y="183" text-anchor="end">0,5</text>
+            <text x="52" y="83" text-anchor="end">1,0</text>
+            <text x="52" y="123" text-anchor="end">0,8</text>
+          </g>
+          <line x1="60" y1="123" x2="420" y2="123" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1"/>
+          <text x="412" y="118" text-anchor="end" font-size="10" fill="#64748b">styrke = 0,80</text>
+          <path d="M 60 235 Q 120 232 160 220 Q 200 195 230 150 Q 250 115 270 90 Q 300 65 340 55 Q 380 50 420 48" fill="none" stroke="#2563eb" stroke-width="2.4"/>
+          <circle cx="244" cy="123" r="5" fill="#ef4444"/>
+          <line x1="244" y1="240" x2="244" y2="123" stroke="#ef4444" stroke-dasharray="3 3" stroke-width="1"/>
+          <text x="252" y="118" font-size="10" fill="#991b1b" font-weight="600">d ≈ 0,77</text>
+        </svg>
+      </div>
+      <p>Kurven viser, hvordan styrken stiger med effektstørrelsen for en typisk to-stikprøve t-test med n = 30 per gruppe og α = 0,05. For at nå 80 % styrke har vi brug for en effektstørrelse på omtrent d = 0,77 — det er en "stor" effekt efter Cohens konvention. Hvis den reelle effekt er mindre (sige d = 0,3, "lille"), har vi en miserabel styrke på under 25 %, og forsøget vil tre gange ud af fire ende inkonklusivt. Dette er ikke et hypotetisk problem: en omfattende analyse af publicerede kliniske studier viser, at gennemsnitlig styrke til at opdage små effekter ligger godt under 50 %.</p>
+
+      <h2 id="tradeoff">Trade-off mellem α og β: hvorfor mindske den ene øger den anden (medmindre…)</h2>
+      <p>α og β er forbundet. Hvis vi fastholder stikprøvestørrelsen og kun ændrer signifikansniveauet, vil ethvert forsøg på at mindske α (sætte tærsklen højere for at afvise H₀) uundgåeligt øge β (vi overser flere reelle effekter). Det er en gummibåndseffekt: man kan ikke trykke det ene sted uden at det popper ud det andet sted. Den eneste måde at mindske begge på samtidigt er at <strong>øge n</strong>.</p>
+      <div class="chart" style="margin:1.5rem 0;text-align:center;">
+        <svg viewBox="0 0 520 320" width="100%" style="max-width:580px;height:auto;" role="img" aria-label="Overlappende fordelinger H0 og H1 med alfa og beta omrader">
+          <rect x="0" y="0" width="520" height="320" fill="#f8fafc"/>
+          <line x1="40" y1="260" x2="500" y2="260" stroke="#475569" stroke-width="1.2"/>
+          <text x="270" y="290" text-anchor="middle" font-size="11" fill="#475569">Teststatistik</text>
+          <path d="M 40 260 Q 100 260 150 250 Q 190 230 210 180 Q 220 140 230 110 Q 240 80 250 90 Q 260 110 270 140 Q 280 180 300 220 Q 330 250 380 258 Q 430 260 500 260 Z" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+          <path d="M 40 260 Q 150 260 200 258 Q 240 255 270 250 Q 290 240 310 220 Q 330 180 340 140 Q 350 110 360 100 Q 370 90 380 100 Q 390 130 400 170 Q 410 210 430 240 Q 460 258 500 260 Z" fill="rgba(244,114,182,0.18)" stroke="#ec4899" stroke-width="2"/>
+          <line x1="320" y1="50" x2="320" y2="260" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <text x="320" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">kritisk værdi</text>
+          <path d="M 320 260 L 320 220 Q 330 250 380 258 Q 430 260 500 260 Z" fill="rgba(220,38,38,0.45)" stroke="none"/>
+          <path d="M 40 260 L 40 260 Q 150 260 200 258 Q 240 255 270 250 Q 290 240 310 220 L 320 220 L 320 260 Z" fill="rgba(245,158,11,0.40)" stroke="none"/>
+          <text x="250" y="120" font-size="12" fill="#1d4ed8" font-weight="700">H₀ (ingen effekt)</text>
+          <text x="385" y="120" font-size="12" fill="#be185d" font-weight="700">H₁ (effekt)</text>
+          <text x="410" y="245" font-size="11" fill="#7f1d1d" font-weight="700">α</text>
+          <text x="285" y="245" font-size="11" fill="#78350f" font-weight="700">β</text>
+          <g font-size="10" fill="#475569">
+            <rect x="40" y="298" width="12" height="10" fill="rgba(220,38,38,0.45)"/>
+            <text x="58" y="307">α = afvisningsområde under H₀</text>
+            <rect x="240" y="298" width="12" height="10" fill="rgba(245,158,11,0.40)"/>
+            <text x="258" y="307">β = ikke-afvisning under H₁</text>
+          </g>
+        </svg>
+      </div>
+      <p>Den blå klokke til venstre er den fordeling, teststatistikken ville have, hvis nulhypotesen var sand. Den rosa klokke til højre er den fordeling, vi ville se, hvis den alternative hypotese (med en bestemt effektstørrelse) var sand. Den lodrette røde linje er den <em>kritiske værdi</em> — den tærskel, hvor vi afviser H₀. Det røde område til højre for tærsklen, under den blå klokke, er α: chancen for at se en så ekstrem værdi ved tilfældighed, selv om H₀ er sand. Det gule område til venstre for tærsklen, under den rosa klokke, er β: chancen for at se en så lav værdi, selv om der er en reel effekt.</p>
+      <p>Ryk den røde linje til højre, og α skrumper — men β vokser, fordi mere af den rosa kurve nu havner i "ikke afvis"-zonen. Ryk den til venstre, og det modsatte sker. Den eneste måde at mindske begge områder samtidigt er at rykke de to klokker længere fra hinanden (større effekt) eller gøre dem smallere (mindre standardfejl — altså større n).</p>
+
+      <h2 id="stikprove">Sådan beregnes n for at sikre 80 % styrke</h2>
+      <p>Lad os tage et konkret eksempel. Et dansk forsøg vil teste, om et nyt blodtrykssænkende lægemiddel reducerer det systoliske blodtryk i forhold til standardbehandling. Tidligere studier antyder, at en klinisk relevant forskel er på 5 mmHg, og standardafvigelsen inden for hver gruppe forventes at være 12 mmHg. Vi vil have α = 0,05 (tosidet) og styrke på 80 %.</p>
+      <p>For en to-stikprøve t-test med lige store grupper er formlen for stikprøvestørrelsen per gruppe:</p>
+      <div class="formula">n = 2 · ((z<sub>α/2</sub> + z<sub>β</sub>) · σ / δ)²
+        <span class="formula__where">hvor δ er den mindste klinisk relevante forskel og σ den fælles standardafvigelse.</span>
+      </div>
+      <p>Med α = 0,05 (tosidet) er z<sub>α/2</sub> = 1,96. Med styrke 80 % er z<sub>β</sub> = 0,84. Indsætter vi δ = 5 og σ = 12: n = 2 · ((1,96 + 0,84) · 12 / 5)² ≈ 2 · (6,72)² ≈ 90 personer per gruppe. Studiet skal altså rekruttere mindst 180 patienter for at have realistisk chance for at vise den ønskede effekt. Hvis vi havde sat styrken til 90 %, ville z<sub>β</sub> = 1,28 og n blive ca. 121 per gruppe — 240 patienter i alt. Brug vores <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a> til at lave denne udregning for andre kombinationer, eller en <a href="/proportionstest.html">proportionstest-beregner</a>, hvis udfaldet er binært (recidiv/ikke-recidiv).</p>
+
+      <h2 id="alpha-justify">Hvorfor 5 % og 80 %? Og hvornår justere (Bonferroni, sekventielt, ækvivalens)</h2>
+      <p>Tærsklen α = 0,05 stammer fra Ronald Fishers tidlige skrifter i 1920'erne og har overlevet, fordi den giver en rimelig balance mellem skepsis og åbenhed. 80 % styrke kommer fra Jacob Cohens lærebog fra 1988, hvor han argumenterede for, at 4:1-forholdet mellem β og α svarer til den relative omkostning af de to fejl i de fleste forskningssammenhænge. Begge tal er <em>konvention</em>, ikke fysik — og de bør justeres, når konteksten kræver det.</p>
+      <p>I tre situationer fraviger man typisk konventionen. Først: <strong>multiple sammenligninger</strong>, hvor man tester flere endpoints eller flere subgrupper. Her stiger den samlede risiko for falsk positiv, og man bruger Bonferroni, Holm eller FDR-justering (mere om dette nedenfor). Anden: <strong>sekventielle analyser</strong>, hvor man kigger på data flere gange undervejs (f.eks. i adaptive forsøg). Her bruger O'Brien-Fleming- eller Pocock-grænser, der korrigerer for de gentagne kig. Tredje: <strong>ækvivalens- og non-inferiority-design</strong>, hvor nulhypotesen er "behandlingerne er forskellige med mindst Δ", og målet er at afvise <em>den</em> hypotese. Her er logikken vendt, og konfidensintervaller får hovedrollen.</p>
+      <p>Lægemiddelstyrelsen og det europæiske EMA accepterer alle disse afvigelser, så længe de er præspecificeret i protokollen og statistisk analyseplan. At ændre α eller justeringsmetode <em>efter</em> at data er set, er en kardinalsynd — det kaldes p-hacking, og det er en af de mest dokumenterede kilder til ikke-replikerbar klinisk forskning.</p>
+
+      <h2 id="multipel">Multiple sammenligninger: den akkumulerede type I-fejl</h2>
+      <p>Antag et fase-3-onkologisk studie tester 10 sekundære endpoints — overlevelse, livskvalitet, biomarkører, hospitalsindlæggelser osv. Hver test bruger α = 0,05. Hvad er chancen for, at <em>mindst én</em> ender med p < 0,05 ved ren tilfældighed, selv om behandlingen ikke virker på noget? Hvis testene er uafhængige, er svaret 1 − (0,95)¹⁰ ≈ 0,40 — 40 %. Det er meget langt fra de 5 %, vi troede vi havde.</p>
+      <p>Bonferroni-korrektionen er den mest direkte løsning: dividér α med antallet af test. For 10 endpoints bliver tærsklen 0,005 per test. Det holder den samlede risiko (familywise error rate) under 5 %, men det er konservativt — det øger β tilsvarende, og forsøg med stor batteri af endpoints risikerer at miste styrke. Holm-Bonferroni er en stepwise variant, der er mindre konservativ. Benjamini-Hochberg-proceduren (FDR-kontrol) accepterer en defineret andel falske positive blandt de positive fund og er populær i højdimensionelle analyser som genekspression.</p>
+      <p>I praksis for kliniske RCT'er vil protokollen pege ét primært endpoint ud og lade det bære den centrale konfirmatoriske test ved α = 0,05. Sekundære endpoints rapporteres med eksplicit korrektion eller som hypoteseskabende, ikke konfirmerende. En <a href="/chi-test.html">chi-i-anden-beregner</a> bruges f.eks. ofte til kategoriske sekundære endpoints — men kun med en eksplicit forståelse af, at hver ekstra test øger inflationen af type I-fejl.</p>
+
+      <h2 id="praksis">God praksis i danske kliniske studier</h2>
+      <p>Den internationale ramme for klinisk statistik er <strong>ICH E9</strong> ("Statistical Principles for Clinical Trials"), som danske forsøg skal følge for at få Lægemiddelstyrelsens godkendelse. ICH E9 fastlægger en række principper, der direkte håndterer type I- og type II-risici: præspecificering af alle analyser, beskyttelse af det primære endpoint, hierarkisk testning, sensitivitetsanalyser og håndtering af manglende data.</p>
+      <p>På publikationssiden er <strong>CONSORT 2010</strong> (Schulz, Altman & Moher) den retningslinje, alle peer-reviewede tidsskrifter forventer. CONSORT kræver, at man rapporterer den planlagte stikprøvestørrelse <em>med begrundelse for styrkeberegningen</em>, præspecificering af primært endpoint, og hvordan multiple sammenligninger blev håndteret. Et studie uden styrkeberegning er nu meget svært at få offentliggjort i et større tidsskrift.</p>
+      <p>Konkret for danske forskere betyder det fire ting: (1) registrér forsøget hos clinicaltrialsregister.eu eller et tilsvarende offentligt register <em>før</em> rekruttering starter; (2) indsend protokol og statistisk analyseplan til den Videnskabsetiske Komité — de gennemgår styrkeberegningen kritisk; (3) hold dig til den præspecificerede analyse, selv hvis post-hoc-analyser frister; (4) blinding på alle niveauer, hvor det er muligt, for at fjerne den menneskelige tendens til at se det, man håber at finde.</p>
+      <p>For analyser med en kontrolarm og en behandlingsarm — den klassiske RCT-struktur — er en <a href="/t-test.html">t-test-beregner</a> ofte det rette værktøj til kontinuerlige endpoints. For binære udfald som "responder/non-responder" passer en <a href="/ab-test.html">A/B-test-beregner</a> (matematisk identisk med kliniske proportionstest) eller en dedikeret <a href="/proportionstest.html">proportionstest-beregner</a>. Vælg testen <em>før</em> data høstes, ikke efter — det er den enkleste regel for at undgå type I-inflation.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvad er værst: type I eller type II fejl?</summary>
+          <div class="faq__answer"><p>Det afhænger af konteksten. I konfirmatoriske kliniske forsøg for godkendelse af et nyt lægemiddel er en type I-fejl typisk mest alvorlig: man godkender en behandling, der ikke virker, og udsætter patienter for bivirkninger uden gavn. I screeningsforsøg eller tidlige fase-2-studier kan en type II-fejl være værre, fordi man kasserer en lovende behandling. Derfor sætter ICH E9 α lavt (5 %), men kræver også høj styrke (typisk 80-90 %).</p></div>
+        </details>
+        <details>
+          <summary>Hvorfor beregner kliniske studier styrke før de starter?</summary>
+          <div class="faq__answer"><p>Fordi styrke (1−β) bestemmer chancen for at opdage en reel effekt, og styrken afhænger direkte af stikprøvestørrelsen. Hvis n er for lille, vil studiet sandsynligvis konkludere "ikke-signifikant" selv om behandlingen virker — det er spild af patienter, ressourcer og tid. Videnskabsetisk Komité kræver en realistisk styrkeberegning, før et forsøg godkendes. Brug vores <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a> til denne beregning.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan korrigerer Bonferroni for type I-fejl ved multiple endpoints?</summary>
+          <div class="faq__answer"><p>Bonferroni dividerer signifikansniveauet med antallet af test. Hvis du tester 5 endpoints og vil bevare en samlet α på 5 %, sammenligner du hver p-værdi med 0,01 i stedet for 0,05. Det er konservativt: det beskytter mod falske positive, men kan øge type II-fejlen. Mindre konservative alternativer er Holm-Bonferroni eller Benjamini-Hochberg (FDR-kontrol).</p></div>
+        </details>
+        <details>
+          <summary>Hvis p &gt; 0,05, kan jeg så konkludere at behandlingen ikke virker?</summary>
+          <div class="faq__answer"><p>Nej. P &gt; 0,05 betyder kun, at dine data ikke giver tilstrækkeligt belæg for at afvise nulhypotesen. Det kan være, fordi der ikke er en effekt — eller fordi stikprøven var for lille til at opdage den. For at konkludere at behandlingen ikke virker, har du brug for et ækvivalens- eller non-inferiority-design, eller et konfidensinterval, der udelukker klinisk relevante effekter.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er minimum acceptabel styrke i et dansk klinisk forsøg?</summary>
+          <div class="faq__answer"><p>Konventionen er 80 % styrke, og det er den nedre grænse, de fleste danske etikkomiteer og Lægemiddelstyrelsen vil acceptere uden særlig begrundelse. Konfirmatoriske fase-3-studier sigter typisk efter 90 %. Høj styrke betyder større n, så der er en praktisk og økonomisk balance, der skal forsvares i protokollen.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan påvirker stikprøvestørrelsen type II-fejl?</summary>
+          <div class="faq__answer"><p>Direkte. Større n giver mindre standardfejl, hvilket gør det lettere at opdage små effekter. Hvis du fordobler n og holder α fast, falder β hurtigt. Det er derfor protokollerne skal angive den mindste klinisk relevante forskel: den fastlægger, hvor mange patienter studiet skal rekruttere for at nå 80 % styrke. Tjek <a href="/t-test.html">t-test-beregneren</a> og <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregneren</a> for praktiske eksempler.</p></div>
+        </details>
+        <details>
+          <summary>Er konfidensinterval bedre end p-værdi til klinisk fortolkning?</summary>
+          <div class="faq__answer"><p>I mange tilfælde ja. Et 95 % konfidensinterval viser ikke kun, om effekten er "signifikant" eller ej, men også <em>hvor stor</em> effekten kan være med rimelighed. Et interval der inkluderer nul, svarer til p ≥ 0,05; men intervallets bredde fortæller om præcisionen, hvilket en p-værdi alene aldrig gør. CONSORT anbefaler at rapportere begge.</p></div>
+        </details>
+      </div>
+
+      <h2 id="referencer">Referencer</h2>
+      <ul>
+        <li>Schulz KF, Altman DG, Moher D. <em>CONSORT 2010 Statement: updated guidelines for reporting parallel group randomised trials.</em> BMJ 2010;340:c332.</li>
+        <li>Cohen J. <em>Statistical Power Analysis for the Behavioral Sciences.</em> 2. udgave. Lawrence Erlbaum Associates, 1988.</li>
+        <li>International Council for Harmonisation. <em>ICH E9: Statistical Principles for Clinical Trials.</em> 1998 (med E9(R1)-addendum 2019 om estimands).</li>
+        <li>Lægemiddelstyrelsen. <em>Vejledning om kliniske forsøg med lægemidler på mennesker.</em> Tilgængelig via laegemiddelstyrelsen.dk.</li>
+        <li>Andersen PK, Skovgaard LT. <em>Regression with Linear Predictors.</em> Springer, 2010 — dansk reference på regression og hypoteseprøvning.</li>
+        <li>Spliid H. <em>Statistical Analysis with Applications.</em> DTU Compute, lærebog brugt på danske universiteter.</li>
+        <li>Ioannidis JPA. <em>Why most published research findings are false.</em> PLoS Med 2005;2(8):e124 — klassisk om type I-inflation i klinisk litteratur.</li>
+      </ul>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Sammenlign gennemsnit i kliniske forsøg — RCT med kontinuerlige endpoints.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/stikprovestorrelse.html"><h3>Stikprøvestørrelse</h3><p>Beregn n for 80 % eller 90 % styrke — central i protokoldesign.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign rater for events (responder/non-responder, recidiv).</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

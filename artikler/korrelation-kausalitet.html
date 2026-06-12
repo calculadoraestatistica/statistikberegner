@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-7516029395999799">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Korrelation er ikke kausalitet: 7 fælder med danske data | Statistikberegner.dk</title>
+<meta name="description" content="Korrelation er ikke kausalitet: 7 typiske fælder i danske data — forveksling, omvendt kausalitet, range, outliers, Simpsons paradoks, fiskeri og spuriøse r.">
+<link rel="canonical" href="https://statistikberegner.dk/artikler/korrelation-kausalitet.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Korrelation er ikke kausalitet: 7 fælder med danske data">
+<meta property="og:description" content="Syv typiske fælder, der får et r til at lyve — forklaret med danske eksempler, grafik og links til beregneren.">
+<meta property="og:url" content="https://statistikberegner.dk/artikler/korrelation-kausalitet.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Korrelation er ikke kausalitet: 7 fælder med danske data",
+  "description": "Syv typiske fælder, der får et r til at lyve — forklaret med danske eksempler, grafik og links til beregneren.",
+  "image": "https://statistikberegner.dk/og-image.png",
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "inLanguage": "da-DK",
+  "author": {"@type": "Person", "name": "Vinícius Vianna"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Statistik Beregner",
+    "logo": {"@type": "ImageObject", "url": "https://statistikberegner.dk/favicon-512.png"}
+  },
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://statistikberegner.dk/artikler/korrelation-kausalitet.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Forside","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Artikler","item":"https://statistikberegner.dk/artikler/"},
+    {"@type":"ListItem","position":3,"name":"Korrelation er ikke kausalitet","item":"https://statistikberegner.dk/artikler/korrelation-kausalitet.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvis r er statistisk signifikant, kan jeg så konkludere kausalitet?","acceptedAnswer":{"@type":"Answer","text":"Nej. Statistisk signifikans betyder kun, at korrelationen sandsynligvis ikke er nul i populationen — den siger intet om årsag. Selv et stort og højsignifikant r kan skyldes en forveksler, omvendt kausalitet eller ren tilfældighed i en stor stikprøve. Kausalitet kræver et eksperimentelt design eller en stærk identifikationsstrategi."}},
+    {"@type":"Question","name":"Hvordan ved jeg om der er en forveksler?","acceptedAnswer":{"@type":"Answer","text":"Tegn en simpel kausalmodel (DAG) på papir, og spørg: findes der en variabel, der både påvirker X og Y? Hvis svaret er ja — fx temperatur, alder, indkomst eller geografi — har du sandsynligvis en forveksler. Domæneviden er afgørende; ingen statistisk test alene kan afsløre en uobserveret forveksler."}},
+    {"@type":"Question","name":"Kan jeg 'kontrollere' for forveksleren med regression?","acceptedAnswer":{"@type":"Answer","text":"Ja, hvis forveksleren er målt og inkluderet korrekt i modellen. Men du kan ikke kontrollere for noget, du ikke har målt, og at tilføje en mediator som kovariat kan skabe nye bias. Regression hjælper, men erstatter ikke et godt design."}},
+    {"@type":"Question","name":"Hvilket r er allerede 'stærk' i samfundsvidenskab?","acceptedAnswer":{"@type":"Answer","text":"Tommelfingerregler varierer, men i samfundsvidenskab regnes |r| omkring 0,1 som svag, 0,3 som moderat og 0,5 som stærk. I psykologi og økonomi er r > 0,4 sjældent. Husk at r måler lineær sammenhæng — et lille r udelukker ikke en stærk ikke-lineær relation."}},
+    {"@type":"Question","name":"Hvordan optræder Simpsons paradoks i danske sundhedsdata?","acceptedAnswer":{"@type":"Answer","text":"Et klassisk eksempel: en hospitalsbehandling kan se ud til at have højere dødelighed end en anden, fordi det modtager de sygeste patienter. Når man stratificerer efter sygdomsstadie, vender billedet. Det samme kan gælde optagelsesrater på KU/AU efter køn, hvis kønnene søger forskellige uddannelser."}},
+    {"@type":"Question","name":"Hvad er forskellen på et eksperiment og et observationsstudie?","acceptedAnswer":{"@type":"Answer","text":"I et eksperiment kontrollerer forskeren tildelingen af behandling — typisk ved randomisering — så grupperne bliver sammenlignelige i gennemsnit. I et observationsstudie observerer man bare, hvad der allerede sker, og grupperne adskiller sig systematisk. Det er forskellen, der gør, at eksperimenter giver kausal evidens, mens observation kun giver korrelation."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="container narrow">
+    <article class="prose">
+
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Forside</a></li>
+          <li><a href="/artikler/">Artikler</a></li>
+          <li>Korrelation &ne; kausalitet</li>
+        </ol>
+      </nav>
+
+      <h1>Korrelation er ikke kausalitet: 7 fælder med danske data</h1>
+      <p class="article__lead">Et signifikant <em>r</em> beviser ingenting alene. Her er de syv mest almindelige fælder, der får korrelationer til at lyve — illustreret med danske eksempler, hverdagsdata og to håndtegnede grafer.</p>
+      <p class="article__byline">Af Vinícius Vianna · 12. juni 2026 · Læsetid: ~12 min</p>
+
+      <h2 id="motivation">Hvorfor denne sætning gentages så ofte (og hvorfor den fortsat er vigtig)</h2>
+      <p>Forestil dig en overskrift i en dansk avis: <strong>"Byer med flere isbutikker har flere drukneulykker"</strong>. Tallene passer. Korrelationen er pæn, p-værdien er imponerende lille, og en eftermiddagsredaktør har allerede en grafik klar. Skal vi så lukke isbutikkerne for at redde liv? Selvfølgelig ikke. Det er sommer, der forklarer begge dele: når temperaturen stiger, åbner isbutikkerne flere timer, og flere mennesker bader i havet ved Amager Strand, ved Bellevue eller i Vesterhavet. Temperaturen er den skjulte tredje variabel — det, statistikere kalder en <em>forveksler</em>.</p>
+      <p>Denne fælde virker indlysende på papir. Men i hverdagen — i forskningsartikler, politiske notater, marketingrapporter — dukker varianter af samme fejl op igen og igen. Derfor gentages sætningen "korrelation er ikke kausalitet" i hver introduktionsbog i statistik: ikke fordi læseren ikke har hørt den før, men fordi den er svær at huske præcis i det øjeblik, et stort <em>r</em> blinker på skærmen.</p>
+      <p>Denne artikel går igennem syv konkrete fælder, illustreret med danske eksempler: SU, optagelse på KU og AU, regionale forskelle, kommunale paneldata. Du behøver ikke statistikuddannelse — kun lyst til at blive lidt mere kritisk over for den næste <em>r</em>, du ser.</p>
+
+      <h2 id="hvad">Hvad korrelation virkelig er (og ikke er)</h2>
+      <p>Pearsons korrelationskoefficient <em>r</em> er et tal mellem -1 og +1, der måler, hvor godt to variabler følger en lige linje. Den er +1, hvis de stiger perfekt sammen, -1 hvis den ene falder, mens den anden stiger, og 0, hvis der ikke er nogen lineær sammenhæng. Den måler ikke styrken af en kausal forbindelse. Den måler ikke en kurvet sammenhæng. Og den siger intet om, hvilken vej årsagspilen peger.</p>
+      <p>Hvis du vil beregne <em>r</em> for dine egne data — med p-værdi, konfidensinterval og fortolkning på dansk — kan du bruge vores <a href="/korrelation.html">korrelationsberegner</a>. Den giver dig tallet på få sekunder. Det svære arbejde begynder bagefter: at finde ud af, hvad det tal faktisk betyder.</p>
+
+      <h2 id="faelder">De 7 fælder der dukker op i dansk forskning</h2>
+
+      <h3 id="f1">1. Forveksler: den skjulte tredje variabel</h3>
+      <p>Isbutik–drukneulykke-eksemplet er det klassiske. Men forveksleren behøver ikke være temperatur. Det kan være alder (ældre tager flere præparater <em>og</em> har flere kroniske sygdomme), indkomst (rige spiser mere økologisk <em>og</em> har bedre sundhed), eller geografi (kommuner med flere cykelstier har færre overvægtige — men er også yngre og mere veluddannede).</p>
+      <p>En forveksler — <em>confounder</em> — er en variabel, der påvirker både X og Y. Den efterlader et fingeraftryk, der ligner kausalitet, men som faktisk er en fælles årsag. Den eneste reelle modgift er at <strong>tænke før du tester</strong>: tegn en kausalmodel (DAG) på papir, og spørg, hvilke variabler kunne påvirke begge sider. Måler du dem, kan du justere for dem. Ellers må du være ydmyg i din konklusion.</p>
+
+      <h3 id="f2">2. Omvendt kausalitet: hvem forårsager hvad?</h3>
+      <p>Du finder en positiv korrelation mellem uddannelseslængde og indkomst. Det er nærliggende at konkludere, at mere uddannelse fører til højere løn. Men det kunne også være, at mennesker fra velhavende familier både kan tillade sig at studere længere <em>og</em> har bedre adgang til velbetalte stillinger via netværk. Pilen peger i to retninger samtidigt.</p>
+      <p>Et andet eksempel: rygning og angst er positivt korreleret. I årtier antog man, at nikotin lindrede angst, og at angstpatienter derfor tyede til cigaretter. Nyere forskning peger på, at det modsatte også sker: vedvarende nikotinforbrug øger angstniveauet via biokemiske mekanismer. Pilen peger sandsynligvis begge veje — det er ikke et "enten-eller", men et "både-og". Når du står med en korrelation, så stop og spørg: <em>Hvilken kausalretning giver biologisk, økonomisk eller psykologisk mening her?</em> Hvis svaret er "begge dele", bør du være meget forsigtig med at tale om "effekter".</p>
+
+      <h3 id="f3">3. Restriktion af range: "omvendt teleskop"</h3>
+      <p>Forestil dig, at du undersøger sammenhængen mellem studentereksamen og senere indkomst — men kun blandt KU-studerende på medicin. Du finder et meget lavt <em>r</em>, måske 0,05, og konkluderer, at karakterer ikke betyder noget for indkomsten. Men din stikprøve er truncated på begge variabler: alle har ekstremt høje karakterer, alle ender med høje lægelønninger. Du har set på en lille bid af himlen og udtalt dig om hele universet.</p>
+      <p>Det modsatte sker også: måler du sammenhængen mellem IQ og jobpræstation kun blandt folk, der allerede er ansat (selekteret på IQ via tests), falder <em>r</em> dramatisk. Range restriction er en underkendt fælde, fordi den ser ud som et lille, ærligt resultat. Når du planlægger et observationsstudie, så brug vores <a href="/stikprovestorrelse.html">beregner for stikprøvestørrelse</a> til at sikre, at din stikprøve dækker hele variationen i populationen.</p>
+
+      <h3 id="f4">4. Outliers der oppumper (eller dæmper) r</h3>
+      <p>Et enkelt observationspunkt langt fra resten kan flytte <em>r</em> dramatisk. Se selv:</p>
+
+      <figure>
+        <svg viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="To scatterplots side om side: uden outlier r=0,15; med outlier r=0,72.">
+          <rect x="0" y="0" width="520" height="320" fill="#f8fafc"/>
+          <text x="260" y="22" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#0f172a" font-weight="600">Effekten af én outlier</text>
+          <!-- Left panel -->
+          <text x="125" y="42" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#334155">Uden outlier — r = 0,15</text>
+          <line x1="40" y1="60" x2="40" y2="290" stroke="#94a3b8" stroke-width="1"/>
+          <line x1="40" y1="290" x2="220" y2="290" stroke="#94a3b8" stroke-width="1"/>
+          <text x="35" y="295" text-anchor="end" font-family="sans-serif" font-size="9" fill="#64748b">0</text>
+          <text x="220" y="305" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">X</text>
+          <circle cx="60" cy="240" r="3.5" fill="#2563eb"/>
+          <circle cx="72" cy="220" r="3.5" fill="#2563eb"/>
+          <circle cx="84" cy="260" r="3.5" fill="#2563eb"/>
+          <circle cx="96" cy="200" r="3.5" fill="#2563eb"/>
+          <circle cx="108" cy="235" r="3.5" fill="#2563eb"/>
+          <circle cx="120" cy="190" r="3.5" fill="#2563eb"/>
+          <circle cx="132" cy="225" r="3.5" fill="#2563eb"/>
+          <circle cx="144" cy="170" r="3.5" fill="#2563eb"/>
+          <circle cx="156" cy="215" r="3.5" fill="#2563eb"/>
+          <circle cx="168" cy="180" r="3.5" fill="#2563eb"/>
+          <circle cx="180" cy="195" r="3.5" fill="#2563eb"/>
+          <circle cx="192" cy="160" r="3.5" fill="#2563eb"/>
+          <line x1="55" y1="215" x2="205" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Right panel -->
+          <text x="385" y="42" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#334155">Med outlier — r = 0,72</text>
+          <line x1="300" y1="60" x2="300" y2="290" stroke="#94a3b8" stroke-width="1"/>
+          <line x1="300" y1="290" x2="480" y2="290" stroke="#94a3b8" stroke-width="1"/>
+          <text x="295" y="295" text-anchor="end" font-family="sans-serif" font-size="9" fill="#64748b">0</text>
+          <text x="480" y="305" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">X</text>
+          <circle cx="320" cy="240" r="3.5" fill="#2563eb"/>
+          <circle cx="332" cy="220" r="3.5" fill="#2563eb"/>
+          <circle cx="344" cy="260" r="3.5" fill="#2563eb"/>
+          <circle cx="356" cy="200" r="3.5" fill="#2563eb"/>
+          <circle cx="368" cy="235" r="3.5" fill="#2563eb"/>
+          <circle cx="380" cy="190" r="3.5" fill="#2563eb"/>
+          <circle cx="392" cy="225" r="3.5" fill="#2563eb"/>
+          <circle cx="404" cy="170" r="3.5" fill="#2563eb"/>
+          <circle cx="416" cy="215" r="3.5" fill="#2563eb"/>
+          <circle cx="428" cy="180" r="3.5" fill="#2563eb"/>
+          <circle cx="440" cy="195" r="3.5" fill="#2563eb"/>
+          <circle cx="452" cy="160" r="3.5" fill="#2563eb"/>
+          <circle cx="470" cy="75" r="5" fill="#dc2626" stroke="#7f1d1d" stroke-width="1"/>
+          <text x="470" y="68" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#7f1d1d" font-weight="600">outlier</text>
+          <line x1="315" y1="245" x2="475" y2="100" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+        </svg>
+        <figcaption>Samme tolv punkter; én outlier i højre side skubber <em>r</em> fra 0,15 til 0,72.</figcaption>
+      </figure>
+
+      <p>Outliers kan stamme fra dataindtastningsfejl, målefejl eller et reelt men ekstremt tilfælde. Inden du tager en <em>r</em> for gode varer: <strong>plot altid dine data</strong>. Et scatterplot afslører øjeblikkeligt, om sammenhængen er ægte og udbredt, eller om den hviler på en enkelt observation. Robuste alternativer (Spearmans rang-korrelation, Kendalls tau) er mindre følsomme over for outliers.</p>
+
+      <h3 id="f5">5. Simpsons paradoks: tegnet der skifter ved aggregering</h3>
+      <p>Det klassiske eksempel kommer fra UC Berkeley i 1973: optagelsesdataene viste, at mænd blev optaget oftere end kvinder, og man mistænkte kønsdiskrimination. Da forskerne dykkede ned i de enkelte fakulteter, fandt de imidlertid, at kvinder blev optaget i en højere takst end mænd inden for de fleste fag. Hvordan kan begge dele være sande? Fordi kvinder søgte oftere ind på fag med lavere optagelsesrater (humaniora), mens mænd søgte ind på fag med højere rater (ingeniørvidenskab). Det aggregerede tal viste det modsatte af, hvad der skete inden for hvert fag.</p>
+      <p>Samme mønster kan i princippet opstå med danske data: hvis du analyserer optagelsesrater på KU og AU efter køn uden at justere for studieretning, kan du få en konklusion, der vender, så snart du stratificerer. Simpsons paradoks dukker op overalt — i hospitalsdata, i sportstal, i karakterer. Hver gang du ser et aggregeret tal, så spørg: <em>Ville tegnet vende, hvis jeg delte dataene op?</em> Hvis svaret er ja, må du fortælle begge historier.</p>
+
+      <h3 id="f6">6. Cherry-picking af variabler: "fiskeri" efter korrelationer</h3>
+      <p>Hvis du tester 20 uafhængige hypoteser med et signifikansniveau på 5 %, vil du i gennemsnit finde én "signifikant" sammenhæng <em>selv om alle nullhypoteser er sande</em>. Det er ren statistisk støj. Når en forsker stiller 100 spørgsmål til samme datasæt og kun rapporterer de fem mest spændende, er resultatet sandsynligvis falsk. Dette fænomen — kendt som <em>p-hacking</em> eller <em>data dredging</em> — har bidraget massivt til replikationskrisen i både psykologi og biomedicin.</p>
+      <p>Korrektioner findes. Bonferroni-korrektion deler signifikansniveauet med antallet af tests (ved 20 tests bliver alpha 0,0025 i stedet for 0,05). Det er konservativt. Mere moderne metoder som Benjamini-Hochbergs FDR (false discovery rate) tillader en kontrolleret andel falske positive blandt de signifikante fund. Begge tilgange er bedre end at ignorere problemet. Når du arbejder med kategoriske variabler og laver mange krydstabeller, så brug vores <a href="/chi-test.html">chi-i-anden test</a> og husk at korrigere, hvis du har testet mange hypoteser.</p>
+
+      <h3 id="f7">7. Spuriøs korrelation: variabler uden reel sammenhæng</h3>
+      <p>To variabler kan se stærkt korrelerede ud, simpelthen fordi de begge stiger over tid — uden at have nogen som helst forbindelse:</p>
+
+      <figure>
+        <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="To stigende tidsserier 2010-2024: import af fransk ost og antal danske litterære priser. r=0,93.">
+          <rect x="0" y="0" width="520" height="240" fill="#f8fafc"/>
+          <text x="260" y="22" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#0f172a" font-weight="600">To spuriøse tidsserier 2010–2024</text>
+          <line x1="60" y1="50" x2="60" y2="200" stroke="#94a3b8" stroke-width="1"/>
+          <line x1="60" y1="200" x2="490" y2="200" stroke="#94a3b8" stroke-width="1"/>
+          <text x="60" y="215" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">2010</text>
+          <text x="275" y="215" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">2017</text>
+          <text x="490" y="215" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">2024</text>
+          <polyline fill="none" stroke="#2563eb" stroke-width="2" points="60,180 91,172 122,165 153,160 184,148 215,135 246,128 277,118 308,108 339,98 370,90 401,82 432,72 463,65 490,58"/>
+          <polyline fill="none" stroke="#f59e0b" stroke-width="2" points="60,185 91,176 122,170 153,158 184,150 215,140 246,130 277,122 308,112 339,102 370,92 401,85 432,76 463,68 490,62"/>
+          <circle cx="60" cy="180" r="2.5" fill="#2563eb"/>
+          <circle cx="184" cy="148" r="2.5" fill="#2563eb"/>
+          <circle cx="308" cy="108" r="2.5" fill="#2563eb"/>
+          <circle cx="432" cy="72" r="2.5" fill="#2563eb"/>
+          <circle cx="60" cy="185" r="2.5" fill="#f59e0b"/>
+          <circle cx="184" cy="150" r="2.5" fill="#f59e0b"/>
+          <circle cx="308" cy="112" r="2.5" fill="#f59e0b"/>
+          <circle cx="432" cy="76" r="2.5" fill="#f59e0b"/>
+          <rect x="80" y="40" width="14" height="3" fill="#2563eb"/>
+          <text x="100" y="44" font-family="sans-serif" font-size="10" fill="#0f172a">Import af fransk ost (€/kg)</text>
+          <rect x="80" y="55" width="14" height="3" fill="#f59e0b"/>
+          <text x="100" y="59" font-family="sans-serif" font-size="10" fill="#0f172a">Antal danske litterære priser</text>
+          <text x="490" y="40" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="700" fill="#dc2626">r = 0,93 — betyder NUL kausalt</text>
+        </svg>
+        <figcaption>Begge serier stiger; korrelationen er næsten perfekt. Den fortæller os intet om virkeligheden.</figcaption>
+      </figure>
+
+      <p>Tyler Vigens hjemmeside Spurious Correlations samler hundredvis af absurde eksempler: skilsmisseraten i Maine korrelerer 0,99 med margarineforbrug pr. indbygger. Pointen er alvorlig: når to tidsserier begge bevæger sig op (eller ned) over tid, kan du næsten altid finde en høj korrelation. Det skyldes fælles tidsudvikling — befolkningsvækst, inflation, teknologi — ikke en kausal forbindelse. Modgiften er at <em>differensere</em> serierne (se på ændringer år for år), modellere autokorrelation, eller bedst af alt: insistere på en plausibel teori, før du tager korrelationen alvorligt.</p>
+
+      <h2 id="undgaa">Sådan undgår du fælderne: hvad du skal spørge før du tror på et r</h2>
+      <p>Tag denne korte tjekliste med dig næste gang du støder på en korrelation — i en artikel, en rapport, en præsentation eller dine egne analyser:</p>
+      <ol>
+        <li><strong>Findes der en plausibel tredje variabel?</strong> Tænk på alder, indkomst, geografi, tid, sæson, sundhedsstatus. Er der noget, der kunne påvirke både X og Y?</li>
+        <li><strong>Giver kausalretningen mening?</strong> Eller kunne pilen lige så godt pege den anden vej? Tjek tidsforløb: kommer årsagen før virkningen?</li>
+        <li><strong>Er rangen repræsentativ?</strong> Eller har vi kun set en smal skive af populationen? En analyse begrænset til KU-studerende, ph.d.-studerende eller eliteatleter siger lidt om resten.</li>
+        <li><strong>Er resultatet testet på undergrupper?</strong> Holder sammenhængen for mænd og kvinder, for unge og ældre, for Jylland og Hovedstaden? Eller dukker Simpsons paradoks op?</li>
+        <li><strong>Hvad er teorien bag?</strong> Findes der en plausibel mekanisme — biologisk, økonomisk, psykologisk — der kan forklare sammenhængen? En DAG, tegnet på papir, er et af de stærkeste værktøjer i værktøjskassen.</li>
+        <li><strong>Hvor mange tests blev der lavet, før denne dukkede op?</strong> Hvis svaret er "mange", skal du have et meget højere bevisniveau.</li>
+        <li><strong>Hvad sagde et plot?</strong> Aldrig stol på en korrelationskoefficient uden at have set scatterplottet.</li>
+      </ol>
+      <p>Når du har stillet disse spørgsmål, har du allerede ydet mere kritisk arbejde end de fleste rapporter, du læser. Vil du gå et skridt videre og kvantificere usikkerheden om dit <em>r</em>, kan du bruge vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a> til at omsætte korrelationen til et interval via Fishers z-transformation. Et bredt interval er en advarsel: estimatet er upræcist, uanset hvor flot punktværdien ser ud.</p>
+
+      <h2 id="kausalitet">Hvornår kan vi udlede kausalitet?</h2>
+      <p>Den korte version: kun når designet er stærkt nok til det. Den længere version består af tre lag.</p>
+      <p><strong>Randomiserede kontrollerede forsøg</strong> (RCT'er) er guldstandarden. Når deltagerne tildeles tilfældigt til behandling eller kontrol, bliver grupperne i gennemsnit ens på alle observerede <em>og</em> uobserverede variabler. Forskellen i udfald kan så tilskrives behandlingen. Sådan godkendes nye lægemidler, og det er grunden til, at A/B-test giver klarere svar end korrelationsstudier i samme felt. Når du sammenligner gennemsnit mellem to eksperimentelle grupper, kan du bruge vores <a href="/t-test.html">t-test-beregner</a>.</p>
+      <p><strong>Kvasi-eksperimenter</strong> efterligner randomisering uden at have den. Difference-in-differences sammenligner ændringer over tid mellem en behandlet og en ikke-behandlet gruppe. Regression discontinuity udnytter skarpe grænseværdier — fx en karaktergrænse for SU — til at sammenligne folk lige over og under tærsklen. Instrumentvariabler (IV) bruger en tredje variabel, der påvirker X men ikke Y direkte. Svære at gøre rigtigt, men når de virker, kan de give kausale konklusioner fra observationsdata.</p>
+      <p><strong>Bradford Hill-kriterierne</strong> fra 1965 er en epidemiologisk tjekliste til at vurdere, hvor sandsynligt det er, at en korrelation afspejler en kausal sammenhæng. De ni kriterier dækker styrke, konsistens, specifik, tidsmæssighed (årsag før virkning), dosis-respons, plausibilitet, koherens, eksperiment og analogi. Ingen enkelt er nødvendigt eller tilstrækkeligt, men tilsammen giver de en kvalificeret bedømmelse.</p>
+
+      <h2 id="case">Case: "korrelationen" mellem BNP og SU-pris</h2>
+      <p>Lad os arbejde et fiktivt men plausibelt eksempel igennem. Antag, at en analytiker hævder følgende: <em>"Der er en stærk positiv korrelation (r = 0,68) mellem en kommunes BNP pr. indbygger og det gennemsnitlige beløb, kommunens unge modtager i SU. Konklusion: rige kommuner får mere SU."</em> Lad os ikke købe det med det samme.</p>
+      <p><strong>Forveksler:</strong> Rige kommuner er typisk bymæssige (København, Aarhus, Aalborg), og byer huser universiteterne. Unge, der flytter til disse byer, får udeboendesatsen — som er højere. Befolkningsstruktur er en gigantisk forveksler.</p>
+      <p><strong>Omvendt kausalitet:</strong> Får kommuner mere SU, fordi de er rige? Næppe — tildelingen er central. Men flytter unge til velhavende kommuner, <em>fordi</em> uddannelsesinstitutionerne ligger der? Ja. Pilen peger fra "kommunen har universitet" til både BNP og SU-modtagere.</p>
+      <p><strong>Range:</strong> Hvis analysen kun dækker kommuner over 50.000 indbyggere, smalner variationen ind, og konklusionen gælder ikke små kommuner. <strong>Outliers:</strong> København er en outlier på næsten alle danske kommunemål. <strong>Simpsons paradoks:</strong> Stratificeret efter "har/har ikke universitet" kan sammenhængen forsvinde inden for hver gruppe.</p>
+      <p>Når alle forbehold er taget, ender overskriften "rige kommuner får mere SU" som en næsten meningsløs udtalelse. Det er ikke, at korrelationen er forkert beregnet — det er, at fortolkningen ikke holder. Vil du sammenligne grupper mere kontrolleret, kan du bruge vores <a href="/t-test.html">t-test</a> eller <a href="/korrelation.html">korrelationsberegner</a> sammen med en god teoretisk model. Statistikken er aldrig stærkere end argumenterne bag.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+
+      <h3>Hvis r er statistisk signifikant, kan jeg så konkludere kausalitet?</h3>
+      <p>Nej. Statistisk signifikans betyder kun, at korrelationen sandsynligvis ikke er nul i populationen — den siger intet om årsag. Selv et stort og højsignifikant <em>r</em> kan skyldes en forveksler, omvendt kausalitet eller ren tilfældighed i en stor stikprøve. Kausalitet kræver et eksperimentelt design eller en stærk identifikationsstrategi.</p>
+
+      <h3>Hvordan ved jeg om der er en forveksler?</h3>
+      <p>Tegn en simpel kausalmodel (DAG) på papir, og spørg: findes der en variabel, der både påvirker X og Y? Hvis svaret er ja — fx temperatur, alder, indkomst eller geografi — har du sandsynligvis en forveksler. Domæneviden er afgørende; ingen statistisk test alene kan afsløre en uobserveret forveksler.</p>
+
+      <h3>Kan jeg "kontrollere" for forveksleren med regression?</h3>
+      <p>Ja, hvis forveksleren er målt og inkluderet korrekt i modellen. Men du kan ikke kontrollere for noget, du ikke har målt, og at tilføje en mediator som kovariat kan skabe nye bias. Regression hjælper, men erstatter ikke et godt design.</p>
+
+      <h3>Hvilket r er allerede "stærk" i samfundsvidenskab?</h3>
+      <p>Tommelfingerregler varierer, men i samfundsvidenskab regnes |r| omkring 0,1 som svag, 0,3 som moderat og 0,5 som stærk. I psykologi og økonomi er <em>r</em> > 0,4 sjældent. Husk at <em>r</em> måler lineær sammenhæng — et lille <em>r</em> udelukker ikke en stærk ikke-lineær relation.</p>
+
+      <h3>Hvordan optræder Simpsons paradoks i danske sundhedsdata?</h3>
+      <p>Et klassisk eksempel: en hospitalsbehandling kan se ud til at have højere dødelighed end en anden, fordi det modtager de sygeste patienter. Når man stratificerer efter sygdomsstadie, vender billedet. Det samme kan gælde optagelsesrater på KU/AU efter køn, hvis kønnene søger forskellige uddannelser.</p>
+
+      <h3>Hvad er forskellen på et eksperiment og et observationsstudie?</h3>
+      <p>I et eksperiment kontrollerer forskeren tildelingen af behandling — typisk ved randomisering — så grupperne bliver sammenlignelige i gennemsnit. I et observationsstudie observerer man bare, hvad der allerede sker, og grupperne adskiller sig systematisk. Det er forskellen, der gør, at eksperimenter giver kausal evidens, mens observation kun giver korrelation.</p>
+
+      <h2 id="referencer">Referencer</h2>
+      <ul>
+        <li>Pearl, J. &amp; Mackenzie, D. (2018). <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</li>
+        <li>Hill, A. B. (1965). "The Environment and Disease: Association or Causation?" <em>Proceedings of the Royal Society of Medicine</em>, 58(5), 295–300.</li>
+        <li>Imbens, G. W. &amp; Rubin, D. B. (2015). <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em>. Cambridge University Press.</li>
+        <li>Angrist, J. D. &amp; Pischke, J.-S. (2009). <em>Mostly Harmless Econometrics: An Empiricist's Companion</em>. Princeton University Press.</li>
+        <li>Andersen, P. K. &amp; Skovgaard, L. T. (2010). <em>Regression with Linear Predictors</em>. Springer.</li>
+        <li>Spliid, H. (2013). <em>Anvendt Statistik</em>. DTU Compute.</li>
+      </ul>
+
+      <div class="related">
+        <h2>Beregn det selv</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/korrelation.html"><h3>Pearson-korrelation</h3><p>Beregn <em>r</em>, p-værdi og konfidensinterval — med fortolkning på dansk.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/t-test.html"><h3>t-test (Student)</h3><p>Sammenlign gennemsnit korrekt — én stikprøve, to grupper eller parret.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Få intervallet for et estimat og se, hvor præcist resultatet er.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-7516029395999799">
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
+<title>Stikprøvestørrelse i danske meningsmålinger: hvorfor er fejlmarginen 2 procentpoint? | Statistikberegner.dk</title>
+<meta name="description" content="Hvorfor har danske meningsmålinger fejlmargin på cirka 2 procentpoint? Forklaring af stikprøvestørrelse, design effect og 95% konfidens med eksempler.">
+<link rel="canonical" href="https://statistikberegner.dk/artikler/stikprovestorrelse-folketingsvalg.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Stikprøvestørrelse i danske meningsmålinger: hvorfor er fejlmarginen 2 procentpoint?">
+<meta property="og:description" content="Hvorfor har danske meningsmålinger fejlmargin på cirka 2 procentpoint? Forklaring af stikprøvestørrelse, design effect og 95% konfidens med eksempler.">
+<meta property="og:url" content="https://statistikberegner.dk/artikler/stikprovestorrelse-folketingsvalg.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Stikprøvestørrelse i danske meningsmålinger: hvorfor er fejlmarginen 2 procentpoint?",
+  "description": "Hvorfor har danske meningsmålinger fejlmargin på cirka 2 procentpoint? Forklaring af stikprøvestørrelse, design effect og 95% konfidens med eksempler.",
+  "image": "https://statistikberegner.dk/og-image.png",
+  "datePublished": "2026-06-12",
+  "dateModified": "2026-06-12",
+  "inLanguage": "da-DK",
+  "author": {"@type": "Person", "name": "Vinícius Vianna"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Statistik Beregner",
+    "logo": {"@type": "ImageObject", "url": "https://statistikberegner.dk/favicon-512.png"}
+  },
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://statistikberegner.dk/artikler/stikprovestorrelse-folketingsvalg.html"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Forside","item":"https://statistikberegner.dk/"},
+    {"@type":"ListItem","position":2,"name":"Artikler","item":"https://statistikberegner.dk/artikler/"},
+    {"@type":"ListItem","position":3,"name":"Stikprøvestørrelse Folketingsvalg","item":"https://statistikberegner.dk/artikler/stikprovestorrelse-folketingsvalg.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Hvorfor er fejlmarginen symmetrisk?","acceptedAnswer":{"@type":"Answer","text":"Fejlmarginen i en typisk meningsmåling er symmetrisk, fordi den bygger på en normaltilnærmelse til binomialfordelingen. Når n er stor nok, og p ikke er ekstremt tæt på 0 eller 1, er fordelingen af stikprøveandelen tilnærmelsesvis klokkeformet og symmetrisk omkring den sande andel. Derfor lægges samme afstand til begge sider af punktestimatet."}},
+    {"@type":"Question","name":"Hvad er forskellen mellem stikprøvefejl og ikke-stikprøvefejl?","acceptedAnswer":{"@type":"Answer","text":"Stikprøvefejl er den tilfældige usikkerhed, der opstår, fordi man kun har spurgt et udsnit af befolkningen. Den falder med størrelsen af stikprøven og kan kvantificeres med en fejlmargin. Ikke-stikprøvefejl dækker alt det andet: dårligt formulerede spørgsmål, frafald, vægtning, social ønskværdighed og ufuldstændige rammer. Ikke-stikprøvefejl kan være større end stikprøvefejlen og forsvinder ikke ved at spørge flere mennesker."}},
+    {"@type":"Question","name":"Kan jeg bruge samme stikprøve til flere partier?","acceptedAnswer":{"@type":"Answer","text":"Ja, men hver andel har sin egen fejlmargin, og når man sammenligner to partiers andele i samme måling, er deres estimater korrelerede. Det betyder, at usikkerheden på differencen mellem to partier ikke er summen af de to fejlmarginer; den er mindre, men kræver et andet udtryk for varians."}},
+    {"@type":"Question","name":"Følger online-målinger samme formel?","acceptedAnswer":{"@type":"Answer","text":"Den matematiske formel er den samme, men den hviler på en antagelse om tilfældig udvælgelse. Online-paneler er typisk ikke tilfældige stikprøver, så formel-fejlmarginen undervurderer den reelle usikkerhed. Seriøse institutter rapporterer en bredere effektiv fejlmargin og bruger vægtning og kvotering for at korrigere skævheder."}},
+    {"@type":"Question","name":"Hvordan vælger et seriøst institut antallet af interviews?","acceptedAnswer":{"@type":"Answer","text":"Det er en afvejning mellem ønsket præcision, omkostning og tid. For en landsdækkende dansk måling lander de fleste institutter på 1.000-1.500 interviews, fordi det giver omkring 2-3 procentpoints fejlmargin på de største partier - et niveau, som både medier og politiske aktører kan arbejde med."}},
+    {"@type":"Question","name":"Hvis forskellen er mindre end fejlmarginen, er det altid statistisk lige?","acceptedAnswer":{"@type":"Answer","text":"Som tommelfingerregel ja, men det er en forenkling. Den korrekte test bruger standardfejlen på differencen mellem to andele, hvilket kan give andre resultater end at sammenligne to overlappende konfidensintervaller. Brug en proportionstest, hvis forskellen ligger tæt på fejlmarginen."}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Forside</a></li>
+          <li><a href="/artikler/">Artikler</a></li>
+          <li>Stikprøvestørrelse Folketingsvalg</li>
+        </ol>
+      </nav>
+      <h1>Stikprøvestørrelse i danske meningsmålinger: hvorfor er fejlmarginen 2 procentpoint?</h1>
+      <p class="lead">Hvordan kan 1.500 telefoninterviews fortælle os noget om fem millioner vælgere? Og hvorfor lyder svaret altid på cirka to procentpoint? En gennemgang af matematikken, antagelserne og de praktiske faldgruber bag de tal, du møder hver uge i danske medier.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+
+    <article class="prose">
+
+      <p class="article__byline">Af Vinícius Vianna · 12. juni 2026 · Læsetid: ~12 min</p>
+
+      <nav class="toc" aria-label="Indhold i artiklen">
+        <strong>I denne artikel</strong>
+        <ol>
+          <li><a href="#kontekst">Hvorfor rammer meningsmålinger ved siden af</a></li>
+          <li><a href="#formel">Den klassiske formel for stikprøvestørrelse ved andele</a></li>
+          <li><a href="#eksempel">Eksempel: 1.500 interviews og 2,5 pp fejlmargin</a></li>
+          <li><a href="#konfidens">Hvorfor 95% konfidens? Og hvornår bruge 99%?</a></li>
+          <li><a href="#design-effect">Stratificeret stikprøve og "design effect"</a></li>
+          <li><a href="#usikre">Uafklarede vælgere og ikke-stikprøvefejl</a></li>
+          <li><a href="#50">Når p er tæt på 50% × tæt på 5%</a></li>
+          <li><a href="#vinjet">Historiske danske meningsmålinger</a></li>
+          <li><a href="#praksis">God praksis ved læsning af meningsmåling</a></li>
+          <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+          <li><a href="#referencer">Referencer</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="kontekst">Hvorfor rammer meningsmålinger ved siden af (og hvorfor det er forventet)</h2>
+      <p>Hver gang et folketingsvalg nærmer sig, lander der nye meningsmålinger i de danske medier næsten dagligt. Voxmeter for Ritzau, Megafon for Politiken og TV 2, YouGov for Berlingske, Norstat for Altinget, Epinion for DR — fem store institutter, og lige så mange ugentlige tabeller, hvor partierne flytter sig en halv eller hel procent op og ned. Og hver gang står der med småt nederst: <em>"Den statistiske usikkerhed er cirka 2 procentpoint."</em></p>
+      <p>For en utrænet læser virker det mærkeligt på to måder. For det første: hvordan kan så lille en gruppe — typisk 1.000 til 1.500 personer — afbilde en hel vælgerkorps på næsten 4,3 millioner stemmeberettigede? For det andet: hvorfor er det <em>altid</em> præcis to procentpoint? Er det en regneregel, en konvention eller noget mere fundamentalt?</p>
+      <p>Det korte svar er: det er matematik, ikke konvention. Tallet to procentpoint er ikke valgt, det <em>falder ud</em> af formlen for stikprøvestørrelse ved en velkendt kombination af antagelser. Det lange svar handler om sandsynlighedsregning, om hvad en "tilfældig stikprøve" egentlig betyder, og om de mange måder, den enkle formel kan vise sig at være for optimistisk i en moderne dansk virkelighed med mobiltelefoner, dyrebare panelmedlemmer og en stigende mængde uafklarede vælgere.</p>
+      <p>Denne artikel går trin for trin gennem den klassiske formel, viser hvorfor 95% konfidens er blevet branchestandard, forklarer hvorfor stratificerede stikprøver og "design effect" gør virkeligheden lidt mere kompleks, og runder af med en pragmatisk huskeliste til, hvad man bør se efter, når man læser eller selv vil bestille en måling. Vil du regne videre selv, har vi en simpel <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a>, der lader dig prøve scenarier af i din browser.</p>
+
+      <h2 id="formel">Den klassiske formel for stikprøvestørrelse ved andele</h2>
+      <p>Udgangspunktet er forbavsende simpelt. Hvis vi vil estimere en sand andel <em>p</em> i en population — fx andelen af vælgere, der vil stemme på Socialdemokratiet — og vi tager en simpel tilfældig stikprøve af størrelsen <em>n</em>, så er stikprøveandelen <em>p̂</em> et udgangspunkt for at gætte på <em>p</em>. Centralgrænsesætningen siger, at hvis <em>n</em> er stor nok, fordeler <em>p̂</em> sig tilnærmelsesvis normalfordelt omkring den sande <em>p</em>, med en standardafvigelse (standardfejl) på:</p>
+      <div class="formula">SE(p̂) = √(p·(1−p) / n)
+        <span class="formula__where">SE er standardfejlen for en andel ved simpel tilfældig udvælgelse.</span>
+      </div>
+      <p>For et givet konfidensniveau er fejlmarginen <em>E</em> så det halve af konfidensintervallets bredde, dvs. en kritisk værdi <em>z</em> gange standardfejlen:</p>
+      <div class="formula">E = z · √(p·(1−p) / n)
+        <span class="formula__where">z = 1,96 ved 95% konfidens; z = 2,576 ved 99%.</span>
+      </div>
+      <p>Vender vi ligningen om og isolerer <em>n</em>, får vi den klassiske udregning af nødvendig stikprøvestørrelse:</p>
+      <div class="formula">n = z² · p·(1−p) / E²
+        <span class="formula__where">Stikprøvestørrelse for ønsket fejlmargin E ved en andel p.</span>
+      </div>
+      <p>Intuitionen er værd at hænge fast i. Standardfejlen falder med kvadratroden af <em>n</em>: vil du <em>halvere</em> fejlmarginen, skal du <em>firdoble</em> stikprøven. Det er præcis derfor, en kerneindsigt er, at gevinsten ved at gå fra 1.500 til 3.000 interviews er mindre end mange tror — du sparer omtrent 30% af fejlen, men fordobler omkostningen. Vil du derimod gå fra 4 til 2 procentpoint fejlmargin, skal du firdoble — fra 600 til 2.400 interviews. Det er en hård kurve.</p>
+
+      <h2 id="eksempel">Eksempel: 1.500 interviews og 2,5 pp fejlmargin</h2>
+      <p>Lad os regne et konkret dansk scenarie igennem. Et institut interviewer <strong>n = 1.500 vælgere</strong>, bruger 95% konfidens (z = 1,96) og antager worst case <em>p = 0,5</em>. Indsætter vi:</p>
+      <div class="formula">E = 1,96 · √(0,5·0,5 / 1500) ≈ 1,96 · 0,01291 ≈ 0,0253
+        <span class="formula__where">Fejlmargin ≈ 2,5 procentpoint på 95%-niveau.</span>
+      </div>
+      <p>Det er hele forklaringen på "cirka to procentpoint". For et lidt mindre populært parti, fx p̂ omkring 0,10 (10%), bliver fejlmarginen:</p>
+      <div class="formula">E = 1,96 · √(0,1·0,9 / 1500) ≈ 1,96 · 0,00775 ≈ 0,0152
+        <span class="formula__where">For p̂ ≈ 10% er den nominelle fejlmargin omkring 1,5 procentpoint.</span>
+      </div>
+      <p>Det viser, at fejlmarginen i meningsmålingstabeller faktisk er <em>partispecifik</em>. Når Voxmeter eller Megafon rapporterer "±2 pp" for hele tabellen, er det en konservativ tommelfingerregel, der gælder for de største partier omkring 25-30%. For et lille parti omkring 5% er den nominelle stikprøvefejl tættere på 1,1 procentpoint, mens den for Socialdemokratiet på en god dag (28%) er omkring 2,3 procentpoint. Nedenfor er kurven for fejlmargin som funktion af stikprøvestørrelse — bemærk hvor hurtigt udbyttet aftager, når man passerer n = 1.000.</p>
+
+      <figure class="chart">
+        <svg viewBox="0 0 520 320" role="img" aria-labelledby="chart1-title chart1-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="chart1-title">Fejlmargin som funktion af stikprøvestørrelse</title>
+          <desc id="chart1-desc">Logaritmisk x-akse fra 100 til 10.000 interviews. Kurven viser, at fejlmarginen falder fra cirka 9,8% ved n=100 til cirka 1% ved n=10.000, med en markering ved n=1.500 svarende til 2,5 procentpoint.</desc>
+          <rect x="0" y="0" width="520" height="320" fill="#ffffff"/>
+          <g font-family="system-ui, sans-serif" font-size="11" fill="#475569">
+            <text x="260" y="20" text-anchor="middle" font-weight="600" fill="#0f172a" font-size="13">Fejlmargin vs. stikprøvestørrelse (p = 0,5; 95% konfidens)</text>
+            <text x="260" y="305" text-anchor="middle">Antal interviews (n, log-skala)</text>
+            <text x="18" y="170" text-anchor="middle" transform="rotate(-90 18 170)">Fejlmargin (procentpoint)</text>
+          </g>
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="60" y1="60" x2="500" y2="60"/>
+            <line x1="60" y1="110" x2="500" y2="110"/>
+            <line x1="60" y1="160" x2="500" y2="160"/>
+            <line x1="60" y1="210" x2="500" y2="210"/>
+            <line x1="60" y1="260" x2="500" y2="260"/>
+          </g>
+          <g font-family="system-ui, sans-serif" font-size="10" fill="#64748b">
+            <text x="55" y="63" text-anchor="end">10</text>
+            <text x="55" y="113" text-anchor="end">8</text>
+            <text x="55" y="163" text-anchor="end">6</text>
+            <text x="55" y="213" text-anchor="end">4</text>
+            <text x="55" y="263" text-anchor="end">2</text>
+            <text x="55" y="285" text-anchor="end">0</text>
+          </g>
+          <g stroke="#0f172a" stroke-width="1.2">
+            <line x1="60" y1="285" x2="500" y2="285"/>
+            <line x1="60" y1="60" x2="60" y2="285"/>
+          </g>
+          <g font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">
+            <text x="60" y="300">100</text>
+            <text x="170" y="300">300</text>
+            <text x="280" y="300">1.000</text>
+            <text x="390" y="300">3.000</text>
+            <text x="500" y="300">10.000</text>
+          </g>
+          <path d="M60,60 L75,82 L95,105 L115,124 L140,145 L170,164 L200,180 L240,196 L280,213 L320,225 L360,235 L390,243 L420,251 L450,259 L480,267 L500,272" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <g>
+            <line x1="305" y1="219" x2="305" y2="285" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7"/>
+            <line x1="60" y1="219" x2="305" y2="219" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7"/>
+            <circle cx="305" cy="219" r="4.5" fill="#0d9488" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="315" y="215" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a" font-weight="600">n = 1.500 → ≈ 2,5 pp</text>
+          </g>
+        </svg>
+        <figcaption>Fejlmargin (procentpoint) for andelsestimater ved p = 0,5 og 95% konfidens, som funktion af stikprøvestørrelsen på logaritmisk skala.</figcaption>
+      </figure>
+
+      <p>Vil du selv eksperimentere — fx finde ud af, hvor mange interviews der skal til for en 1 pp fejlmargin (svar: omkring 9.600) — er <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregneren</a> nem at åbne. Og hvis du står med en konkret måling og vil bygge intervallet om punktestimatet, hjælper <a href="/konfidensinterval.html">konfidensinterval-beregneren</a>.</p>
+
+      <h2 id="konfidens">Hvorfor 95% konfidens? Og hvornår bruge 99%?</h2>
+      <p>Tallet 95% er ikke en naturlov, men en konvention. Den blev i praksis kanoniseret af R. A. Fisher i 1920'erne og er forblevet branchestandard i sociologi, sundhedsforskning og — siden — opinionsmåling. Bag valget ligger en pragmatisk afvejning: jo højere konfidens, jo bredere interval, jo mindre nyttig præcision. 95% er tilstrækkelig sikkerhed til de fleste hverdagsbeslutninger uden at gøre intervallerne så brede, at de holder op med at sige noget.</p>
+      <p>Forholdet mellem konfidensniveauet og stikprøvestørrelsen er direkte. Ved samme ønskede fejlmargin og samme p kræver 99% konfidens (z = 2,576) en stikprøve, der er (2,576/1,96)² ≈ 1,73 gange større end ved 95%. Skal du for eksempel have 2,5 pp fejlmargin på 99%-niveau, skal du gå fra 1.500 til omkring 2.600 interviews. Det er en betydelig omkostningsforskel for en relativt lille gevinst i tryghed.</p>
+      <p>I praksis bruger man 99% i to typer situationer: når konsekvenserne ved en fejl er meget store (medicinsk diagnostik, sikkerhed), eller når man laver mange parallelle tests og vil tage højde for multipel testning. For en daglig politisk meningsmåling, hvor mediefolk og kommentatorer skal kunne diskutere bevægelser, er 95% en god balance. Skal du teste forskelle mellem to versioner i en kontrolleret kampagne, kan du bruge <a href="/ab-test-stikprove.html">stikprøve til A/B-test-beregneren</a> for at planlægge en realistisk stikprøve på forhånd.</p>
+
+      <h2 id="design-effect">Stratificeret stikprøve og "design effect"</h2>
+      <p>Den klassiske formel forudsætter simpel tilfældig udvælgelse: hver person i populationen har samme sandsynlighed for at blive ringet op, og udvælgelsen sker uafhængigt. Det er sjældent virkelighed. Voxmeter, Megafon og YouGov bruger blandinger af telefoninterviews og online-paneler, kvotering på alder, køn, geografi og uddannelse, og oversamplingstrategier for at sikre tilstrækkeligt mange respondenter i underrepræsenterede grupper.</p>
+      <p>Når man afviger fra simpel tilfældig udvælgelse, opstår der typisk en <strong>design effect</strong>, ofte forkortet DE eller deff. Begrebet stammer fra Leslie Kishs arbejde i 1965 og defineres som forholdet mellem variansen i det faktiske design og variansen i en simpel tilfældig stikprøve af samme størrelse. Hvis DE = 1, er designet effektivt som SRS. Hvis DE = 1,5, opfører din stikprøve på 1.500 sig variansmæssigt som en SRS-stikprøve på 1.000. Det er den såkaldte <em>effektive stikprøvestørrelse</em>:</p>
+      <div class="formula">n<sub>eff</sub> = n / DE
+        <span class="formula__where">Den reelle "tæller" for fejlmarginberegningen er n_eff, ikke n.</span>
+      </div>
+      <p>For typiske danske politiske målinger ligger DE et sted mellem 1,3 og 1,8, afhængigt af hvor aggressivt instituttet vægter for at korrigere skævheder. Det betyder, at en nominel stikprøve på 1.500 reelt har en effektiv størrelse på 830 til 1.150. Indsætter vi det i formlen, vokser den effektive fejlmargin fra de nominelle 2,5 procentpoint til mellem 2,9 og 3,4 procentpoint. Det er en af grundene til, at man ikke skal regne for skarpt på en enkelt målings forskel fra ugen før.</p>
+      <p>Stratificering kan også <em>reducere</em> variansen — DE < 1 — hvis stratifikationen er meget effektiv og man stratificerer efter en variabel, der er stærkt korreleret med svaret. I praksis er stratificering efter region eller alder ikke nær så stærk, og det meste af designeffekten i meningsmålinger kommer fra vægtningen og fra cluster-strukturer i panelet.</p>
+
+      <h2 id="usikre">Problemet med uafklarede vælgere og ikke-stikprøvefejl</h2>
+      <p>Indtil nu har vi kun talt om den <em>tilfældige</em> usikkerhed, der følger af, at man har spurgt et begrænset antal mennesker. Det er det, fejlmarginen i en meningsmåling rapporterer. Men der findes en hel familie af fejl, som formlen ikke fanger, og som ofte er større end stikprøvefejlen. Samlet kaldes de <strong>ikke-stikprøvefejl</strong>.</p>
+      <p>Den tydeligste i dansk sammenhæng er <strong>uafklarede vælgere</strong>. I månederne mellem valg svinger andelen, der svarer "ved ikke", mellem 10 og 25 procent. De fleste institutter rapporterer kun fordelingen blandt dem, der har afgivet et parti — men de uafklarede er ikke en tilfældig undergruppe. Forskning fra valgforskningsprojekter ved Aarhus Universitet og Københavns Universitet viser, at uafklarede oftere er kvinder, yngre, har lavere indkomst og typisk er mindre tilbøjelige til at stemme. Hvis du antager, de fordeler sig som de afklarede, indfører du en systematisk skævhed, som ingen fejlmargin afslører.</p>
+      <p>Andre ikke-stikprøvefejl omfatter:</p>
+      <ul>
+        <li><strong>Dækningsfejl</strong> — telefoninterviews rammer ikke borgere uden mobil eller fast nummer, og online-paneler rammer overhovedet ikke borgere uden internet eller med svag digital integration.</li>
+        <li><strong>Frafald (non-response)</strong> — typisk svarer 5-15% af de kontaktede. Hvis frafaldet er systematisk korreleret med partivalg, vægter vægtningen ikke det op.</li>
+        <li><strong>Spørgsmålsformulering</strong> — rækkefølgen af partierne, hvorvidt der spørges åbent eller med vist liste, om man bliver bedt om at vælge et parti eller en kandidat.</li>
+        <li><strong>Social ønskværdighed</strong> — respondenter, der støtter partier med stigma, kan systematisk underrapportere. Dette har historisk været diskuteret i forbindelse med højrenationalistiske partier i flere lande, inklusive Danmark.</li>
+        <li><strong>Vægtningsmodel</strong> — hvordan instituttet vægter mod befolkningsregisteret og mod historisk valgadfærd. To institutter med samme rådata kan publicere forskellige tal alene på grund af forskellige vægtningsmetoder.</li>
+      </ul>
+      <p>Den nationale Pewundersøgelse fra 2017 og en metastudie af European Survey Research Association fra 2019 fandt, at samlede ikke-stikprøvefejl for politiske målinger typisk er i størrelsesordenen 1-2 procentpoint, hvilket effektivt fordobler den reelle usikkerhed sammenlignet med den nominelle fejlmargin. Det er den pragmatiske grund til at læse en enkelt måling med tilpas skepsis.</p>
+
+      <h2 id="50">Når p er tæt på 50% × tæt på 5%</h2>
+      <p>Formlen <em>n = z²·p·(1−p)/E²</em> rummer en lille men vigtig pointe: udtrykket <em>p·(1−p)</em> er en parabel, der topper ved <em>p = 0,5</em> med en maksimal værdi på 0,25. Det vil sige, at standardfejlen — for en given <em>n</em> — er størst, når den sande andel er omkring halvtreds procent, og mindst, når andelen er tæt på 0 eller 1.</p>
+
+      <figure class="chart">
+        <svg viewBox="0 0 420 260" role="img" aria-labelledby="chart2-title chart2-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="chart2-title">Variansfunktionen p·(1−p)</title>
+          <desc id="chart2-desc">Symmetrisk parabel med toppunkt i p=0,5, y=0,25. Kurven viser, hvorfor p=0,5 bruges som worst case ved stikprøveplanlægning.</desc>
+          <rect x="0" y="0" width="420" height="260" fill="#ffffff"/>
+          <g font-family="system-ui, sans-serif" font-size="11" fill="#475569">
+            <text x="210" y="18" text-anchor="middle" font-weight="600" fill="#0f172a" font-size="13">p · (1 − p) som funktion af p</text>
+            <text x="210" y="248" text-anchor="middle">Sand andel p</text>
+            <text x="14" y="135" text-anchor="middle" transform="rotate(-90 14 135)">p · (1 − p)</text>
+          </g>
+          <g stroke="#e2e8f0" stroke-width="1">
+            <line x1="50" y1="50" x2="400" y2="50"/>
+            <line x1="50" y1="100" x2="400" y2="100"/>
+            <line x1="50" y1="150" x2="400" y2="150"/>
+            <line x1="50" y1="200" x2="400" y2="200"/>
+          </g>
+          <g font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="end">
+            <text x="46" y="53">0,25</text>
+            <text x="46" y="103">0,20</text>
+            <text x="46" y="153">0,15</text>
+            <text x="46" y="203">0,10</text>
+            <text x="46" y="228">0,00</text>
+          </g>
+          <g stroke="#0f172a" stroke-width="1.2">
+            <line x1="50" y1="228" x2="400" y2="228"/>
+            <line x1="50" y1="50" x2="50" y2="228"/>
+          </g>
+          <g font-family="system-ui, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">
+            <text x="50" y="243">0</text>
+            <text x="137" y="243">0,25</text>
+            <text x="225" y="243">0,50</text>
+            <text x="312" y="243">0,75</text>
+            <text x="400" y="243">1</text>
+          </g>
+          <path d="M50,228 Q225,-128 400,228" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+          <g>
+            <line x1="225" y1="50" x2="225" y2="228" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.7"/>
+            <circle cx="225" cy="50" r="5" fill="#0d9488" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="232" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#0f172a" font-weight="600">maksimum (0,5; 0,25)</text>
+          </g>
+        </svg>
+        <figcaption>Variansfunktionen for en andel: p·(1−p) topper i p = 0,5 med værdi 0,25 og falder symmetrisk mod nul ved p = 0 og p = 1.</figcaption>
+      </figure>
+
+      <p>Konsekvensen er praktisk. Når et institut planlægger en stikprøve, og der ikke findes et pålideligt forhåndsbud på <em>p</em>, vælger de p = 0,5 som worst case. Det giver det mest konservative — det vil sige største — krav til <em>n</em>. Skal du for eksempel have 3 pp fejlmargin og bruger p = 0,5, kræver det 1.067 interviews. Vidste du derimod på forhånd, at p var omkring 0,1, ville samme præcision kun kræve omkring 384 interviews. Den ekstra omkostning ved at antage 0,5 er prisen for at sikre sig mod ubehagelige overraskelser i de partier, hvor man rammer 50/50-området — typisk omkring "blok mod blok"-spørgsmål eller folkeafstemninger.</p>
+      <p>Vil du sammenligne to specifikke andele, fx forskellen mellem to partier eller mellem to ja-andele i en folkeafstemning, så brug <a href="/proportionstest.html">proportionstest-beregneren</a>. Den tager højde for, at standardfejlen for forskellen er anderledes end summen af de to individuelle fejlmarginer.</p>
+
+      <h2 id="vinjet">Historisk vignet: berømte danske meningsmålinger der ramte forkert</h2>
+      <p>Lad os se på tre folketingsvalg, der hver illustrerer en del af forskellen mellem nominel fejlmargin og virkelig præcision. Dette er metodologisk diskussion, ikke partipolitik — pointen er at vise, hvordan stikprøvefejl, ikke-stikprøvefejl og sen-svingere tilsammen kan forklare afvigelser.</p>
+      <h3>Valget 2015</h3>
+      <p>Op til valget den 18. juni 2015 viste de fleste institutter rød blok foran med 3-5 procentpoints margin i de sidste uger. Det endelige resultat blev en sejr til blå blok med 90 mod 89 mandater. Fejlen kom fra to kanter: en undervurdering af Dansk Folkepartis opbakning på 2-3 procentpoint i forhold til faktisk afgivne stemmer, og en sen drejning hos uafklarede, som målingerne ikke fangede. Den nominelle fejlmargin på cirka 2 procentpoint på de største partier var i sig selv ikke nok til at forklare hele afvigelsen — det krævede en kombination med systematisk skævhed.</p>
+      <h3>Valget 2019</h3>
+      <p>Et af de mere præcise valg i nyere dansk historie. Voxmeters sidste måling før valget den 5. juni 2019 lå inden for 1-2 procentpoint på alle store partier, og blokkens flertal blev korrekt forudsagt. Det illustrerede, at når både stikprøvedesign, vægtning og uafklarede-modellering er på plads, kan en meningsmåling med 1.500 respondenter give meget høj præcision. Det er værd at bemærke som et bevis på, at "2 procentpoints fejlmargin" reelt holder, når metodikken er solid.</p>
+      <h3>Valget 2022</h3>
+      <p>Folketingsvalget den 1. november 2022 udfordrede måleinstitutterne på en ny måde. Moderaterne, et nyt parti dannet året før, lå i de første prognoser med 9-11%, men endte med 9,3% — relativt tæt på. Den større udfordring var at indfange de skift, der skete i de sidste par dage før valget, samt at vurdere de partier, der lå tæt på spærregrænsen på 2%. For et parti omkring spærregrænsen er stikprøvefejlen <em>relativt</em> set enorm: med p̂ = 0,02 og n = 1.500 er fejlmarginen omkring 0,7 procentpoint, men det svarer til en relativ usikkerhed på over 35%. Det er derfor, ingen seriøs analytiker turde udtale sig skarpt om mindre partiers fremtid på basis af én måling alene.</p>
+
+      <h2 id="praksis">God praksis ved læsning eller bestilling af meningsmåling</h2>
+      <p>Hvad enten du er journalist, kampagnemedarbejder, studerende eller engageret borger, hjælper en kort tjekliste til at læse en måling kritisk. Når den næste tabel fra Voxmeter, Megafon, YouGov, Norstat eller Epinion lander, så kig efter følgende seks punkter:</p>
+      <ol>
+        <li><strong>Felt-dato</strong> — hvilke dage er interviewene foretaget? Politiske begivenheder mellem feltdato og publicering er ikke fanget. En måling fra mandag, der trykkes om torsdag, har ikke set onsdagens debat.</li>
+        <li><strong>Institut og metode</strong> — Voxmeter (telefon/web), Megafon (telefon/web), YouGov (online-panel), Norstat (telefon/web), Epinion (online-panel). Telefon-baserede målinger har historisk haft lavere DE end rene online-paneler, men har højere omkostning.</li>
+        <li><strong>Stikprøvestørrelse</strong> — er det 1.000, 1.500 eller 2.500? Husk: gevinsten ved at gå fra 1.500 til 2.500 er beskeden i forhold til omkostningen.</li>
+        <li><strong>Konfidensniveau og fejlmargin</strong> — næsten altid 95%. Tjek, om fejlmarginen er rapporteret per parti eller som worst case for hele tabellen.</li>
+        <li><strong>Antal uafklarede</strong> — hvor stor en andel af de adspurgte gav ikke et partivalg? Jo større andel, jo større potentielt udsving når kampagnen rammer dem.</li>
+        <li><strong>Finansieringskilde</strong> — hvem har bestilt og betalt målingen? Et seriøst institut publicerer samme metodik, uanset hvem der har betalt, men en partifinansieret intern måling skal ikke sammenlignes en-til-en med en uafhængig medie-måling.</li>
+      </ol>
+      <p>Skal du selv bestille en måling — fx til et speciale, en NGO-rapport eller en kampagneevaluering — er en god startsekvens: definer det ønskede præcisionsniveau (typisk 3-5 pp er rigeligt), antag p = 0,5 hvis du ikke ved bedre, vælg 95% konfidens, og beregn <em>n</em> med formlen ovenfor. Læg derefter 30-50% oveni for at kompensere for design effect og frafald. Det giver realistiske budgettal.</p>
+
+      <h2 id="faq">Ofte stillede spørgsmål</h2>
+      <div class="faq">
+        <details>
+          <summary>Hvorfor er fejlmarginen symmetrisk?</summary>
+          <div class="faq__answer"><p>Fejlmarginen i en typisk meningsmåling er symmetrisk, fordi den bygger på en normaltilnærmelse til binomialfordelingen. Når n er stor nok, og p ikke er ekstremt tæt på 0 eller 1, er fordelingen af stikprøveandelen tilnærmelsesvis klokkeformet og symmetrisk omkring den sande andel. Derfor lægges samme afstand til begge sider af punktestimatet. For meget små andele, fx 1-2%, bryder symmetrien sammen, og man skal i stedet bruge Wilson- eller Clopper-Pearson-intervaller, som vi anvender i vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a>.</p></div>
+        </details>
+        <details>
+          <summary>Hvad er forskellen mellem stikprøvefejl og ikke-stikprøvefejl?</summary>
+          <div class="faq__answer"><p>Stikprøvefejl er den tilfældige usikkerhed, der opstår, fordi man kun har spurgt et udsnit af befolkningen. Den falder med størrelsen af stikprøven og kan kvantificeres med en fejlmargin. Ikke-stikprøvefejl dækker alt det andet: dårligt formulerede spørgsmål, frafald, vægtning, social ønskværdighed og ufuldstændige rammer. Ikke-stikprøvefejl kan være større end stikprøvefejlen og forsvinder ikke ved at spørge flere mennesker.</p></div>
+        </details>
+        <details>
+          <summary>Kan jeg bruge samme stikprøve til flere partier?</summary>
+          <div class="faq__answer"><p>Ja, men hver andel har sin egen fejlmargin, og når man sammenligner to partiers andele i samme måling, er deres estimater korrelerede. Det betyder, at usikkerheden på differencen mellem to partier ikke er summen af de to fejlmarginer; den er mindre, men kræver et andet udtryk for varians. Til en sammenligning brug <a href="/proportionstest.html">proportionstest-beregneren</a>.</p></div>
+        </details>
+        <details>
+          <summary>Følger online-målinger samme formel?</summary>
+          <div class="faq__answer"><p>Den matematiske formel er den samme, men den hviler på en antagelse om tilfældig udvælgelse. Online-paneler er typisk ikke tilfældige stikprøver, så formel-fejlmarginen undervurderer den reelle usikkerhed. Seriøse institutter rapporterer en bredere effektiv fejlmargin og bruger vægtning og kvotering for at korrigere skævheder.</p></div>
+        </details>
+        <details>
+          <summary>Hvordan vælger et seriøst institut antallet af interviews?</summary>
+          <div class="faq__answer"><p>Det er en afvejning mellem ønsket præcision, omkostning og tid. For en landsdækkende dansk måling lander de fleste institutter på 1.000-1.500 interviews, fordi det giver omkring 2-3 procentpoints fejlmargin på de største partier — et niveau, som både medier og politiske aktører kan arbejde med. Vil du afprøve det selv, kan du regne forskellige scenarier igennem i vores <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a>.</p></div>
+        </details>
+        <details>
+          <summary>Hvis forskellen er mindre end fejlmarginen, er det altid statistisk lige?</summary>
+          <div class="faq__answer"><p>Som tommelfingerregel ja, men det er en forenkling. Den korrekte test bruger standardfejlen på differencen mellem to andele, hvilket kan give andre resultater end at sammenligne to overlappende konfidensintervaller. Brug en <a href="/proportionstest.html">proportionstest</a>, hvis forskellen ligger tæt på fejlmarginen.</p></div>
+        </details>
+      </div>
+
+      <h2 id="referencer">Referencer</h2>
+      <ul>
+        <li>Cochran, W. G. (1977). <em>Sampling Techniques</em>, 3. udgave. John Wiley &amp; Sons. Den klassiske reference for stikprøvedesign, herunder kapitler om stratificering og varianstilnærmelser.</li>
+        <li>Cox, D. R. &amp; Donnelly, C. A. (2011). <em>Principles of Applied Statistics</em>. Cambridge University Press. Diskuterer praktiske aspekter af stikprøveundersøgelser og inferens.</li>
+        <li>Kish, L. (1965). <em>Survey Sampling</em>. Wiley. Den oprindelige formulering af design effect-konceptet.</li>
+        <li>Andersen, P. K. &amp; Skovgaard, L. T. (2010). <em>Regression with Linear Predictors</em>. Springer. Dansk lærebogsstandard for statistisk modellering.</li>
+        <li>Voxmeter A/S, metodebeskrivelse for politiske meningsmålinger (offentligt tilgængelig på voxmeter.dk).</li>
+        <li>Megafon, årsrapport og metodebilag fra publicerede politiske målinger (megafon.dk).</li>
+        <li>Danmarks Statistik, metodologi for stikprøveundersøgelser (dst.dk/da/Statistik/dokumentation).</li>
+        <li>European Survey Research Association (2019). Metastudie af ikke-stikprøvefejl i europæiske politiske målinger.</li>
+      </ul>
+
+      <div class="related">
+        <h2>Relaterede beregnere</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/stikprovestorrelse.html"><h3>Stikprøvestørrelse</h3><p>Find den nødvendige stikprøve til en ønsket fejlmargin.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/konfidensinterval.html"><h3>Konfidensinterval</h3><p>Byg intervallet om et punktestimat for andel eller gennemsnit.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/proportionstest.html"><h3>Proportionstest</h3><p>Sammenlign to andele med korrekt standardfejl på differencen.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Brug for statistik inden for dit felt?</h2>
+        <p>Se de praktiske statistik-guides til sygepleje, psykologi og marketing.</p>
+        <a class="btn btn--light btn--lg" href="/#guias">Se guides efter område</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med en forklaring du forstår til hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">t-test (Student)</a></li>
+          <li><a href="/z-test.html">z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden test</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Korrelation (Pearson)</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til Sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til Psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til Marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du test</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
