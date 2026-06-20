@@ -488,7 +488,7 @@
     var cls = r.significant ? (Math.abs(r.r) >= 0.5 ? 'ok' : 'warn') : 'neutral';
     var headline =
       'r = ' + Fmt.num(r.r, 4) +
-      ' · ' + r.forca + ' korrelation' + (Math.abs(r.r) > 0 ? ' og ' + r.sinal : '');
+      ' · ' + r.forca + (Math.abs(r.r) > 0 ? ' og ' + r.sinal : '') + ' korrelation';
     var sub = 'n = ' + r.n + ' · ' +
       (r.significant ? 'Statistisk signifikant' : 'Ikke-signifikant') +
       ' (α = ' + Fmt.num(r.alpha, 2) + ')';
