@@ -188,8 +188,8 @@
     var alpha = 1 - confidence;
     var pValue = zPValue(z, tails);
     if (tails === 1) {
-      // unicaudal: p-valor para a hipótese de que B supera A
-      pValue = 1 - normalCDF(z);
+      // unicaudal: p-valor para a direção observada (|z|), consistente com zPValue
+      pValue = 1 - normalCDF(Math.abs(z));
     }
     var significant = pValue < alpha;
 
