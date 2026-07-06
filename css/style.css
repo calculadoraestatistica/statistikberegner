@@ -135,13 +135,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--c-text);
-  /* Graph paper: minor line every 8px (~3% ink), major every 40px (~6%) */
   background-color: var(--c-paper);
-  background-image:
-    repeating-linear-gradient(0deg,  var(--grid-major) 0, var(--grid-major) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, var(--grid-major) 0, var(--grid-major) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(0deg,  var(--grid-minor) 0, var(--grid-minor) 1px, transparent 1px, transparent 8px),
-    repeating-linear-gradient(90deg, var(--grid-minor) 0, var(--grid-minor) 1px, transparent 1px, transparent 8px);
   font-feature-settings: 'kern', 'liga', 'calt';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1250,9 +1244,6 @@ textarea.input {
    ============================================================ */
 .formula {
   background-color: var(--c-surface);
-  background-image:
-    repeating-linear-gradient(0deg,  var(--grid-blue) 0, var(--grid-blue) 1px, transparent 1px, transparent 8px),
-    repeating-linear-gradient(90deg, var(--grid-blue) 0, var(--grid-blue) 1px, transparent 1px, transparent 8px);
   border: 1px solid var(--c-line);
   border-left: 3px solid var(--c-primary);
   border-radius: var(--r-md);
@@ -1632,9 +1623,7 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    repeating-linear-gradient(0deg,  rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0, rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 40px);
+  background: none;
   pointer-events: none;
 }
 .cta-band > * { position: relative; }
