@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="da-DK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologi — sådan regner beregnerne | Statistik Beregner</title>
+<meta name="description" content="Sådan fungerer beregnerne på Statistik Beregner: formlerne bag, de numeriske metoder, hvordan de er valideret, og hvad de kan og ikke kan.">
+<link rel="canonical" href="https://statistikberegner.dk/metodologi.html">
+<link rel="alternate" hreflang="da-DK" href="https://statistikberegner.dk/metodologi.html">
+<link rel="alternate" hreflang="pt-BR" href="https://calculadoraestatistica.com.br/metodologia.html">
+<link rel="alternate" hreflang="x-default" href="https://statistikberegner.dk/metodologi.html">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Statistik Beregner">
+<meta property="og:title" content="Metodologi — sådan regner beregnerne">
+<meta property="og:description" content="Formlerne bag beregnerne, de numeriske metoder, valideringen mod R og regneark, og beregnernes begrænsninger.">
+<meta property="og:url" content="https://statistikberegner.dk/metodologi.html">
+<meta property="og:image" content="https://statistikberegner.dk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/cookie-consent.js" defer></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forsiden","item":"https://statistikberegner.dk/"},{"@type":"ListItem","position":2,"name":"Metodologi","item":"https://statistikberegner.dk/metodologi.html"}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Spring til indhold</a>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Statistik Beregner — forsiden">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#2563eb"/>
+        <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+        <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+        <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+      </svg>
+      <span class="brand__name">Statistik <span>Beregner</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Åbn menu" aria-expanded="false" aria-controls="menu">
+      <svg class="nav-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="nav-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="main-nav" id="menu" aria-label="Hovedmenu">
+      <ul>
+        <li><a href="/#calculadoras">Beregnere</a></li>
+        <li><a href="/#guias">Guides efter område</a></li>
+        <li><a href="/sporg-ai.html">Spørg AI</a></li>
+        <li><a href="/artikler/">Artikler</a></li>
+        <li><a href="/om-os.html">Om os</a></li>
+        <li><a class="nav-cta" href="/ab-test.html">Beregn A/B-test</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <div class="page-head">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Brødkrumme">
+        <ol>
+          <li><a href="/">Hjem</a></li>
+          <li>Metodologi</li>
+        </ol>
+      </nav>
+      <h1>Metodologi</h1>
+      <p class="lead">Sådan regner beregnerne på Statistik Beregner: formlerne bag, hvordan de er valideret, og hvad de kan og ikke kan.</p>
+    </div>
+  </div>
+
+  <div class="container narrow">
+    <article class="prose">
+
+      <h2>Sådan fungerer beregnerne</h2>
+      <p>Alle beregnere på dette site er skrevet i <strong>ren JavaScript, der kører direkte i din browser</strong>. Når du trykker på "Beregn", udføres hele beregningen lokalt på din egen enhed: der sendes ingen data til en server, intet gemmes, og dine tal forlader aldrig browseren. Det gælder alle beregnere uden undtagelse.</p>
+      <p>Vi bruger ingen statistiske "black box"-biblioteker. Hver formel er implementeret fra bunden med udgangspunkt i de klassiske lærebøger i statistisk inferens. Det betyder, at vi ved præcis, hvad der bliver regnet i hvert trin — og at vi kan dokumentere det.</p>
+
+      <h2>Hvilke tests dækker vi</h2>
+      <p>Sitet dækker de mest brugte tests i grundlæggende statistisk inferens:</p>
+      <ul>
+        <li><strong>z-test og t-test</strong> for gennemsnit — én stikprøve, to uafhængige stikprøver (inklusive Welch-varianten ved ulige varianser) og parrede målinger;</li>
+        <li><strong>proportionstest og A/B-test</strong> for rater og konverteringer;</li>
+        <li><strong>chi-i-anden test</strong> for uafhængighed og goodness-of-fit;</li>
+        <li><strong>ANOVA (én faktor) og Kruskal-Wallis</strong> for tre eller flere grupper;</li>
+        <li><strong>Wilcoxon signed-rank og Mann-Whitney U</strong> som ikke-parametriske alternativer;</li>
+        <li><strong>Pearson-korrelation</strong> med signifikanstest;</li>
+        <li><strong>konfidensintervaller</strong> for gennemsnit og andele, herunder Wilson-intervallet;</li>
+        <li><strong>stikprøvestørrelse</strong> for undersøgelser og A/B-tests.</li>
+      </ul>
+
+      <h2>Formlerne og de numeriske metoder</h2>
+      <p>Beregnerne bruger de klassiske formler fra statistik-lærebøgerne. P-værdier og kritiske værdier beregnes med veldokumenterede numeriske metoder:</p>
+      <ul>
+        <li><strong>normalfordelingens</strong> fordelingsfunktion og dens inverse, med rationale approksimationer med høj præcision;</li>
+        <li><strong>Students t-fordeling</strong> samt <strong>F- og chi-i-anden-fordelingerne</strong>, beregnet via den regulariserede ufuldstændige beta- og gammafunktion;</li>
+        <li><strong>Wilson-intervallet</strong> for andele, som er mere præcist end det traditionelle Wald-interval, især ved små stikprøver og ekstreme andele;</li>
+        <li><strong>effektstørrelser</strong> — Cohens d, h og w samt korrelationskoefficienten r — efter konventionerne i Cohen (1988).</li>
+      </ul>
+      <p>Selve fremstillingen af formlerne følger klassiske lærebøger: Montgomery &amp; Runger for generel inferens, Agresti for kategoriske data og proportioner, og Cohen (1988) for effektstørrelser og styrkeberegninger. Den fulde, kommenterede liste findes på siden <a href="/kilder.html">Kilder</a>.</p>
+
+      <h2>Sådan validerer vi resultaterne</h2>
+      <p>Hver beregner er tjekket mod uafhængige referencer, før den blev offentliggjort:</p>
+      <ul>
+        <li>de <strong>tabellagte kritiske værdier</strong> for z-, t-, chi-i-anden- og F-fordelingerne, som de findes i lærebøgernes tabeller;</li>
+        <li>output fra <strong>R</strong> (funktioner som <code>t.test</code>, <code>prop.test</code>, <code>chisq.test</code>, <code>wilcox.test</code> og <code>cor.test</code>) på de samme datasæt;</li>
+        <li><strong>regnearksfunktioner</strong> som T.FORDELING og NORM.INV til krydstjek af fordelingsberegningerne.</li>
+      </ul>
+      <p>Sitet har desuden en automatisk testpakke, der kører de numeriske funktioner mod kendte referenceværdier, så en ændring i koden ikke kan ændre resultaterne ubemærket. Finder du alligevel en afvigelse, så skriv til os — se vores <a href="/redaktionel-politik.html">redaktionelle politik</a> for, hvordan rettelser håndteres.</p>
+
+      <h2>Begrænsninger</h2>
+      <p>Ærlighed om, hvad værktøjerne ikke kan, er en del af metodologien:</p>
+      <ul>
+        <li>Beregnerne <strong>erstatter ikke fuld statistisk software</strong> som R, SPSS, Stata eller SAS. Komplekse analyser — regression, mixede modeller, repeated measures, overlevelsesanalyse, komplekse stikprøvedesigns — kræver rigtige statistikprogrammer.</li>
+        <li>Formlerne antager som udgangspunkt <strong>simple tilfældige stikprøver</strong>. Klyngedesign, stratificering og vægtning ændrer usikkerheden og håndteres ikke her.</li>
+        <li>Beregnerne tjekker ikke dine <strong>antagelser</strong> (normalitet, uafhængighed, varianshomogenitet) — det ansvar ligger hos dig, og hver beregner-side beskriver, hvilke antagelser testen bygger på.</li>
+        <li>Resultaterne afrundes til visning; ved ekstreme inputværdier kan små numeriske afvigelser fra andre programmer forekomme i de sidste decimaler.</li>
+      </ul>
+
+      <h2>Sådan bør resultaterne fortolkes</h2>
+      <p>En p-værdi er ikke en facitliste. Den fortæller, hvor usandsynlige dine data ville være, <em>hvis</em> nulhypotesen var sand — hverken mere eller mindre. Vi anbefaler altid at læse tre ting sammen: <strong>p-værdien</strong>, <strong>konfidensintervallet</strong> og <strong>effektstørrelsen</strong>. En statistisk signifikant forskel kan være praktisk ubetydelig, og en ikke-signifikant forskel kan skyldes en for lille stikprøve snarere end fravær af effekt.</p>
+      <p>Beregnerne har et undervisende og informativt formål. Ved kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør både valget af test og fortolkningen af resultatet bekræftes af en statistikfaglig person.</p>
+
+      <p><em>Senest gennemgået: 1. august 2026.</em></p>
+
+      <div class="related">
+        <h2>Læs også</h2>
+        <div class="card-grid card-grid--3">
+          <a class="card" href="/kilder.html"><h3>Kilder</h3><p>De lærebøger og artikler, som formlerne bygger på.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/redaktionel-politik.html"><h3>Redaktionel politik</h3><p>Hvem der står bag sitet, og hvordan indholdet vedligeholdes.</p><span class="card__cta">Åbn →</span></a>
+          <a class="card" href="/om-os.html"><h3>Om os</h3><p>Sitets mission: gratis statistik med forklaring du forstår.</p><span class="card__cta">Åbn →</span></a>
+        </div>
+      </div>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2563eb"/>
+            <rect x="13" y="33" width="9" height="17" rx="2.5" fill="#fff"/>
+            <rect x="27.5" y="22" width="9" height="28" rx="2.5" fill="#fff"/>
+            <rect x="42" y="13" width="9" height="37" rx="2.5" fill="#bfdbfe"/>
+          </svg>
+          <span class="brand__name">Statistik Beregner</span>
+        </a>
+        <p>Gratis statistiske beregnere online, med forklaring du forstår for hver test.</p>
+      </div>
+      <div>
+        <h3>Beregnere</h3>
+        <ul>
+          <li><a href="/ab-test.html">A/B-test</a></li>
+          <li><a href="/ab-test-stikprove.html">Stikprøve til A/B-test</a></li>
+          <li><a href="/t-test.html">Students t-test</a></li>
+          <li><a href="/z-test.html">Z-test</a></li>
+          <li><a href="/proportionstest.html">Proportionstest</a></li>
+          <li><a href="/chi-test.html">Chi-i-anden</a></li>
+          <li><a href="/anova.html">ANOVA og k stikprøver</a></li>
+          <li><a href="/wilcoxon.html">Wilcoxon og Mann-Whitney</a></li>
+          <li><a href="/korrelation.html">Pearson-korrelation</a></li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval</a></li>
+          <li><a href="/stikprovestorrelse.html">Stikprøvestørrelse</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides efter område</h3>
+        <ul>
+          <li><a href="/guides/statistik-sygepleje.html">Til sygepleje</a></li>
+          <li><a href="/guides/statistik-psykologi.html">Til psykologi</a></li>
+          <li><a href="/guides/statistik-marketing-cro.html">Til marketing og CRO</a></li>
+          <li><a href="/guides/vaelg-test.html">Sådan vælger du testen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Sitet</h3>
+        <ul>
+          <li><a href="/">Hjem</a></li>
+          <li><a href="/sporg-ai.html">Spørg AI</a></li>
+          <li><a href="/om-os.html">Om os</a></li>
+          <li><a href="/metodologi.html">Metodologi</a></li>
+          <li><a href="/kilder.html">Kilder</a></li>
+          <li><a href="/redaktionel-politik.html">Redaktionel politik</a></li>
+          <li><a href="/kontakt.html">Kontakt</a></li>
+          <li><a href="/privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="/vilkar.html">Vilkår</a></li>
+          <li><a href="/stot-projektet.html">Støt projektet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger — kliniske, akademiske eller forretningsmæssige.</p>
+      <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
