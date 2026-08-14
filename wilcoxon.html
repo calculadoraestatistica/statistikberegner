@@ -337,7 +337,7 @@
   </section>
 
   <div class="container narrow">
-    <p style="font-size:.85rem;color:#64748b;border-top:1px solid #e2e8f0;padding-top:.9rem;margin:2rem 0 0;">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
+    <p class="editorial-note">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
   </div>
 
 </main>
@@ -568,12 +568,19 @@
       'samme form, deres <strong>medianer</strong>), uden at antage normalfordeling. ' +
       'P-værdien er fundet via <strong>normalapproksimationen</strong> af testens teststørrelse.</p>';
 
+    var pTxt = Fmt.p(r.pValue);
+    var heroStat = (mode === 'ind' ? 'U = ' + Fmt.num(r.U, 1) : 'W = ' + Fmt.num(r.W, 1)) +
+      ' · ' + tailTxt + ' test';
+    var hero = '<div class="result__hero"><span class="result__hero-value">p ' +
+      (pTxt.charAt(0) === '<' ? '' : '= ') + pTxt + '</span>' +
+      '<span class="result__hero-pvalue">' + heroStat + '</span></div>';
+
     result.className = 'result ' + (sig ? 'result--significant' : 'result--ns');
     result.innerHTML =
       '<div class="result__banner">' + (sig ? ICON_OK : ICON_NO) +
         '<div><div class="result__headline">' + headline + '</div>' +
         '<div class="result__sub">' + sub + '</div></div></div>' +
-      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+      '<div class="result__body">' + hero + '<div class="metric-grid">' + metrics + '</div>' +
         '<div class="result__interpretation">' + interp + '</div></div>';
     result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

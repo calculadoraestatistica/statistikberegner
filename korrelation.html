@@ -364,7 +364,7 @@
   </div>
 
   <div class="container narrow">
-    <p style="font-size:.85rem;color:#64748b;border-top:1px solid #e2e8f0;padding-top:.9rem;margin:2rem 0 0;">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
+    <p class="editorial-note">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
   </div>
 
 </main>
@@ -523,12 +523,18 @@
     var labelX = $('varXLabel').value.trim() || 'X';
     var labelY = $('varYLabel').value.trim() || 'Y';
 
+    var pTxt = Fmt.p(r.pValue);
+    var hero = '<div class="result__hero"><span class="result__hero-value">r = ' +
+      Fmt.num(r.r, 3) + '</span>' +
+      '<span class="result__hero-pvalue">R² = ' + Fmt.num(r.r2, 3) + ' · p ' +
+      (pTxt.charAt(0) === '<' ? '' : '= ') + pTxt + '</span></div>';
+
     result.className = 'result result--' + cls;
     result.innerHTML =
       '<div class="result__banner">' + ICONS[cls] +
         '<div><div class="result__headline">' + headline + '</div>' +
         '<div class="result__sub">' + sub + '</div></div></div>' +
-      '<div class="result__body">' +
+      '<div class="result__body">' + hero +
         '<canvas id="corr-canvas" width="800" height="500" style="width:100%;height:auto;max-width:100%;display:block;border:1px solid var(--c-line);border-radius:8px;background:#fff"></canvas>' +
         '<div class="table-wrap" style="margin-top:1rem"><table class="data">' +
           '<thead><tr><th>Mål</th><th>Værdi</th></tr></thead>' +

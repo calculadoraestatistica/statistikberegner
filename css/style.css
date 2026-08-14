@@ -789,6 +789,7 @@ a.card:hover .card__cta { text-decoration: underline; text-underline-offset: 3px
 .calculator {
   background: var(--c-surface);
   border: 1px solid var(--c-line);
+  border-top: 3px solid var(--c-primary);
   border-radius: var(--r-lg);
   box-shadow: none;
   padding: var(--sp-5);
@@ -871,7 +872,7 @@ textarea.input {
   font-family: var(--font-mono);
   font-feature-settings: 'tnum', 'zero';
   font-variant-numeric: tabular-nums;
-  font-size: 0.98rem;
+  font-size: 1rem; /* ≥16px: evita zoom automático no iOS */
   color: var(--c-ink);
   padding: 0.7rem 0.85rem;
   border: 1px solid var(--c-line-strong);
@@ -1036,21 +1037,29 @@ textarea.input {
 }
 
 /* Variants — left rule + banner ink change color; surface stays white */
-.result--significant { border-left-color: var(--c-success); box-shadow: none; }
-.result--significant .result__banner {
+.result--significant,
+.result--ok { border-left-color: var(--c-success); box-shadow: none; }
+.result--significant .result__banner,
+.result--ok .result__banner {
   background: var(--c-success-bg);
   border-bottom-color: var(--c-success-border);
 }
 .result--significant .result__headline,
-.result--significant .result__banner svg { color: var(--c-success-strong); }
+.result--significant .result__banner svg,
+.result--ok .result__headline,
+.result--ok .result__banner svg { color: var(--c-success-strong); }
 
-.result--ns { border-left-color: var(--c-warning); }
-.result--ns .result__banner {
+.result--ns,
+.result--warn { border-left-color: var(--c-warning); }
+.result--ns .result__banner,
+.result--warn .result__banner {
   background: var(--c-warning-bg);
   border-bottom-color: var(--c-warning-border);
 }
 .result--ns .result__headline,
-.result--ns .result__banner svg { color: var(--c-warning); }
+.result--ns .result__banner svg,
+.result--warn .result__headline,
+.result--warn .result__banner svg { color: var(--c-warning); }
 
 .result--neutral { border-left-color: var(--c-primary); }
 .result--neutral .result__banner {
@@ -1084,7 +1093,8 @@ textarea.input {
   min-width: 0;
   overflow-wrap: anywhere;
 }
-.result--significant .result__hero-value {
+.result--significant .result__hero-value,
+.result--ok .result__hero-value {
   background: linear-gradient(180deg, transparent 58%, var(--c-marker) 58%);
 }
 .result__hero-pvalue {
@@ -1134,7 +1144,7 @@ textarea.input {
 }
 .metric__value {
   font-family: var(--font-mono);
-  font-size: 1.02rem;
+  font-size: 1.08rem;
   font-weight: 600;
   color: var(--c-ink);
   font-variant-numeric: tabular-nums slashed-zero;
@@ -1547,7 +1557,7 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
 }
 .ad-slot:empty { display: none; }
 .ad-slot:not(:empty)::before {
-  content: "Publicidade";
+  content: "Annonce";
   display: block;
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -1679,7 +1689,7 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
 }
 .ai-search__textarea {
   font-family: var(--font-mono);
-  font-size: 0.98rem;
+  font-size: 1rem; /* ≥16px: evita zoom automático no iOS */
   line-height: 1.55;
   color: var(--c-ink);
   padding: var(--sp-4);
@@ -1912,6 +1922,30 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
 }
 
 /* ============================================================
+   Editorial note — discreet revision line before the footer
+   ============================================================ */
+.editorial-note {
+  margin: var(--sp-6) 0 0;
+  padding-top: var(--sp-3);
+  border-top: 1px dashed var(--c-line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--c-muted);
+}
+.editorial-note a {
+  color: var(--c-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--c-line-strong);
+  text-underline-offset: 3px;
+}
+.editorial-note a:hover {
+  color: var(--c-primary-darker);
+  text-decoration-color: var(--c-primary);
+}
+
+/* ============================================================
    Footer — deep ink-blue plate
    ============================================================ */
 .site-footer {
@@ -2091,6 +2125,18 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
 }
 @media (max-width: 400px) {
   .metric-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile: calculate button spans the sheet; secondary actions share a row */
+@media (max-width: 639px) {
+  .calculator__actions .btn--primary { flex: 1 1 100%; }
+  .calculator__actions .btn--ghost { flex: 1 1 auto; }
+}
+
+/* Touch devices: comfortable ≥44px targets on compact controls */
+@media (pointer: coarse) {
+  .segmented span { min-height: 44px; padding-block: 0.6rem; }
+  .btn--sm { min-height: 44px; }
 }
 
 /* sm: 640px */

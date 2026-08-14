@@ -340,7 +340,7 @@
   </section>
 
   <div class="container narrow">
-    <p style="font-size:.85rem;color:#64748b;border-top:1px solid #e2e8f0;padding-top:.9rem;margin:2rem 0 0;">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
+    <p class="editorial-note">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
   </div>
 
 </main>
@@ -523,12 +523,17 @@
     interp += '<p>Husk, at totalen er antallet af <strong>gyldige</strong> svar. ' +
       'Tag højde for den forventede svarprocent, og inviter nok personer til at nå det.</p>';
 
+    var hero = '<div class="result__hero"><span class="result__hero-value">n = ' +
+      Fmt.int(r.n) + '</span>' +
+      '<span class="result__hero-pvalue">gyldige svar · ± ' + Fmt.pct(margin, 1) +
+      ' · ' + Fmt.pct(conf, 0) + '</span></div>';
+
     result.className = 'result result--neutral';
     result.innerHTML =
       '<div class="result__banner">' + ICON +
         '<div><div class="result__headline">Anbefalet stikprøvestørrelse</div>' +
         '<div class="result__sub">Dette er antallet af svar, din undersøgelse skal indsamle.</div></div></div>' +
-      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+      '<div class="result__body">' + hero + '<div class="metric-grid">' + metrics + '</div>' +
         '<div class="result__interpretation">' + interp + '</div></div>';
     result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

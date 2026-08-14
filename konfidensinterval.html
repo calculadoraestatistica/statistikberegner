@@ -355,7 +355,7 @@
   </section>
 
   <div class="container narrow">
-    <p style="font-size:.85rem;color:#64748b;border-top:1px solid #e2e8f0;padding-top:.9rem;margin:2rem 0 0;">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
+    <p class="editorial-note">Senest gennemgået: 1. august 2026 · Læs om vores <a href="/metodologi.html">metodologi</a> og <a href="/kilder.html">kilder</a>.</p>
   </div>
 
 </main>
@@ -546,12 +546,19 @@
         ' af de mulige stikprøver rammer et interval konstrueret på denne måde populationsværdien.</p>';
     }
 
+    var isProp = r.mode === 'proportion';
+    var hero = '<div class="result__hero"><span class="result__hero-value">[' +
+      (isProp ? Fmt.pct(r.ciLow, 2) + '; ' + Fmt.pct(r.ciHigh, 2)
+              : Fmt.num(r.ciLow, 2) + '; ' + Fmt.num(r.ciHigh, 2)) + ']</span>' +
+      '<span class="result__hero-pvalue">KI ' + confTxt + ' · ± ' +
+      (isProp ? Fmt.pct(r.marginError, 2) : Fmt.num(r.marginError, 2)) + '</span></div>';
+
     result.className = 'result result--neutral';
     result.innerHTML =
       '<div class="result__banner">' + ICON_NEUTRAL +
         '<div><div class="result__headline">Konfidensinterval</div>' +
         '<div class="result__sub">Det sandsynlige interval for dit estimat, med ' + confTxt + ' konfidens.</div></div></div>' +
-      '<div class="result__body"><div class="metric-grid">' + metrics + '</div>' +
+      '<div class="result__body">' + hero + '<div class="metric-grid">' + metrics + '</div>' +
         '<div class="result__interpretation">' + interp + '</div></div>';
     result.hidden = false;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
