@@ -507,18 +507,18 @@
     var ic = '';
     if (r.ciLow !== null && r.ciHigh !== null) {
       ic = '<tr><td>KI ' + Math.round(r.confidence * 100) + '% for ρ</td>' +
-           '<td>[' + Fmt.num(r.ciLow, 4) + ' ; ' + Fmt.num(r.ciHigh, 4) + ']</td></tr>';
+           '<td class="num">[' + Fmt.num(r.ciLow, 4) + ' ; ' + Fmt.num(r.ciHigh, 4) + ']</td></tr>';
     }
 
     var rows =
-      '<tr><td><strong>r</strong> (Pearson)</td><td>' + Fmt.num(r.r, 4) + '</td></tr>' +
-      '<tr><td><strong>R²</strong> (forklaringsgrad)</td><td>' + Fmt.num(r.r2, 4) + ' (' + Fmt.num(r.r2 * 100, 1) + '%)</td></tr>' +
-      '<tr><td>n (par)</td><td>' + r.n + '</td></tr>' +
-      '<tr><td>Frihedsgrader</td><td>' + r.df + '</td></tr>' +
-      '<tr><td>T-teststørrelse</td><td>' + Fmt.num(r.t, 3) + '</td></tr>' +
-      '<tr><td>P-værdi (tosidet)</td><td>' + (r.pValue < 0.0001 ? '< 0,0001' : Fmt.num(r.pValue, 4)) + '</td></tr>' +
+      '<tr><td><strong>r</strong> (Pearson)</td><td class="num">' + Fmt.num(r.r, 4) + '</td></tr>' +
+      '<tr><td><strong>R²</strong> (forklaringsgrad)</td><td class="num">' + Fmt.num(r.r2, 4) + ' (' + Fmt.num(r.r2 * 100, 1) + '%)</td></tr>' +
+      '<tr><td>n (par)</td><td class="num">' + r.n + '</td></tr>' +
+      '<tr><td>Frihedsgrader</td><td class="num">' + r.df + '</td></tr>' +
+      '<tr><td>T-teststørrelse</td><td class="num">' + Fmt.num(r.t, 3) + '</td></tr>' +
+      '<tr><td>P-værdi (tosidet)</td><td class="num">' + (r.pValue < 0.0001 ? '< 0,0001' : Fmt.num(r.pValue, 4)) + '</td></tr>' +
       ic +
-      '<tr><td>Regressionslinje</td><td>y = ' + Fmt.num(r.intercept, 3) + ' + ' + Fmt.num(r.slope, 3) + ' · x</td></tr>';
+      '<tr><td>Regressionslinje</td><td class="num">y = ' + Fmt.num(r.intercept, 3) + ' + ' + Fmt.num(r.slope, 3) + ' · x</td></tr>';
 
     var labelX = $('varXLabel').value.trim() || 'X';
     var labelY = $('varYLabel').value.trim() || 'Y';
@@ -535,9 +535,9 @@
         '<div><div class="result__headline">' + headline + '</div>' +
         '<div class="result__sub">' + sub + '</div></div></div>' +
       '<div class="result__body">' + hero +
-        '<canvas id="corr-canvas" width="800" height="500" style="width:100%;height:auto;max-width:100%;display:block;border:1px solid var(--c-line);border-radius:8px;background:#fff"></canvas>' +
+        '<canvas id="corr-canvas" width="800" height="500" style="width:100%;height:auto;max-width:100%;display:block;border:1px solid var(--c-line);border-radius:2px;background:#fff"></canvas>' +
         '<div class="table-wrap" style="margin-top:1rem"><table class="data">' +
-          '<thead><tr><th>Mål</th><th>Værdi</th></tr></thead>' +
+          '<thead><tr><th>Mål</th><th class="num">Værdi</th></tr></thead>' +
           '<tbody>' + rows + '</tbody></table></div>' +
         '<div class="result__interpretation" style="margin-top:1rem"><p>' + interpret(r) + '</p></div>' +
       '</div>';
