@@ -108,7 +108,7 @@
         </ol>
       </nav>
       <h1>proportionstest-beregner</h1>
-      <p class="lead">Find ud af, om en <strong>proportion</strong> adskiller sig fra en referenceværdi — eller om <strong>to proportioner</strong> er forskellige fra hinanden — med p-værdi og automatisk fortolkning.</p>
+      <p class="lead">Find ud af, om en <strong>proportion</strong> adskiller sig fra en referenceværdi, eller om <strong>to proportioner</strong> er forskellige fra hinanden, med p-værdi og automatisk fortolkning.</p>
     </div>
   </div>
 
@@ -221,10 +221,10 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er proportionstesten</h2>
-      <p><strong>Proportionstesten</strong> er den statistiske procedure, der bruges til at drage konklusioner om <strong>procenttal og rater</strong>. Den svarer på et enkelt spørgsmål: er den proportion, du har observeret i en stikprøve, forenelig med en forventet værdi — eller er forskellen stor nok til at blive opfattet som reel?</p>
+      <p><strong>Proportionstesten</strong> er den statistiske procedure, der bruges til at drage konklusioner om <strong>procenttal og rater</strong>. Den svarer på et enkelt spørgsmål: er den proportion, du har observeret i en stikprøve, forenelig med en forventet værdi, eller er forskellen stor nok til at blive opfattet som reel?</p>
       <p>Forskellen i forhold til <a href="/t-test.html">t-testen (Student)</a> ligger i datatypen. T-testen håndterer <em>kvantitative</em> variabler som vægt, tid eller karakter: hver observation er et tal på en kontinuert skala. Proportionstesten håndterer <strong>kategoriske data af typen succes eller fiasko</strong>: hver observation er simpelthen et "ja" eller "nej". Du måler ikke hvor meget, du tæller hvor mange.</p>
       <p>Eksempler på proportioner findes overalt: den procentdel af vælgere, der støtter en kandidat, andelen af patienter, der reagerer på en behandling, brøkdelen af besøgende, der klikker på en knap, andelen af defekte emner på en produktionslinje. Hver gang dine data er en <strong>optælling af hændelser i forhold til en sum</strong>, er proportionstesten det rigtige værktøj.</p>
-      <p>Teknisk bruger denne beregner en <strong>z-test for proportioner</strong>. Når stikprøven er rimeligt stor, ligger fordelingen af den observerede proportion meget tæt på en normalkurve — og det gør det muligt at beregne p-værdien hurtigt og præcist uden tabeller.</p>
+      <p>Teknisk bruger denne beregner en <strong>z-test for proportioner</strong>. Når stikprøven er rimeligt stor, ligger fordelingen af den observerede proportion meget tæt på en normalkurve, og det gør det muligt at beregne p-værdien hurtigt og præcist uden tabeller.</p>
 
       <h2 id="um-ou-dois">Én proportion vs to proportioner</h2>
       <p>Proportionstesten optræder i to forskellige situationer, og beregneren tilbyder dem begge i separate tilstande. At vælge den rigtige tilstand er første skridt.</p>
@@ -237,18 +237,18 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           En referenceværdi eller en anden gruppe?
         </div>
-        <p>Hvis du sammenligner din stikprøve med et fast, kendt tal — en målsætning, et historisk gennemsnit, de 50% fra "plat eller krone" — så brug tilstanden <strong>én proportion</strong>. Hvis du har to grupper indsamlet parallelt og vil vide, hvem der har den højeste rate, så brug tilstanden <strong>to proportioner</strong>.</p>
+        <p>Hvis du sammenligner din stikprøve med et fast, kendt tal (en målsætning, et historisk gennemsnit, de 50% fra "plat eller krone") så brug tilstanden <strong>én proportion</strong>. Hvis du har to grupper indsamlet parallelt og vil vide, hvem der har den højeste rate, så brug tilstanden <strong>to proportioner</strong>.</p>
       </div>
 
       <h2 id="quando">Hvornår skal man bruge den</h2>
       <p>Proportionstesten er den rigtige, når alle disse betingelser er opfyldt:</p>
       <ul>
-        <li><strong>Binære optællingsdata:</strong> hver observation kan kun være succes eller fiasko — der er ingen mellemværdier.</li>
+        <li><strong>Binære optællingsdata:</strong> hver observation kan kun være succes eller fiasko, der er ingen mellemværdier.</li>
         <li><strong>Tilfældig stikprøve:</strong> observationerne repræsenterer den ønskede population (eller proces).</li>
         <li><strong>Uafhængige observationer:</strong> resultatet af én observation påvirker ikke de andre.</li>
         <li><strong>Tilstrækkelig stikprøve:</strong> normaltilnærmelsen fungerer godt, når der er mindst cirka 5-10 forventede succeser <em>og</em> 5-10 forventede fiaskoer. Med proportioner meget tæt på 0% eller 100% eller meget små stikprøver bør man vælge en eksakt binomialtest.</li>
       </ul>
-      <p>Hvis du i stedet for en proportion vil sammenligne <strong>gennemsnit</strong> — tid, vægt, omsætning, karakter — er det rigtige valg <a href="/t-test.html">t-testen</a> (eller <a href="/z-test.html">z-testen</a>, når populationens standardafvigelse er kendt). Og hvis du blot vil estimere det sandsynlige interval for en proportion uden at teste en hypotese, så brug <a href="/konfidensinterval.html">konfidensintervallet</a>.</p>
+      <p>Hvis du i stedet for en proportion vil sammenligne <strong>gennemsnit</strong> (tid, vægt, omsætning, karakter) er det rigtige valg <a href="/t-test.html">t-testen</a> (eller <a href="/z-test.html">z-testen</a>, når populationens standardafvigelse er kendt). Og hvis du blot vil estimere det sandsynlige interval for en proportion uden at teste en hypotese, så brug <a href="/konfidensinterval.html">konfidensintervallet</a>.</p>
 
       <h2 id="como">Sådan virker beregningen</h2>
       <p>Logikken er den samme som i enhver hypotesetest: mål afstanden mellem det, der er observeret, og det, nulhypotesen forudsiger, i enheder af <strong>standardfejl</strong>. Resultatet er <strong>z-statistikken</strong>.</p>
@@ -266,26 +266,26 @@
 
       <h2 id="ab">Forholdet til A/B-testen</h2>
       <p>Hvis du allerede kender <a href="/ab-test.html">A/B-testen</a>, har du måske bemærket, at tilstanden <strong>to proportioner</strong> beskriver præcis det, en A/B-test gør. Det er ikke tilfældigt: <strong>en A/B-test er en proportionstest med to grupper</strong>.</p>
-      <p>I en A/B-test er "succes" konverteringen — et køb, en tilmelding, et klik — og "stikprøvestørrelse" er antallet af besøgende i hver variant. At sammenligne konverteringsraten i variant A med den i variant B er ord for ord at sammenligne to proportioner. Z-statistikken, den poolede proportion og p-værdien beregnes med samme formel som vist ovenfor.</p>
+      <p>I en A/B-test er "succes" konverteringen (et køb, en tilmelding, et klik) og "stikprøvestørrelse" er antallet af besøgende i hver variant. At sammenligne konverteringsraten i variant A med den i variant B er ord for ord at sammenligne to proportioner. Z-statistikken, den poolede proportion og p-værdien beregnes med samme formel som vist ovenfor.</p>
       <div class="callout callout--tip">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
           Hvilken beregner skal jeg bruge?
         </div>
-        <p>De to veje ender med samme resultat. Hvis din kontekst er konverteringsoptimering — sider, e-mails, annoncer — bruger <a href="/ab-test.html">A/B-test-beregneren</a> det rigtige sprog og de rigtige metrikker (besøgende, konverteringer, uplift). Til en mere generel kontekst — sundhed, forskning, kvalitet — taler tilstanden "to proportioner" her om succeser og stikprøver.</p>
+        <p>De to veje ender med samme resultat. Hvis din kontekst er konverteringsoptimering (sider, e-mails, annoncer) bruger <a href="/ab-test.html">A/B-test-beregneren</a> det rigtige sprog og de rigtige metrikker (besøgende, konverteringer, uplift). Til en mere generel kontekst (sundhed, forskning, kvalitet) taler tilstanden "to proportioner" her om succeser og stikprøver.</p>
       </div>
 
       <h2 id="interpretar">Sådan fortolker du resultatet</h2>
-      <p>Når du har beregnet, ser du et farvet kort med konklusionen og seks nøgletal. Beslutningens kerne er sammenligningen mellem <strong>p-værdien</strong> og <strong>signifikansniveauet</strong> (α, alfa) — komplementet til konfidensniveauet: 95% konfidens svarer til α = 0,05.</p>
+      <p>Når du har beregnet, ser du et farvet kort med konklusionen og seks nøgletal. Beslutningens kerne er sammenligningen mellem <strong>p-værdien</strong> og <strong>signifikansniveauet</strong> (α, alfa): komplementet til konfidensniveauet: 95% konfidens svarer til α = 0,05.</p>
       <ul>
-        <li><strong>P-værdi &lt; α</strong> → <strong>statistisk signifikant</strong> resultat. Den observerede forskel — mellem din proportion og p₀, eller mellem de to grupper — er sandsynligvis reel.</li>
+        <li><strong>P-værdi &lt; α</strong> → <strong>statistisk signifikant</strong> resultat. Den observerede forskel (mellem din proportion og p₀, eller mellem de to grupper) er sandsynligvis reel.</li>
         <li><strong>P-værdi ≥ α</strong> → <strong>ikke signifikant</strong> resultat. Der er ikke tilstrækkelige belæg for at sige, at der er en forskel; det kan bare være tilfældig variation.</li>
       </ul>
       <p>De øvrige nøgletal hjælper med at forstå effektens størrelse:</p>
       <ul>
-        <li><strong>Observeret proportion</strong> — den målte rate i din stikprøve (tilstand én proportion) eller raten for hver gruppe (tilstand to proportioner).</li>
-        <li><strong>Z-statistik</strong> — forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 signifikans.</li>
-        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for den sande værdi. I tilstanden to proportioner: hvis intervallet for forskellen indeholder nul, er forskellen ikke signifikant.</li>
+        <li><strong>Observeret proportion</strong>. Den målte rate i din stikprøve (tilstand én proportion) eller raten for hver gruppe (tilstand to proportioner).</li>
+        <li><strong>Z-statistik</strong>: forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 signifikans.</li>
+        <li><strong>Konfidensinterval</strong>. Det sandsynlige interval for den sande værdi. I tilstanden to proportioner: hvis intervallet for forskellen indeholder nul, er forskellen ikke signifikant.</li>
       </ul>
       <div class="callout callout--warning">
         <div class="callout__title">
@@ -302,7 +302,7 @@
         <li><strong>Observeret proportion:</strong> p̂ = 540 ÷ 1000 = 0,540 (54%).</li>
         <li><strong>Standardfejl under nulhypotesen:</strong> SF = √[0,50 · 0,50 ÷ 1000] = √0,00025 ≈ 0,01581.</li>
         <li><strong>Z-statistik:</strong> z = (0,540 − 0,500) ÷ 0,01581 ≈ 2,53.</li>
-        <li><strong>Tosidet p-værdi:</strong> for z ≈ 2,53 er p-værdien ≈ 0,011 — under 0,05.</li>
+        <li><strong>Tosidet p-værdi:</strong> for z ≈ 2,53 er p-værdien ≈ 0,011: under 0,05.</li>
       </ol>
       <p>Da 0,011 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong>: opbakningen til forslaget er faktisk større end de forventede 50%. De 4 procentpoint over referencen er næppe et resultat af tilfældig variation. Brug knappen <em>"Brug eksempeldata"</em> for at se beregningen i beregneren.</p>
 
@@ -318,11 +318,11 @@
         </details>
         <details>
           <summary>Er proportionstesten det samme som A/B-testen?</summary>
-          <div class="faq__answer"><p><a href="/ab-test.html">A/B-testen</a> er præcis en proportionstest med to grupper: den sammenligner konverteringsraten for to varianter. Tilstanden "to proportioner" i denne beregner laver samme udregning — kun sproget på felter og resultater er anderledes.</p></div>
+          <div class="faq__answer"><p><a href="/ab-test.html">A/B-testen</a> er præcis en proportionstest med to grupper: den sammenligner konverteringsraten for to varianter. Tilstanden "to proportioner" i denne beregner laver samme udregning, kun sproget på felter og resultater er anderledes.</p></div>
         </details>
         <details>
           <summary>Hvad betyder et signifikant resultat?</summary>
-          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau, typisk 5%. Det er usandsynligt, at forskellen mellem den observerede proportion og referenceværdien — eller mellem de to grupper — er opstået ved ren tilfældighed.</p></div>
+          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau, typisk 5%. Det er usandsynligt, at forskellen mellem den observerede proportion og referenceværdien, eller mellem de to grupper, er opstået ved ren tilfældighed.</p></div>
         </details>
         <details>
           <summary>Hvad er den mindste stikprøvestørrelse til testen?</summary>
@@ -330,7 +330,7 @@
         </details>
         <details>
           <summary>Skal jeg bruge tosidet eller ensidet test?</summary>
-          <div class="faq__answer"><p>Brug tosidet, når du vil opdage enhver forskel — opadgående eller nedadgående. Det er den sikreste mulighed og anbefales. Den ensidede tester kun én retning og er kun gyldig, hvis den retning blev fastlagt før dataindsamlingen.</p></div>
+          <div class="faq__answer"><p>Brug tosidet, når du vil opdage enhver forskel: opadgående eller nedadgående. Det er den sikreste mulighed og anbefales. Den ensidede tester kun én retning og er kun gyldig, hvis den retning blev fastlagt før dataindsamlingen.</p></div>
         </details>
       </div>
 
@@ -419,7 +419,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>
@@ -556,7 +556,7 @@
           '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
           ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
           'Den observerede proportion på <strong>' + Fmt.pct(r.phat, 2) + '</strong> adskiller sig fra den ' +
-          'hypotetiske værdi — forskellen er næppe et resultat af tilfældig variation.</p>' +
+          'hypotetiske værdi: forskellen er næppe et resultat af tilfældig variation.</p>' +
           '<p>Konfidensintervallet på ' + confTxt + ' for den sande proportion går fra ' +
           '<strong>' + Fmt.pct(r.ciLow, 2) + '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) +
           '</strong>.</p>';
@@ -565,7 +565,7 @@
           'statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
           ') er større end eller lig med signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
           'Den observerede proportion (' + Fmt.pct(r.phat, 2) + ') er forenelig med den ' +
-          'hypotetiske værdi — forskellen kan blot være tilfældig variation.</p>' +
+          'hypotetiske værdi: forskellen kan blot være tilfældig variation.</p>' +
           '<p>Konfidensintervallet på ' + confTxt + ' (fra <strong>' + Fmt.pct(r.ciLow, 2) +
           '</strong> til <strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>) viser intervallet af ' +
           'værdier, der stadig er foreneligt med dine data.</p>';

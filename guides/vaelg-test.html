@@ -108,7 +108,7 @@
         </ol>
       </nav>
       <h1>Sådan vælger du den rigtige statistiske test</h1>
-      <p class="lead">En beslutningsguide, der hjælper dig med at finde den <strong>rette hypotesetest</strong> til din datatype, antallet af grupper du sammenligner, og forudsætningerne i din undersøgelse — med oversigtstabel og praktiske eksempler.</p>
+      <p class="lead">En beslutningsguide, der hjælper dig med at finde den <strong>rette hypotesetest</strong> til din datatype, antallet af grupper du sammenligner, og forudsætningerne i din undersøgelse, med oversigtstabel og praktiske eksempler.</p>
     </div>
   </div>
 
@@ -119,7 +119,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3"/></svg>
         Genvej: beskriv din situation for AI'en
       </div>
-      <p>Vil du bare hurtigt frem til den rigtige beregner, så brug siden <a href="/sporg-ai.html"><strong>Spørg AI</strong></a> — skriv dit problem i én sætning ("sammenligne vægt før og efter mellem to grupper", "min konvertering steg 1 %, er det signifikant?"), så peger den på den rette beregner, med alternativer når flere kan bruges. Vil du hellere forstå logikken bag valget, så følg guiden nedenfor.</p>
+      <p>Vil du bare hurtigt frem til den rigtige beregner, så brug siden <a href="/sporg-ai.html"><strong>Spørg AI</strong></a>: skriv dit problem i én sætning ("sammenligne vægt før og efter mellem to grupper", "min konvertering steg 1 %, er det signifikant?"), så peger den på den rette beregner, med alternativer når flere kan bruges. Vil du hellere forstå logikken bag valget, så følg guiden nedenfor.</p>
     </div>
 
     <article class="prose">
@@ -142,46 +142,46 @@
       </nav>
 
       <h2 id="por-que">Hvorfor det er vigtigt at vælge den rigtige test</h2>
-      <p>Enhver statistisk analyse ender med et tal — næsten altid <strong>p-værdien</strong> — der understøtter en konklusion: "der er en forskel", "der er ingen forskel", "variablerne hænger sammen". Men tallet er kun pålideligt, hvis testen, der producerede det, er den <em>rigtige</em> for datatypen og undersøgelsens design. Bruger du den forkerte test, kommer der ingen fejlmeddelelse: du får en p-værdi, der ser helt normal ud — og er fuldstændig vildledende.</p>
+      <p>Enhver statistisk analyse ender med et tal, næsten altid <strong>p-værdien</strong>, der understøtter en konklusion: "der er en forskel", "der er ingen forskel", "variablerne hænger sammen". Men tallet er kun pålideligt, hvis testen, der producerede det, er den <em>rigtige</em> for datatypen og undersøgelsens design. Bruger du den forkerte test, kommer der ingen fejlmeddelelse: du får en p-værdi, der ser helt normal ud, og er fuldstændig vildledende.</p>
       <p>Konsekvenserne er konkrete. En upassende test kan erklære en forskel signifikant, som ikke findes, og få dig til at ændre en procedure, lancere et produkt eller publicere en konklusion uden reelt grundlag. Eller den kan skjule en reel forskel, så man kasserer en behandling, der faktisk virker. I et bachelorprojekt eller en artikel er den forkerte test en af de hyppigste grunde til, at vejleder eller reviewer kræver rettelser.</p>
       <p>Den gode nyhed er, at valg af test hverken handler om hukommelse eller held. Det er resultatet af <strong>en kort række objektive spørgsmål</strong> om dine data. Svar på dem i den rigtige rækkefølge, så vælger testen sig selv. Denne guide går gennem spørgsmålene og slutter med en oversigtstabel, der kobler hver situation til den tilsvarende beregner.</p>
 
       <h2 id="perguntas">Spørgsmålene, der afgør testen</h2>
       <p>Før du tænker på en formel, så svar på fem spørgsmål. De fungerer som en huskeliste: hvert svar fjerner muligheder og indsnævrer vejen til én test.</p>
-      <p><strong>1. Hvilken type data har du?</strong> Det er det vigtigste spørgsmål. <em>Kategoriske</em> (eller kvalitative) data repræsenterer kategorier, som du tæller: køn, region, "købte eller købte ikke", "blev rask eller ej". Det rå resultat er en optælling eller en proportion. <em>Numeriske</em> (eller kvantitative) data er værdier, du måler: højde, tid, tilfredshedsscore, omsætning, blodtryk. Det rå resultat er et gennemsnit. At bruge en middelværditest på kategoriske data — eller omvendt — invaliderer analysen fra start.</p>
-      <p><strong>2. Hvad vil du gøre med dataene?</strong> Der findes tre typiske formål. <em>Estimere</em> en populationsværdi — fx "hvad er kundernes gennemsnitlige tilfredshed?" — kræver et konfidensinterval, ikke en test. <em>Sammenligne med en referenceværdi</em> — "afviger min proces' gennemsnit fra målet på 100?" — kræver en enkeltstikprøvetest. <em>Sammenligne grupper indbyrdes</em> — "adskiller gruppe A sig fra gruppe B?" — kræver en test for to eller flere stikprøver.</p>
+      <p><strong>1. Hvilken type data har du?</strong> Det er det vigtigste spørgsmål. <em>Kategoriske</em> (eller kvalitative) data repræsenterer kategorier, som du tæller: køn, region, "købte eller købte ikke", "blev rask eller ej". Det rå resultat er en optælling eller en proportion. <em>Numeriske</em> (eller kvantitative) data er værdier, du måler: højde, tid, tilfredshedsscore, omsætning, blodtryk. Det rå resultat er et gennemsnit. At bruge en middelværditest på kategoriske data, eller omvendt, invaliderer analysen fra start.</p>
+      <p><strong>2. Hvad vil du gøre med dataene?</strong> Der findes tre typiske formål. <em>Estimere</em> en populationsværdi: fx "hvad er kundernes gennemsnitlige tilfredshed?": kræver et konfidensinterval, ikke en test. <em>Sammenligne med en referenceværdi</em> — "afviger min proces' gennemsnit fra målet på 100?": kræver en enkeltstikprøvetest. <em>Sammenligne grupper indbyrdes</em> — "adskiller gruppe A sig fra gruppe B?": kræver en test for to eller flere stikprøver.</p>
       <p><strong>3. Hvor mange grupper sammenligner du?</strong> Hvis svaret er at sammenligne grupper, så tæl dem. <em>Én</em> gruppe mod en fast værdi, <em>to</em> grupper mod hinanden, eller <em>tre eller flere</em> grupper på én gang. Antallet af grupper ændrer testen: at sammenligne to grupper er en opgave for t-testen; at sammenligne tre eller flere er en opgave for ANOVA. Man bør ikke sammenligne mange grupper parvis med flere t-test, for det pumper risikoen for en falsk positiv op.</p>
-      <p><strong>4. Er grupperne uafhængige eller parrede?</strong> <em>Uafhængige</em> grupper består af forskellige personer uden forbindelse mellem målingerne — fx patienter i gruppe A og patienter i gruppe B. <em>Parrede</em> (eller afhængige) grupper har sammenkædede målinger: den samme person målt før og efter en behandling, eller par dannet med vilje. Parrede data har en egen test, der udnytter forbindelsen mellem målingerne og er mere følsom.</p>
-      <p><strong>5. Holder de parametriske forudsætninger?</strong> De klassiske parametriske test — t-test, ANOVA — antager, at de numeriske data omtrent følger en <em>normalfordeling</em>, og når man sammenligner grupper, at varianserne er nogenlunde ens. Når disse forudsætninger holder, er de parametriske test de stærkeste. Når de ikke holder — lille stikprøve, skæv fordeling, ekstreme værdier — findes der ikke-parametriske versioner, der ikke afhænger af normalitet.</p>
+      <p><strong>4. Er grupperne uafhængige eller parrede?</strong> <em>Uafhængige</em> grupper består af forskellige personer uden forbindelse mellem målingerne: fx patienter i gruppe A og patienter i gruppe B. <em>Parrede</em> (eller afhængige) grupper har sammenkædede målinger: den samme person målt før og efter en behandling, eller par dannet med vilje. Parrede data har en egen test, der udnytter forbindelsen mellem målingerne og er mere følsom.</p>
+      <p><strong>5. Holder de parametriske forudsætninger?</strong> De klassiske parametriske test (t-test, ANOVA) antager, at de numeriske data omtrent følger en <em>normalfordeling</em>, og når man sammenligner grupper, at varianserne er nogenlunde ens. Når disse forudsætninger holder, er de parametriske test de stærkeste. Når de ikke holder (lille stikprøve, skæv fordeling, ekstreme værdier) findes der ikke-parametriske versioner, der ikke afhænger af normalitet.</p>
       <div class="callout callout--tip">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
           Huskelisten i én sætning
         </div>
-        <p>Datatype → formål → antal grupper → uafhængige eller parrede → forudsætninger. Svar i den rækkefølge, så halverer hvert spørgsmål mulighederne. Når du når det sidste, står der typisk én test tilbage — og den findes i oversigtstabellen sidst i guiden.</p>
+        <p>Datatype → formål → antal grupper → uafhængige eller parrede → forudsætninger. Svar i den rækkefølge, så halverer hvert spørgsmål mulighederne. Når du når det sidste, står der typisk én test tilbage, og den findes i oversigtstabellen sidst i guiden.</p>
       </div>
 
       <h2 id="categoricos">Kategoriske data: proportioner og chi²</h2>
       <p>Når dataene er en <strong>kategori, du tæller</strong>, og ikke et tal, du måler, ændrer testuniverset sig helt. Her er der ingen gennemsnit eller standardafvigelser: der er optællinger og proportioner. To test på sitet dækker de fleste af disse situationer, og valget mellem dem afhænger af, hvad du vil finde ud af.</p>
       <p>Brug <a href="/proportionstest.html">proportionstesten</a>, når fokus er på en proportion i sig selv. Den løser to tilfælde. Det første er at <em>sammenligne to proportioner</em>: adskiller konverteringsraten på side A sig fra side B? Adskiller andelen af patienter, der følger behandlingen, sig mellem to protokoller? Det andet er at <em>sammenligne en proportion med en referenceværdi</em>: er fejlraten i min proces på 3 % anderledes end den kontraktlige målsætning på 2 %?</p>
-      <p>Brug <a href="/chi-test.html">chi²</a>, når fokus er på <em>sammenhængen</em> mellem to kategoriske variable i en kontingenstabel. Det typiske spørgsmål er "hænger region sammen med foretrukket mærke?" eller "hænger behandlingstype sammen med det kliniske udfald?". Chi² er stærk, når der er mere end to kategorier i mindst én af variablerne — noget proportionstesten ikke dækker.</p>
+      <p>Brug <a href="/chi-test.html">chi²</a>, når fokus er på <em>sammenhængen</em> mellem to kategoriske variable i en kontingenstabel. Det typiske spørgsmål er "hænger region sammen med foretrukket mærke?" eller "hænger behandlingstype sammen med det kliniske udfald?". Chi² er stærk, når der er mere end to kategorier i mindst én af variablerne: noget proportionstesten ikke dækker.</p>
       <div class="callout callout--example">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           De to giver samme konklusion i 2x2
         </div>
-        <p>Når du kun sammenligner to proportioner, vil en 2x2-tabel kørt gennem chi² give præcis samme p-værdi som proportionstesten — i en 2x2-tabel er de to test matematisk ækvivalente. Vælg proportionstesten, hvis du også vil have effektstørrelsen mellem de to rater; vælg chi², når der er tre kategorier eller flere.</p>
+        <p>Når du kun sammenligner to proportioner, vil en 2x2-tabel kørt gennem chi² give præcis samme p-værdi som proportionstesten, i en 2x2-tabel er de to test matematisk ækvivalente. Vælg proportionstesten, hvis du også vil have effektstørrelsen mellem de to rater; vælg chi², når der er tre kategorier eller flere.</p>
       </div>
-      <p>Et særligt og meget almindeligt tilfælde af sammenligning mellem to proportioner er <strong>A/B-testen</strong> i marketing og produktudvikling. Til netop det scenarie — to versioner, én konverteringsmetrik — har sitet et dedikeret værktøj, <a href="/ab-test.html">A/B-test-beregneren</a>, som leverer uplift og konfidens i resultatet på det sprog, eksperimenterne taler.</p>
+      <p>Et særligt og meget almindeligt tilfælde af sammenligning mellem to proportioner er <strong>A/B-testen</strong> i marketing og produktudvikling. Til netop det scenarie (to versioner, én konverteringsmetrik) har sitet et dedikeret værktøj, <a href="/ab-test.html">A/B-test-beregneren</a>, som leverer uplift og konfidens i resultatet på det sprog, eksperimenterne taler.</p>
 
       <h2 id="referencia">Numeriske data: sammenligne med en referenceværdi</h2>
-      <p>Lad os gå til de <strong>numeriske data</strong>. Det første mulige formål er ikke at sammenligne to grupper, men at konfrontere gennemsnittet i <em>én enkelt gruppe</em> med en fast, kendt værdi — et mål, en standard, en historisk reference. Eksempler: er gennemsnitsvægten af pakker fra linjen anderledes end de erklærede 500 g? Adskiller call-centrets gennemsnitlige svartid sig fra målet på 4 minutter?</p>
+      <p>Lad os gå til de <strong>numeriske data</strong>. Det første mulige formål er ikke at sammenligne to grupper, men at konfrontere gennemsnittet i <em>én enkelt gruppe</em> med en fast, kendt værdi: et mål, en standard, en historisk reference. Eksempler: er gennemsnitsvægten af pakker fra linjen anderledes end de erklærede 500 g? Adskiller call-centrets gennemsnitlige svartid sig fra målet på 4 minutter?</p>
       <p>Der findes to værktøjer til det, og valget mellem dem afhænger af ét spørgsmål: <em>kender du populationens standardafvigelse?</em></p>
       <ul>
         <li><strong>Populationens standardafvigelse er kendt</strong> → <a href="/z-test.html">z-test</a>. Det er tilfældet, når en proces er så veldokumenteret, at populationens variabilitet (σ) regnes som en fast, kendt størrelse. I praksis er det sjældent.</li>
         <li><strong>Standardafvigelse estimeret fra stikprøven selv</strong> → <a href="/t-test.html">enkeltstikprøve-t-test</a>. Det er det næsten universelle tilfælde: du kender ikke populationens σ og udregner den fra de indsamlede data. T-testen indregner den ekstra usikkerhed ved estimatet.</li>
       </ul>
-      <p>I langt de fleste virkelige undersøgelser er populationens standardafvigelse ukendt — så <strong>enkeltstikprøve-t-testen er standardvalget</strong>. Z-testen er forbeholdt meget kontrollerede industrielle sammenhænge eller didaktiske øvelser. I store stikprøver er resultaterne praktisk talt ens, men i små stikprøver er t-testen den eneste korrekte.</p>
+      <p>I langt de fleste virkelige undersøgelser er populationens standardafvigelse ukendt: så <strong>enkeltstikprøve-t-testen er standardvalget</strong>. Z-testen er forbeholdt meget kontrollerede industrielle sammenhænge eller didaktiske øvelser. I store stikprøver er resultaterne praktisk talt ens, men i små stikprøver er t-testen den eneste korrekte.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
 
@@ -196,31 +196,31 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Ignorer ikke parringen
         </div>
-        <p>Den dyreste fejl her er at forveksle parrede data med uafhængige. "Før og efter" på samme person er altid parret. At bruge testen for uafhængige grupper i det tilfælde smider informationen væk om, at hvert par starter fra forskellige udgangspunkter — og det sænker typisk testens følsomhed og kan maskere en reel forskel.</p>
+        <p>Den dyreste fejl her er at forveksle parrede data med uafhængige. "Før og efter" på samme person er altid parret. At bruge testen for uafhængige grupper i det tilfælde smider informationen væk om, at hvert par starter fra forskellige udgangspunkter, og det sænker typisk testens følsomhed og kan maskere en reel forskel.</p>
       </div>
 
       <h2 id="tres-grupos">Numeriske data: sammenligne tre eller flere grupper</h2>
       <p>Når der er en numerisk variabel og <strong>tre eller flere grupper</strong> at sammenligne, dukker en farlig fristelse op: at køre flere t-test parvis. Lad være. Hver t-test bærer en risiko for en falsk positiv; lægger man dem sammen, hober risikoen sig op, og sandsynligheden for at "finde" en ikke-eksisterende forskel skyder i vejret. Løsningen er en enkelt test, der vurderer alle grupperne på én gang.</p>
       <p>Denne test er <strong>ANOVA</strong> (variansanalyse), tilgængelig under <a href="/anova.html">ANOVA og k-stikprøver-beregneren</a>. ANOVA besvarer et globalt spørgsmål: "er der nogen forskel mellem gennemsnittene i disse grupper?". Den er den naturlige udvidelse af t-testen til tre eller flere grupper og antager, ligesom den, at data omtrent er normalfordelte, og at gruppevarianserne ligner hinanden.</p>
-      <p>Når disse forudsætninger ikke holder — skæv fordeling, små stikprøver, ekstreme værdier — er alternativet <strong>Kruskal-Wallis</strong>, også tilgængelig i <a href="/anova.html">samme k-stikprøver-beregner</a>. Kruskal-Wallis er den ikke-parametriske pendant til ANOVA: arbejder med værdiernes rangorden og kræver ikke normalitet. Det er i praksis generaliseringen af Mann-Whitney-testen til tre grupper eller flere.</p>
+      <p>Når disse forudsætninger ikke holder (skæv fordeling, små stikprøver, ekstreme værdier) er alternativet <strong>Kruskal-Wallis</strong>, også tilgængelig i <a href="/anova.html">samme k-stikprøver-beregner</a>. Kruskal-Wallis er den ikke-parametriske pendant til ANOVA: arbejder med værdiernes rangorden og kræver ikke normalitet. Det er i praksis generaliseringen af Mann-Whitney-testen til tre grupper eller flere.</p>
       <p>Det er værd at bemærke, hvad disse test <em>ikke</em> siger: både ANOVA og Kruskal-Wallis fortæller kun, at der findes <em>en eller anden</em> forskel mellem grupperne, uden at pege på <em>hvilke</em> par der adskiller sig. At identificere de specifikke par er opgaven for de såkaldte multiple sammenligninger (post hoc-test), et trin der kommer bagefter og kun giver mening, når den globale test allerede har vist signifikans.</p>
 
       <h2 id="parametrico">Parametrisk eller ikke-parametrisk?</h2>
       <p>Valget mellem den parametriske og den ikke-parametriske version af en test er dukket op i alle de tidligere afsnit. Det er værd at samle det ét sted, fordi det er en af de beslutninger, der skaber mest tvivl.</p>
-      <p><strong>Parametriske test</strong> — z-test, t-test, ANOVA — sammenligner <em>gennemsnit</em> og hviler på antagelser om datafordelingen, især <em>normalitet</em>. Når man sammenligner grupper, forventer de også, at varianserne er ens (homogenitet). Når disse forudsætninger holder, er de parametriske test de mest <em>styrke</em>fulde: de opdager reelle forskelle med mindre stikprøver.</p>
-      <p><strong>Ikke-parametriske test</strong> — Mann-Whitney, Wilcoxon, Kruskal-Wallis — kræver ikke normalitet. I stedet for at bruge de rå værdier ordner de dem og arbejder med <em>rangene</em> (positionen for hver værdi i den ordnede række). Derfor er de robuste over for ekstreme værdier og fungerer fint med skæve fordelinger, men på bekostning af lidt mindre styrke, når data <em>ville have været</em> normale.</p>
+      <p><strong>Parametriske test</strong> (z-test, t-test, ANOVA) sammenligner <em>gennemsnit</em> og hviler på antagelser om datafordelingen, især <em>normalitet</em>. Når man sammenligner grupper, forventer de også, at varianserne er ens (homogenitet). Når disse forudsætninger holder, er de parametriske test de mest <em>styrke</em>fulde: de opdager reelle forskelle med mindre stikprøver.</p>
+      <p><strong>Ikke-parametriske test</strong> (Mann-Whitney, Wilcoxon, Kruskal-Wallis) kræver ikke normalitet. I stedet for at bruge de rå værdier ordner de dem og arbejder med <em>rangene</em> (positionen for hver værdi i den ordnede række). Derfor er de robuste over for ekstreme værdier og fungerer fint med skæve fordelinger, men på bekostning af lidt mindre styrke, når data <em>ville have været</em> normale.</p>
       <div class="callout callout--tip">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
           Hvornår skal man bruge rangtest
         </div>
-        <p>Foretræk den ikke-parametriske version når: <strong>stikprøven er lille</strong> (få dusin observationer), og du ikke kan bekræfte normaliteten; der er <strong>ekstreme værdier</strong>, der trækker gennemsnittet; fordelingen er <strong>tydeligt skæv</strong> (indkomster, ventetider, optællinger); eller dataene er <strong>ordinale</strong> — en skala af positioner som "dårlig, middel, god, fremragende", uden garanteret numerisk afstand mellem niveauerne. Med store stikprøver og en rimelig symmetrisk fordeling er den parametriske test sikker og mere følsom.</p>
+        <p>Foretræk den ikke-parametriske version når: <strong>stikprøven er lille</strong> (få dusin observationer), og du ikke kan bekræfte normaliteten; der er <strong>ekstreme værdier</strong>, der trækker gennemsnittet; fordelingen er <strong>tydeligt skæv</strong> (indkomster, ventetider, optællinger); eller dataene er <strong>ordinale</strong>: en skala af positioner som "dårlig, middel, god, fremragende", uden garanteret numerisk afstand mellem niveauerne. Med store stikprøver og en rimelig symmetrisk fordeling er den parametriske test sikker og mere følsom.</p>
       </div>
-      <p>Parrene er lette at huske: Mann-Whitney erstatter t-testen for uafhængige grupper; Wilcoxon signed-rank erstatter den parrede t-test; Kruskal-Wallis erstatter ANOVA. I alle tilfælde er nulhypotesen ikke længere "gennemsnittene er ens", men i essensen "fordelingerne er ens" — en subtil forskel i fortolkning, der er værd at notere i rapporten.</p>
+      <p>Parrene er lette at huske: Mann-Whitney erstatter t-testen for uafhængige grupper; Wilcoxon signed-rank erstatter den parrede t-test; Kruskal-Wallis erstatter ANOVA. I alle tilfælde er nulhypotesen ikke længere "gennemsnittene er ens", men i essensen "fordelingerne er ens": en subtil forskel i fortolkning, der er værd at notere i rapporten.</p>
 
       <h2 id="estimar">Estimere i stedet for at teste</h2>
-      <p>Ikke alle statistiske spørgsmål er hypotesetest. Ofte vil du slet ikke sammenligne noget — du vil bare <strong>estimere en værdi</strong> i populationen med en usikkerhedsmargin. "Hvad er kundernes gennemsnitlige tilfredshed?" "Hvad er prævalensen af et problem?" Til de spørgsmål er instrumentet <a href="/konfidensinterval.html">konfidensintervallet</a>, ikke en p-værdi.</p>
-      <p>Konfidensintervallet leverer et <em>interval</em> af plausible værdier for populationens reelle parameter, i stedet for et "ja eller nej"-svar. Det er mere informativt end testen selv: det viser samtidig effektstørrelsen og estimatets præcision. Et smalt interval betyder et præcist estimat; et bredt interval betyder stor usikkerhed — typisk på grund af en lille stikprøve.</p>
+      <p>Ikke alle statistiske spørgsmål er hypotesetest. Ofte vil du slet ikke sammenligne noget. Du vil bare <strong>estimere en værdi</strong> i populationen med en usikkerhedsmargin. "Hvad er kundernes gennemsnitlige tilfredshed?" "Hvad er prævalensen af et problem?" Til de spørgsmål er instrumentet <a href="/konfidensinterval.html">konfidensintervallet</a>, ikke en p-værdi.</p>
+      <p>Konfidensintervallet leverer et <em>interval</em> af plausible værdier for populationens reelle parameter, i stedet for et "ja eller nej"-svar. Det er mere informativt end testen selv: det viser samtidig effektstørrelsen og estimatets præcision. Et smalt interval betyder et præcist estimat; et bredt interval betyder stor usikkerhed, typisk på grund af en lille stikprøve.</p>
       <p>Og der er et tidspunkt, hvor statistik skal ind <em>før</em> dataindsamlingen: planlægningen af stikprøvestørrelsen. For lidt indsamling giver et studie uden styrke til at opdage effekten; for meget indsamling spilder tid og ressourcer. For at dimensionere stikprøven korrekt har sitet en <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a> til generelle studier og en <a href="/ab-test-stikprove.html">stikprøveberegner til A/B-test</a>, specifikt rettet mod konverteringseksperimenter.</p>
       <div class="recommend">
         <div class="recommend__title">
@@ -229,16 +229,16 @@
         </div>
         <p>Når du har identificeret den rigtige test ud fra guidens huskeliste, så åbn den tilsvarende beregner:</p>
         <ul>
-          <li><a href="/t-test.html">t-test-beregner</a> — sammenlign et gennemsnit med en referenceværdi eller to gennemsnit indbyrdes.</li>
-          <li><a href="/chi-test.html">Chi²-beregner</a> — tjek sammenhængen mellem to kategoriske variable.</li>
-          <li><a href="/anova.html">ANOVA og k-stikprøver-beregner</a> — sammenlign tre eller flere grupper, med mulighed for Kruskal-Wallis.</li>
-          <li><a href="/konfidensinterval.html">Konfidensinterval-beregner</a> — estimer en populationsværdi med usikkerhedsmargin.</li>
+          <li><a href="/t-test.html">t-test-beregner</a>: sammenlign et gennemsnit med en referenceværdi eller to gennemsnit indbyrdes.</li>
+          <li><a href="/chi-test.html">Chi²-beregner</a>: tjek sammenhængen mellem to kategoriske variable.</li>
+          <li><a href="/anova.html">ANOVA og k-stikprøver-beregner</a>: sammenlign tre eller flere grupper, med mulighed for Kruskal-Wallis.</li>
+          <li><a href="/konfidensinterval.html">Konfidensinterval-beregner</a>: estimer en populationsværdi med usikkerhedsmargin.</li>
         </ul>
         <p class="disclosure">Linkene ovenfor fører til indhold på selve sitet. Skulle de senere indeholde partnerlinks, vil dette afsnit oplyse om samarbejdet.</p>
       </div>
 
       <h2 id="tabela">Oversigtstabel: hvilken test bruger du</h2>
-      <p>Tabellen nedenfor samler hele guiden. Find rækken, der beskriver din situation, tjek datatypen, og gå videre til den anbefalede test — navnet på hver beregner er et direkte link til værktøjet.</p>
+      <p>Tabellen nedenfor samler hele guiden. Find rækken, der beskriver din situation, tjek datatypen, og gå videre til den anbefalede test: navnet på hver beregner er et direkte link til værktøjet.</p>
       <div class="table-wrap">
         <table class="data">
           <thead>
@@ -322,7 +322,7 @@
         <li><strong>At ignorere parringen i dataene.</strong> Målinger "før og efter" på samme person er parrede. At behandle dem som uafhængige spilder information og skjuler typisk effekten. Det samme gælder par dannet med vilje.</li>
         <li><strong>At sammenligne tre eller flere grupper med flere t-test.</strong> Hver ekstra t-test øger risikoen for en falsk positiv. Til tre eller flere grupper, brug ANOVA eller Kruskal-Wallis, der vurderer det hele på én gang.</li>
         <li><strong>At fastholde den parametriske test, når forudsætningerne er brudt.</strong> En lille skæv stikprøve med ekstreme værdier er ikke terræn for t-testen. Når normaliteten ikke holder, så skift til rangversionen.</li>
-        <li><strong>At bruge z-test, når standardafvigelsen er ukendt.</strong> Hvis du estimerede standardafvigelsen ud fra selve stikprøven, er den korrekte test t, ikke z — især med små stikprøver.</li>
+        <li><strong>At bruge z-test, når standardafvigelsen er ukendt.</strong> Hvis du estimerede standardafvigelsen ud fra selve stikprøven, er den korrekte test t, ikke z, især med små stikprøver.</li>
         <li><strong>At forveksle signifikans med effektstørrelse.</strong> At vælge den rigtige test giver en pålidelig p-værdi, men p-værdien siger ikke, om forskellen er stor. Kig altid på effektstørrelsen eller konfidensintervallet for at vurdere den praktiske relevans.</li>
         <li><strong>At vælge testen efter at have set dataene.</strong> At beslutte testen først efter at have kigget på, hvilken der "giver signifikans", skævvrider resultatet. Fastlæg testen ud fra datatypen og undersøgelsens design, helst før indsamlingen.</li>
       </ol>
@@ -343,7 +343,7 @@
         </details>
         <details>
           <summary>Skal jeg bruge z-test eller t-test til at sammenligne med en referenceværdi?</summary>
-          <div class="faq__answer"><p>Brug <a href="/z-test.html">z-test</a>, når populationens standardafvigelse er kendt — hvilket er sjældent i praksis. Brug <a href="/t-test.html">t-test</a>, når standardafvigelsen estimeres ud fra stikprøven, hvilket næsten altid er tilfældet. Derfor er enkeltstikprøve-t-testen det rigtige valg i de fleste virkelige undersøgelser.</p></div>
+          <div class="faq__answer"><p>Brug <a href="/z-test.html">z-test</a>, når populationens standardafvigelse er kendt: hvilket er sjældent i praksis. Brug <a href="/t-test.html">t-test</a>, når standardafvigelsen estimeres ud fra stikprøven, hvilket næsten altid er tilfældet. Derfor er enkeltstikprøve-t-testen det rigtige valg i de fleste virkelige undersøgelser.</p></div>
         </details>
         <details>
           <summary>Hvad er forskellen på uafhængige og parrede grupper?</summary>
@@ -371,7 +371,7 @@
     <div class="container">
       <div class="cta-band">
         <h2>Ved du allerede, hvilken test du skal bruge?</h2>
-        <p>Åbn den rigtige beregner og få p-værdi, konfidensinterval og fortolkning — gratis og på få sekunder.</p>
+        <p>Åbn den rigtige beregner og få p-værdi, konfidensinterval og fortolkning: gratis og på få sekunder.</p>
         <a class="btn btn--light btn--lg" href="/#calculadoras">Se alle beregnere</a>
       </div>
     </div>
@@ -433,7 +433,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et didaktisk og informativt formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør du bekræfte resultaterne med en statistiker.</p>
+      <p>Beregnerne har et didaktisk og informativt formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør du bekræfte resultaterne med en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

@@ -80,12 +80,12 @@
 
       <h2>Sådan fungerer beregnerne</h2>
       <p>Alle beregnere på dette site er skrevet i <strong>ren JavaScript, der kører direkte i din browser</strong>. Når du trykker på "Beregn", udføres hele beregningen lokalt på din egen enhed: der sendes ingen data til en server, intet gemmes, og dine tal forlader aldrig browseren. Det gælder alle beregnere uden undtagelse.</p>
-      <p>Vi bruger ingen statistiske "black box"-biblioteker. Hver formel er implementeret fra bunden med udgangspunkt i de klassiske lærebøger i statistisk inferens. Det betyder, at vi ved præcis, hvad der bliver regnet i hvert trin — og at vi kan dokumentere det.</p>
+      <p>Vi bruger ingen statistiske "black box"-biblioteker. Hver formel er implementeret fra bunden med udgangspunkt i de klassiske lærebøger i statistisk inferens. Det betyder, at vi ved præcis, hvad der bliver regnet i hvert trin, og at vi kan dokumentere det.</p>
 
       <h2>Hvilke tests dækker vi</h2>
       <p>Sitet dækker de mest brugte tests i grundlæggende statistisk inferens:</p>
       <ul>
-        <li><strong>z-test og t-test</strong> for gennemsnit — én stikprøve, to uafhængige stikprøver (inklusive Welch-varianten ved ulige varianser) og parrede målinger;</li>
+        <li><strong>z-test og t-test</strong> for gennemsnit: én stikprøve, to uafhængige stikprøver (inklusive Welch-varianten ved ulige varianser) og parrede målinger;</li>
         <li><strong>proportionstest og A/B-test</strong> for rater og konverteringer;</li>
         <li><strong>chi-i-anden test</strong> for uafhængighed og goodness-of-fit;</li>
         <li><strong>ANOVA (én faktor) og Kruskal-Wallis</strong> for tre eller flere grupper;</li>
@@ -101,7 +101,7 @@
         <li><strong>normalfordelingens</strong> fordelingsfunktion og dens inverse, med rationale approksimationer med høj præcision;</li>
         <li><strong>Students t-fordeling</strong> samt <strong>F- og chi-i-anden-fordelingerne</strong>, beregnet via den regulariserede ufuldstændige beta- og gammafunktion;</li>
         <li><strong>Wilson-intervallet</strong> for andele, som er mere præcist end det traditionelle Wald-interval, især ved små stikprøver og ekstreme andele;</li>
-        <li><strong>effektstørrelser</strong> — Cohens d, h og w samt korrelationskoefficienten r — efter konventionerne i Cohen (1988).</li>
+        <li><strong>effektstørrelser</strong> (Cohens d, h og w samt korrelationskoefficienten r) efter konventionerne i Cohen (1988).</li>
       </ul>
       <p>Selve fremstillingen af formlerne følger klassiske lærebøger: Montgomery &amp; Runger for generel inferens, Agresti for kategoriske data og proportioner, og Cohen (1988) for effektstørrelser og styrkeberegninger. Den fulde, kommenterede liste findes på siden <a href="/kilder.html">Kilder</a>.</p>
 
@@ -112,20 +112,20 @@
         <li>output fra <strong>R</strong> (funktioner som <code>t.test</code>, <code>prop.test</code>, <code>chisq.test</code>, <code>wilcox.test</code> og <code>cor.test</code>) på de samme datasæt;</li>
         <li><strong>regnearksfunktioner</strong> som T.FORDELING og NORM.INV til krydstjek af fordelingsberegningerne.</li>
       </ul>
-      <p>Sitet har desuden en automatisk testpakke, der kører de numeriske funktioner mod kendte referenceværdier, så en ændring i koden ikke kan ændre resultaterne ubemærket. Finder du alligevel en afvigelse, så skriv til os — se vores <a href="/redaktionel-politik.html">redaktionelle politik</a> for, hvordan rettelser håndteres.</p>
+      <p>Sitet har desuden en automatisk testpakke, der kører de numeriske funktioner mod kendte referenceværdier, så en ændring i koden ikke kan ændre resultaterne ubemærket. Finder du alligevel en afvigelse, så skriv til os, se vores <a href="/redaktionel-politik.html">redaktionelle politik</a> for, hvordan rettelser håndteres.</p>
 
       <h2>Begrænsninger</h2>
       <p>Ærlighed om, hvad værktøjerne ikke kan, er en del af metodologien:</p>
       <ul>
-        <li>Beregnerne <strong>erstatter ikke fuld statistisk software</strong> som R, SPSS, Stata eller SAS. Komplekse analyser — regression, mixede modeller, repeated measures, overlevelsesanalyse, komplekse stikprøvedesigns — kræver rigtige statistikprogrammer.</li>
+        <li>Beregnerne <strong>erstatter ikke fuld statistisk software</strong> som R, SPSS, Stata eller SAS. Komplekse analyser (regression, mixede modeller, repeated measures, overlevelsesanalyse, komplekse stikprøvedesigns) kræver rigtige statistikprogrammer.</li>
         <li>Formlerne antager som udgangspunkt <strong>simple tilfældige stikprøver</strong>. Klyngedesign, stratificering og vægtning ændrer usikkerheden og håndteres ikke her.</li>
-        <li>Beregnerne tjekker ikke dine <strong>antagelser</strong> (normalitet, uafhængighed, varianshomogenitet) — det ansvar ligger hos dig, og hver beregner-side beskriver, hvilke antagelser testen bygger på.</li>
+        <li>Beregnerne tjekker ikke dine <strong>antagelser</strong> (normalitet, uafhængighed, varianshomogenitet). Det ansvar ligger hos dig, og hver beregner-side beskriver, hvilke antagelser testen bygger på.</li>
         <li>Resultaterne afrundes til visning; ved ekstreme inputværdier kan små numeriske afvigelser fra andre programmer forekomme i de sidste decimaler.</li>
       </ul>
 
       <h2>Sådan bør resultaterne fortolkes</h2>
-      <p>En p-værdi er ikke en facitliste. Den fortæller, hvor usandsynlige dine data ville være, <em>hvis</em> nulhypotesen var sand — hverken mere eller mindre. Vi anbefaler altid at læse tre ting sammen: <strong>p-værdien</strong>, <strong>konfidensintervallet</strong> og <strong>effektstørrelsen</strong>. En statistisk signifikant forskel kan være praktisk ubetydelig, og en ikke-signifikant forskel kan skyldes en for lille stikprøve snarere end fravær af effekt.</p>
-      <p>Beregnerne har et undervisende og informativt formål. Ved kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør både valget af test og fortolkningen af resultatet bekræftes af en statistikfaglig person.</p>
+      <p>En p-værdi er ikke en facitliste. Den fortæller, hvor usandsynlige dine data ville være, <em>hvis</em> nulhypotesen var sand, hverken mere eller mindre. Vi anbefaler altid at læse tre ting sammen: <strong>p-værdien</strong>, <strong>konfidensintervallet</strong> og <strong>effektstørrelsen</strong>. En statistisk signifikant forskel kan være praktisk ubetydelig, og en ikke-signifikant forskel kan skyldes en for lille stikprøve snarere end fravær af effekt.</p>
+      <p>Beregnerne har et undervisende og informativt formål. Ved kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør både valget af test og fortolkningen af resultatet bekræftes af en statistikfaglig person.</p>
 
       <p><em>Senest gennemgået: 1. august 2026.</em></p>
 
@@ -200,7 +200,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger — kliniske, akademiske eller forretningsmæssige.</p>
+      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger: kliniske, akademiske eller forretningsmæssige.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

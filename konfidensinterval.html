@@ -108,7 +108,7 @@
         </ol>
       </nav>
       <h1>Konfidensinterval beregner</h1>
-      <p class="lead">Estimér det <strong>sandsynlige interval</strong> for et gennemsnit eller en proportion i populationen med 90%, 95% eller 99% konfidens — og se fejlmarginen for dit estimat.</p>
+      <p class="lead">Estimér det <strong>sandsynlige interval</strong> for et gennemsnit eller en proportion i populationen med 90%, 95% eller 99% konfidens, og se fejlmarginen for dit estimat.</p>
     </div>
   </div>
 
@@ -217,10 +217,10 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er et konfidensinterval</h2>
-      <p>Når du måler noget i en stikprøve — gennemsnitshøjden for 30 personer, andelen af tilfredse kunder blandt 600 adspurgte — får du et tal. Men det tal er kun et <strong>estimat</strong> af populationens sande værdi, og estimater indeholder usikkerhed: en anden stikprøve ville give et lidt andet resultat.</p>
-      <p>Det <strong>konfidensinterval</strong> løser det. I stedet for et enkelt tal giver det et <strong>interval af plausible værdier</strong> for den parameter, du vil kende. I stedet for at sige "gennemsnittet er 72" siger det "gennemsnittet ligger sandsynligvis mellem 69,0 og 75,0". Det interval kommunikerer ærligt, hvor meget din stikprøve tillader dig at sige — og hvor meget der stadig er usikkerhed.</p>
+      <p>Når du måler noget i en stikprøve (gennemsnitshøjden for 30 personer, andelen af tilfredse kunder blandt 600 adspurgte) får du et tal. Men det tal er kun et <strong>estimat</strong> af populationens sande værdi, og estimater indeholder usikkerhed: en anden stikprøve ville give et lidt andet resultat.</p>
+      <p>Det <strong>konfidensinterval</strong> løser det. I stedet for et enkelt tal giver det et <strong>interval af plausible værdier</strong> for den parameter, du vil kende. I stedet for at sige "gennemsnittet er 72" siger det "gennemsnittet ligger sandsynligvis mellem 69,0 og 75,0". Det interval kommunikerer ærligt, hvor meget din stikprøve tillader dig at sige, og hvor meget der stadig er usikkerhed.</p>
       <p>Ethvert konfidensinterval har tre ingredienser: <strong>punktestimatet</strong> (den centrale værdi, beregnet ud fra stikprøven), <strong>fejlmarginen</strong> (hvor meget der lægges til og trækkes fra) og <strong>konfidensniveauet</strong> (90%, 95% eller 99%, som definerer strengheden). Resultatet er altid på formen <em>estimat ± fejlmargin</em>.</p>
-      <p>En vigtig bemærkning fra start: et konfidensinterval er <strong>ikke en hypotesetest</strong>. Det giver ingen dom om "signifikant" eller "ikke-signifikant" — det estimerer kun et interval. For en beslutningsdom, se <a href="/t-test.html">t-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>. De to begreber taler sammen, men har forskellige formål.</p>
+      <p>En vigtig bemærkning fra start: et konfidensinterval er <strong>ikke en hypotesetest</strong>. Det giver ingen dom om "signifikant" eller "ikke-signifikant". Det estimerer kun et interval. For en beslutningsdom, se <a href="/t-test.html">t-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>. De to begreber taler sammen, men har forskellige formål.</p>
 
       <h2 id="nivel">Hvad betyder konfidensniveauet</h2>
       <p><strong>Konfidensniveauet</strong> er den mest misforståede del af statistik. Det svarer på et spørgsmål om <em>metoden</em>, ikke om et bestemt interval.</p>
@@ -243,18 +243,18 @@
       <div class="formula">KI = x̄ ± (kritisk værdi) × (standardfejl)
         <span class="formula__where">x̄ er stikprøvens gennemsnit; standardfejlen er SF = s ÷ √n.</span>
       </div>
-      <p><strong>Standardfejlen</strong> måler, hvor meget stikprøvens gennemsnit varierer fra stikprøve til stikprøve. Den krymper, når n vokser — derfor giver større stikprøver smallere intervaller.</p>
+      <p><strong>Standardfejlen</strong> måler, hvor meget stikprøvens gennemsnit varierer fra stikprøve til stikprøve. Den krymper, når n vokser: derfor giver større stikprøver smallere intervaller.</p>
       <p>Nøglespørgsmålet er, hvilken fordeling der bruges til den kritiske værdi:</p>
       <ul>
-        <li><strong>Students t-fordeling</strong> — brug den, når standardafvigelsen er <em>estimeret fra selve stikprøven</em>. Det er næsten altid tilfældet i praksis. T-fordelingen har lidt bredere haler end normalfordelingen for at kompensere for den ekstra usikkerhed ved ikke at kende den sande standardafvigelse. Den kritiske værdi afhænger af <strong>frihedsgraderne</strong> (df = n − 1).</li>
-        <li><strong>Normalfordelingen (z)</strong> — brug den kun, når <em>populationens</em> standardafvigelse faktisk er kendt, hvilket sjældent forekommer uden for didaktiske øvelser. I denne beregner er det indstillingen "Populationens".</li>
+        <li><strong>Students t-fordeling</strong>: brug den, når standardafvigelsen er <em>estimeret fra selve stikprøven</em>. Det er næsten altid tilfældet i praksis. T-fordelingen har lidt bredere haler end normalfordelingen for at kompensere for den ekstra usikkerhed ved ikke at kende den sande standardafvigelse. Den kritiske værdi afhænger af <strong>frihedsgraderne</strong> (df = n − 1).</li>
+        <li><strong>Normalfordelingen (z)</strong>: brug den kun, når <em>populationens</em> standardafvigelse faktisk er kendt, hvilket sjældent forekommer uden for didaktiske øvelser. I denne beregner er det indstillingen "Populationens".</li>
       </ul>
       <p>I tvivl skal du vælge "Stikprøvens" (t-fordelingen): det er det korrekte og sikre valg i langt de fleste tilfælde. Med store stikprøver (over ~30 observationer) er t og normal praktisk talt identiske, og valget mister praktisk betydning.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
 
       <h2 id="proporcao">Konfidensinterval for en proportion — Wilsons metode</h2>
-      <p>Når det, du måler, er en <strong>proportion</strong> — andelen af folk, der godkender noget, succesraten for en procedure — er punktestimatet ganske enkelt antallet af succeser delt med totalen (p̂ = x ÷ n). Spørgsmålet er, hvordan man konstruerer intervallet omkring den.</p>
+      <p>Når det, du måler, er en <strong>proportion</strong> (andelen af folk, der godkender noget, succesraten for en procedure) er punktestimatet ganske enkelt antallet af succeser delt med totalen (p̂ = x ÷ n). Spørgsmålet er, hvordan man konstruerer intervallet omkring den.</p>
       <p>Den klassiske lærebogsmetode er <strong>Wald-intervallet</strong>: p̂ ± z × √[p̂(1−p̂)/n]. Det er enkelt, men har en alvorlig fejl: det fungerer dårligt, når proportionen er tæt på 0% eller 100%, eller når stikprøven er lille. I de tilfælde kan det endda producere umulige grænser under 0% eller over 100%, og dets reelle succesrate ligger godt under det annoncerede niveau.</p>
       <p>Derfor bruger denne beregner <strong>Wilson-intervallet</strong> (også kaldet score-intervallet). Det er lidt mere kompliceret, men meget mere præcist: det holder dækningsgraden tæt på det nominelle niveau selv med små stikprøver eller ekstreme proportioner og overskrider aldrig 0% og 100%.</p>
       <div class="formula">centrum = (p̂ + z²/2n) ÷ (1 + z²/n)
@@ -283,7 +283,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Den mest almindelige fortolkningsfejl
         </div>
-        <p>Det er <strong>forkert</strong> at sige "der er 95% sandsynlighed for, at gennemsnittet ligger mellem 69,0 og 75,0". Populationens sande værdi er et fast tal: det er allerede indenfor dette bestemte interval eller udenfor — der er ingen lodtrækning. De 95% sandsynlighed beskriver <em>proceduren</em> på lang sigt, ikke dette isolerede interval efter beregningen.</p>
+        <p>Det er <strong>forkert</strong> at sige "der er 95% sandsynlighed for, at gennemsnittet ligger mellem 69,0 og 75,0". Populationens sande værdi er et fast tal: det er allerede indenfor dette bestemte interval eller udenfor, der er ingen lodtrækning. De 95% sandsynlighed beskriver <em>proceduren</em> på lang sigt, ikke dette isolerede interval efter beregningen.</p>
       </div>
       <p>Andre hyppige misforståelser, det er værd at undgå:</p>
       <ul>
@@ -308,7 +308,7 @@
       <div class="faq">
         <details>
           <summary>Hvad er et konfidensinterval?</summary>
-          <div class="faq__answer"><p>Det er et interval af værdier, beregnet ud fra en stikprøve, som sandsynligvis indeholder den sande værdi af en populationsparameter — som et gennemsnit eller en proportion. I stedet for et enkelt tal viser det estimatets usikkerhed.</p></div>
+          <div class="faq__answer"><p>Det er et interval af værdier, beregnet ud fra en stikprøve, som sandsynligvis indeholder den sande værdi af en populationsparameter, som et gennemsnit eller en proportion. I stedet for et enkelt tal viser det estimatets usikkerhed.</p></div>
         </details>
         <details>
           <summary>Hvad betyder 95% konfidens?</summary>
@@ -417,7 +417,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) så få resultaterne bekræftet af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>
@@ -523,7 +523,7 @@
         '<strong>' + Fmt.pct(r.ciHigh, 2) + '</strong>. Punktestimatet er ' +
         Fmt.pct(r.estimate, 2) + ', med en fejlmargin på ± ' + Fmt.pct(r.marginError, 2) + '.</p>' +
         '<p>Vigtigt med den rigtige aflæsning: det betyder <strong>ikke</strong>, at der er ' + confTxt +
-        ' sandsynlighed for, at den rigtige værdi ligger i netop dette interval — det indeholder ' +
+        ' sandsynlighed for, at den rigtige værdi ligger i netop dette interval. Det indeholder ' +
         'allerede eller indeholder ikke den sande værdi. Konfidensniveauet beskriver metoden: i ' + confTxt +
         ' af de mulige stikprøver rammer et interval konstrueret på denne måde populationsværdien.</p>';
     } else {
@@ -541,7 +541,7 @@
         Fmt.num(r.estimate, 3) + ', med en fejlmargin på ± ' + Fmt.num(r.marginError, 3) +
         ', med ' + distTxt + ' fordelingen.</p>' +
         '<p>Vigtigt med den rigtige aflæsning: det betyder <strong>ikke</strong>, at der er ' + confTxt +
-        ' sandsynlighed for, at det rigtige gennemsnit ligger i netop dette interval — det er ' +
+        ' sandsynlighed for, at det rigtige gennemsnit ligger i netop dette interval. Det er ' +
         'allerede indenfor eller udenfor. Konfidensniveauet beskriver metoden: i ' + confTxt +
         ' af de mulige stikprøver rammer et interval konstrueret på denne måde populationsværdien.</p>';
     }

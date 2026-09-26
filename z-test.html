@@ -108,7 +108,7 @@
         </ol>
       </nav>
       <h1>z-test Beregner</h1>
-      <p class="lead">Sammenlign en <strong>stikprøves gennemsnit</strong> med en referenceværdi, når <strong>populationens standardafvigelse er kendt</strong> — og find ud af, om forskellen er statistisk signifikant.</p>
+      <p class="lead">Sammenlign en <strong>stikprøves gennemsnit</strong> med en referenceværdi, når <strong>populationens standardafvigelse er kendt</strong>, og find ud af, om forskellen er statistisk signifikant.</p>
     </div>
   </div>
 
@@ -199,14 +199,14 @@
 
       <h2 id="o-que-e">Hvad er z-testen</h2>
       <p><strong>Z-testen</strong> er en hypotesetest, der sammenligner <strong>gennemsnittet af en stikprøve</strong> med en kendt <strong>referenceværdi</strong>. Den svarer på et direkte spørgsmål: er forskellen mellem det gennemsnit, du har observeret, og den forventede værdi stor nok til at være reel, eller kan det blot være tilfældig variation hos dem, der kom med i stikprøven?</p>
-      <p>Z-testens kendetegn er en forudsætning: du skal <strong>kende populationens standardafvigelse</strong> (repræsenteret med det græske bogstav σ, sigma). Ikke stikprøvens standardafvigelse — men den i hele den population, stikprøven kommer fra. Den viden er det, der gør det muligt at bruge <strong>standardnormalfordelingen</strong> direkte til at beregne sandsynlighederne uden korrektion.</p>
-      <p>Bag navnet ligger <em>z-scoren</em>: ideen, der er central i al statistik, om at måle en afstand i "antal standardafvigelser". Z-testen anvender det samme begreb på stikprøvens gennemsnit. Når resultatet ligger langt fra referenceværdien — målt i standardfejl — bliver det usandsynligt, at afstanden er opstået ved tilfældighed.</p>
+      <p>Z-testens kendetegn er en forudsætning: du skal <strong>kende populationens standardafvigelse</strong> (repræsenteret med det græske bogstav σ, sigma). Ikke stikprøvens standardafvigelse, men den i hele den population, stikprøven kommer fra. Den viden er det, der gør det muligt at bruge <strong>standardnormalfordelingen</strong> direkte til at beregne sandsynlighederne uden korrektion.</p>
+      <p>Bag navnet ligger <em>z-scoren</em>: ideen, der er central i al statistik, om at måle en afstand i "antal standardafvigelser". Z-testen anvender det samme begreb på stikprøvens gennemsnit. Når resultatet ligger langt fra referenceværdien, målt i standardfejl, bliver det usandsynligt, at afstanden er opstået ved tilfældighed.</p>
 
       <h2 id="quando">Hvornår skal man bruge z-testen</h2>
       <p>Z-testen for et gennemsnit er den rigtige procedure, når to betingelser er opfyldt:</p>
       <ul>
         <li><strong>Populationens standardafvigelse er kendt.</strong> Det er mere almindeligt, end man tror: standardiserede psykometriske tests (IQ, store eksamener), kalibrerede måleinstrumenter og veldokumenterede industriprocesser har typisk et σ, som er fastlagt ud fra mange års historiske data.</li>
-        <li><strong>Stikprøven kommer fra en tilnærmelsesvis normalfordelt population — eller er stor.</strong> Med en stor stikprøve (typisk n over ~30) sikrer den centrale grænseværdisætning, at stikprøvegennemsnittet følger nogenlunde en normalfordeling, selv hvis de oprindelige data ikke er normale.</li>
+        <li><strong>Stikprøven kommer fra en tilnærmelsesvis normalfordelt population, eller er stor.</strong> Med en stor stikprøve (typisk n over ~30) sikrer den centrale grænseværdisætning, at stikprøvegennemsnittet følger nogenlunde en normalfordeling, selv hvis de oprindelige data ikke er normale.</li>
       </ul>
       <div class="callout callout--tip">
         <div class="callout__title">
@@ -217,10 +217,10 @@
       </div>
 
       <h2 id="z-vs-t">z-test eller t-test?</h2>
-      <p>Det er det mest almindelige spørgsmål — og svaret er enkelt. De to tests sammenligner gennemsnit og følger samme logik; forskellen ligger i, <strong>hvor standardafvigelsen kommer fra</strong>:</p>
+      <p>Det er det mest almindelige spørgsmål, og svaret er enkelt.De to tests sammenligner gennemsnit og følger samme logik; forskellen ligger i, <strong>hvor standardafvigelsen kommer fra</strong>:</p>
       <ul>
-        <li><strong>Z-test</strong> — bruger <em>populationens</em> standardafvigelse (σ), behandlet som et fast og kendt tal. Sandsynlighederne kommer fra standardnormalfordelingen.</li>
-        <li><strong><a href="/t-test.html">T-test</a></strong> — bruger standardafvigelsen <em>estimeret fra stikprøven</em> (s). Da det estimat bærer en usikkerhed, anvender t-testen t-fordelingen, der ligner normalfordelingen, men har lidt bredere haler — mere konservativ.</li>
+        <li><strong>Z-test</strong>: bruger <em>populationens</em> standardafvigelse (σ), behandlet som et fast og kendt tal. Sandsynlighederne kommer fra standardnormalfordelingen.</li>
+        <li><strong><a href="/t-test.html">T-test</a></strong>: bruger standardafvigelsen <em>estimeret fra stikprøven</em> (s). Da det estimat bærer en usikkerhed, anvender t-testen t-fordelingen, der ligner normalfordelingen, men har lidt bredere haler: mere konservativ.</li>
       </ul>
       <p>I praksis er populationens standardafvigelse næsten aldrig kendt, og derfor er <a href="/t-test.html">t-testen (Student)</a> den, der bruges mest i dagligdagens forskning. Z-testen er reserveret til de tilfælde, hvor σ virkelig er kendt. Der er også et beroligende punkt: efterhånden som stikprøven vokser, nærmer t-fordelingen sig normalfordelingen mere og mere. Med store stikprøver giver z- og t-tests praktisk talt identiske resultater.</p>
       <div class="callout callout--warning">
@@ -232,7 +232,7 @@
       </div>
 
       <h2 id="como">Sådan virker beregningen</h2>
-      <p>Z-testen for et gennemsnit har tre trin. Først er der <strong>standardfejlen af gennemsnittet</strong> — hvor meget tilfældig variation der kan forventes fra én stikprøve til en anden. Den er populationens standardafvigelse divideret med kvadratroden af stikprøvestørrelsen:</p>
+      <p>Z-testen for et gennemsnit har tre trin. Først er der <strong>standardfejlen af gennemsnittet</strong>, hvor meget tilfældig variation der kan forventes fra én stikprøve til en anden.Den er populationens standardafvigelse divideret med kvadratroden af stikprøvestørrelsen:</p>
       <div class="formula">SF = σ ÷ √n
         <span class="formula__where">Jo større stikprøve, jo mindre standardfejl — gennemsnit fra store stikprøver er mere stabile.</span>
       </div>
@@ -242,41 +242,41 @@
       </div>
       <p>Tredje trin er at oversætte z til en <strong>p-værdi</strong>. Her kommer standardnormalfordelingen ind, og dens fordelingsfunktion, repræsenteret med Φ (det græske bogstav fi). Φ(z) angiver sandsynligheden for, at standardnormalfordelingen ligger under z. P-værdien kombinerer det med typen af test:</p>
       <div class="formula">p-værdi (tosidet) = 2 · [ 1 − Φ(|z|) ]</div>
-      <p>I den tosidede test spørger du, om gennemsnittet simpelthen er <em>forskelligt</em> fra referenceværdien. I den ensidede test spørger du, om det er <em>større</em> (eller <em>mindre</em>) — og p-værdien er halvdelen af den tosidede. Beregneren returnerer også den <strong>kritiske z</strong>, grænseværdien i normalfordelingen for det valgte konfidensniveau: ved 95% tosidet er den cirka 1,96.</p>
+      <p>I den tosidede test spørger du, om gennemsnittet simpelthen er <em>forskelligt</em> fra referenceværdien. I den ensidede test spørger du, om det er <em>større</em> (eller <em>mindre</em>), og p-værdien er halvdelen af den tosidede. Beregneren returnerer også den <strong>kritiske z</strong>, grænseværdien i normalfordelingen for det valgte konfidensniveau: ved 95% tosidet er den cirka 1,96.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
 
       <h2 id="interpretar">Sådan fortolker du resultatet</h2>
       <p>Beregneren returnerer seks nøgletal. Her er, hvad hvert af dem betyder:</p>
       <ul>
-        <li><strong>z-statistik</strong> — forskellen mellem gennemsnittet og sammenligningsværdien, i antal standardfejl.</li>
-        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (α, typisk 0,05), er resultatet signifikant.</li>
-        <li><strong>Standardfejl</strong> — den tilfældige variation, der kan forventes i estimatet af gennemsnittet.</li>
-        <li><strong>Gennemsnit af stikprøven</strong> — punktestimatet: dit bedste gæt på det sande gennemsnit ud fra dine data.</li>
-        <li><strong>Kritisk z</strong> — grænseværdien i normalfordelingen for det valgte konfidensniveau. Hvis det beregnede |z| overstiger den, er resultatet signifikant.</li>
-        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for populationens sande gennemsnit. Hvis sammenligningsværdien μ₀ ligger <em>uden for</em> intervallet, er forskellen signifikant.</li>
+        <li><strong>z-statistik</strong>: forskellen mellem gennemsnittet og sammenligningsværdien, i antal standardfejl.</li>
+        <li><strong>P-værdi</strong>: sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (α, typisk 0,05), er resultatet signifikant.</li>
+        <li><strong>Standardfejl</strong>. Den tilfældige variation, der kan forventes i estimatet af gennemsnittet.</li>
+        <li><strong>Gennemsnit af stikprøven</strong>: punktestimatet: dit bedste gæt på det sande gennemsnit ud fra dine data.</li>
+        <li><strong>Kritisk z</strong>: grænseværdien i normalfordelingen for det valgte konfidensniveau. Hvis det beregnede |z| overstiger den, er resultatet signifikant.</li>
+        <li><strong>Konfidensinterval</strong>. Det sandsynlige interval for populationens sande gennemsnit. Hvis sammenligningsværdien μ₀ ligger <em>uden for</em> intervallet, er forskellen signifikant.</li>
       </ul>
-      <p>P-værdi og konfidensinterval fortæller samme historie ad to veje. P-værdien sammenligner en sandsynlighed med α; intervallet viser intervallet af plausible værdier. Når μ₀ falder uden for intervallet, ligger p-værdien under α — de to er altid enige.</p>
+      <p>P-værdi og konfidensinterval fortæller samme historie ad to veje. P-værdien sammenligner en sandsynlighed med α; intervallet viser intervallet af plausible værdier. Når μ₀ falder uden for intervallet, ligger p-værdien under α, de to er altid enige.</p>
 
       <h2 id="exemplo">Løst eksempel</h2>
-      <p>En skole gennemfører en standardiseret IQ-test i en klasse på <strong>60 elever</strong>. Det observerede gennemsnit blev <strong>104</strong>. Testen er standardiseret til at have et populationsgennemsnit på <strong>100</strong> og en standardafvigelse på <strong>15</strong> — altså er σ kendt. Har klassen et gennemsnit, der adskiller sig fra populationsreferencen?</p>
+      <p>En skole gennemfører en standardiseret IQ-test i en klasse på <strong>60 elever</strong>. Det observerede gennemsnit blev <strong>104</strong>. Testen er standardiseret til at have et populationsgennemsnit på <strong>100</strong> og en standardafvigelse på <strong>15</strong>, altså er σ kendt. Har klassen et gennemsnit, der adskiller sig fra populationsreferencen?</p>
       <ol class="steps">
         <li>Standardfejl: SF = 15 ÷ √60 ≈ 1,936.</li>
         <li>z-statistik: z = (104 − 100) ÷ 1,936 ≈ 2,07.</li>
         <li>Tosidet p-værdi for z = 2,07: ≈ 0,039.</li>
         <li>95% konfidensinterval for gennemsnittet: 104 ± 1,96 · 1,936, altså fra ≈ 100,2 til ≈ 107,8.</li>
       </ol>
-      <p>Da 0,039 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong> ved 95% konfidens: klassen har faktisk en gennemsnits-IQ over populationsreferencen. Bemærk, at værdien 100 ligger uden for konfidensintervallet — de to kriterier er enige. Brug knappen <em>"Brug eksempeldata"</em> for at se beregningen i beregneren.</p>
+      <p>Da 0,039 &lt; 0,05, er forskellen <strong>statistisk signifikant</strong> ved 95% konfidens: klassen har faktisk en gennemsnits-IQ over populationsreferencen. Bemærk, at værdien 100 ligger uden for konfidensintervallet, de to kriterier er enige. Brug knappen <em>"Brug eksempeldata"</em> for at se beregningen i beregneren.</p>
 
       <h2 id="faq">Ofte stillede spørgsmål</h2>
       <div class="faq">
         <details>
           <summary>Hvornår skal jeg bruge z-testen?</summary>
-          <div class="faq__answer"><p>Brug z-testen til at sammenligne et gennemsnit med en referenceværdi, når populationens standardafvigelse er kendt — fx ved standardiserede tests, kalibrerede instrumenter eller processer med lang datahistorik. Vil du sammenligne proportioner, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
+          <div class="faq__answer"><p>Brug z-testen til at sammenligne et gennemsnit med en referenceværdi, når populationens standardafvigelse er kendt: fx ved standardiserede tests, kalibrerede instrumenter eller processer med lang datahistorik. Vil du sammenligne proportioner, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
         </details>
         <details>
           <summary>Hvad er forskellen mellem z-test og t-test?</summary>
-          <div class="faq__answer"><p>Z-testen bruger populationens standardafvigelse og standardnormalfordelingen. <a href="/t-test.html">T-testen</a> bruger standardafvigelsen estimeret fra stikprøven og t-fordelingen, med bredere haler for at kompensere for usikkerheden i det estimat. Når σ er ukendt — det almindelige tilfælde — er det t-testen, der skal bruges. Med store stikprøver giver de to næsten identiske resultater.</p></div>
+          <div class="faq__answer"><p>Z-testen bruger populationens standardafvigelse og standardnormalfordelingen. <a href="/t-test.html">T-testen</a> bruger standardafvigelsen estimeret fra stikprøven og t-fordelingen, med bredere haler for at kompensere for usikkerheden i det estimat. Når σ er ukendt, det almindelige tilfælde, er det t-testen, der skal bruges. Med store stikprøver giver de to næsten identiske resultater.</p></div>
         </details>
         <details>
           <summary>Hvad er z-statistikken?</summary>
@@ -381,7 +381,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

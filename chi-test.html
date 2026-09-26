@@ -108,7 +108,7 @@
         </ol>
       </nav>
       <h1>chi-i-anden-beregner</h1>
-      <p class="lead">Find ud af, om <strong>to kategoriske variabler er forbundet</strong> — uafhængighedstesten ud fra en krydstabel, med p-værdi og effektstørrelse.</p>
+      <p class="lead">Find ud af, om <strong>to kategoriske variabler er forbundet</strong>: uafhængighedstesten ud fra en krydstabel, med p-værdi og effektstørrelse.</p>
     </div>
   </div>
 
@@ -176,22 +176,22 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er chi-i-anden testen</h2>
-      <p><strong>Chi-i-anden uafhængighedstesten</strong> (χ²) svarer på et meget almindeligt spørgsmål i forskning: <strong>er to kategoriske variabler forbundet, eller er de uafhængige?</strong> Med andre ord — ændrer kendskab til den ene variabels værdi sandsynligheden for den anden?</p>
-      <p>Tænk på situationer som: påvirker personens køn præferencen for et produkt? Er regionen i landet forbundet med stemmeintentionen? Er behandlingstypen relateret til det kliniske udfald? I alle disse tilfælde har du ikke tal at måle med — du har <strong>kategorier</strong> at tælle. Chi-i-anden testen er det rette værktøj til den slags data.</p>
+      <p><strong>Chi-i-anden uafhængighedstesten</strong> (χ²) svarer på et meget almindeligt spørgsmål i forskning: <strong>er to kategoriske variabler forbundet, eller er de uafhængige?</strong> Med andre ord: ændrer kendskab til den ene variabels værdi sandsynligheden for den anden?</p>
+      <p>Tænk på situationer som: påvirker personens køn præferencen for et produkt? Er regionen i landet forbundet med stemmeintentionen? Er behandlingstypen relateret til det kliniske udfald? I alle disse tilfælde har du ikke tal at måle med. Du har <strong>kategorier</strong> at tælle. Chi-i-anden testen er det rette værktøj til den slags data.</p>
       <p>Logikken er elegant. Hvis de to variabler var fuldstændig uafhængige, kunne man forudsige, hvor mange tilfælde der ville falde i hver kombination af kategorier, alene ud fra totalerne. Testen sammenligner disse <strong>forventede frekvenser</strong> med de <strong>faktisk observerede frekvenser</strong>. Hvis forskellen mellem det observerede og det forventede er for stor til at være tilfældig, konkluderer man, at der findes en sammenhæng.</p>
 
       <h2 id="quando">Hvornår skal man bruge den</h2>
       <p>Chi-i-anden uafhængighedstesten er den rigtige, når:</p>
       <ul>
-        <li><strong>De to variabler er kategoriske</strong> — køn, region, aldersgruppe, foretrukket mærke, udfald (helbredt / ikke helbredt). Kontinuerte numeriske variabler duer ikke.</li>
-        <li><strong>Du har optællinger, ikke gennemsnit</strong> — data er "hvor mange personer i hver kombination", ikke "hvad er gennemsnittet i hver gruppe". Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</li>
-        <li><strong>Observationerne er uafhængige</strong> — hver person indgår i én eneste celle i tabellen, og én person påvirker ikke en anden.</li>
+        <li><strong>De to variabler er kategoriske</strong>: køn, region, aldersgruppe, foretrukket mærke, udfald (helbredt / ikke helbredt). Kontinuerte numeriske variabler duer ikke.</li>
+        <li><strong>Du har optællinger, ikke gennemsnit</strong>: data er "hvor mange personer i hver kombination", ikke "hvad er gennemsnittet i hver gruppe". Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</li>
+        <li><strong>Observationerne er uafhængige</strong>: hver person indgår i én eneste celle i tabellen, og én person påvirker ikke en anden.</li>
       </ul>
-      <p>Vil du blot sammenligne <em>to proportioner</em> (for eksempel succesraten i to grupper), så når <a href="/proportionstest.html">proportionstesten</a> og chi-i-anden samme konklusion — i en 2×2-tabel er χ² matematisk ækvivalent med z-testen for to proportioner.</p>
+      <p>Vil du blot sammenligne <em>to proportioner</em> (for eksempel succesraten i to grupper), så når <a href="/proportionstest.html">proportionstesten</a> og chi-i-anden samme konklusion, i en 2×2-tabel er χ² matematisk ækvivalent med z-testen for to proportioner.</p>
 
       <h2 id="tabela">Krydstabellen</h2>
       <p>Testens udgangspunkt er <strong>krydstabellen</strong> (også kaldet kontingenstabel). Den krydser kategorierne for de to variabler: hver række er en kategori for den første variabel, hver kolonne er en kategori for den anden, og hver celle indeholder <strong>antallet</strong> af tilfælde i den kombination.</p>
-      <p>Beregneren ovenfor bygger tabellen for dig. Start med størrelsen 2×2, og brug knapperne til at tilføje rækker og kolonner, alt efter dine kategorier. Læg altid <em>optællinger</em> ind — antal personer, antal svar, antal tilfælde — aldrig procenter eller gennemsnit.</p>
+      <p>Beregneren ovenfor bygger tabellen for dig. Start med størrelsen 2×2, og brug knapperne til at tilføje rækker og kolonner, alt efter dine kategorier. Læg altid <em>optællinger</em> ind (antal personer, antal svar, antal tilfælde) aldrig procenter eller gennemsnit.</p>
 
       <h2 id="como">Sådan virker beregningen</h2>
       <p>Testen har fire trin. Det første er at beregne, for hver celle, den <strong>forventede frekvens</strong> under uafhængighedshypotesen. Den afhænger kun af række- og kolonnetotalerne:</p>
@@ -202,7 +202,7 @@
       </div>
       <p>Tredje trin er <strong>frihedsgraderne</strong>, som kun afhænger af tabellens form:</p>
       <div class="formula">df = (antal rækker − 1) × (antal kolonner − 1)</div>
-      <p>Til sidst omdanner beregneren χ² og frihedsgraderne til en <strong>p-værdi</strong> ved hjælp af chi-i-anden fordelingen. En lille p-værdi betyder, at et så stort misforhold ville være meget sjældent, hvis variablerne var uafhængige — altså er der en sammenhæng.</p>
+      <p>Til sidst omdanner beregneren χ² og frihedsgraderne til en <strong>p-værdi</strong> ved hjælp af chi-i-anden fordelingen. En lille p-værdi betyder, at et så stort misforhold ville være meget sjældent, hvis variablerne var uafhængige, altså er der en sammenhæng.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
 
@@ -220,19 +220,19 @@
       <h2 id="interpretar">Sådan fortolker du resultatet</h2>
       <p>Beregneren returnerer et kort med konklusionen og seks nøgletal:</p>
       <ul>
-        <li><strong>Chi-i-anden (χ²)</strong> — den samlede størrelse af misforholdet mellem observeret og forventet. Alene siger det lidt; det skal sammenlignes med fordelingen.</li>
-        <li><strong>Frihedsgrader</strong> — afgør, hvilken chi-i-anden fordeling der bruges til at finde p-værdien.</li>
-        <li><strong>P-værdi</strong> — sandsynligheden for at se et så stort misforhold ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er der en signifikant sammenhæng.</li>
-        <li><strong>Cramérs V</strong> — effektstørrelsen. Går fra 0 til 1 og måler <em>styrken</em> af sammenhængen: omkring 0,1 er svag, 0,3 er moderat og 0,5 eller mere er stærk.</li>
-        <li><strong>Antal tilfælde i alt</strong> — summen af alle celler i tabellen.</li>
-        <li><strong>Mindste forventede frekvens</strong> — til at tjekke forudsætningen: hvis den er under 5, fortolk med varsomhed.</li>
+        <li><strong>Chi-i-anden (χ²)</strong>. Den samlede størrelse af misforholdet mellem observeret og forventet. Alene siger det lidt; det skal sammenlignes med fordelingen.</li>
+        <li><strong>Frihedsgrader</strong>: afgør, hvilken chi-i-anden fordeling der bruges til at finde p-værdien.</li>
+        <li><strong>P-værdi</strong>: sandsynligheden for at se et så stort misforhold ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er der en signifikant sammenhæng.</li>
+        <li><strong>Cramérs V</strong>: effektstørrelsen. Går fra 0 til 1 og måler <em>styrken</em> af sammenhængen: omkring 0,1 er svag, 0,3 er moderat og 0,5 eller mere er stærk.</li>
+        <li><strong>Antal tilfælde i alt</strong>: summen af alle celler i tabellen.</li>
+        <li><strong>Mindste forventede frekvens</strong>, til at tjekke forudsætningen: hvis den er under 5, fortolk med varsomhed.</li>
       </ul>
       <div class="callout callout--tip">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
           Signifikans og styrke er to ting
         </div>
-        <p>En lille p-værdi bekræfter, at der <em>findes</em> en sammenhæng, men siger ikke, om den er <em>stærk</em>. Med meget store stikprøver bliver trivielle sammenhænge "signifikante". Kig derfor altid på Cramérs V: den svarer på det spørgsmål, der virkelig betyder noget — hvor stor er sammenhængen?</p>
+        <p>En lille p-værdi bekræfter, at der <em>findes</em> en sammenhæng, men siger ikke, om den er <em>stærk</em>. Med meget store stikprøver bliver trivielle sammenhænge "signifikante". Kig derfor altid på Cramérs V: den svarer på det spørgsmål, der virkelig betyder noget, hvor stor er sammenhængen?</p>
       </div>
 
       <h2 id="exemplo">Løst eksempel</h2>
@@ -263,7 +263,7 @@
         </details>
         <details>
           <summary>Hvornår skal jeg bruge chi-i-anden?</summary>
-          <div class="faq__answer"><p>Når du har to kategoriske variabler og vil vide, om de er relaterede — som køn og præference, behandling og udfald, uddannelse og holdning. Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</p></div>
+          <div class="faq__answer"><p>Når du har to kategoriske variabler og vil vide, om de er relaterede, som køn og præference, behandling og udfald, uddannelse og holdning. Vil du sammenligne gennemsnit, så brug <a href="/t-test.html">t-testen</a> eller <a href="/anova.html">ANOVA</a>.</p></div>
         </details>
         <details>
           <summary>Hvad er frihedsgrader i chi-i-anden?</summary>
@@ -279,7 +279,7 @@
         </details>
         <details>
           <summary>Hvad er forskellen mellem chi-i-anden og proportionstesten?</summary>
-          <div class="faq__answer"><p>I en 2×2-tabel er de ækvivalente — de når frem til samme p-værdi. Chi-i-anden er mere generel: den fungerer med tabeller af enhver størrelse og sammenligner mange kategorier på én gang.</p></div>
+          <div class="faq__answer"><p>I en 2×2-tabel er de ækvivalente, de når frem til samme p-værdi. Chi-i-anden er mere generel: den fungerer med tabeller af enhver størrelse og sammenligner mange kategorier på én gang.</p></div>
         </details>
       </div>
 
@@ -368,7 +368,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>
@@ -533,7 +533,7 @@
     if (lowExpected) {
       interp += '<p><strong>Bemærk:</strong> den mindste forventede frekvens (' +
         Fmt.num(r.minExpected, 2) + ') ligger under 5. Chi-i-anden tilnærmelsen ' +
-        'kan være upræcis — overvej Fishers eksakte test, særligt i 2×2-tabeller.</p>';
+        'kan være upræcis: overvej Fishers eksakte test, særligt i 2×2-tabeller.</p>';
     }
 
     var pTxt = Fmt.p(r.pValue);

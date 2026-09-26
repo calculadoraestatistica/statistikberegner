@@ -105,7 +105,7 @@
         </ol>
       </nav>
       <h1>A/B-test-beregner</h1>
-      <p class="lead">Sammenlign to versioner og find ud af på få sekunder, om forskellen mellem dem er <strong>statistisk signifikant</strong> — eller om det bare kan være tilfældighed.</p>
+      <p class="lead">Sammenlign to versioner og find ud af på få sekunder, om forskellen mellem dem er <strong>statistisk signifikant</strong>, eller om det bare kan være tilfældighed.</p>
     </div>
   </div>
 
@@ -199,9 +199,9 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er en A/B-test</h2>
-      <p>En <strong>A/B-test</strong> er et kontrolleret eksperiment, der sammenligner to versioner af noget for at finde ud af, hvilken der klarer sig bedst. Version A er <em>kontrollen</em> — typisk det, der allerede findes. Version B er <em>variationen</em> — den ændring, du vil teste. Du fordeler publikum tilfældigt mellem de to og måler en bestemt metrik, næsten altid <strong>konverteringsraten</strong>.</p>
+      <p>En <strong>A/B-test</strong> er et kontrolleret eksperiment, der sammenligner to versioner af noget for at finde ud af, hvilken der klarer sig bedst. Version A er <em>kontrollen</em>, typisk det, der allerede findes. Version B er <em>variationen</em>. Den ændring, du vil teste. Du fordeler publikum tilfældigt mellem de to og måler en bestemt metrik, næsten altid <strong>konverteringsraten</strong>.</p>
       <p>Det klassiske eksempel kommer fra digital marketing: to versioner af en salgsside, to e-mail-emnelinjer, to knapper i forskellige farver. Men den samme logik gælder alle områder. Et hospital kan sammenligne to vejledningsprotokoller; en app kan sammenligne to tilmeldingsflows; en skole kan sammenligne to undervisningsmetoder. Hver gang der er to grupper og en succesrate, er der en mulig A/B-test.</p>
-      <p>Problemet er, at når du kigger på to tal — lad os sige 11% konvertering mod 12% — er det umuligt at se med det blotte øje, om forskellen er reel, eller om det var held. Hvis du kaster to ærlige mønter 100 gange hver, vil den ene næsten altid give flere "krone" end den anden; det betyder ikke, at den er "bedre". A/B-testen bruger statistik netop til at skelne <strong>signal</strong> (en virkelig forskel) fra <strong>støj</strong> (tilfældig variation).</p>
+      <p>Problemet er, at når du kigger på to tal, lad os sige 11% konvertering mod 12%, er det umuligt at se med det blotte øje, om forskellen er reel, eller om det var held. Hvis du kaster to ærlige mønter 100 gange hver, vil den ene næsten altid give flere "krone" end den anden; det betyder ikke, at den er "bedre". A/B-testen bruger statistik netop til at skelne <strong>signal</strong> (en virkelig forskel) fra <strong>støj</strong> (tilfældig variation).</p>
 
       <h2 id="significancia">Hvad er statistisk signifikans</h2>
       <p><strong>Statistisk signifikans</strong> er det kriterium, der adskiller en pålidelig forskel fra en forskel, der kan være opstået ved en tilfældighed. For at nå dertil tager enhver hypotesetest udgangspunkt i en pessimistisk antagelse, der hedder <strong>nulhypotesen</strong>: at <em>der ingen forskel er</em> mellem A og B, og at enhver observeret afstand er ren stikprøvestøj.</p>
@@ -211,7 +211,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Hvad p-værdien måler
         </div>
-        <p>"Hvis A og B virkelig var ens, hvad ville så sandsynligheden være for at observere en forskel så stor som den, jeg har målt — eller endnu større — bare ved tilfældighed?"</p>
+        <p>"Hvis A og B virkelig var ens, hvad ville så sandsynligheden være for at observere en forskel så stor som den, jeg har målt, eller endnu større, bare ved tilfældighed?"</p>
       </div>
       <p>En lille p-værdi betyder, at dit resultat ville være meget sjældent i en verden, hvor A og B er ens. Så er det mere sandsynligt, at de <em>ikke</em> er ens. Du sammenligner p-værdien med en grænse, der er fastlagt <strong>før</strong> testen, <strong>signifikansniveauet</strong> (repræsenteret med det græske bogstav α, alfa). Standarden er α = 5% (0,05):</p>
       <ul>
@@ -223,7 +223,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Pas på fortolkningen
         </div>
-        <p>P-værdien er <strong>ikke</strong> sandsynligheden for, at din variant er bedre, og "ikke signifikant" beviser <strong>ikke</strong>, at A og B er ens — det betyder bare, at der mangler data. Statistisk signifikans er heller ikke det samme som praktisk betydning: med en kæmpe stikprøve kan selv en lillebitte og ligegyldig forskel blive "signifikant".</p>
+        <p>P-værdien er <strong>ikke</strong> sandsynligheden for, at din variant er bedre, og "ikke signifikant" beviser <strong>ikke</strong>, at A og B er ens. Det betyder bare, at der mangler data. Statistisk signifikans er heller ikke det samme som praktisk betydning: med en kæmpe stikprøve kan selv en lillebitte og ligegyldig forskel blive "signifikant".</p>
       </div>
 
       <h2 id="como-funciona">Sådan regner beregneren</h2>
@@ -232,14 +232,14 @@
       <div class="formula">p<sub>A</sub> = konverteringer<sub>A</sub> ÷ besøgende<sub>A</sub>  &nbsp;og&nbsp;  p<sub>B</sub> = konverteringer<sub>B</sub> ÷ besøgende<sub>B</sub></div>
       <p><strong>2. Samlet proportion.</strong> Under nulhypotesen kommer A og B fra samme population. Derfor samler vi det hele i én rate, den såkaldte poolede proportion:</p>
       <div class="formula">p̄ = (konverteringer<sub>A</sub> + konverteringer<sub>B</sub>) ÷ (besøgende<sub>A</sub> + besøgende<sub>B</sub>)</div>
-      <p><strong>3. Standardfejl og z-statistik.</strong> Standardfejlen måler, hvor meget tilfældig variation der kan forventes i forskellen mellem de to rater. Z-statistikken dividerer den observerede forskel med standardfejlen — altså måler forskellen i "antal standardfejl":</p>
+      <p><strong>3. Standardfejl og z-statistik.</strong> Standardfejlen måler, hvor meget tilfældig variation der kan forventes i forskellen mellem de to rater.Z-statistikken dividerer den observerede forskel med standardfejlen, altså måler forskellen i "antal standardfejl":</p>
       <div class="formula">SF = √[ p̄ · (1 − p̄) · (1/n<sub>A</sub> + 1/n<sub>B</sub>) ]<br>
         z = (p<sub>B</sub> − p<sub>A</sub>) ÷ SF
         <span class="formula__where">n<sub>A</sub> og n<sub>B</sub> er antallet af besøgende i hver variant.</span>
       </div>
       <p><strong>4. P-værdi.</strong> Jo større |z|, jo længere er du fra scenariet "ingen forskel". Beregneren omdanner z til p-værdi ved hjælp af standardnormalfordelingen (Φ er dens fordelingsfunktion):</p>
       <div class="formula">p-værdi (tosidet) = 2 · [ 1 − Φ(|z|) ]</div>
-      <p>Ud over dommen giver beregneren også <strong>konfidensintervallet for forskellen</strong> — det interval af plausible værdier for den reelle gevinst i konvertering. Det interval er mere informativt end "ja eller nej"-signifikansen, fordi det viser <em>størrelsen</em> af den sandsynlige effekt.</p>
+      <p>Ud over dommen giver beregneren også <strong>konfidensintervallet for forskellen</strong>. Det interval af plausible værdier for den reelle gevinst i konvertering. Det interval er mere informativt end "ja eller nej"-signifikansen, fordi det viser <em>størrelsen</em> af den sandsynlige effekt.</p>
 
       <div class="recommend">
         <div class="recommend__title">
@@ -248,8 +248,8 @@
         </div>
         <p>A/B-testen er din indgang til anvendt statistik. For at få styr på emnet inden for dit område:</p>
         <ul>
-          <li><a href="/guides/statistik-marketing-cro.html">Guide til statistik for Marketing og CRO</a> — statistisk styrke, MDE og de typiske fælder i eksperimenter.</li>
-          <li><a href="/ab-test-stikprove.html">Beregner til stikprøvestørrelse</a> — planlæg testen, før du indsamler et eneste data.</li>
+          <li><a href="/guides/statistik-marketing-cro.html">Guide til statistik for Marketing og CRO</a>: statistisk styrke, MDE og de typiske fælder i eksperimenter.</li>
+          <li><a href="/ab-test-stikprove.html">Beregner til stikprøvestørrelse</a>: planlæg testen, før du indsamler et eneste data.</li>
         </ul>
         <p class="disclosure">Links ovenfor fører til indhold her på siden. Hvis vi senere tilføjer partnerhenvisninger, vil dette afsnit gøre opmærksom på samarbejdet.</p>
       </div>
@@ -257,12 +257,12 @@
       <h2 id="interpretar">Sådan fortolker du resultatet fra beregneren</h2>
       <p>Når du har beregnet, ser du et farvet kort med konklusionen og seks nøgletal. Her er, hvad hvert af dem fortæller:</p>
       <ul>
-        <li><strong>Konverteringsrate A og B</strong> — den rå performance for hver version, i procent.</li>
-        <li><strong>Relativ forskel (uplift)</strong> — hvor meget variant B er steget (eller faldet) i forhold til A. En uplift på +10% betyder, at B konverterer 10% bedre end A i relative tal.</li>
-        <li><strong>P-værdi</strong> — sandsynligheden for at se denne forskel ved tilfældighed. Jo mindre, jo stærkere belæg.</li>
-        <li><strong>Z-statistik</strong> — forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 allerede signifikans.</li>
-        <li><strong>Konfidens i resultatet</strong> — det er simpelthen 1 − p-værdi. En p-værdi på 0,02 bliver til "98% konfidens". Bemærk: det er <em>ikke</em> sandsynligheden for, at B vinder; det er kun komplementet til p-værdien.</li>
-        <li><strong>Konfidensinterval for forskellen</strong> — det sandsynlige interval for den reelle gevinst. Hvis intervallet krydser nul, er fordelen stadig usikker.</li>
+        <li><strong>Konverteringsrate A og B</strong>. Den rå performance for hver version, i procent.</li>
+        <li><strong>Relativ forskel (uplift)</strong>, hvor meget variant B er steget (eller faldet) i forhold til A. En uplift på +10% betyder, at B konverterer 10% bedre end A i relative tal.</li>
+        <li><strong>P-værdi</strong>: sandsynligheden for at se denne forskel ved tilfældighed. Jo mindre, jo stærkere belæg.</li>
+        <li><strong>Z-statistik</strong>: forskellen målt i standardfejl. I en tosidet test ved 95% indikerer |z| over 1,96 allerede signifikans.</li>
+        <li><strong>Konfidens i resultatet</strong>. Det er simpelthen 1 − p-værdi. En p-værdi på 0,02 bliver til "98% konfidens". Bemærk: det er <em>ikke</em> sandsynligheden for, at B vinder; det er kun komplementet til p-værdien.</li>
+        <li><strong>Konfidensinterval for forskellen</strong>. Det sandsynlige interval for den reelle gevinst. Hvis intervallet krydser nul, er fordelen stadig usikker.</li>
       </ul>
       <div class="callout callout--tip">
         <div class="callout__title">
@@ -275,8 +275,8 @@
       <h2 id="caudas">Tosidet, ensidet og konfidensniveau</h2>
       <p>To indstillinger ændrer testens stringens. Den første er <strong>typen af test</strong>:</p>
       <ul>
-        <li><strong>Tosidet</strong> — tester, om B er <em>forskellig</em> fra A, enten i opadgående eller nedadgående retning. Det er den sikreste mulighed og anbefales i de fleste tilfælde, fordi en A/B-test også kan forværre konverteringen.</li>
-        <li><strong>Ensidet</strong> — tester kun, om B er <em>bedre</em> end A. Den opdager forskelle lettere, men er kun gyldig, hvis du har fastlagt den retning <strong>før</strong> dataindsamlingen og accepterer at se bort fra muligheden for forværring.</li>
+        <li><strong>Tosidet</strong>: tester, om B er <em>forskellig</em> fra A, enten i opadgående eller nedadgående retning. Det er den sikreste mulighed og anbefales i de fleste tilfælde, fordi en A/B-test også kan forværre konverteringen.</li>
+        <li><strong>Ensidet</strong>: tester kun, om B er <em>bedre</em> end A. Den opdager forskelle lettere, men er kun gyldig, hvis du har fastlagt den retning <strong>før</strong> dataindsamlingen og accepterer at se bort fra muligheden for forværring.</li>
       </ul>
       <p>Den anden indstilling er <strong>konfidensniveauet</strong>, komplementet til signifikansniveauet:</p>
       <div class="table-wrap">
@@ -289,7 +289,7 @@
           </tbody>
         </table>
       </div>
-      <p>Jo højere konfidens du kræver, jo sværere er det at opnå signifikans — og jo større stikprøve skal du bruge. Højere konfidens reducerer risikoen for <strong>falsk positiv</strong> (type I-fejl: at udråbe en vinder, der ikke er en vinder), men øger risikoen for <strong>falsk negativ</strong> (type II-fejl: at overse en forbedring, der faktisk findes).</p>
+      <p>Jo højere konfidens du kræver, jo sværere er det at opnå signifikans, og jo større stikprøve skal du bruge. Højere konfidens reducerer risikoen for <strong>falsk positiv</strong> (type I-fejl: at udråbe en vinder, der ikke er en vinder), men øger risikoen for <strong>falsk negativ</strong> (type II-fejl: at overse en forbedring, der faktisk findes).</p>
 
       <h2 id="exemplo">Eksempel trin for trin</h2>
       <p>En webshop testede en ny produktside. Her er tallene fra to ugers indsamling:</p>
@@ -307,42 +307,42 @@
         <li><strong>Samlet proportion:</strong> p̄ = (1840 + 2010) ÷ (16450 + 16320) = 3850 ÷ 32770 = 0,1175.</li>
         <li><strong>Standardfejl:</strong> SF = √[0,1175 · 0,8825 · (1/16450 + 1/16320)] ≈ 0,00356.</li>
         <li><strong>Z-statistik:</strong> z = (0,1232 − 0,1119) ÷ 0,00356 ≈ 3,18.</li>
-        <li><strong>P-værdi:</strong> for z = 3,18 er den tosidede p-værdi ≈ 0,0015 — langt under 0,05.</li>
+        <li><strong>P-værdi:</strong> for z = 3,18 er den tosidede p-værdi ≈ 0,0015: langt under 0,05.</li>
       </ol>
       <p>Konklusion: forskellen er <strong>statistisk signifikant</strong> ved 95% konfidens. Variant B konverterer omkring 10% bedre (relativ uplift), og resultatet er næppe en tilfældighed. Brug knappen <em>"Brug eksempeldata"</em> ovenfor for at se beregningen i beregneren.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
 
       <h2 id="erros">7 fejl der ødelægger en A/B-test</h2>
-      <p>Mere farligt end ikke at lave en test er at lave en dårlig test — den giver en falsk følelse af sikkerhed. Undgå disse fælder:</p>
+      <p>Mere farligt end ikke at lave en test er at lave en dårlig test. Den giver en falsk følelse af sikkerhed.Undgå disse fælder:</p>
       <ol>
         <li><strong>Stoppe testen ved det første gunstige øjeblik (peeking).</strong> At kigge på resultatet hele tiden og afslutte, så snart der står "signifikant", puster den falske positive rate op fra 5% til 20%, 30% eller mere. Fastlæg stikprøvestørrelsen på forhånd, og beslut først, når du har nået den.</li>
         <li><strong>Ikke beregne stikprøvestørrelsen.</strong> Uden at vide hvor mange besøgende du skal bruge, bliver testen til lotteri. Brug <a href="/ab-test-stikprove.html">stikprøveberegneren</a>, før du går i gang.</li>
-        <li><strong>Køre testen for kort tid.</strong> En test skal dække komplette cyklusser — inklusive weekender og lønningsdage. Det bedste er at lade den køre i mindst én til to hele uger.</li>
+        <li><strong>Køre testen for kort tid.</strong> En test skal dække komplette cyklusser: inklusive weekender og lønningsdage. Det bedste er at lade den køre i mindst én til to hele uger.</li>
         <li><strong>Teste flere variationer uden justering.</strong> Jo flere versioner du sammenligner samtidig, jo større er chancen for, at én "vinder" af held. Med mange varianter skal signifikansniveauet korrigeres.</li>
         <li><strong>Ændre testen undervejs.</strong> At ændre siden, trafikken eller publikum midt under eksperimentet forurener dataene. Frys alt indtil slut.</li>
         <li><strong>Forveksle signifikans med relevans.</strong> En uplift på 0,1% kan være "signifikant" med en enorm stikprøve og stadig ikke betale omkostningen ved ændringen. Kig altid på effektstørrelsen.</li>
-        <li><strong>Ignorere segmenteringen.</strong> En variant kan vinde på mobil og tabe på computer. Et samlet gennemsnit kan skjule det — analyser segmenterne, når det giver mening.</li>
+        <li><strong>Ignorere segmenteringen.</strong> En variant kan vinde på mobil og tabe på computer. Et samlet gennemsnit kan skjule det: analyser segmenterne, når det giver mening.</li>
       </ol>
 
       <h2 id="areas">A/B-test ud over marketing</h2>
-      <p>Selvom A/B-testen er blevet synonym med konverteringsoptimering (CRO), er den i bund og grund en <strong>sammenligning af to proportioner</strong> — og det dukker op overalt:</p>
+      <p>Selvom A/B-testen er blevet synonym med konverteringsoptimering (CRO), er den i bund og grund en <strong>sammenligning af to proportioner</strong>, og det dukker op overalt:</p>
       <ul>
         <li><strong>Sundhed og sygepleje:</strong> sammenligne andelen, der følger en behandling, mellem to grupper, eller komplikationsraten mellem to protokoller. Se <a href="/guides/statistik-sygepleje.html">guiden til statistik for sygepleje</a>.</li>
         <li><strong>Psykologi og forskning:</strong> sammenligne andelen af deltagere, der udviser en bestemt adfærd, i to eksperimentelle betingelser. Se <a href="/guides/statistik-psykologi.html">guiden til statistik for psykologi</a>.</li>
         <li><strong>Produkt og teknologi:</strong> sammenligne retention-, aktiverings- eller fejlraten mellem to versioner af en app.</li>
       </ul>
-      <p>Når det, du sammenligner, ikke er rater, men <strong>gennemsnit</strong> — tid, karakter, blodtryk, omsætning pr. kunde — er den rigtige test i stedet <a href="/t-test.html">t-testen (Student)</a>. Og hvis du vil sammenligne én enkelt proportion med en referenceværdi, så brug <a href="/proportionstest.html">proportionstesten</a>.</p>
+      <p>Når det, du sammenligner, ikke er rater, men <strong>gennemsnit</strong>: tid, karakter, blodtryk, omsætning pr. kunde: er den rigtige test i stedet <a href="/t-test.html">t-testen (Student)</a>. Og hvis du vil sammenligne én enkelt proportion med en referenceværdi, så brug <a href="/proportionstest.html">proportionstesten</a>.</p>
 
       <h2 id="faq">Ofte stillede spørgsmål</h2>
       <div class="faq">
         <details>
           <summary>Hvad er en A/B-test?</summary>
-          <div class="faq__answer"><p>Det er et eksperiment, der fordeler publikum tilfældigt mellem to versioner — A (kontrol) og B (variation) — og måler, hvilken der giver flest konverteringer. Statistikken sikrer, at den observerede forskel er reel og ikke tilfældighed.</p></div>
+          <div class="faq__answer"><p>Det er et eksperiment, der fordeler publikum tilfældigt mellem to versioner, A (kontrol) og B (variation), og måler, hvilken der giver flest konverteringer. Statistikken sikrer, at den observerede forskel er reel og ikke tilfældighed.</p></div>
         </details>
         <details>
           <summary>Hvad betyder "statistisk signifikant"?</summary>
-          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau (typisk 5%). Det er usandsynligt, at forskellen mellem varianterne er opstået ved ren tilfældighed — der er belæg for en reel effekt.</p></div>
+          <div class="faq__answer"><p>Det betyder, at p-værdien er under det valgte signifikansniveau (typisk 5%). Det er usandsynligt, at forskellen mellem varianterne er opstået ved ren tilfældighed, der er belæg for en reel effekt.</p></div>
         </details>
         <details>
           <summary>Hvilket konfidensniveau skal jeg bruge?</summary>
@@ -358,7 +358,7 @@
         </details>
         <details>
           <summary>Resultatet blev ikke signifikant. Hvad nu?</summary>
-          <div class="faq__answer"><p>Ikke signifikant beviser ikke, at versionerne er ens — det betyder typisk, at der mangler data. Tjek, om du har nået den planlagte stikprøvestørrelse. Hvis ja, har ændringen sandsynligvis haft for lille en effekt til at være indsatsen værd.</p></div>
+          <div class="faq__answer"><p>Ikke signifikant beviser ikke, at versionerne er ens. Det betyder typisk, at der mangler data. Tjek, om du har nået den planlagte stikprøvestørrelse. Hvis ja, har ændringen sandsynligvis haft for lille en effekt til at være indsatsen værd.</p></div>
         </details>
       </div>
 
@@ -447,7 +447,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>
@@ -543,7 +543,7 @@
         '<strong>statistisk signifikant</strong>: p-værdien (' + Fmt.p(r.pValue) +
         ') er mindre end signifikansniveauet (' + Fmt.pct(r.alpha, 0) + '). ' +
         'Det er usandsynligt, at forskellen er opstået ved tilfældighed' +
-        (winner ? ' — variant <strong>' + winner + '</strong> vandt' : '') + '.</p>' +
+        (winner ? ': variant <strong>' + winner + '</strong> vandt' : '') + '.</p>' +
         '<p>Konfidensintervallet på ' + confTxt + ' angiver, at den reelle forskel i konvertering ' +
         '(B − A) sandsynligvis ligger mellem <strong>' + Fmt.pct(r.ciLow, 2) + '</strong> og <strong>' +
         Fmt.pct(r.ciHigh, 2) + '</strong> i procentpoint.</p>';

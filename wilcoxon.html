@@ -109,7 +109,7 @@
         </ol>
       </nav>
       <h1>Wilcoxon og Mann-Whitney beregner</h1>
-      <p class="lead">Sammenlign <strong>to grupper uden antagelse om normalfordeling</strong> — ikke-parametriske tests for uafhængige stikprøver (Mann-Whitney) eller parrede (Wilcoxon), med p-værdi og fortolkning.</p>
+      <p class="lead">Sammenlign <strong>to grupper uden antagelse om normalfordeling</strong>, ikke-parametriske tests for uafhængige stikprøver (Mann-Whitney) eller parrede (Wilcoxon), med p-værdi og fortolkning.</p>
     </div>
   </div>
 
@@ -213,18 +213,18 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er Wilcoxon- og Mann-Whitney-tests</h2>
-      <p><strong>Mann-Whitney</strong>- og <strong>Wilcoxon</strong>-testen er <strong>ikke-parametriske</strong> procedurer til at sammenligne to grupper. De besvarer det samme spørgsmål som <a href="/t-test.html">t-testen</a> — adskiller de to grupper sig? — men uden at kræve, at data følger en normalfordeling.</p>
-      <p>Ordet "ikke-parametrisk" betyder, at testen ikke afhænger af parametre som gennemsnit og standardafvigelse i en normalkurve. I stedet for at arbejde med de oprindelige værdier arbejder disse tests med <strong>rækkefølgen</strong> af værdierne — de såkaldte <strong>rangordener</strong> (eller <em>ranks</em>). Det er nøgleidéen: hvis du sorterer alle data fra mindst til størst, og én gruppe systematisk ligger på de højeste pladser, er der evidens for, at den gruppe har en tendens til at have større værdier.</p>
+      <p><strong>Mann-Whitney</strong>- og <strong>Wilcoxon</strong>-testen er <strong>ikke-parametriske</strong> procedurer til at sammenligne to grupper. De besvarer det samme spørgsmål som <a href="/t-test.html">t-testen</a>: adskiller de to grupper sig?, men uden at kræve, at data følger en normalfordeling.</p>
+      <p>Ordet "ikke-parametrisk" betyder, at testen ikke afhænger af parametre som gennemsnit og standardafvigelse i en normalkurve. I stedet for at arbejde med de oprindelige værdier arbejder disse tests med <strong>rækkefølgen</strong> af værdierne, de såkaldte <strong>rangordener</strong> (eller <em>ranks</em>). Det er nøgleidéen: hvis du sorterer alle data fra mindst til størst, og én gruppe systematisk ligger på de højeste pladser, er der evidens for, at den gruppe har en tendens til at have større værdier.</p>
       <p>Fordi de arbejder med pladser, ikke med selve målingerne, er disse tests <strong>robuste over for ekstreme værdier</strong> og fungerer godt selv med små stikprøver eller med ordinale data (karakterer fra 1 til 5, tilfredshedsgrader, smerteskalaer). De er i praksis de mest brugte alternativer til t-testen, når dens antagelser ikke holder.</p>
       <p>Denne beregner dækker begge scenarier: <strong>Mann-Whitney</strong> testen til <strong>to uafhængige grupper</strong> og <strong>Wilcoxons test af fortegnsrangordener</strong> til <strong>parrede stikprøver</strong> (de samme enheder målt to gange).</p>
 
       <h2 id="nomes">Navnene forklaret</h2>
       <p>Navngivningen af disse tests forvirrer mange, fordi navnet "Wilcoxon" optræder flere steder. Det er værd at gennemgå roligt:</p>
       <ul>
-        <li><strong>Mann-Whitney testen (eller Mann-Whitneys U):</strong> sammenligner <em>to uafhængige grupper</em>. Den blev foreslået af Henry Mann og Donald Whitney i 1947 som en generalisering af en tidligere idé fra Frank Wilcoxon. Derfor kaldes den også <strong>Wilcoxons rangsumstest</strong> — de to navne betegner præcis samme test og giver samme p-værdi.</li>
+        <li><strong>Mann-Whitney testen (eller Mann-Whitneys U):</strong> sammenligner <em>to uafhængige grupper</em>. Den blev foreslået af Henry Mann og Donald Whitney i 1947 som en generalisering af en tidligere idé fra Frank Wilcoxon. Derfor kaldes den også <strong>Wilcoxons rangsumstest</strong>, de to navne betegner præcis samme test og giver samme p-værdi.</li>
         <li><strong>Wilcoxons test af fortegnsrangordener:</strong> sammenligner <em>to parrede målinger</em> på de samme individer. Den er det ikke-parametriske svar på den parrede t-test. "Fortegns" kommer af, at testen tager højde for <em>fortegnet</em> af hver forskel (om den steg eller faldt).</li>
       </ul>
-      <p>Kort sagt: <strong>"rangsum"</strong> er testen for uafhængige grupper (Mann-Whitney); <strong>"fortegnsrangordener"</strong> er testen for parrede data (parret Wilcoxon). At vælge mellem dem er samme valg som mellem t-testen for to stikprøver og den parrede t-test — det afhænger af, om data er målt på samme enheder eller ej.</p>
+      <p>Kort sagt: <strong>"rangsum"</strong> er testen for uafhængige grupper (Mann-Whitney); <strong>"fortegnsrangordener"</strong> er testen for parrede data (parret Wilcoxon). At vælge mellem dem er samme valg som mellem t-testen for to stikprøver og den parrede t-test. Det afhænger af, om data er målt på samme enheder eller ej.</p>
 
       <h2 id="quando">Hvornår skal de bruges</h2>
       <p>Wilcoxon og Mann-Whitney er det <strong>ikke-parametriske alternativ til <a href="/t-test.html">t-testen</a></strong>. Overvej at bruge dem, når:</p>
@@ -239,18 +239,18 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
           Og hvis data er normalfordelte?
         </div>
-        <p>Når t-testens antagelser er rimelige, så foretræk <a href="/t-test.html">t-testen</a>: den har en smule mere styrke til at opdage reelle forskelle. Rangtests brillerer netop, når disse antagelser brydes — og selv her mister de oftest meget lidt styrke.</p>
+        <p>Når t-testens antagelser er rimelige, så foretræk <a href="/t-test.html">t-testen</a>: den har en smule mere styrke til at opdage reelle forskelle. Rangtests brillerer netop, når disse antagelser brydes, og selv her mister de oftest meget lidt styrke.</p>
       </div>
       <p>Hvis du skal sammenligne <strong>tre eller flere grupper</strong> uden antagelse om normalfordeling, er vejen Kruskal-Wallis testen, der findes i <a href="/anova.html">k-stikprøver beregneren</a>.</p>
 
       <h2 id="como">Sådan fungerer de</h2>
-      <p>Mekanikken i de to tests starter med samme idé: erstat værdierne med deres <strong>rangordener</strong>. Rangordener er datas pladser, når alt er sorteret fra mindst til størst — den mindste værdi får rang 1, den næste rang 2, og så videre. Når der er ens værdier (ties), får de alle den <em>gennemsnitlige rang</em> for de pladser, de ville have indtaget.</p>
+      <p>Mekanikken i de to tests starter med samme idé: erstat værdierne med deres <strong>rangordener</strong>. Rangordener er datas pladser, når alt er sorteret fra mindst til størst. Den mindste værdi får rang 1, den næste rang 2, og så videre. Når der er ens værdier (ties), får de alle den <em>gennemsnitlige rang</em> for de pladser, de ville have indtaget.</p>
       <p><strong>I Mann-Whitney testen</strong> (uafhængige grupper) lægges de to grupper sammen, alt sorteres, og rangordenerne fra hver gruppe summeres. Ud fra denne sum beregnes <strong>U-teststørrelsen</strong>, som måler graden af overlap mellem grupperne:</p>
       <div class="formula">U = R<sub>1</sub> − n<sub>1</sub>(n<sub>1</sub> + 1) ÷ 2
         <span class="formula__where">R<sub>1</sub> er summen af rangordener for gruppe 1 og n<sub>1</sub> dens størrelse. Testen bruger den mindste af U₁ og U₂.</span>
       </div>
       <p><strong>I den parrede Wilcoxon-test</strong> beregnes forskellen for hvert par, disse forskelle sorteres efter den absolutte værdi, og rangordenerne for henholdsvis de positive og negative forskelle summeres separat. <strong>W-teststørrelsen</strong> er den mindste af de to summer. Forskelle, der er præcis nul, fjernes.</p>
-      <p>For at finde <strong>p-værdien</strong> konverterer denne beregner til sidst U eller W til en z-score ved hjælp af <strong>normalapproksimationen</strong> — gyldig fordi fordelingen af U og W med rimelig stikprøvestørrelse nærmer sig normalfordelingen:</p>
+      <p>For at finde <strong>p-værdien</strong> konverterer denne beregner til sidst U eller W til en z-score ved hjælp af <strong>normalapproksimationen</strong>: gyldig fordi fordelingen af U og W med rimelig stikprøvestørrelse nærmer sig normalfordelingen:</p>
       <div class="formula">z = (teststørrelse − forventet middelværdi) ÷ standardfejl
         <span class="formula__where">Middelværdien og standardfejlen afhænger af stikprøvestørrelserne og af en korrektion for ties.</span>
       </div>
@@ -261,26 +261,26 @@
       <h2 id="interpretar">Sådan tolker du resultatet</h2>
       <p>Beregneren returnerer et kort med konklusionen og nogle nøgletal. De vigtigste:</p>
       <ul>
-        <li><strong>U- eller W-teststørrelse</strong> — det numeriske resumé af overlappet mellem grupperne (U for uafhængige stikprøver, W for parrede). Alene siger den lidt; den skal sammenlignes med fordelingen.</li>
-        <li><strong>Z-teststørrelse</strong> — den standardiserede teststørrelse, der bruges i normalapproksimationen.</li>
-        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved et tilfælde, hvis de to grupper kom fra samme fordeling. Hvis den er mindre end signifikansniveauet (normalt 0,05), er resultatet signifikant.</li>
-        <li><strong>Medianer (uafhængig tilstand)</strong> — medianen for hver gruppe hjælper med at se <em>retningen</em> af forskellen: hvilken gruppe der har en tendens til større værdier.</li>
-        <li><strong>Stikprøvestørrelser</strong> — antallet af observationer brugt i testen.</li>
+        <li><strong>U- eller W-teststørrelse</strong>. Det numeriske resumé af overlappet mellem grupperne (U for uafhængige stikprøver, W for parrede). Alene siger den lidt; den skal sammenlignes med fordelingen.</li>
+        <li><strong>Z-teststørrelse</strong>. Den standardiserede teststørrelse, der bruges i normalapproksimationen.</li>
+        <li><strong>P-værdi</strong>: sandsynligheden for at observere en så stor forskel ved et tilfælde, hvis de to grupper kom fra samme fordeling. Hvis den er mindre end signifikansniveauet (normalt 0,05), er resultatet signifikant.</li>
+        <li><strong>Medianer (uafhængig tilstand)</strong>: medianen for hver gruppe hjælper med at se <em>retningen</em> af forskellen: hvilken gruppe der har en tendens til større værdier.</li>
+        <li><strong>Stikprøvestørrelser</strong>: antallet af observationer brugt i testen.</li>
       </ul>
-      <p>Konklusionen er direkte: hvis p-værdien er under signifikansniveauet, er der en <strong>statistisk signifikant forskel</strong> mellem grupperne — de kommer sandsynligvis fra forskellige fordelinger. Ellers er der ikke tilstrækkelig evidens til at sige, at de adskiller sig.</p>
+      <p>Konklusionen er direkte: hvis p-værdien er under signifikansniveauet, er der en <strong>statistisk signifikant forskel</strong> mellem grupperne, de kommer sandsynligvis fra forskellige fordelinger. Ellers er der ikke tilstrækkelig evidens til at sige, at de adskiller sig.</p>
       <div class="callout callout--warning">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Sammenligner fordelinger, ikke ligefrem gennemsnit
         </div>
-        <p>Strengt taget sammenligner disse tests de to gruppers <strong>fordelinger</strong>. Kun når fordelingerne har samme form, kan konklusionen læses som en sammenligning af <strong>medianer</strong>. Derfor viser beregneren medianerne: de giver den mest almindelige praktiske aflæsning. Husk også, at p-værdien her bruger normalapproksimationen — med meget små stikprøver skal resultatet behandles som vejledende.</p>
+        <p>Strengt taget sammenligner disse tests de to gruppers <strong>fordelinger</strong>. Kun når fordelingerne har samme form, kan konklusionen læses som en sammenligning af <strong>medianer</strong>. Derfor viser beregneren medianerne: de giver den mest almindelige praktiske aflæsning. Husk også, at p-værdien her bruger normalapproksimationen, med meget små stikprøver skal resultatet behandles som vejledende.</p>
       </div>
 
       <h2 id="exemplo">Gennemregnet eksempel</h2>
       <p>En forsker sammenligner tilfredshedsscoren hos kunder i to butikker. <strong>Butik A</strong> fik karaktererne <strong>12, 15, 14, 18, 11, 16</strong>; <strong>Butik B</strong> fik <strong>20, 22, 19, 25, 21, 23</strong>. Da det er forskellige kunder, er den rette test Mann-Whitney. Adskiller karaktererne sig mellem butikkerne?</p>
       <ol class="steps">
         <li><strong>Sortér og tildel rangordener:</strong> ved at sammenlægge de 12 værdier og sortere ligger karaktererne fra Butik A (11 til 18) på de laveste pladser, og dem fra Butik B (19 til 25) på de højeste. Summen af rangordener for Butik A er 1+2+3+4+5+6 = 21; for Butik B er det 7+8+9+10+11+12 = 57.</li>
-        <li><strong>U-teststørrelse:</strong> U₁ = 21 − 6·7÷2 = 0 og U₂ = 6·6 − 0 = 36. Testen bruger U = 0 — der er intet overlap mellem grupperne.</li>
+        <li><strong>U-teststørrelse:</strong> U₁ = 21 − 6·7÷2 = 0 og U₂ = 6·6 − 0 = 36. Testen bruger U = 0, der er intet overlap mellem grupperne.</li>
         <li><strong>Normalapproksimation:</strong> med n₁ = n₂ = 6 er den forventede middelværdi for U 18, og standardfejlen ≈ 6,24, hvilket giver en z-score ≈ −2,88.</li>
         <li><strong>P-værdi:</strong> for z ≈ −2,88 er den tosidede p-værdi ≈ 0,004.</li>
       </ol>
@@ -290,7 +290,7 @@
       <div class="faq">
         <details>
           <summary>Hvad er forskellen på Wilcoxon- og Mann-Whitney-testen?</summary>
-          <div class="faq__answer"><p>Mann-Whitney testen sammenligner to uafhængige grupper — forskellige personer i hver gruppe. Wilcoxons test af fortegnsrangordener sammenligner to målinger på de samme individer, fx før og efter en intervention. Det er det samme valg, som man har mellem <a href="/t-test.html">t-testen</a> for to stikprøver og den parrede t-test.</p></div>
+          <div class="faq__answer"><p>Mann-Whitney testen sammenligner to uafhængige grupper: forskellige personer i hver gruppe. Wilcoxons test af fortegnsrangordener sammenligner to målinger på de samme individer, fx før og efter en intervention. Det er det samme valg, som man har mellem <a href="/t-test.html">t-testen</a> for to stikprøver og den parrede t-test.</p></div>
         </details>
         <details>
           <summary>Hvornår skal jeg bruge en ikke-parametrisk test?</summary>
@@ -298,11 +298,11 @@
         </details>
         <details>
           <summary>Hvad er Mann-Whitneys U-teststørrelse?</summary>
-          <div class="faq__answer"><p>Det er et tal, der måler, hvor meget rangordenerne fra én gruppe overlapper dem fra den anden. Når de to grupper blander sig meget, ligger U tæt på den forventede værdi; når én gruppe dominerer de høje pladser, ligger U yderst — et tegn på forskel mellem grupperne.</p></div>
+          <div class="faq__answer"><p>Det er et tal, der måler, hvor meget rangordenerne fra én gruppe overlapper dem fra den anden. Når de to grupper blander sig meget, ligger U tæt på den forventede værdi; når én gruppe dominerer de høje pladser, ligger U yderst: et tegn på forskel mellem grupperne.</p></div>
         </details>
         <details>
           <summary>Sammenligner disse tests gennemsnit eller medianer?</summary>
-          <div class="faq__answer"><p>Teknisk set sammenligner de hele fordelingerne via rangordener. Når de to fordelinger har samme form, kan resultatet tolkes som en sammenligning af medianer — den mest almindelige praktiske aflæsning.</p></div>
+          <div class="faq__answer"><p>Teknisk set sammenligner de hele fordelingerne via rangordener. Når de to fordelinger har samme form, kan resultatet tolkes som en sammenligning af medianer. Den mest almindelige praktiske aflæsning.</p></div>
         </details>
         <details>
           <summary>Skal jeg antage normalfordeling?</summary>
@@ -399,7 +399,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) så få resultaterne bekræftet af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

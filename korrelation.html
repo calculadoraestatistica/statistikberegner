@@ -184,10 +184,10 @@
       </nav>
 
       <h2 id="hvad-er">Hvad er Pearsons korrelation</h2>
-      <p><strong>Pearsons korrelation (r)</strong> er et mål, der i et enkelt tal mellem <strong>−1 og +1</strong> opsummerer styrken og retningen af den <em>lineære</em> sammenhæng mellem to numeriske variable. Det er nok den mest kendte deskriptive statistik uden for den akademiske verden — og netop derfor en af de hyppigst misforståede. At forstå hvad den faktisk måler, ændrer den måde du læser dashboards, artikler og forskningsresultater på.</p>
-      <p>Intuitionen er ligetil: når r er tæt på <strong>+1</strong>, stiger de to variable sammen i et næsten retlinet mønster; når r er tæt på <strong>−1</strong>, stiger den ene mens den anden falder, også på en linje; når r er tæt på <strong>0</strong>, er der ingen tydelig <em>lineær</em> sammenhæng mellem dem. Ordet "lineær" er den vigtige del — og den del, der oftest bliver overset i praksis. Der kan eksistere en meget stærk sammenhæng mellem X og Y i form af et U eller en eksponentiel kurve, og r kan stadig ligge tæt på nul, fordi den bedst tilpassede ret linje er vandret.</p>
-      <p>Konkret måler r, hvor meget parrene (x, y) flugter langs en skrå ret linje. Den <strong>måler ikke</strong>: ikke-lineære sammenhænge (parabolske, sinusformede, trappetrins-formede), monotone men krumme sammenhænge (brug Spearman til dem), associationer mellem kategoriske variable (brug <a href="/chi-test.html">chi-i-anden testen</a>), og frem for alt ikke <strong>kausalitet</strong>. At to serier følges ad, siger intet om hvad der får den ene til at bevæge den anden — og det er præcis dér, mange analyser kører af sporet.</p>
-      <p>Skalaen fra −1 til +1 er ikke tilfældig: den fastlægges af selve den matematiske konstruktion (se afsnittet om beregning). Et r på <strong>0</strong> betyder ingen lineær sammenhæng — ikke "ingen sammenhæng" overhovedet. Og fortegnet siger kun, hvad der sker med Y, når X vokser: positiv (stiger sammen) eller negativ (modsat retning).</p>
+      <p><strong>Pearsons korrelation (r)</strong> er et mål, der i et enkelt tal mellem <strong>−1 og +1</strong> opsummerer styrken og retningen af den <em>lineære</em> sammenhæng mellem to numeriske variable. Det er nok den mest kendte deskriptive statistik uden for den akademiske verden, og netop derfor en af de hyppigst misforståede. At forstå hvad den faktisk måler, ændrer den måde du læser dashboards, artikler og forskningsresultater på.</p>
+      <p>Intuitionen er ligetil: når r er tæt på <strong>+1</strong>, stiger de to variable sammen i et næsten retlinet mønster; når r er tæt på <strong>−1</strong>, stiger den ene mens den anden falder, også på en linje; når r er tæt på <strong>0</strong>, er der ingen tydelig <em>lineær</em> sammenhæng mellem dem. Ordet "lineær" er den vigtige del, og den del, der oftest bliver overset i praksis. Der kan eksistere en meget stærk sammenhæng mellem X og Y i form af et U eller en eksponentiel kurve, og r kan stadig ligge tæt på nul, fordi den bedst tilpassede ret linje er vandret.</p>
+      <p>Konkret måler r, hvor meget parrene (x, y) flugter langs en skrå ret linje. Den <strong>måler ikke</strong>: ikke-lineære sammenhænge (parabolske, sinusformede, trappetrins-formede), monotone men krumme sammenhænge (brug Spearman til dem), associationer mellem kategoriske variable (brug <a href="/chi-test.html">chi-i-anden testen</a>), og frem for alt ikke <strong>kausalitet</strong>. At to serier følges ad, siger intet om hvad der får den ene til at bevæge den anden, og det er præcis dér, mange analyser kører af sporet.</p>
+      <p>Skalaen fra −1 til +1 er ikke tilfældig: den fastlægges af selve den matematiske konstruktion (se afsnittet om beregning). Et r på <strong>0</strong> betyder ingen lineær sammenhæng, ikke "ingen sammenhæng" overhovedet. Og fortegnet siger kun, hvad der sker med Y, når X vokser: positiv (stiger sammen) eller negativ (modsat retning).</p>
 
       <h2 id="pearson-spearman-kendall">Hvornår bruges Pearson, Spearman eller Kendall</h2>
       <p>Der findes tre korrelationskoefficienter, der dukker op i praksis, og valget afhænger af dataenes natur og af hvilken type sammenhæng du vil indfange. Tabellen herunder opsummerer forskellene:</p>
@@ -218,29 +218,29 @@
           </tbody>
         </table>
       </div>
-      <p>Tommelfingerreglen: hvis begge variable er kvantitative, sammenhængen ligner en "aflang sky" af punkter, og der ikke er absurde ekstreme værdier, så er <strong>Pearson</strong> det naturlige valg. Hvis sammenhængen er monoton men krum — fx jo mere erfaring, jo højere løn, men med aftagende tempo — eller hvis data er rangordener eller Likert-skalaer, så vælg <strong>Spearman</strong>. <strong>Kendall</strong> er et mere konservativt og robust alternativ, særligt nyttigt i små stikprøver med mange ens værdier, men det er mindre udbredt uden for anvendt statistik. Antagelsesforskellen er enkel: Pearson kræver linearitet og nogenlunde normalitet for inferens, mens Spearman og Kendall kun kræver, at variablen er <em>ordnet</em>.</p>
+      <p>Tommelfingerreglen: hvis begge variable er kvantitative, sammenhængen ligner en "aflang sky" af punkter, og der ikke er absurde ekstreme værdier, så er <strong>Pearson</strong> det naturlige valg. Hvis sammenhængen er monoton men krum (fx jo mere erfaring, jo højere løn, men med aftagende tempo) eller hvis data er rangordener eller Likert-skalaer, så vælg <strong>Spearman</strong>. <strong>Kendall</strong> er et mere konservativt og robust alternativ, særligt nyttigt i små stikprøver med mange ens værdier, men det er mindre udbredt uden for anvendt statistik. Antagelsesforskellen er enkel: Pearson kræver linearitet og nogenlunde normalitet for inferens, mens Spearman og Kendall kun kræver, at variablen er <em>ordnet</em>.</p>
 
       <h2 id="beregning">Sådan beregnes den</h2>
-      <p>Pearson-koefficienten har en kompakt formel, der — læst i ro og mag — afslører hele sin mekanik:</p>
+      <p>Pearson-koefficienten har en kompakt formel, der, læst i ro og mag, afslører hele sin mekanik:</p>
       <div class="formula">r = Σ(xᵢ − x̄)(yᵢ − ȳ) ÷ √[Σ(xᵢ − x̄)² · Σ(yᵢ − ȳ)²]
         <span class="formula__where">x̄ og ȳ er gennemsnittene af X og Y; summen løber fra i = 1 til n.</span>
       </div>
-      <p><strong>Tælleren</strong> er summen af produkterne af afvigelserne fra gennemsnittet. Når x for de fleste punkter ligger over gennemsnittet af X <em>og</em> y også ligger over gennemsnittet af Y (eller begge ligger under), bliver produkterne positive, og tælleren vokser — et tegn på at variablene "følges ad". Når den ene ligger over og den anden under, bliver produktet negativt, og tælleren falder. Denne tæller, divideret med n − 1, er den <strong>empiriske kovarians</strong>: den fortæller allerede sammenhængens retning, men har den ulempe, at den afhænger af enhederne (m, kg, kr.).</p>
-      <p><strong>Nævneren</strong> er produktet af standardafvigelserne for X og Y (kvadratsummerne under en rod). Den standardiserer kovariansen og "renser" enhederne ud. Det er denne division, der sikrer koefficientens mest elegante matematiske egenskab: ifølge <strong>Cauchy-Schwarz' ulighed</strong> kan tælleren aldrig — i absolut værdi — overstige nævneren. Derfor er r låst til intervallet <strong>[−1, +1]</strong>, og fortegnet kommer direkte fra tælleren.</p>
+      <p><strong>Tælleren</strong> er summen af produkterne af afvigelserne fra gennemsnittet. Når x for de fleste punkter ligger over gennemsnittet af X <em>og</em> y også ligger over gennemsnittet af Y (eller begge ligger under), bliver produkterne positive, og tælleren vokser: et tegn på at variablene "følges ad". Når den ene ligger over og den anden under, bliver produktet negativt, og tælleren falder. Denne tæller, divideret med n − 1, er den <strong>empiriske kovarians</strong>: den fortæller allerede sammenhængens retning, men har den ulempe, at den afhænger af enhederne (m, kg, kr.).</p>
+      <p><strong>Nævneren</strong> er produktet af standardafvigelserne for X og Y (kvadratsummerne under en rod). Den standardiserer kovariansen og "renser" enhederne ud. Det er denne division, der sikrer koefficientens mest elegante matematiske egenskab: ifølge <strong>Cauchy-Schwarz' ulighed</strong> kan tælleren aldrig, i absolut værdi, overstige nævneren. Derfor er r låst til intervallet <strong>[−1, +1]</strong>, og fortegnet kommer direkte fra tælleren.</p>
       <p>For at teste, om r er forskelligt fra nul i populationen, bruger vi t-statistikken med <strong>n − 2 frihedsgrader</strong>:</p>
       <div class="formula">t = r · √(n − 2) ÷ √(1 − r²)</div>
-      <p>Dette t sammenlignes med Students t-fordeling for at få p-værdien — præcis samme logik som i <a href="/t-test.html">t-testen</a>. Til konfidensintervallet anvender beregneren <strong>Fishers z-transformation</strong> (z = atanh(r)), som tilnærmer fordelingen af r til en normalfordeling, beregner intervallet på den skala og konverterer tilbage med tanh. Det er et klassisk trick, der giver pålidelige intervaller for enhver stikprøvestørrelse n ≥ 4.</p>
+      <p>Dette t sammenlignes med Students t-fordeling for at få p-værdien: præcis samme logik som i <a href="/t-test.html">t-testen</a>. Til konfidensintervallet anvender beregneren <strong>Fishers z-transformation</strong> (z = atanh(r)), som tilnærmer fordelingen af r til en normalfordeling, beregner intervallet på den skala og konverterer tilbage med tanh. Det er et klassisk trick, der giver pålidelige intervaller for enhver stikprøvestørrelse n ≥ 4.</p>
 
       <h2 id="antagelser">Antagelser</h2>
       <p>Pearson-koefficienten kan beregnes på næsten ethvert par af numeriske variable, men for at det resulterende tal og p-værdien er gyldige som <em>inferens</em>, skal nogle få antagelser mindst være nogenlunde opfyldt.</p>
-      <p><strong>Begge variable er interval eller ratio.</strong> De to variable skal være kvantitative, og enhederne skal være sammenlignelige langs hele skalaen — forskellen mellem 10 og 20 skal betyde det samme som mellem 80 og 90. Karakterer, højder, priser og tider opfylder det. Rangordener, klassifikationer og korte Likert-skalaer gør ikke. <em>Sådan tjekker du:</em> spørg dig selv, om det giver mening at sige "X er det dobbelte af Y" eller at lægge to observationer sammen. Hvis det ikke gør, så overvej Spearman.</p>
+      <p><strong>Begge variable er interval eller ratio.</strong> De to variable skal være kvantitative, og enhederne skal være sammenlignelige langs hele skalaen: forskellen mellem 10 og 20 skal betyde det samme som mellem 80 og 90. Karakterer, højder, priser og tider opfylder det. Rangordener, klassifikationer og korte Likert-skalaer gør ikke. <em>Sådan tjekker du:</em> spørg dig selv, om det giver mening at sige "X er det dobbelte af Y" eller at lægge to observationer sammen. Hvis det ikke gør, så overvej Spearman.</p>
       <p><strong>Lineær sammenhæng.</strong> Pearson måler kun den lineære del af associationen. Hvis sammenhængen er U-formet, trappetrins-formet eller tydeligt krum, vil r undervurdere den reelle styrke. <em>Sådan tjekker du:</em> kig altid på <strong>spredningsdiagrammet</strong>, før du stoler på r. Hvis punktskyen har en synlig bue, så transformér en af variablene (logaritme, kvadratrod) eller skift til en anden koefficient.</p>
       <p><strong>Ingen ekstreme outliers.</strong> Fordi Pearson bruger kvadrater og produkter, er den meget følsom over for værdier langt fra resten. Et enkelt punkt langt fra mængden kan vende fortegnet eller kunstigt oppuste r. <em>Sådan tjekker du:</em> brug boxplots for hver variabel, og identificér i spredningsdiagrammet de punkter, der visuelt dominerer tilpasningen. Genberegn r uden dem for at måle deres indflydelse.</p>
       <p><strong>Tilnærmelsesvis bivariat normalitet (til inferens).</strong> For at p-værdien og konfidensintervallet er præcise, bør data ideelt set følge en bivariat normalfordeling. I større stikprøver (n ≥ 30) redder den centrale grænseværdisætning proceduren, selv med moderate afvigelser fra normalitet. <em>Sådan tjekker du:</em> histogrammer og Q-Q-plot for hver variabel; ved alvorlig tvivl, brug Shapiro-Wilks test.</p>
-      <p><strong>Observationer uafhængige.</strong> Hvert par (xᵢ, yᵢ) skal repræsentere en uafhængig observation. Tidsseriedata, gentagne målinger på den samme person eller stikprøver med klyngestruktur (elever fra samme skole) overtræder dette og oppuster risikoen for falske positive. <em>Sådan tjekker du:</em> spørg hvordan data er indsamlet — hvis der er gentagelser, hierarki eller tidsmæssig rækkefølge, så kræves en model, der anerkender den struktur.</p>
+      <p><strong>Observationer uafhængige.</strong> Hvert par (xᵢ, yᵢ) skal repræsentere en uafhængig observation. Tidsseriedata, gentagne målinger på den samme person eller stikprøver med klyngestruktur (elever fra samme skole) overtræder dette og oppuster risikoen for falske positive. <em>Sådan tjekker du:</em> spørg hvordan data er indsamlet, hvis der er gentagelser, hierarki eller tidsmæssig rækkefølge, så kræves en model, der anerkender den struktur.</p>
 
       <h2 id="fortolkning">Sådan fortolkes resultatet</h2>
-      <p>Beregneren returnerer en række tal — r, r², n, t, p-værdi og konfidensinterval — og hvert af dem fortæller en del af historien. Det er værd at forstå rollen for hver enkelt.</p>
+      <p>Beregneren returnerer en række tal (r, r², n, t, p-værdi og konfidensinterval) og hvert af dem fortæller en del af historien. Det er værd at forstå rollen for hver enkelt.</p>
       <p><strong>Størrelsen af r.</strong> Den klassiske rettesnor til at klassificere korrelationens styrke kommer fra <strong>Cohen (1988)</strong> og er den dominerende referenceramme i samfundsvidenskab og sundhedsforskning:</p>
       <div class="table-wrap">
         <table class="data">
@@ -254,9 +254,9 @@
         </table>
       </div>
       <p>Disse grænser er retningslinjer, ikke regler. I eksperimentel fysik kan et r på 0,5 være et tegn på, at noget er galt. I adfærdsforskning kan et r på 0,3 allerede være et relevant fund.</p>
-      <p><strong>R² som forklaret varians.</strong> <strong>Determinationskoefficienten</strong> (R² = r²) er måske det mest nyttige tal til at kommunikere resultatet: den repræsenterer den andel af variationen i Y, der kan <em>forklares af en ret linje</em> som funktion af X. Et r = 0,5 giver R² = 0,25 — altså er 25% af variationen i Y forenelig med en lineær sammenhæng med X, mens de øvrige 75% kommer fra andre kilder. R² er mere ærlig end r, når man vil tale om "hvor meget X forklarer af Y", fordi den visuelt nedtoner moderate korrelationer, der har tendens til at virke mere imponerende end fortjent.</p>
+      <p><strong>R² som forklaret varians.</strong> <strong>Determinationskoefficienten</strong> (R² = r²) er måske det mest nyttige tal til at kommunikere resultatet: den repræsenterer den andel af variationen i Y, der kan <em>forklares af en ret linje</em> som funktion af X. Et r = 0,5 giver R² = 0,25, altså er 25% af variationen i Y forenelig med en lineær sammenhæng med X, mens de øvrige 75% kommer fra andre kilder. R² er mere ærlig end r, når man vil tale om "hvor meget X forklarer af Y", fordi den visuelt nedtoner moderate korrelationer, der har tendens til at virke mere imponerende end fortjent.</p>
       <p><strong>P-værdien.</strong> P-værdien tester nulhypotesen om, at den sande korrelation i populationen er nul. En p-værdi under 0,05 (den konventionelle tærskel) indikerer, at det ville være usandsynligt at observere et r så ekstremt som dette ved et tilfælde, hvis den sande korrelation var nul, givet stikprøven. Statistisk signifikans er <em>ikke</em> det samme som effektstørrelse: med meget store stikprøver bliver minimale korrelationer "signifikante"; med små stikprøver kan stærke korrelationer falde igennem. Kig altid på r, R² og p-værdien samtidig.</p>
-      <p><strong>Konfidensinterval for r.</strong> Konfidensintervallet, beregnet via Fishers z-transformation, angiver det interval, hvor populationens sande korrelation sandsynligvis ligger. Et 95%-KI på [0,12; 0,68] siger, at den plausible effekt går fra "lille" til "stor" — et tegn på, at stikprøven er for lille til præcision. Et KI på [0,42; 0,52] giver et stramt og pålideligt estimat. Se også vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a> for mere om princippet.</p>
+      <p><strong>Konfidensinterval for r.</strong> Konfidensintervallet, beregnet via Fishers z-transformation, angiver det interval, hvor populationens sande korrelation sandsynligvis ligger. Et 95%-KI på [0,12; 0,68] siger, at den plausible effekt går fra "lille" til "stor": et tegn på, at stikprøven er for lille til præcision. Et KI på [0,42; 0,52] giver et stramt og pålideligt estimat. Se også vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a> for mere om princippet.</p>
 
       <h2 id="eksempel">Eksempel</h2>
       <p>Et gymnasium i Aarhus vil undersøge sammenhængen mellem <strong>ugentlige studietimer</strong> og <strong>karakteren ved den mundtlige eksamen</strong> (skala 0–12) hos 8 elever i 3.g. Data ser sådan ud:</p>
@@ -284,10 +284,10 @@
         <li>Kvadratsum for Y: Σ(yᵢ − ȳ)² = 16 + 16 + 1 + 1 + 4 + 4 + 4 + 16 = <strong>62,00</strong>.</li>
         <li>Nævner: √(228 · 62) = √14.136 ≈ <strong>118,89</strong>.</li>
         <li>r = 112,00 ÷ 118,89 ≈ <strong>0,942</strong>.</li>
-        <li>R² ≈ 0,887 — omkring <strong>89% af variationen i karaktererne</strong> er forenelig med en lineær sammenhæng med antallet af studietimer i denne gruppe.</li>
+        <li>R² ≈ 0,887: omkring <strong>89% af variationen i karaktererne</strong> er forenelig med en lineær sammenhæng med antallet af studietimer i denne gruppe.</li>
         <li>Signifikanstest: t = 0,942 · √6 ÷ √(1 − 0,887) ≈ 6,86, med df = 6 → <strong>p-værdi ≈ 0,0005</strong>.</li>
       </ol>
-      <p>Korrelationen er meget stærk og statistisk signifikant. Men bemærk: resultatet gælder for denne stikprøve. Før du konkluderer, at "mere studie giver bedre karakter", så husk, at der kan være en oplagt confounder — elever, der er mere motiverede, studerer mere <em>og</em> får højere karakterer af andre grunde (familiebaggrund, lærertillid, koncentrationsevne). Korrelationen peger på et spor; den kausale forklaring kræver et andet studiedesign.</p>
+      <p>Korrelationen er meget stærk og statistisk signifikant. Men bemærk: resultatet gælder for denne stikprøve. Før du konkluderer, at "mere studie giver bedre karakter", så husk, at der kan være en oplagt confounder: elever, der er mere motiverede, studerer mere <em>og</em> får højere karakterer af andre grunde (familiebaggrund, lærertillid, koncentrationsevne). Korrelationen peger på et spor; den kausale forklaring kræver et andet studiedesign.</p>
 
       <h2 id="almindelige-fejl">Almindelige fejl</h2>
       <p>Selv erfarne analytikere falder i de samme fælder, når de arbejder med Pearson. Det er værd at kende dem, før du publicerer et tal.</p>
@@ -304,18 +304,18 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Korrelation er ikke årsag
         </div>
-        <p>En stærk korrelation siger kun, at de to variable varierer sammen — ikke hvorfor. Der kan være en <strong>tredje variabel</strong>, der forårsager begge, sammenhængen kan være <strong>omvendt</strong>, eller det kan være rent <strong>tilfælde</strong>. Jo flere tidsserier du sammenligner, jo lettere er det at finde stærke <em>fuldstændigt spuriøse</em> korrelationer.</p>
+        <p>En stærk korrelation siger kun, at de to variable varierer sammen, ikke hvorfor. Der kan være en <strong>tredje variabel</strong>, der forårsager begge, sammenhængen kan være <strong>omvendt</strong>, eller det kan være rent <strong>tilfælde</strong>. Jo flere tidsserier du sammenligner, jo lettere er det at finde stærke <em>fuldstændigt spuriøse</em> korrelationer.</p>
       </div>
 
       <h2 id="faq">Ofte stillede spørgsmål</h2>
       <div class="faq">
         <details>
           <summary>Hvad er forskellen mellem r og r²?</summary>
-          <div class="faq__answer"><p>r måler både styrken og retningen af den lineære sammenhæng og går fra −1 til +1. r² er kvadratet på r, ligger altid mellem 0 og 1, og angiver den andel af variansen i Y, som en ret linje i X forklarer. Et r på −0,8 og et r på +0,8 giver det samme r² på 0,64 — altså 64% delt varians.</p></div>
+          <div class="faq__answer"><p>r måler både styrken og retningen af den lineære sammenhæng og går fra −1 til +1. r² er kvadratet på r, ligger altid mellem 0 og 1, og angiver den andel af variansen i Y, som en ret linje i X forklarer. Et r på −0,8 og et r på +0,8 giver det samme r² på 0,64, altså 64% delt varians.</p></div>
         </details>
         <details>
           <summary>Kan jeg bruge Pearson på ordinale data?</summary>
-          <div class="faq__answer"><p>Det anbefales ikke. Pearson kræver numeriske variable med sammenlignelige intervaller (interval- eller ratioskala). Til ordinale data — rangordener, Likert-skalaer, klassifikationer — brug Spearmans rho eller Kendalls tau, som arbejder på rækkefølgen af værdierne i stedet for selve værdierne.</p></div>
+          <div class="faq__answer"><p>Det anbefales ikke. Pearson kræver numeriske variable med sammenlignelige intervaller (interval- eller ratioskala). Til ordinale data (rangordener, Likert-skalaer, klassifikationer) brug Spearmans rho eller Kendalls tau, som arbejder på rækkefølgen af værdierne i stedet for selve værdierne.</p></div>
         </details>
         <details>
           <summary>Hvor mange observationer skal jeg have?</summary>
@@ -323,15 +323,15 @@
         </details>
         <details>
           <summary>Er r på 0,3 signifikant?</summary>
-          <div class="faq__answer"><p>Det afhænger af stikprøvestørrelsen. Med n = 20 er r = 0,3 ikke statistisk signifikant (p ≈ 0,2). Med n = 100 bliver det samme r = 0,3 signifikant (p &lt; 0,005). Statistisk signifikans og effektstørrelse er to forskellige ting — kig altid på begge dele samtidig med <a href="/konfidensinterval.html">konfidensintervallet</a>.</p></div>
+          <div class="faq__answer"><p>Det afhænger af stikprøvestørrelsen. Med n = 20 er r = 0,3 ikke statistisk signifikant (p ≈ 0,2). Med n = 100 bliver det samme r = 0,3 signifikant (p &lt; 0,005). Statistisk signifikans og effektstørrelse er to forskellige ting: kig altid på begge dele samtidig med <a href="/konfidensinterval.html">konfidensintervallet</a>.</p></div>
         </details>
         <details>
           <summary>Implicerer høj korrelation kausalitet?</summary>
-          <div class="faq__answer"><p>Nej. Selv et r tæt på 1 siger kun, at de to variable varierer sammen. Årsagsretningen kan være omvendt, der kan være en tredje variabel (confounder), der forklarer begge, eller det kan være rent tilfælde. For at slutte kausalitet kræves eksperimentelt design — randomisering, kontrol, tidsforskudte serier — eller værktøjer fra kausal statistik.</p></div>
+          <div class="faq__answer"><p>Nej. Selv et r tæt på 1 siger kun, at de to variable varierer sammen. Årsagsretningen kan være omvendt, der kan være en tredje variabel (confounder), der forklarer begge, eller det kan være rent tilfælde. For at slutte kausalitet kræves eksperimentelt design (randomisering, kontrol, tidsforskudte serier) eller værktøjer fra kausal statistik.</p></div>
         </details>
         <details>
           <summary>Hvordan fortolker jeg negativ korrelation?</summary>
-          <div class="faq__answer"><p>En negativ korrelation betyder, at når den ene variabel stiger, har den anden tendens til at falde — og omvendt. Styrken aflæses af den absolutte værdi: r = −0,8 er lige så stærk som r = +0,8, blot med modsat retning. Klassiske eksempler: pris × efterspurgt mængde, eller motion × kropsfedtprocent.</p></div>
+          <div class="faq__answer"><p>En negativ korrelation betyder, at når den ene variabel stiger, har den anden tendens til at falde, og omvendt. Styrken aflæses af den absolutte værdi: r = −0,8 er lige så stærk som r = +0,8, blot med modsat retning. Klassiske eksempler: pris × efterspurgt mængde, eller motion × kropsfedtprocent.</p></div>
         </details>
       </div>
 
@@ -426,7 +426,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — så få resultaterne bekræftet af en statistiker.</p>
+      <p>Beregnerne er til undervisning og oplysning. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) så få resultaterne bekræftet af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

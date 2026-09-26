@@ -94,6 +94,11 @@
       </div>
     </div>
   </section>
+  <div class="container media-hero">
+    <img src="/img/hero-stat.jpg" width="1200" height="675" alt="Normalfordeling over en sky af observationer"
+         loading="lazy" decoding="async">
+  </div>
+
 
   <section class="section" id="calculadoras">
     <div class="container">
@@ -156,7 +161,7 @@
         <a class="card" href="/wilcoxon.html">
           <span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" y1="6" x2="20" y2="6"/><line x1="10" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/><polyline points="4 8 7 5 10 8"/><line x1="7" y1="5" x2="7" y2="19"/></svg></span>
           <h3>Wilcoxon og Mann-Whitney-beregner</h3>
-          <p>Sammenlign to grupper uden at antage normalfordeling — de ikke-parametriske tests.</p>
+          <p>Sammenlign to grupper uden at antage normalfordeling, de ikke-parametriske tests.</p>
           <span class="card__cta">Sammenlign uden normalitet →</span>
         </a>
 
@@ -192,7 +197,7 @@
     <div class="container">
       <div class="section-title">
         <h2>Statistik anvendt på dit område</h2>
-        <p>Komplette guides til at bruge statistik i praksis — og vælge den rigtige test.</p>
+        <p>Komplette guides til at bruge statistik i praksis, og vælge den rigtige test.</p>
       </div>
       <div class="card-grid card-grid--3">
 
@@ -249,10 +254,10 @@
   <section class="section section--soft">
     <div class="container narrow prose">
       <h2>Hvad en statistisk test er (og hvorfor den betyder noget)</h2>
-      <p>Hver gang du sammenligner to grupper — to versioner af en side, to behandlinger, to klasser — dukker det samme spørgsmål op: <strong>er den forskel, jeg ser, ægte, eller er det bare tilfældigheder?</strong> En statistisk test findes netop for at svare på det objektivt i stedet for at stole på din mavefornemmelse.</p>
-      <p>Logikken er altid den samme. Du starter med en <strong>nulhypotese</strong> — den forsigtige antagelse om, at der ingen forskel er. Derefter beregner du en teststørrelse (en z- eller t-værdi), der måler, hvor langt dine data ligger fra det "ingen forskel"-scenarie. Til sidst oversætter <strong>p-værdien</strong> den afstand til en sandsynlighed: den fortæller, hvor stor chancen ville være for at observere et lige så ekstremt resultat som dit, <em>hvis nulhypotesen var sand</em>.</p>
-      <p>Når p-værdien er mindre end en grænse, der er valgt på forhånd (typisk 5%, det berømte signifikansniveau), siger vi, at resultatet er <strong>statistisk signifikant</strong>: det er usandsynligt, det er opstået ved ren tilfældighed. Når p-værdien er større, er der ikke nok evidens — hvilket ikke er det samme som "at bevise, at der ingen forskel er".</p>
-      <p>Det er her, mange tager fejl. Statistisk signifikans er ikke det samme som praktisk betydning, og en test med en lille stikprøve kan godt overse en reel forskel. Derfor viser hver beregner på siden — ud over dommen — også <a href="/konfidensinterval.html">konfidensintervallet</a> og hjælper dig med at planlægge <a href="/ab-test-stikprove.html">stikprøvestørrelsen</a>, før du samler data.</p>
+      <p>Hver gang du sammenligner to grupper (to versioner af en side, to behandlinger, to klasser) dukker det samme spørgsmål op: <strong>er den forskel, jeg ser, ægte, eller er det bare tilfældigheder?</strong> En statistisk test findes netop for at svare på det objektivt i stedet for at stole på din mavefornemmelse.</p>
+      <p>Logikken er altid den samme. Du starter med en <strong>nulhypotese</strong>. Den forsigtige antagelse om, at der ingen forskel er. Derefter beregner du en teststørrelse (en z- eller t-værdi), der måler, hvor langt dine data ligger fra det "ingen forskel"-scenarie. Til sidst oversætter <strong>p-værdien</strong> den afstand til en sandsynlighed: den fortæller, hvor stor chancen ville være for at observere et lige så ekstremt resultat som dit, <em>hvis nulhypotesen var sand</em>.</p>
+      <p>Når p-værdien er mindre end en grænse, der er valgt på forhånd (typisk 5%, det berømte signifikansniveau), siger vi, at resultatet er <strong>statistisk signifikant</strong>: det er usandsynligt, det er opstået ved ren tilfældighed. Når p-værdien er større, er der ikke nok evidens: hvilket ikke er det samme som "at bevise, at der ingen forskel er".</p>
+      <p>Det er her, mange tager fejl. Statistisk signifikans er ikke det samme som praktisk betydning, og en test med en lille stikprøve kan godt overse en reel forskel. Derfor viser hver beregner på siden, ud over dommen, også <a href="/konfidensinterval.html">konfidensintervallet</a> og hjælper dig med at planlægge <a href="/ab-test-stikprove.html">stikprøvestørrelsen</a>, før du samler data.</p>
       <p>Hvis du er ny i det, så start med <a href="/ab-test.html">A/B-test-beregneren</a>: den er den mest intuitive, og artiklen forklarer fra bunden alle de begreber, som dukker op i de andre værktøjer.</p>
     </div>
   </section>
@@ -269,7 +274,7 @@
         </details>
         <details>
           <summary>Kan jeg stole på beregningerne?</summary>
-          <div class="faq__answer"><p>Ja. Vi bruger de samme formler som lærebøgerne i statistik — normalfordelingen, Students t-fordeling og den ufuldstændige beta-funktion — implementeret med præcise numeriske algoritmer og tjekket mod kendte referenceværdier.</p></div>
+          <div class="faq__answer"><p>Ja. Vi bruger de samme formler som lærebøgerne i statistik (normalfordelingen, Students t-fordeling og den ufuldstændige beta-funktion) implementeret med præcise numeriske algoritmer og tjekket mod kendte referenceværdier.</p></div>
         </details>
         <details>
           <summary>Skal jeg være god til statistik for at bruge dem?</summary>
@@ -277,7 +282,7 @@
         </details>
         <details>
           <summary>Hvilken statistisk test skal jeg bruge?</summary>
-          <div class="faq__answer"><p>To muligheder: Hvis du bare vil have svaret, så brug <a href="/sporg-ai.html"><strong>Spørg AI</strong></a> og beskriv dit problem i almindeligt sprog ("sammenlign vægt før og efter mellem to grupper", "min konvertering steg 1%, er det signifikant?") — den peger på den rigtige beregner og foreslår alternativer, når flere kan bruges. Hvis du vil forstå logikken bag valget (datatype, antal grupper, antagelser), så læs <a href="/guides/vaelg-test.html"><strong>den fulde beslutningsguide</strong></a>. Som hurtig reference: til <em>rater</em> eller <em>procenter</em> brug <a href="/ab-test.html">A/B-test</a> eller <a href="/proportionstest.html">proportionstest</a>; til <em>gennemsnit</em> brug <a href="/t-test.html">t-test</a>.</p></div>
+          <div class="faq__answer"><p>To muligheder: Hvis du bare vil have svaret, så brug <a href="/sporg-ai.html"><strong>Spørg AI</strong></a> og beskriv dit problem i almindeligt sprog ("sammenlign vægt før og efter mellem to grupper", "min konvertering steg 1%, er det signifikant?"). Den peger på den rigtige beregner og foreslår alternativer, når flere kan bruges. Hvis du vil forstå logikken bag valget (datatype, antal grupper, antagelser), så læs <a href="/guides/vaelg-test.html"><strong>den fulde beslutningsguide</strong></a>. Som hurtig reference: til <em>rater</em> eller <em>procenter</em> brug <a href="/ab-test.html">A/B-test</a> eller <a href="/proportionstest.html">proportionstest</a>; til <em>gennemsnit</em> brug <a href="/t-test.html">t-test</a>.</p></div>
         </details>
         <details>
           <summary>Bliver mine data gemt nogen steder?</summary>
@@ -291,7 +296,7 @@
     <div class="container">
       <div class="cta-band">
         <h2>Har du et spørgsmål, der skal løses nu?</h2>
-        <p>Start med A/B-test-beregneren — den er gratis og tager mindre end et minut.</p>
+        <p>Start med A/B-test-beregneren. Den er gratis og tager mindre end et minut.</p>
         <a class="btn btn--light btn--lg" href="/ab-test.html">Åbn A/B-test-beregneren</a>
       </div>
     </div>
@@ -356,7 +361,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger — kliniske, akademiske eller forretningsmæssige.</p>
+      <p>Beregnerne har et undervisende og informativt formål. Tjek resultaterne med en statistikfaglig person, før du tager kritiske beslutninger: kliniske, akademiske eller forretningsmæssige.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

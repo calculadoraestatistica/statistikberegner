@@ -104,7 +104,7 @@
         </ol>
       </nav>
       <h1>Stikprøvestørrelsesberegner til A/B-test</h1>
-      <p class="lead">Find ud af, <strong>hvor mange besøgende</strong> din test kræver, og <strong>hvor mange dage</strong> den skal køre — før du indsamler det første datapunkt.</p>
+      <p class="lead">Find ud af, <strong>hvor mange besøgende</strong> din test kræver, og <strong>hvor mange dage</strong> den skal køre: før du indsamler det første datapunkt.</p>
     </div>
   </div>
 
@@ -217,16 +217,16 @@
       </nav>
 
       <h2 id="por-que">Hvorfor beregne stikprøven før testen</h2>
-      <p>Den mest almindelige fejl i A/B-tests ligger ikke i regnestykket — den ligger i at gå i gang uden en plan. Den, der starter en test uden at fastlægge stikprøvestørrelsen, ender altid i en af to fælder. Enten kigger man på dashboardet hver dag og <strong>stopper i det første øjeblik, hvor der står "signifikant"</strong>, hvilket pumper risikoen for en falsk positiv enormt op. Eller også lader man den køre i det uendelige og spilder trafik på en test, der aldrig bliver afsluttet.</p>
-      <p>At beregne stikprøvestørrelsen på forhånd løser begge dele. Du fastlægger et mål — "jeg skal bruge 12.000 besøgende pr. variant" — og træffer først beslutningen, når du har nået det tal. Resultatet bliver pålideligt, fordi stopkriteriet blev defineret <em>før</em>, du så et eneste datapunkt.</p>
+      <p>Den mest almindelige fejl i A/B-tests ligger ikke i regnestykket. Den ligger i at gå i gang uden en plan. Den, der starter en test uden at fastlægge stikprøvestørrelsen, ender altid i en af to fælder. Enten kigger man på dashboardet hver dag og <strong>stopper i det første øjeblik, hvor der står "signifikant"</strong>, hvilket pumper risikoen for en falsk positiv enormt op. Eller også lader man den køre i det uendelige og spilder trafik på en test, der aldrig bliver afsluttet.</p>
+      <p>At beregne stikprøvestørrelsen på forhånd løser begge dele. Du fastlægger et mål — "jeg skal bruge 12.000 besøgende pr. variant", og træffer først beslutningen, når du har nået det tal. Resultatet bliver pålideligt, fordi stopkriteriet blev defineret <em>før</em>, du så et eneste datapunkt.</p>
 
       <h2 id="como">Sådan virker beregneren</h2>
       <p>Stikprøvestørrelsen til en A/B-test afhænger af fire ingredienser. Ændrer du på én af dem, ændrer tallet sig:</p>
       <ul>
-        <li><strong>Nuværende konverteringsrate</strong> — udgangspunktet. Meget lave rater kræver større stikprøver.</li>
-        <li><strong>Mindste detekterbare effekt (MDE)</strong> — den mindste forbedring, du vil kunne få øje på. Jo mindre, jo større stikprøve.</li>
-        <li><strong>Konfidensniveau</strong> — styrer risikoen for falsk positiv. 95% er standarden.</li>
-        <li><strong>Statistisk styrke</strong> — styrer risikoen for falsk negativ. 80% er standarden.</li>
+        <li><strong>Nuværende konverteringsrate</strong>: udgangspunktet. Meget lave rater kræver større stikprøver.</li>
+        <li><strong>Mindste detekterbare effekt (MDE)</strong>. Den mindste forbedring, du vil kunne få øje på. Jo mindre, jo større stikprøve.</li>
+        <li><strong>Konfidensniveau</strong>: styrer risikoen for falsk positiv. 95% er standarden.</li>
+        <li><strong>Statistisk styrke</strong>: styrer risikoen for falsk negativ. 80% er standarden.</li>
       </ul>
       <p>Beregneren kombinerer disse værdier i den klassiske formel for sammenligning af to proportioner (baseret på normaltilnærmelsen), idet den antager de to grupper er lige store:</p>
       <div class="formula">n pr. variant = [ z<sub>α</sub>·√(2·p̄·q̄) + z<sub>β</sub>·√(p₁·q₁ + p₂·q₂) ]² ÷ (p₂ − p₁)²
@@ -235,7 +235,7 @@
 
       <h2 id="poder">Hvad er statistisk styrke</h2>
       <p>Hvis konfidensniveauet beskytter mod at "se" en effekt, der ikke findes, så beskytter <strong>statistisk styrke</strong> mod det modsatte: <em>ikke at se</em> en effekt, der findes. Styrken er sandsynligheden for, at testen opdager en reel forbedring.</p>
-      <p>Standarden er <strong>80%</strong>. Det betyder, at hvis din variant virkelig er bedre i den størrelsesorden, du har defineret, så vil testen opdage det i 80% af tilfældene — og fejle (falsk negativ) i 20%. At gå op til 90% styrke giver mere sikkerhed, men kræver en del større stikprøve. For de fleste teams er 80% den rette balance.</p>
+      <p>Standarden er <strong>80%</strong>. Det betyder, at hvis din variant virkelig er bedre i den størrelsesorden, du har defineret, så vil testen opdage det i 80% af tilfældene, og fejle (falsk negativ) i 20%. At gå op til 90% styrke giver mere sikkerhed, men kræver en del større stikprøve. For de fleste teams er 80% den rette balance.</p>
       <div class="callout callout--tip">
         <div class="callout__title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.5 1 1.3 1 2.3h6c0-1 .5-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
@@ -245,16 +245,16 @@
       </div>
 
       <h2 id="efeito-minimo">Sådan vælger du den mindste detekterbare effekt</h2>
-      <p>MDE er den mest strategiske beslutning — og den, der oftest forvirrer. Den svarer på: "hvad er den mindste forbedring, der stadig er værd at have for min forretning?"</p>
+      <p>MDE er den mest strategiske beslutning, og den, der oftest forvirrer. Den svarer på: "hvad er den mindste forbedring, der stadig er værd at have for min forretning?"</p>
       <p>Du kan angive den på to måder:</p>
       <ul>
         <li><strong>Relativ:</strong> en procentvis stigning oven på den nuværende rate. En relativ MDE på 10% af en konvertering på 5% sigter på 5,5%.</li>
         <li><strong>Absolut:</strong> en stigning målt i procentpoint. En absolut MDE på 1 point af 5% sigter på 6%.</li>
       </ul>
-      <p>Fristelsen er at vælge en lille MDE for "ikke at gå glip af noget". Problemet er, at det er dyrt at opdage små forbedringer: at halvere MDE'en <strong>firdobler</strong> den nødvendige stikprøve. Vær realistisk — sigt efter den mindste forbedring, der faktisk ville retfærdiggøre at implementere ændringen.</p>
+      <p>Fristelsen er at vælge en lille MDE for "ikke at gå glip af noget". Problemet er, at det er dyrt at opdage små forbedringer: at halvere MDE'en <strong>firdobler</strong> den nødvendige stikprøve. Vær realistisk: sigt efter den mindste forbedring, der faktisk ville retfærdiggøre at implementere ændringen.</p>
 
       <h2 id="duracao">Hvor længe testen skal køre</h2>
-      <p>Stikprøvestørrelsen svarer på "hvor mange personer". Varigheden svarer på "hvor mange dage" — du dividerer bare den samlede stikprøve med den daglige trafik. Men der er en ekstra regel: <strong>enhver test bør køre i mindst én til to hele uger</strong>, selv hvis stikprøven nås før.</p>
+      <p>Stikprøvestørrelsen svarer på "hvor mange personer". Varigheden svarer på "hvor mange dage". Du dividerer bare den samlede stikprøve med den daglige trafik. Men der er en ekstra regel: <strong>enhver test bør køre i mindst én til to hele uger</strong>, selv hvis stikprøven nås før.</p>
       <p>Grunden er, at adfærden ændrer sig hen over ugen. Den, der besøger et site mandag morgen, er ikke det samme publikum som fredag aften. At afslutte en test efter tre løbende dage kan kun fange én "type" besøgende og skævvride resultatet. Luk altid testen ved afslutningen af hele uger.</p>
 
       <div class="ad-slot" data-ad-slot=""></div>
@@ -265,7 +265,7 @@
         <li>Nuværende rate p₁ = 0,05; målrate p₂ = 0,05 × 1,10 = 0,055.</li>
         <li>Med z<sub>α</sub> ≈ 1,96 (95%, tosidet) og z<sub>β</sub> ≈ 0,84 (80% styrke) giver formlen omkring <strong>31.234 besøgende pr. variant</strong>.</li>
         <li>Samlet stikprøve ≈ 62.468 besøgende (A og B lagt sammen).</li>
-        <li>Med 800 besøgende pr. dag skal testen køre ≈ 79 dage — cirka 11 uger.</li>
+        <li>Med 800 besøgende pr. dag skal testen køre ≈ 79 dage: cirka 11 uger.</li>
       </ol>
       <p>Det tal plejer at overraske, og det er netop derfor, det er en god idé at beregne det først: små forbedringer i lave rater kræver meget trafik. Brug knappen <em>"Brug eksempeldata"</em> for at se beregningen i beregneren.</p>
 
@@ -273,7 +273,7 @@
       <div class="faq">
         <details>
           <summary>Hvorfor skal jeg beregne stikprøven før testen?</summary>
-          <div class="faq__answer"><p>Fordi du uden et fast mål ikke ved, hvornår du skal stoppe. At fastlægge stikprøven på forhånd forhindrer "peeking" — at stoppe ved det første gunstige resultat — som gør en 5%-falsk-positiv-test til noget langt mindre pålideligt.</p></div>
+          <div class="faq__answer"><p>Fordi du uden et fast mål ikke ved, hvornår du skal stoppe. At fastlægge stikprøven på forhånd forhindrer "peeking", at stoppe ved det første gunstige resultat, som gør en 5%-falsk-positiv-test til noget langt mindre pålideligt.</p></div>
         </details>
         <details>
           <summary>Hvad sker der, hvis konverteringsraten er meget lav?</summary>
@@ -281,7 +281,7 @@
         </details>
         <details>
           <summary>Skal jeg bruge relativ eller absolut MDE?</summary>
-          <div class="faq__answer"><p>Den relative er mest intuitiv for de fleste teams ("jeg vil vokse 10%"). Den absolutte er nyttig, når du tænker i procentpoint. Beregneren accepterer begge — vælg den, der falder dig mest naturligt.</p></div>
+          <div class="faq__answer"><p>Den relative er mest intuitiv for de fleste teams ("jeg vil vokse 10%"). Den absolutte er nyttig, når du tænker i procentpoint. Beregneren accepterer begge: vælg den, der falder dig mest naturligt.</p></div>
         </details>
         <details>
           <summary>Kan jeg stoppe, før jeg har nået den beregnede stikprøve?</summary>
@@ -374,7 +374,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

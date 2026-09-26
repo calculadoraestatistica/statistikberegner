@@ -122,7 +122,7 @@
         </ol>
       </nav>
       <h1>Sådan fortolker du p-værdien i danske undersøgelser</h1>
-      <p class="lead">P-værdien står overalt i avisernes opslag, i Voxmeter-målingerne, i kliniske rapporter fra Sundhedsstyrelsen og i din kollegas Excel-ark. Men næsten ingen fortolker den korrekt — heller ikke dem, der bruger den dagligt.</p>
+      <p class="lead">P-værdien står overalt i avisernes opslag, i Voxmeter-målingerne, i kliniske rapporter fra Sundhedsstyrelsen og i din kollegas Excel-ark. Men næsten ingen fortolker den korrekt: heller ikke dem, der bruger den dagligt.</p>
     </div>
   </div>
 
@@ -152,17 +152,17 @@
       </nav>
 
       <h2 id="hvad-er">Hvad er p-værdien (og hvorfor bliver den så ofte misforstået)</h2>
-      <p>Hver gang du ser en overskrift som <em>"Ny undersøgelse: danskerne spiser markant mere grønt — p &lt; 0,05"</em> eller en valgmåling fra Voxmeter, hvor "forskellen mellem partierne er statistisk signifikant", står p-værdien diskret i baggrunden. Den er kort, den er talstor, og den giver et indtryk af videnskabelig sikkerhed. Men netop derfor er den blevet en af de mest misbrugte størrelser i moderne statistik.</p>
-      <p>Hvis du har siddet med et SPSS-output på dit kandidatprojekt eller en R-tabel fra et speciale, har du sandsynligvis kigget på en p-værdi og spurgt dig selv: <em>"Hvad skal jeg nu egentlig skrive om det her?"</em> Mange ender med at parafrasere det, vejlederen har sagt, uden at have en intuition for, hvad tallet virkelig fortæller. Andre — særligt i den brede presse — oversætter "p &lt; 0,05" til "vi har bevist, at hypotesen er sand", hvilket er en betydningsforstyrrende fejl.</p>
-      <p>Det er værd at huske, at den amerikanske statistikforening (ASA) i 2016 udgav en sjælden officiel udtalelse, hvor de advarede mod den nuværende brug af p-værdier i forskning. Hovedbudskabet var enkelt: <strong>p-værdien måler ikke sandsynligheden for, at en hypotese er sand</strong>. Den måler heller ikke effektens størrelse eller den praktiske vigtighed af et resultat. Og dog er det præcis sådan, den ofte præsenteres — også i Danmark.</p>
-      <p>I denne guide skal vi gennemgå definitionen i klart sprog, vise dig fem konkrete fejl du kan undgå, og pege på de værktøjer — som vores egen <a href="/t-test.html">t-test-beregner</a> eller <a href="/proportionstest.html">proportionstesten</a> — der giver dig p-værdien sammen med den fortolkning, du har brug for.</p>
+      <p>Hver gang du ser en overskrift som <em>"Ny undersøgelse: danskerne spiser markant mere grønt: p &lt; 0,05"</em> eller en valgmåling fra Voxmeter, hvor "forskellen mellem partierne er statistisk signifikant", står p-værdien diskret i baggrunden. Den er kort, den er talstor, og den giver et indtryk af videnskabelig sikkerhed. Men netop derfor er den blevet en af de mest misbrugte størrelser i moderne statistik.</p>
+      <p>Hvis du har siddet med et SPSS-output på dit kandidatprojekt eller en R-tabel fra et speciale, har du sandsynligvis kigget på en p-værdi og spurgt dig selv: <em>"Hvad skal jeg nu egentlig skrive om det her?"</em> Mange ender med at parafrasere det, vejlederen har sagt, uden at have en intuition for, hvad tallet virkelig fortæller. Andre, særligt i den brede presse, oversætter "p &lt; 0,05" til "vi har bevist, at hypotesen er sand", hvilket er en betydningsforstyrrende fejl.</p>
+      <p>Det er værd at huske, at den amerikanske statistikforening (ASA) i 2016 udgav en sjælden officiel udtalelse, hvor de advarede mod den nuværende brug af p-værdier i forskning. Hovedbudskabet var enkelt: <strong>p-værdien måler ikke sandsynligheden for, at en hypotese er sand</strong>. Den måler heller ikke effektens størrelse eller den praktiske vigtighed af et resultat. Og dog er det præcis sådan, den ofte præsenteres, også i Danmark.</p>
+      <p>I denne guide skal vi gennemgå definitionen i klart sprog, vise dig fem konkrete fejl du kan undgå, og pege på de værktøjer, som vores egen <a href="/t-test.html">t-test-beregner</a> eller <a href="/proportionstest.html">proportionstesten</a>, der giver dig p-værdien sammen med den fortolkning, du har brug for.</p>
 
       <h2 id="definition">Den formelle definition: sandsynligheden under H₀</h2>
       <p>Den korte, præcise definition er denne:</p>
       <div class="formula">P-værdien er sandsynligheden for at observere en teststørrelse mindst lige så ekstrem som den, du faktisk fik, GIVET at nulhypotesen (H₀) er sand.
         <span class="formula__where">Ordet "givet" er det vigtigste i hele sætningen.</span>
       </div>
-      <p>Lad os pille det fra hinanden. Når du laver en statistisk test, opstiller du to konkurrerende fortællinger. <strong>Nulhypotesen H₀</strong> er den kedelige fortælling: "der er ingen reel forskel", "intervention og placebo virker ens", "kvinder og mænd har samme gennemsnitlige indkomst i denne stikprøve". Den <strong>alternative hypotese H₁</strong> er den interessante: "der ER en forskel". Du indsamler data, beregner en teststørrelse — det kan være t, z, χ² eller noget andet — og spørger: <em>hvor sandsynligt er det at få et sådant tal, hvis den kedelige fortælling faktisk er sand?</em></p>
+      <p>Lad os pille det fra hinanden. Når du laver en statistisk test, opstiller du to konkurrerende fortællinger. <strong>Nulhypotesen H₀</strong> er den kedelige fortælling: "der er ingen reel forskel", "intervention og placebo virker ens", "kvinder og mænd har samme gennemsnitlige indkomst i denne stikprøve". Den <strong>alternative hypotese H₁</strong> er den interessante: "der ER en forskel". Du indsamler data, beregner en teststørrelse (det kan være t, z, χ² eller noget andet) og spørger: <em>hvor sandsynligt er det at få et sådant tal, hvis den kedelige fortælling faktisk er sand?</em></p>
       <p>Lægger man dette ned i tegninger, er p-værdien arealet under sandsynlighedsfordelingen for teststørrelsen, regnet fra din observerede værdi og ud i halen (eller ud i begge haler, hvis testen er tosidet). Den figur ser sådan her ud:</p>
 
       <figure class="figure">
@@ -218,16 +218,16 @@
       <p>I årenes løb har vi gennemgået utallige bachelor- og kandidatprojekter, og det er stort set de samme fem fejl, der vender tilbage. Du finder også flere af dem i populærpressen og i pressemeddelelser fra både ministerier og institutter.</p>
 
       <h3>1. "P = 0,03 betyder, at der er 3 % sandsynlighed for, at vores resultat skyldes tilfældighed"</h3>
-      <p>Det er den klassiske inversionsfejl. P-værdien er <em>sandsynligheden for data givet H₀</em> — ikke <em>sandsynligheden for H₀ givet data</em>. En p-værdi på 0,03 fortæller dig kun, at hvis der ikke er nogen reel effekt, så er sandsynligheden for at se en så ekstrem stikprøve cirka 3 %. Det er ikke det samme som at sige, at der er 97 % sandsynlighed for, at din hypotese er sand. Den slags udsagn ses regelmæssigt i Voxmeter- og Megafon-analyser, hvor det skrives "der er kun X % sandsynlighed for at forskellen er tilfældig" — det er teknisk forkert.</p>
+      <p>Det er den klassiske inversionsfejl. P-værdien er <em>sandsynligheden for data givet H₀</em>, ikke <em>sandsynligheden for H₀ givet data</em>. En p-værdi på 0,03 fortæller dig kun, at hvis der ikke er nogen reel effekt, så er sandsynligheden for at se en så ekstrem stikprøve cirka 3 %. Det er ikke det samme som at sige, at der er 97 % sandsynlighed for, at din hypotese er sand. Den slags udsagn ses regelmæssigt i Voxmeter- og Megafon-analyser, hvor det skrives "der er kun X % sandsynlighed for at forskellen er tilfældig". Det er teknisk forkert.</p>
 
       <h3>2. "P &gt; 0,05 betyder, at der ikke er nogen forskel"</h3>
-      <p>Måske den farligste fejl i klinisk forskning. Hvis Statens Serum Institut publicerer et studie, der ikke finder signifikant forskel mellem to behandlinger, bør det rapporteres som <em>"vi fandt ikke evidens for en forskel"</em> — ikke som <em>"vi har vist, at der ingen forskel er"</em>. En p-værdi over 0,05 kan skyldes, at effekten er lille, at stikprøven er for lille, eller at variationen er for stor. Manglende evidens er ikke evidens for fravær, som biostatistikere ynder at sige. Brug vores <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a>, hvis du vil tjekke, om din undersøgelse overhovedet havde styrke til at opdage forskellen.</p>
+      <p>Måske den farligste fejl i klinisk forskning. Hvis Statens Serum Institut publicerer et studie, der ikke finder signifikant forskel mellem to behandlinger, bør det rapporteres som <em>"vi fandt ikke evidens for en forskel"</em>, ikke som <em>"vi har vist, at der ingen forskel er"</em>. En p-værdi over 0,05 kan skyldes, at effekten er lille, at stikprøven er for lille, eller at variationen er for stor. Manglende evidens er ikke evidens for fravær, som biostatistikere ynder at sige. Brug vores <a href="/stikprovestorrelse.html">stikprøvestørrelse-beregner</a>, hvis du vil tjekke, om din undersøgelse overhovedet havde styrke til at opdage forskellen.</p>
 
       <h3>3. "P = 0,049 er signifikant, P = 0,051 er ikke"</h3>
-      <p>Det er en mekanisk tolkning, der ignorerer fortolkningens kontekst. Forskellen mellem 0,049 og 0,051 er praktisk talt nul — det er kun den vilkårligt valgte tærskel på 0,05, der får dem til at falde på hver sin side. Når du laver et speciale eller et hospitalsstudie, er det mere ærligt at rapportere p-værdien sammen med konfidensintervallet og lade læseren bedømme. Brug vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a> til at supplere fortolkningen.</p>
+      <p>Det er en mekanisk tolkning, der ignorerer fortolkningens kontekst. Forskellen mellem 0,049 og 0,051 er praktisk talt nul. Det er kun den vilkårligt valgte tærskel på 0,05, der får dem til at falde på hver sin side. Når du laver et speciale eller et hospitalsstudie, er det mere ærligt at rapportere p-værdien sammen med konfidensintervallet og lade læseren bedømme. Brug vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a> til at supplere fortolkningen.</p>
 
       <h3>4. "Hvis p er lille, så er effekten stor"</h3>
-      <p>Det er den fejl, der gør, at sundhedsoverskrifter ofte virker mere imponerende, end de er. Danmarks Statistik publicerer rutinemæssigt undersøgelser med titusinder af respondenter, og med så stor en stikprøve kan selv en lillebitte forskel — fx 0,2 procentpoint mellem to grupper — give p-værdier under 0,001. Det betyder ikke, at forskellen er praktisk relevant. P-værdien måler, hvor <em>godt belagt</em> resultatet er, ikke hvor <em>vigtigt</em> det er. Vi tager det op igen i afsnittet om effektstørrelse.</p>
+      <p>Det er den fejl, der gør, at sundhedsoverskrifter ofte virker mere imponerende, end de er. Danmarks Statistik publicerer rutinemæssigt undersøgelser med titusinder af respondenter, og med så stor en stikprøve kan selv en lillebitte forskel (fx 0,2 procentpoint mellem to grupper) give p-værdier under 0,001. Det betyder ikke, at forskellen er praktisk relevant. P-værdien måler, hvor <em>godt belagt</em> resultatet er, ikke hvor <em>vigtigt</em> det er. Vi tager det op igen i afsnittet om effektstørrelse.</p>
 
       <h3>5. "Vi tester bare alle variabler og rapporterer dem, der er signifikante"</h3>
       <p>Den såkaldte <em>p-hacking</em> er udbredt i både erhvervsanalyser og afslutningsopgaver. Hvis du tester 20 hypoteser uafhængigt på et 5 %-niveau, vil du i gennemsnit få én "signifikant" effekt rent ved tilfældighed, selv om der ikke er nogen reel sammenhæng. I dansk klinisk forskning er det normalt at justere for multiple test (fx Bonferroni eller Holm), og det bør du også gøre i din rapport. Hvis du arbejder med kategoriske variabler og sammenhænge mellem dem, så brug <a href="/chi-test.html">chi-i-anden-testen</a> som primær test og vær eksplicit omkring, hvor mange test du har lavet.</p>
@@ -238,8 +238,8 @@
       <div class="formula">SE = √( p₁(1 − p₁)/n + p₂(1 − p₂)/n ) ≈ √( 0,325 · 0,675 / 1200 + 0,300 · 0,700 / 1200 ) ≈ 0,0188
         <span class="formula__where">— altså cirka 1,88 procentpoint.</span>
       </div>
-      <p>Teststørrelsen bliver z = 0,025 / 0,0188 ≈ 1,33. Slår vi det op i en normalfordelingstabel (eller bruger vores <a href="/z-test.html">z-test-beregner</a>), giver det en tosidet p-værdi på cirka 0,18. Med andre ord: <strong>forskellen er ikke statistisk signifikant</strong> på 5 %-niveau. Det betyder ikke, at parti A og B er lige store i virkeligheden — det betyder, at vi ikke har nok data til at sige det med sikkerhed.</p>
-      <p>I praksis er det den slags forskelle, som danske aviser ofte fremstiller som "parti A er foran parti B". Statistisk set er det inden for usikkerhedsmarginen. En konfidensintervalsberegning ville vise, at forskellen ligger et sted mellem -1,2 og +6,2 procentpoint — altså vi kan ikke engang udelukke, at parti B faktisk er foran. Det er præcis den slags nuance, som forsvinder, når man kun ser overskriften.</p>
+      <p>Teststørrelsen bliver z = 0,025 / 0,0188 ≈ 1,33. Slår vi det op i en normalfordelingstabel (eller bruger vores <a href="/z-test.html">z-test-beregner</a>), giver det en tosidet p-værdi på cirka 0,18. Med andre ord: <strong>forskellen er ikke statistisk signifikant</strong> på 5 %-niveau. Det betyder ikke, at parti A og B er lige store i virkeligheden. Det betyder, at vi ikke har nok data til at sige det med sikkerhed.</p>
+      <p>I praksis er det den slags forskelle, som danske aviser ofte fremstiller som "parti A er foran parti B". Statistisk set er det inden for usikkerhedsmarginen. En konfidensintervalsberegning ville vise, at forskellen ligger et sted mellem -1,2 og +6,2 procentpoint, altså vi kan ikke engang udelukke, at parti B faktisk er foran. Det er præcis den slags nuance, som forsvinder, når man kun ser overskriften.</p>
 
       <figure class="figure">
         <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg2-title svg2-desc">
@@ -270,18 +270,18 @@
 
       <h2 id="effekt">P-værdi er ikke effektstørrelse</h2>
       <p>En af de helt centrale lektier fra de seneste tyve års metodelitteratur er denne: <strong>p-værdien og effektstørrelsen er to forskellige ting</strong>. P-værdien fortæller dig, om effekten er "større end støj"; effektstørrelsen fortæller dig, hvor stor effekten faktisk er.</p>
-      <p>For at gøre det konkret: i et dansk klinisk studie kunne du teste, om en ny smertestillende medicin sænker smerteniveauet hos patienter med kronisk rygsmerte. Hvis du har 5 000 patienter, kan du nemt få en p-værdi under 0,001 ved en gennemsnitlig reduktion på 0,2 point på en 10-points VAS-skala. Det er statistisk signifikant — men det er ikke klinisk relevant. Patienterne mærker ikke 0,2 point. Den slags forskel mellem <em>statistisk signifikans</em> og <em>klinisk signifikans</em> er noget af det vigtigste, en kandidatprojekt eller ph.d.-afhandling skal forholde sig til.</p>
+      <p>For at gøre det konkret: i et dansk klinisk studie kunne du teste, om en ny smertestillende medicin sænker smerteniveauet hos patienter med kronisk rygsmerte. Hvis du har 5 000 patienter, kan du nemt få en p-værdi under 0,001 ved en gennemsnitlig reduktion på 0,2 point på en 10-points VAS-skala. Det er statistisk signifikant, men det er ikke klinisk relevant. Patienterne mærker ikke 0,2 point. Den slags forskel mellem <em>statistisk signifikans</em> og <em>klinisk signifikans</em> er noget af det vigtigste, en kandidatprojekt eller ph.d.-afhandling skal forholde sig til.</p>
       <p>Eksempler på effektstørrelser, som dansk forskningstradition i stigende grad rapporterer:</p>
       <ul>
-        <li><strong>Cohens d</strong> — standardiseret forskel mellem to gennemsnit. Tommelfingerregel: 0,2 lille, 0,5 middel, 0,8 stor.</li>
-        <li><strong>Risk ratio</strong> og <strong>odds ratio</strong> — bruges i medicinske studier og epidemiologi. Statens Serum Institut rapporterer typisk relative risici.</li>
-        <li><strong>Pearsons r</strong> — korrelationskoefficient, der måler styrken af lineær sammenhæng. Du kan beregne den i vores <a href="/t-test.html">korrelationsberegnere</a> og de tilhørende t-tests.</li>
-        <li><strong>η² (eta-i-anden)</strong> — andelen af variansen, som forklares af gruppen i en ANOVA.</li>
+        <li><strong>Cohens d</strong>: standardiseret forskel mellem to gennemsnit. Tommelfingerregel: 0,2 lille, 0,5 middel, 0,8 stor.</li>
+        <li><strong>Risk ratio</strong> og <strong>odds ratio</strong>: bruges i medicinske studier og epidemiologi. Statens Serum Institut rapporterer typisk relative risici.</li>
+        <li><strong>Pearsons r</strong>: korrelationskoefficient, der måler styrken af lineær sammenhæng. Du kan beregne den i vores <a href="/t-test.html">korrelationsberegnere</a> og de tilhørende t-tests.</li>
+        <li><strong>η² (eta-i-anden)</strong>: andelen af variansen, som forklares af gruppen i en ANOVA.</li>
       </ul>
-      <p>En god rapport indeholder altid både p-værdi og en effektstørrelse — eller et konfidensinterval, der dækker effektstørrelsen.</p>
+      <p>En god rapport indeholder altid både p-værdi og en effektstørrelse, eller et konfidensinterval, der dækker effektstørrelsen.</p>
 
       <h2 id="alpha">Forskellen mellem p-værdi og signifikansniveau (α)</h2>
-      <p>Et af de mest forvirrende punkter for studerende er forskellen mellem <strong>p-værdien</strong> og <strong>signifikansniveauet α</strong>. De ligner hinanden — begge er tal mellem 0 og 1 — men de spiller meget forskellige roller.</p>
+      <p>Et af de mest forvirrende punkter for studerende er forskellen mellem <strong>p-værdien</strong> og <strong>signifikansniveauet α</strong>. De ligner hinanden, begge er tal mellem 0 og 1, men de spiller meget forskellige roller.</p>
       <p>Signifikansniveauet α er din <em>på forhånd valgte</em> beslutningsregel. Du beslutter dig for, hvor stor en risiko du er villig til at acceptere for at forkaste H₀, selv om den er sand (det er Type I-fejl). Konventionen i de fleste danske studier er α = 0,05, hvilket svarer til at acceptere en falsk alarm i 5 % af tilfældene på lang sigt.</p>
       <p>P-værdien er <em>resultatet</em> af din konkrete test. Den udregnes ud fra dine data og fortæller dig, hvor langt ude i halen af fordelingen din teststørrelse ligger. Den eneste mekaniske kobling er: hvis p &lt; α, så forkastes H₀; hvis p ≥ α, så forkastes H₀ ikke.</p>
       <p>I et dansk speciale skal du angive α på forhånd og fastholde det. At vælge α = 0,10, fordi din p-værdi tilfældigvis blev 0,08, er en form for p-hacking og er fagligt set ikke acceptabelt.</p>
@@ -290,20 +290,20 @@
       <p>Måden, p-værdier rapporteres på i danske tidsskrifter, følger nogle uskrevne (og nogle skrevne) regler, der adskiller sig en smule fra den angelsaksiske tradition:</p>
       <ul>
         <li><strong>Skriv aldrig p = 0,000.</strong> En p-værdi kan teoretisk være meget tæt på nul, men aldrig præcis nul. Skriv i stedet <em>p &lt; 0,001</em>. Det er konventionen i Ugeskrift for Læger, Dansk Sociologi og de fleste danske universitetspublikationer.</li>
-        <li><strong>Brug komma som decimalseparator</strong> — det er dansk standard. <em>p = 0,034</em>, ikke <em>p = 0.034</em>. Det virker som en lille detalje, men censorer reagerer på det.</li>
+        <li><strong>Brug komma som decimalseparator</strong>. Det er dansk standard. <em>p = 0,034</em>, ikke <em>p = 0.034</em>. Det virker som en lille detalje, men censorer reagerer på det.</li>
         <li><strong>Tre decimaler er normen.</strong> Skriv <em>p = 0,034</em>, ikke <em>p = 0,03</em>. Hvis værdien er meget lille, brug grænser: <em>p &lt; 0,001</em>.</li>
         <li><strong>Angiv altid teststørrelsen og frihedsgrader.</strong> En komplet sætning kunne være: <em>"Forskellen var statistisk signifikant (t(38) = 3,16; p = 0,003)"</em>. Det giver læseren mulighed for at reproducere din analyse.</li>
-        <li><strong>Angiv om testen er ensidet eller tosidet.</strong> Hvis ikke andet er nævnt, antager læseren tosidet. Hvis du har valgt ensidet, skal du begrunde det — typisk fordi den teoretiske ramme forudsiger en bestemt retning.</li>
+        <li><strong>Angiv om testen er ensidet eller tosidet.</strong> Hvis ikke andet er nævnt, antager læseren tosidet. Hvis du har valgt ensidet, skal du begrunde det, typisk fordi den teoretiske ramme forudsiger en bestemt retning.</li>
         <li><strong>Rapporter konfidensinterval ved siden af p-værdien.</strong> Det er stærkt anbefalet både af Statens Serum Institut og af Det Frie Forskningsråd: konfidensintervallet supplerer p-værdien med en effektstørrelse.</li>
       </ul>
       <p>En modeltabel fra et dansk klinisk studie kunne se således ud: <em>"Gennemsnitlig blodtrykssænkning: 8,2 mmHg (95 % KI: 4,1 til 12,3); t(39) = 3,16; p = 0,003"</em>. Den slags fuldstændig rapportering er det, censorer og reviewere kigger efter.</p>
 
       <h2 id="ud-over-p">Ud over p-værdien: konfidensinterval og effektstørrelse</h2>
-      <p>Hvis du tager én ting med fra denne artikel, så lad det være dette: <strong>p-værdien bør aldrig stå alene</strong>. Den fortæller dig kun, om dit resultat er foreneligt med nulhypotesen — ikke hvor stor effekten er, hvor sikker du kan være på den, og hvilke værdier der ellers er forenelige med dine data.</p>
+      <p>Hvis du tager én ting med fra denne artikel, så lad det være dette: <strong>p-værdien bør aldrig stå alene</strong>. Den fortæller dig kun, om dit resultat er foreneligt med nulhypotesen, ikke hvor stor effekten er, hvor sikker du kan være på den, og hvilke værdier der ellers er forenelige med dine data.</p>
       <p>Konfidensintervallet (KI) er det stærkeste supplement. Det giver dig et interval af værdier, der er forenelige med dine data. Et 95 % KI på fx [4,1; 12,3] mmHg betyder, at populationens sande gennemsnitlige blodtrykssænkning sandsynligvis ligger et sted mellem disse to tal. Det er mere informativt end blot at sige "p = 0,003". Beregn det selv med vores <a href="/konfidensinterval.html">konfidensinterval-beregner</a>.</p>
-      <p>Effektstørrelsen (Cohens d, odds ratio osv.) giver dig en standardiseret målestok, der lader dig sammenligne på tværs af studier — det er afgørende, hvis du laver en meta-analyse eller en systematisk litteraturgennemgang.</p>
+      <p>Effektstørrelsen (Cohens d, odds ratio osv.) giver dig en standardiseret målestok, der lader dig sammenligne på tværs af studier. Det er afgørende, hvis du laver en meta-analyse eller en systematisk litteraturgennemgang.</p>
       <p>Endelig er det værd at planlægge stikprøvestørrelsen på forhånd. Et studie med 30 patienter har sjældent styrke nok til at opdage en moderat klinisk effekt med 80 % sandsynlighed. Brug vores <a href="/stikprovestorrelse.html">beregner til stikprøvestørrelse</a> eller en post-hoc styrkeanalyse for at vurdere, om dit studie var realistisk dimensioneret.</p>
-      <p>Hvis du arbejder med proportioner — for eksempel andelen af danskere, der støtter en politik — er den korrekte test ofte en <a href="/proportionstest.html">proportionstest</a> eller en chi-i-anden-test. Hvis du har kontinuerte målinger og to grupper, er en <a href="/t-test.html">t-test</a> det rigtige valg. For tre eller flere grupper bør du bruge ANOVA. Det er først, når du har valgt den korrekte test, at p-værdien overhovedet giver mening.</p>
+      <p>Hvis du arbejder med proportioner (for eksempel andelen af danskere, der støtter en politik) er den korrekte test ofte en <a href="/proportionstest.html">proportionstest</a> eller en chi-i-anden-test. Hvis du har kontinuerte målinger og to grupper, er en <a href="/t-test.html">t-test</a> det rigtige valg. For tre eller flere grupper bør du bruge ANOVA. Det er først, når du har valgt den korrekte test, at p-værdien overhovedet giver mening.</p>
 
       <h2 id="faq">Ofte stillede spørgsmål</h2>
       <div class="faq">
@@ -325,11 +325,11 @@
         </details>
         <details>
           <summary>Er p-værdi det samme for alle test?</summary>
-          <div class="faq__answer"><p>Definitionen er den samme — sandsynligheden for data så ekstreme eller mere, hvis H₀ er sand — men teststørrelsen og fordelingen ændrer sig fra test til test. <a href="/t-test.html">T-test</a> bruger t-fordelingen, <a href="/chi-test.html">chi-i-anden</a> bruger χ²-fordelingen, og en <a href="/proportionstest.html">proportionstest</a> bruger normalfordelingen. Værktøjer som vores beregnere håndterer den tekniske side for dig.</p></div>
+          <div class="faq__answer"><p>Definitionen er den samme (sandsynligheden for data så ekstreme eller mere, hvis H₀ er sand) men teststørrelsen og fordelingen ændrer sig fra test til test. <a href="/t-test.html">T-test</a> bruger t-fordelingen, <a href="/chi-test.html">chi-i-anden</a> bruger χ²-fordelingen, og en <a href="/proportionstest.html">proportionstest</a> bruger normalfordelingen. Værktøjer som vores beregnere håndterer den tekniske side for dig.</p></div>
         </details>
         <details>
           <summary>Hvordan påvirker stikprøvestørrelsen p-værdien?</summary>
-          <div class="faq__answer"><p>Med en meget stor stikprøve kan selv en triviel forskel give en lille p-værdi, fordi standardfejlen krymper. Omvendt kan en meget lille stikprøve overse en reel og vigtig forskel. Det er derfor p-værdien aldrig bør stå alene — du bør rapportere effektstørrelse og <a href="/konfidensinterval.html">konfidensinterval</a> ved siden af, og planlægge din <a href="/stikprovestorrelse.html">stikprøvestørrelse</a> på forhånd.</p></div>
+          <div class="faq__answer"><p>Med en meget stor stikprøve kan selv en triviel forskel give en lille p-værdi, fordi standardfejlen krymper. Omvendt kan en meget lille stikprøve overse en reel og vigtig forskel. Det er derfor p-værdien aldrig bør stå alene. Du bør rapportere effektstørrelse og <a href="/konfidensinterval.html">konfidensinterval</a> ved siden af, og planlægge din <a href="/stikprovestorrelse.html">stikprøvestørrelse</a> på forhånd.</p></div>
         </details>
       </div>
 
@@ -361,7 +361,7 @@
     <div class="container">
       <div class="cta-band">
         <h2>Brug for at beregne p-værdien selv?</h2>
-        <p>Vores danske beregnere giver dig p-værdi, konfidensinterval og fortolkning i samme skærm — gratis og uden installation.</p>
+        <p>Vores danske beregnere giver dig p-værdi, konfidensinterval og fortolkning i samme skærm: gratis og uden installation.</p>
         <a class="btn btn--light btn--lg" href="/#calculadoras">Se alle beregnere</a>
       </div>
     </div>
@@ -423,7 +423,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>

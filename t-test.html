@@ -29,6 +29,7 @@
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/cookie-consent.js" defer></script>
+  <script src="/js/media-loop.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -107,7 +108,7 @@
         </ol>
       </nav>
       <h1>t-test-beregner (Student)</h1>
-      <p class="lead">Sammenlign <strong>gennemsnit</strong> og find ud af, om forskellen er statistisk signifikant — for én stikprøve, to uafhængige stikprøver eller parrede data.</p>
+      <p class="lead">Sammenlign <strong>gennemsnit</strong> og find ud af, om forskellen er statistisk signifikant, for én stikprøve, to uafhængige stikprøver eller parrede data.</p>
     </div>
   </div>
 
@@ -240,16 +241,16 @@
       </nav>
 
       <h2 id="o-que-e">Hvad er t-testen (Student)</h2>
-      <p><strong>T-testen (Student)</strong> er den mest brugte statistiske procedure til at sammenligne <strong>gennemsnit</strong>. Den svarer på et direkte spørgsmål: er forskellen mellem to gennemsnit — eller mellem et gennemsnit og en referenceværdi — stor nok til at blive opfattet som reel, eller kan det bare være tilfældig variation i stikprøven?</p>
-      <p>Navnet stammer fra William Sealy Gosset, der offentliggjorde metoden i 1908 under pseudonymet "Student", mens han arbejdede på Guinness-bryggeriet. Hans problem var praktisk: at drage konklusioner ud fra <em>små stikprøver</em>, uden at kende populationens sande standardafvigelse. Det er præcis det, t-testen er til — og det er derfor, den er så udbredt i sundhedsforskning, psykologi, undervisning og kvalitetsstyring.</p>
-      <p>Forskellen i forhold til <a href="/z-test.html">z-testen</a> ligger der: z-testen kræver, at du kender populationens standardafvigelse; t-testen arbejder med standardafvigelsen <em>estimeret</em> ud fra selve stikprøven. For at kompensere for den ekstra usikkerhed bruger den <strong>t-fordelingen</strong>, der ligner normalfordelingen, men har lidt bredere haler — mere konservativ.</p>
+      <p><strong>T-testen (Student)</strong> er den mest brugte statistiske procedure til at sammenligne <strong>gennemsnit</strong>. Den svarer på et direkte spørgsmål: er forskellen mellem to gennemsnit, eller mellem et gennemsnit og en referenceværdi, stor nok til at blive opfattet som reel, eller kan det bare være tilfældig variation i stikprøven?</p>
+      <p>Navnet stammer fra William Sealy Gosset, der offentliggjorde metoden i 1908 under pseudonymet "Student", mens han arbejdede på Guinness-bryggeriet. Hans problem var praktisk: at drage konklusioner ud fra <em>små stikprøver</em>, uden at kende populationens sande standardafvigelse. Det er præcis det, t-testen er til, og det er derfor, den er så udbredt i sundhedsforskning, psykologi, undervisning og kvalitetsstyring.</p>
+      <p>Forskellen i forhold til <a href="/z-test.html">z-testen</a> ligger der: z-testen kræver, at du kender populationens standardafvigelse; t-testen arbejder med standardafvigelsen <em>estimeret</em> ud fra selve stikprøven. For at kompensere for den ekstra usikkerhed bruger den <strong>t-fordelingen</strong>, der ligner normalfordelingen, men har lidt bredere haler: mere konservativ.</p>
 
       <h2 id="tipos">De tre typer t-test</h2>
       <p>At vælge den rigtige type er det vigtigste trin. Denne beregner tilbyder alle tre:</p>
       <h3>1. t-test for én stikprøve</h3>
       <p>Sammenligner gennemsnittet af én enkelt gruppe med en <strong>kendt referenceværdi</strong> (μ₀). Eksempel: er gennemsnitsvægten af pakkerne fra en produktionslinje virkelig 500 g? Afviger en klasses gennemsnitskarakter fra skolens historiske gennemsnit?</p>
       <h3>2. t-test for to uafhængige stikprøver</h3>
-      <p>Sammenligner gennemsnittene fra <strong>to forskellige, uafhængige grupper</strong>. Eksempel: er restitueringstiden forskellig mellem dem, der fik behandling A, og dem, der fik B? Denne beregner bruger <strong>Welchs test</strong>, som ikke kræver, at de to grupper har samme varians — den moderne anbefaling som standard.</p>
+      <p>Sammenligner gennemsnittene fra <strong>to forskellige, uafhængige grupper</strong>. Eksempel: er restitueringstiden forskellig mellem dem, der fik behandling A, og dem, der fik B? Denne beregner bruger <strong>Welchs test</strong>, som ikke kræver, at de to grupper har samme varians. Den moderne anbefaling som standard.</p>
       <h3>3. Parret t-test</h3>
       <p>Sammenligner <strong>to målinger foretaget på de samme personer</strong>, typisk før og efter en intervention. Da hver person er sin egen kontrol, analyseres gennemsnittet af de individuelle forskelle. Eksempel: er de samme patienters blodtryk faldet efter otte ugers medicin?</p>
       <div class="callout callout--warning">
@@ -257,18 +258,26 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Parret eller uafhængig?
         </div>
-        <p>Hvis de samme personer er målt to gange, er testen <strong>parret</strong> — at bruge den som uafhængig spilder information og statistisk styrke. Hvis det er to forskellige grupper af personer, er den <strong>uafhængig</strong>.</p>
+        <p>Hvis de samme personer er målt to gange, er testen <strong>parret</strong>: at bruge den som uafhængig spilder information og statistisk styrke. Hvis det er to forskellige grupper af personer, er den <strong>uafhængig</strong>.</p>
       </div>
 
       <h2 id="como">Sådan virker beregningen</h2>
-      <p>Trods de tre typer er ideen altid den samme: divider den observerede forskel med <strong>standardfejlen</strong> — et mål for, hvor meget tilfældig variation der kan forventes. Resultatet er <strong>t-statistikken</strong>:</p>
+      <p>Trods de tre typer er ideen altid den samme: divider den observerede forskel med <strong>standardfejlen</strong>: et mål for, hvor meget tilfældig variation der kan forventes.Resultatet er <strong>t-statistikken</strong>:</p>
       <div class="formula">t = (observeret forskel) ÷ (standardfejl)
         <span class="formula__where">Jo større |t|, jo længere er du fra hypotesen om "ingen forskel".</span>
       </div>
       <p>For testen med én stikprøve er den observerede forskel f.eks. (gennemsnit − μ₀), og standardfejlen er standardafvigelsen divideret med kvadratroden af n:</p>
       <div class="formula">t = (x̄ − μ₀) ÷ (s ÷ √n)</div>
-      <p>Derefter har beregneren brug for <strong>frihedsgraderne</strong> (df) — for én stikprøve er df = n − 1. De bestemmer den nøjagtige form af t-fordelingen. Til sidst omsætter <strong>p-værdien</strong> t og df til en sandsynlighed via t-fordelingens fordelingsfunktion (her beregnet med den ufuldstændige beta-funktion for høj præcision).</p>
+      <p>Derefter har beregneren brug for <strong>frihedsgraderne</strong> (df), for én stikprøve er df = n − 1. De bestemmer den nøjagtige form af t-fordelingen. Til sidst omsætter <strong>p-værdien</strong> t og df til en sandsynlighed via t-fordelingens fordelingsfunktion (her beregnet med den ufuldstændige beta-funktion for høj præcision).</p>
 
+      
+      <figure class="media-figure">
+        <video data-loop width="960" height="540" muted loop playsinline
+               preload="none" poster="/img/poster-centrale-graensevaerdisaetning-da.jpg">
+          <source src="/video/centrale-graensevaerdisaetning-da.mp4" type="video/mp4">
+        </video>
+        <figcaption>Populationen til venstre er skæv og bliver ved med at være det. Det er fordelingen af <em>gennemsnittene</em> fra stikprøver på 12, der bliver en klokke — derfor holder t-testen, selv når de oprindelige tal ikke er normalfordelte.</figcaption>
+      </figure>
       <h2 id="pressupostos">Forudsætninger for t-testen</h2>
       <p>T-testen er robust, men der er betingelser for, at den fungerer godt:</p>
       <ul>
@@ -277,17 +286,17 @@
         <li><strong>Tilnærmelsesvis normalitet:</strong> data (eller forskellene i den parrede version) følger nogenlunde en normalfordeling. Med stikprøver større end ~30 er små afvigelser ikke længere et problem.</li>
         <li><strong>Uafhængighed:</strong> i to-stikprøvetesten må de to grupper ikke påvirke hinanden.</li>
       </ul>
-      <p>Når forudsætningerne svigter alvorligt — meget skæve data eller meget små stikprøver — er ikke-parametriske tests (som Mann-Whitney eller Wilcoxon) gode alternativer.</p>
+      <p>Når forudsætningerne svigter alvorligt, meget skæve data eller meget små stikprøver, er ikke-parametriske tests (som Mann-Whitney eller Wilcoxon) gode alternativer.</p>
 
       <h2 id="interpretar">Sådan fortolker du resultatet</h2>
       <p>Beregneren returnerer seks nøgletal:</p>
       <ul>
-        <li><strong>t-statistik</strong> — forskellen målt i antal standardfejl.</li>
-        <li><strong>Frihedsgrader</strong> — bestemmer den fordeling, der bruges til p-værdien.</li>
-        <li><strong>P-værdi</strong> — sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er resultatet signifikant.</li>
-        <li><strong>Standardfejl</strong> — den tilfældige variation, der kan forventes i estimatet.</li>
-        <li><strong>Punktestimat</strong> — gennemsnittet (én stikprøve) eller forskellen i gennemsnit (to stikprøver og parret).</li>
-        <li><strong>Konfidensinterval</strong> — det sandsynlige interval for den sande værdi. Hvis et interval for forskellen indeholder nul, er forskellen ikke signifikant.</li>
+        <li><strong>t-statistik</strong>: forskellen målt i antal standardfejl.</li>
+        <li><strong>Frihedsgrader</strong>: bestemmer den fordeling, der bruges til p-værdien.</li>
+        <li><strong>P-værdi</strong>: sandsynligheden for at observere en så stor forskel ved tilfældighed. Hvis den er mindre end signifikansniveauet (typisk 0,05), er resultatet signifikant.</li>
+        <li><strong>Standardfejl</strong>. Den tilfældige variation, der kan forventes i estimatet.</li>
+        <li><strong>Punktestimat</strong>: gennemsnittet (én stikprøve) eller forskellen i gennemsnit (to stikprøver og parret).</li>
+        <li><strong>Konfidensinterval</strong>. Det sandsynlige interval for den sande værdi. Hvis et interval for forskellen indeholder nul, er forskellen ikke signifikant.</li>
       </ul>
 
       <h2 id="exemplo">Løst eksempel</h2>
@@ -304,7 +313,7 @@
       <div class="faq">
         <details>
           <summary>Hvornår skal jeg bruge t-testen?</summary>
-          <div class="faq__answer"><p>Når du vil sammenligne gennemsnit, og populationens standardafvigelse er ukendt — hvilket er stort set altid tilfældet i praksis. Vil du sammenligne proportioner eller rater, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
+          <div class="faq__answer"><p>Når du vil sammenligne gennemsnit, og populationens standardafvigelse er ukendt: hvilket er stort set altid tilfældet i praksis. Vil du sammenligne proportioner eller rater, så brug <a href="/ab-test.html">A/B-testen</a> eller <a href="/proportionstest.html">proportionstesten</a>.</p></div>
         </details>
         <details>
           <summary>Hvad er forskellen mellem t-test og z-test?</summary>
@@ -316,7 +325,7 @@
         </details>
         <details>
           <summary>Kan jeg bruge t-testen med små stikprøver?</summary>
-          <div class="faq__answer"><p>Ja — den blev faktisk skabt netop til det. Men med meget små stikprøver bliver antagelsen om normalitet vigtigere, og testen mister styrke til at opdage reelle forskelle.</p></div>
+          <div class="faq__answer"><p>Ja. Den blev faktisk skabt netop til det. Men med meget små stikprøver bliver antagelsen om normalitet vigtigere, og testen mister styrke til at opdage reelle forskelle.</p></div>
         </details>
       </div>
 
@@ -405,7 +414,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger — kliniske, akademiske eller forretningsmæssige — bør resultaterne bekræftes af en statistiker.</p>
+      <p>Beregnerne har et oplysende og uddannende formål. Til kritiske beslutninger (kliniske, akademiske eller forretningsmæssige) bør resultaterne bekræftes af en statistiker.</p>
       <p>© <span data-year>2026</span> Statistik Beregner · Lavet i Danmark.</p>
     </div>
   </div>
