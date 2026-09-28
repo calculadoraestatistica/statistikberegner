@@ -1,0 +1,299 @@
+{
+  "casos": [
+    {
+      "id": "t1",
+      "pagina": "teste-t.html",
+      "nome": "Teste t para uma amostra",
+      "entrada": "média 5,2 · desvio 1,1 · n 15 · hipótese μ₀ = 5",
+      "linhas": [
+        {
+          "grandeza": "estatística t",
+          "site": 0.7041787902195309,
+          "ref": 0.7041787902195309,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.4928691133944487,
+          "ref": 0.4928691133944404,
+          "dif": 8.326672684688674e-15
+        }
+      ]
+    },
+    {
+      "id": "t2",
+      "pagina": "teste-t.html",
+      "nome": "Teste t de Welch, duas amostras",
+      "entrada": "grupo A (n 10) e grupo B (n 10), variâncias desiguais",
+      "linhas": [
+        {
+          "grandeza": "estatística t",
+          "site": -4.721768006647936,
+          "ref": -4.721768006647936,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.0001820095680672594,
+          "ref": 0.00018200956806725032,
+          "dif": 9.0801931945661e-18
+        }
+      ]
+    },
+    {
+      "id": "z",
+      "pagina": "teste-z.html",
+      "nome": "Teste Z para uma média",
+      "entrada": "média 100 · σ conhecido 15 · n 25 · hipótese μ₀ = 95",
+      "linhas": [
+        {
+          "grandeza": "estatística z",
+          "site": 1.6666666666666667,
+          "ref": 1.6666666666666667,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.09558070121012507,
+          "ref": 0.0955807045456294,
+          "dif": 3.335504331070105e-09
+        }
+      ]
+    },
+    {
+      "id": "prop",
+      "pagina": "teste-proporcao.html",
+      "nome": "Teste de uma proporção",
+      "entrada": "60 sucessos em 200 · hipótese p₀ = 0,25",
+      "linhas": [
+        {
+          "grandeza": "estatística z",
+          "site": 1.6329931618554518,
+          "ref": 1.6329931618554518,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.10247043217870466,
+          "ref": 0.10247043485974941,
+          "dif": 2.6810447473213372e-09
+        }
+      ]
+    },
+    {
+      "id": "ab",
+      "pagina": "teste-ab.html",
+      "nome": "Teste A/B de duas proporções",
+      "entrada": "A: 50/500 · B: 70/500 · bicaudal",
+      "linhas": [
+        {
+          "grandeza": "estatística z",
+          "site": 1.9462473604038077,
+          "ref": 1.9462473604038077,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.05162502895068566,
+          "ref": 0.05162503339423849,
+          "dif": 4.443552831245867e-09
+        }
+      ]
+    },
+    {
+      "id": "chi",
+      "pagina": "qui-quadrado.html",
+      "nome": "Qui-quadrado de independência",
+      "entrada": "tabela 2×3: [10, 20, 30] e [20, 20, 20]",
+      "linhas": [
+        {
+          "grandeza": "qui-quadrado",
+          "site": 5.333333333333334,
+          "ref": 5.333333333333334,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.06948345122280153,
+          "ref": 0.0694834512228015,
+          "dif": 2.7755575615628914e-17
+        }
+      ]
+    },
+    {
+      "id": "anova",
+      "pagina": "k-amostras.html",
+      "nome": "ANOVA de um fator",
+      "entrada": "três grupos de 10 observações",
+      "linhas": [
+        {
+          "grandeza": "estatística F",
+          "site": 44.259207295685634,
+          "ref": 44.259207295685705,
+          "dif": 7.105427357601002e-14
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 3.0034427167535682e-09,
+          "ref": 3.0034426785599965e-09,
+          "dif": 3.8193571723630395e-17
+        }
+      ]
+    },
+    {
+      "id": "kw",
+      "pagina": "k-amostras.html",
+      "nome": "Kruskal-Wallis",
+      "entrada": "mesmos três grupos, sem supor normalidade",
+      "linhas": [
+        {
+          "grandeza": "estatística H",
+          "site": 22.572624081905186,
+          "ref": 22.572624081905186,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 1.2543448746016317e-05,
+          "ref": 1.2543448746008074e-05,
+          "dif": 8.243324642678851e-18
+        }
+      ]
+    },
+    {
+      "id": "pearson",
+      "pagina": "correlacao.html",
+      "nome": "Correlação de Pearson",
+      "entrada": "dez pares (x, y)",
+      "linhas": [
+        {
+          "grandeza": "coeficiente r",
+          "site": 0.9980912580643652,
+          "ref": 0.9980912580643652,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 5.793911037722557e-11,
+          "ref": 5.79391103772411e-11,
+          "dif": 1.552902353097598e-23
+        }
+      ]
+    },
+    {
+      "id": "mw",
+      "pagina": "wilcoxon.html",
+      "nome": "Mann-Whitney U",
+      "entrada": "grupo A e grupo B, 10 observações cada",
+      "linhas": [
+        {
+          "grandeza": "estatística U",
+          "site": 6.0,
+          "ref": 6.0,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.0008807432538153748,
+          "ref": 0.000880743190741727,
+          "dif": 6.307364775869767e-11
+        }
+      ]
+    },
+    {
+      "id": "wsr",
+      "pagina": "wilcoxon.html",
+      "nome": "Wilcoxon pareado",
+      "entrada": "dez medidas antes e depois",
+      "linhas": [
+        {
+          "grandeza": "estatística W",
+          "site": 0.0,
+          "ref": 0.0,
+          "dif": 0.0
+        },
+        {
+          "grandeza": "valor-p",
+          "site": 0.004976730745262392,
+          "ref": 0.004976730754213936,
+          "dif": 8.951543499502446e-12
+        }
+      ]
+    },
+    {
+      "id": "ic",
+      "pagina": "intervalo-confianca.html",
+      "nome": "Intervalo de confiança da média",
+      "entrada": "média 7,43 · desvio 0,70 · n 10 · 95%",
+      "linhas": [
+        {
+          "grandeza": "limite inferior",
+          "site": 6.936628414996473,
+          "ref": 6.936628414996455,
+          "dif": 1.865174681370263e-14
+        },
+        {
+          "grandeza": "limite superior",
+          "site": 7.923371585003526,
+          "ref": 7.923371585003545,
+          "dif": 1.865174681370263e-14
+        }
+      ]
+    },
+    {
+      "id": "wilson",
+      "pagina": "intervalo-confianca.html",
+      "nome": "Intervalo de Wilson para proporção",
+      "entrada": "30 sucessos em 100 · 95%",
+      "linhas": [
+        {
+          "grandeza": "limite inferior",
+          "site": 0.21894885431316377,
+          "ref": 0.21894885294932764,
+          "dif": 1.3638361273660138e-09
+        },
+        {
+          "grandeza": "limite superior",
+          "site": 0.39584854442618445,
+          "ref": 0.39584854633346667,
+          "dif": 1.9072822210475238e-09
+        }
+      ]
+    },
+    {
+      "id": "nsurvey",
+      "pagina": "tamanho-amostra.html",
+      "nome": "Tamanho de amostra para pesquisa",
+      "entrada": "margem de erro 3% · confiança 95% · p 0,5",
+      "linhas": [
+        {
+          "grandeza": "n necessário",
+          "site": 1068.0,
+          "ref": 1068.0,
+          "dif": 0.0
+        }
+      ]
+    }
+  ],
+  "ressalvas": [
+    {
+      "pagina": "wilcoxon.html",
+      "nome": "Mann-Whitney U",
+      "usado": "aproximação normal",
+      "p_usado": 0.000880743190741727,
+      "alternativo": "distribuição exata",
+      "p_alternativo": 0.00032475264673407085,
+      "n": "10 por grupo"
+    },
+    {
+      "pagina": "wilcoxon.html",
+      "nome": "Wilcoxon pareado",
+      "usado": "aproximação normal",
+      "p_usado": 0.004976730754213936,
+      "alternativo": "distribuição exata",
+      "p_alternativo": 0.001953125,
+      "n": "10 pares"
+    }
+  ],
+  "scipy": "scipy.stats 1.17.1"
+}
