@@ -79,6 +79,24 @@ INDGANG = {
 }
 
 
+
+def tael_kontroller() -> int:
+    """Hvor mange kontroller suiten faktisk koerer.
+
+    Tallet stod skrevet i haanden som 41, saa siden blev ved med at udgive 41,
+    efter at suiten voksede. Nu kommer det fra testens egen udskrift.
+    """
+    try:
+        ud = subprocess.run(
+            ["node", os.path.join(AQUI, "test_calculadoras.js")],
+            capture_output=True, text=True, encoding="utf-8", timeout=120).stdout
+        m = re.search(r"(\d+)\s*/\s*(\d+)\s+assercoes|(\d+)\s*/\s*(\d+)\s+asserções", ud)
+        if m:
+            return int(m.group(2) or m.group(4))
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return 0
+
 def num(v):
     if v is None:
         return "&mdash;"
@@ -178,7 +196,7 @@ MAIN = """<main id="conteudo">
         stikprøver nærmer de to metoder sig hinanden, og forskellen forsvinder.</p>
 
       <h2>Ud over denne side</h2>
-      <p>Sitet har også en regressionssuite med 41 kontroller, der holder de interne funktioner
+      <p>Sitet har også en regressionssuite med %(kontroller)d kontroller, der holder de interne funktioner
         op mod referenceværdier ved hver ændring i koden. Den kører i Node uden afhængigheder og
         fejler, hvis et regnestykke flytter sig. Tabellen ovenfor er den del, der kan
         offentliggøres; suiten er sikkerhedsnettet for den, der retter i koden.</p>
@@ -204,7 +222,7 @@ stats.ttest_ind(gruppe_a, gruppe_b, equal_var=False)</code></pre>
   </div>
 
 </main>""" % dict(i_alt=i_alt, afvig=afvig, dato=DATO, raekker="".join(raekker),
-                  forbehold=forbehold)
+                  forbehold=forbehold, kontroller=tael_kontroller())
 
 skabelon = io.open(os.path.join(RAIZ, "metodologi.html"), encoding="utf-8").read()
 ny = skabelon[:skabelon.index("<main")] + MAIN + skabelon[skabelon.index("</main>") + 7:]

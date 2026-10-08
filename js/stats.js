@@ -705,9 +705,118 @@
   }
 
   /* ----------------------------------------------------------------------
+     Leitura de números digitados
+     ---------------------------------------------------------------------- */
+
+  // Converte texto em número aceitando vírgula ou ponto como decimal, e
+  // ponto como separador de milhar. Mesmas regras do parseNum de js/app.js,
+  // repetidas aqui porque stats.js não depende de app.js. O teste
+  // tests/test_calculadoras.js compara as duas implementações para elas não
+  // divergirem com o tempo.
+  function parseNum(v) {
+    if (typeof v === 'number') return v;
+    if (v == null) return NaN;
+    var s = String(v).trim().replace(/\s/g, '').replace(/%/g, '');
+    if (s === '') return NaN;
+    if (s.indexOf(',') > -1 && s.indexOf('.') > -1) {
+      s = s.replace(/\./g, '').replace(',', '.');   // 1.234,56 -> 1234.56
+    } else if (s.indexOf(',') > -1) {
+      s = s.replace(',', '.');                       // 1,5 -> 1.5
+    }
+    var n = parseFloat(s);
+    return isNaN(n) ? NaN : n;
+  }
+
+  // Por que isto existe: as três calculadoras de lista (wilcoxon, k-amostras
+  // e correlacao) partiam o texto com split(/[\s,;]+/), tratando TODA vírgula
+  // como separador. Quem digitava à brasileira perdia os dados sem aviso, e a
+  // conclusão saía invertida. Medido contra o SciPy: três grupos de cinco
+  // valores "5,1 5,4 4,9 5,3 5,2" viravam três grupos de dez, e a ANOVA
+  // devolvia F=0,57 com p=0,574 ("diferença não significativa") onde o certo
+  // era F=135,59 com p=5,8e-09. No Mann-Whitney, U=54 e p=0,267 onde o certo
+  // era U=0 e p=0,0039. Em correlacao os próprios placeholders impressos no
+  // campo derrubavam a calculadora com "X tem 5, Y tem 10".
+  //
+  // A vírgula é ambígua em pt-BR: em "5,1 5,4" ela é decimal, em "12,15,14"
+  // ela separa valores. A decisão é tomada UMA VEZ para o campo inteiro, e o
+  // critério é a forma dos pedaços que têm vírgula:
+  //
+  //     se algum pedaço com vírgula não tem a forma de um número
+  //     ("85,88,82", "12,"), a vírgula é separador no campo todo;
+  //     senão, é decimal.
+  //
+  // Duas vírgulas não cabem num número, e vírgula no fim de um pedaço também
+  // não: as duas coisas denunciam separador. Pedaços sem vírgula ficam fora da
+  // decisão, senão lixo no meio do texto a inverteria ("5,1 abc 4,9").
+  //
+  // Duas tentativas anteriores falhavam, as duas do mesmo jeito perigoso, que
+  // é perder valor sem erro na tela:
+  //
+  //   * olhar cada vírgula com /(\d),(\d)/g: o regex consome o dígito dos dois
+  //     lados, então em "85,88,82" só vírgulas alternadas eram vistas como
+  //     decimais, e "85,88,82 90,87" devolvia dois valores em vez de cinco.
+  //   * contar vírgulas por pedaço: "12, 15, 14, 18, 11,16", que é o exemplo
+  //     do próprio site com um espaço a menos, tem no máximo uma vírgula por
+  //     pedaço, e "11,16" virava 11,16 em vez de dois valores.
+  //
+  // Fica uma ambiguidade sem saída: "12,15" sozinho pode ser doze-e-quinze ou
+  // dois valores. Vale como um número, que é a leitura brasileira do campo.
+  var FORMA_DE_NUMERO = /^[+-]?[\d.]*\d(?:,\d+)?$/;
+
+  function virgulaSepara(pedacos) {
+    for (var i = 0; i < pedacos.length; i++) {
+      if (pedacos[i].indexOf(',') < 0) continue;
+      if (!FORMA_DE_NUMERO.test(pedacos[i])) return true;
+    }
+    return false;
+  }
+
+  function numeros(pedacos) {
+    var separa = virgulaSepara(pedacos);
+    var out = [];
+    for (var i = 0; i < pedacos.length; i++) {
+      var sub = separa ? pedacos[i].split(',') : [pedacos[i]];
+      for (var j = 0; j < sub.length; j++) {
+        if (sub[j] === '') continue;
+        var v = parseNum(sub[j]);
+        if (isFinite(v)) out.push(v);
+      }
+    }
+    return out;
+  }
+
+  // Lista livre: espaço, tabulação, quebra de linha e ponto e vírgula separam
+  // valores sempre. Para wilcoxon e k-amostras, onde o usuário cola uma
+  // sequência solta.
+  function parseList(text) {
+    var s = String(text == null ? '' : text).trim();
+    if (s === '') return [];
+    return numeros(s.split(/[\s;]+/));
+  }
+
+  // Lista por linha: a LINHA é a unidade de valor, e o espaço não separa.
+  // Para correlacao, onde cada linha de X corresponde à mesma linha de Y, que
+  // é o que a página promete ao leitor. Espaço dentro da linha é separador de
+  // milhar vindo de planilha ("1 234" é 1234), e tratá-lo como separador de
+  // valores dobrava as duas séries ao mesmo tempo: os tamanhos continuavam
+  // casando, nenhum erro aparecia, e o r mudava de 0,19 para 0,99.
+  function parseLines(text) {
+    var s = String(text == null ? '' : text);
+    if (s.trim() === '') return [];
+    var linhas = s.split(/[\r\n\t;]+/);
+    var pedacos = [];
+    for (var i = 0; i < linhas.length; i++) {
+      var l = linhas[i].trim().replace(/\s+/g, '');
+      if (l !== '') pedacos.push(l);
+    }
+    return numeros(pedacos);
+  }
+
+  /* ----------------------------------------------------------------------
      Exportação
      ---------------------------------------------------------------------- */
   var Stats = {
+    parseNum: parseNum, parseList: parseList, parseLines: parseLines,
     gammaln: gammaln, betai: betai, gammp: gammp,
     normalPDF: normalPDF, normalCDF: normalCDF, normalInv: normalInv,
     tCDF: tCDF, tInv: tInv, tTwoTailedP: tTwoTailedP,

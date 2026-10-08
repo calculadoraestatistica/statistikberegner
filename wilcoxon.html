@@ -145,7 +145,7 @@
               <textarea class="input" id="wx-g2" rows="4" placeholder="F.eks.: 20 22 19 25 21 23" autocomplete="off"></textarea>
             </div>
           </div>
-          <p class="help">Indsæt værdierne adskilt af mellemrum, komma eller linjeskift.</p>
+          <p class="help">Indsæt værdierne adskilt af mellemrum, komma, semikolon eller linjeskift. Decimaltegnet kan være komma eller punktum: 5,1 og 5.1 betyder det samme.</p>
         </fieldset>
       </div>
 
@@ -444,16 +444,12 @@
     errBox.classList.remove('is-visible');
   }
 
-  // Konverterer en fri tekst til et array af tal.
+  // Laesningen bor i js/stats.js, som afgor en gang pr. felt, om kommaet er
+  // decimal eller separator. Her blev teksten delt med /[\s,;]+/, saa ethvert
+  // komma var separator, og den, der skrev "12,5 15,5", mistede sine data
+  // uden besked og fik den modsatte konklusion.
   function parseList(texto) {
-    var partes = String(texto).split(/[\s,;]+/);
-    var nums = [];
-    for (var i = 0; i < partes.length; i++) {
-      if (partes[i] === '') continue;
-      var v = parseNum(partes[i]);
-      if (!isNaN(v)) nums.push(v);
-    }
-    return nums;
+    return Stats.parseList(texto);
   }
 
   // Median for et array af tal.

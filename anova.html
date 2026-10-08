@@ -131,7 +131,7 @@
 
       <fieldset class="field-group">
         <legend>Dine grupper</legend>
-        <p class="help help--block">Indsæt værdierne for hver gruppe adskilt af mellemrum, komma eller linjeskift.</p>
+        <p class="help help--block">Indsæt værdierne for hver gruppe adskilt af mellemrum, komma, semikolon eller linjeskift. Decimaltegnet kan være komma eller punktum: 5,1 og 5.1 betyder det samme.</p>
         <div class="group-list" id="ka-groups"></div>
         <div class="matrix-controls">
           <button type="button" class="btn btn--ghost btn--sm" id="ka-add">+ Gruppe</button>
@@ -462,16 +462,13 @@
     errBox.classList.remove('is-visible');
   }
 
-  // Konverterer en tekst til en liste af tal (mellemrum, komma eller ; som separator)
+  // Laesningen bor i js/stats.js, som afgor en gang pr. felt, om kommaet er
+  // decimal eller separator. Her blev teksten delt med /[\s,;]+/, saa ethvert
+  // komma var separator: tre grupper paa fem vaerdier skrevet "5,1 5,4 4,9
+  // 5,3 5,2" blev tre grupper paa ti, og ANOVA svarede "ikke signifikant" paa
+  // data, der er hoejsignifikante.
   function parseList(text) {
-    var parts = String(text == null ? '' : text).split(/[\s,;]+/);
-    var out = [];
-    for (var i = 0; i < parts.length; i++) {
-      if (parts[i] === '') continue;
-      var v = parseNum(parts[i]);
-      if (!isNaN(v)) out.push(v);
-    }
-    return out;
+    return Stats.parseList(text);
   }
 
   $('ka-example').addEventListener('click', function (e) {
@@ -495,7 +492,8 @@
       var vals = parseList(texts[i]);
       if (vals.length < 2) {
         showError('Gruppe ' + (i + 1) + ' skal indeholde mindst 2 numeriske værdier. ' +
-          'Indsæt værdierne adskilt af mellemrum, komma eller linjeskift.');
+          'Indsæt værdierne adskilt af mellemrum, komma eller linjeskift. ' +
+          'Decimaltegnet kan være komma eller punktum.');
         return;
       }
       groups.push(vals);

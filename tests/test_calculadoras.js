@@ -142,6 +142,158 @@ var wi = S.wilsonInterval(30, 100, 0.95);
 approx(wi.low, 0.2189489, 1e-5, 'wilsonInterval: low');
 approx(wi.high, 0.3958485, 1e-5, 'wilsonInterval: high');
 
+/* ----- 11) Leitura de listas digitadas (parseList) -----
+   As calculadoras de lista (wilcoxon, k-amostras, correlacao) partiam o texto
+   com split(/[\s,;]+/), tratando toda vírgula como separador de valores. Quem
+   digitava à brasileira perdia os dados sem aviso e recebia a conclusão
+   invertida. Estes casos cobrem as duas leituras da vírgula, e em especial os
+   formatos que já funcionavam antes e não podem quebrar. */
+
+function listaIgual(entrada, esperado, label) {
+  var obtido = S.parseList(entrada);
+  if (obtido.length !== esperado.length) {
+    failed++;
+    failures.push('FAIL ' + label + ': esperado ' + JSON.stringify(esperado) +
+                  ', obtido ' + JSON.stringify(obtido));
+    return;
+  }
+  for (var i = 0; i < esperado.length; i++) {
+    if (Math.abs(obtido[i] - esperado[i]) > 1e-12) {
+      failed++;
+      failures.push('FAIL ' + label + ': esperado ' + JSON.stringify(esperado) +
+                    ', obtido ' + JSON.stringify(obtido));
+      return;
+    }
+  }
+  passed++;
+}
+
+// formatos que o site já aceitava: a vírgula separa valores
+listaIgual('12, 15, 14, 18, 11, 16', [12, 15, 14, 18, 11, 16], 'parseList: CSV com espaço (botão Ver exemplo)');
+listaIgual('85, 88, 82, 90, 87', [85, 88, 82, 90, 87], 'parseList: CSV do exemplo de k-amostras');
+listaIgual('12,15,14,18,11,16', [12, 15, 14, 18, 11, 16], 'parseList: CSV sem espaço');
+listaIgual('5.1 5.4 4.9', [5.1, 5.4, 4.9], 'parseList: ponto decimal');
+listaIgual('5.1,5.4,4.9', [5.1, 5.4, 4.9], 'parseList: CSV com ponto decimal');
+listaIgual('1\n2\n3', [1, 2, 3], 'parseList: um por linha');
+listaIgual('10 20 30', [10, 20, 30], 'parseList: inteiros com espaço');
+
+// lista por vírgula COM espaço em branco em algum outro lugar. Esta é a forma
+// que a primeira versão do conserto quebrava: /(\d),(\d)/g consome o dígito
+// dos dois lados, só protegia vírgulas alternadas, e "85,88,82 90,87" devolvia
+// [85.88, 90.87], cinco valores virando dois, sem erro nenhum na tela.
+listaIgual('85,88,82\n90,87', [85, 88, 82, 90, 87], 'parseList: CSV com quebra de linha no meio');
+listaIgual('12,15,14 18,11,16', [12, 15, 14, 18, 11, 16], 'parseList: dois grupos CSV com espaço');
+listaIgual('1,2,3 4', [1, 2, 3, 4], 'parseList: CSV com valor solto');
+listaIgual('12, 15, 14, 18, 11,16', [12, 15, 14, 18, 11, 16], 'parseList: exemplo do site com um espaço a menos');
+listaIgual('85,88,82 90,87,91', [85, 88, 82, 90, 87, 91], 'parseList: dois grupos CSV de três');
+
+// o que estava quebrado: a vírgula é o decimal
+listaIgual('5,1 5,4 4,9 5,3 5,2', [5.1, 5.4, 4.9, 5.3, 5.2], 'parseList: decimal com espaço');
+listaIgual('2,1\n3,9\n6,2\n7,8\n9,5', [2.1, 3.9, 6.2, 7.8, 9.5], 'parseList: decimal um por linha');
+listaIgual('5,1;5,4;4,9', [5.1, 5.4, 4.9], 'parseList: decimal com ponto e vírgula');
+listaIgual('5,1\t5,4\t4,9', [5.1, 5.4, 4.9], 'parseList: decimal com tabulação (Excel)');
+listaIgual('1.234,56 2.000,10', [1234.56, 2000.1], 'parseList: milhar pt-BR');
+listaIgual('-1,5 -2,5 3', [-1.5, -2.5, 3], 'parseList: negativos com decimal');
+listaIgual('5,1', [5.1], 'parseList: valor único decimal');
+listaIgual('1.234,56', [1234.56], 'parseList: valor único com milhar');
+listaIgual('12,\n15,\n14', [12, 15, 14], 'parseList: vírgula no fim da linha');
+listaIgual('2,1\r\n3,9', [2.1, 3.9], 'parseList: CRLF');
+listaIgual('5,1 5.4 4,9', [5.1, 5.4, 4.9], 'parseList: vírgula e ponto misturados');
+
+// entradas degeneradas
+listaIgual('', [], 'parseList: vazio');
+listaIgual('   ', [], 'parseList: só espaços');
+listaIgual(null, [], 'parseList: null');
+listaIgual(undefined, [], 'parseList: undefined');
+listaIgual('abc def', [], 'parseList: texto sem número');
+listaIgual('5,1 abc 4,9', [5.1, 4.9], 'parseList: número com lixo no meio');
+listaIgual(',,,', [], 'parseList: só vírgulas');
+
+/* parseLines: correlacao lê por LINHA, e o espaço NÃO separa valores.
+   A página promete "cada linha de X corresponde à mesma linha de Y", e coluna
+   de planilha traz milhar separado por espaço. Com o leitor de lista genérico,
+   "1 234" virava dois valores; como X e Y têm o mesmo formato, os dois dobravam
+   juntos, os tamanhos continuavam casando, nenhum erro aparecia, e o r saltava
+   de 0,19 para 0,99. */
+function linhasIgual(entrada, esperado, label) {
+  var obtido = S.parseLines(entrada);
+  var ok = obtido.length === esperado.length;
+  for (var i = 0; ok && i < esperado.length; i++) {
+    if (Math.abs(obtido[i] - esperado[i]) > 1e-12) ok = false;
+  }
+  if (ok) { passed++; return; }
+  failed++;
+  failures.push('FAIL ' + label + ': esperado ' + JSON.stringify(esperado) +
+                ', obtido ' + JSON.stringify(obtido));
+}
+
+linhasIgual('1\n2\n3\n4\n5', [1, 2, 3, 4, 5], 'parseLines: um por linha');
+linhasIgual('2,1\n3,9\n6,2\n7,8\n9,5', [2.1, 3.9, 6.2, 7.8, 9.5], 'parseLines: decimal por linha');
+linhasIgual('1 234\n5 678\n9 012', [1234, 5678, 9012], 'parseLines: milhar separado por espaço');
+linhasIgual('1.234,56\n2.000,10', [1234.56, 2000.1], 'parseLines: milhar com ponto e decimal');
+linhasIgual('1,2,3,4,5', [1, 2, 3, 4, 5], 'parseLines: CSV numa linha só');
+linhasIgual('12\n14\n16\n18\n20', [12, 14, 16, 18, 20], 'parseLines: exemplo do botão');
+linhasIgual('', [], 'parseLines: vazio');
+linhasIgual('  \n  ', [], 'parseLines: só espaços');
+
+// os placeholders impressos em correlacao.html precisam dar séries do mesmo tamanho
+assert(S.parseLines('1\n2\n3\n4\n5').length === S.parseLines('2,1\n3,9\n6,2\n7,8\n9,5').length,
+       'parseLines: os dois placeholders de correlacao têm o mesmo n');
+
+/* parseNum de stats.js não pode divergir do de js/app.js, que é uma cópia. */
+function parseNumApp(v) {
+  if (typeof v === 'number') return v;
+  if (v == null) return NaN;
+  var s = String(v).trim().replace(/\s/g, '').replace(/%/g, '');
+  if (s === '') return NaN;
+  if (s.indexOf(',') > -1 && s.indexOf('.') > -1) {
+    s = s.replace(/\./g, '').replace(',', '.');
+  } else if (s.indexOf(',') > -1) {
+    s = s.replace(',', '.');
+  }
+  var n = parseFloat(s);
+  return isNaN(n) ? NaN : n;
+}
+var amostrasNum = ['5,1', '5.1', '1.234,56', '1,234.56', '-2,5', '0', '', '  7 ',
+                   '12%', 'abc', '1.234', '1,5,7', '+3,25', '.5', ',5', '1e3'];
+for (var an = 0; an < amostrasNum.length; an++) {
+  var aV = S.parseNum(amostrasNum[an]), bV = parseNumApp(amostrasNum[an]);
+  assert((isNaN(aV) && isNaN(bV)) || aV === bV,
+         'parseNum concorda com app.js em ' + JSON.stringify(amostrasNum[an]));
+}
+
+/* ----- 12) O defeito da vírgula decimal, ponta a ponta -----
+   Reproduz o caminho completo: texto digitado -> parseList -> teste. Os valores
+   de referência vêm do SciPy. Antes do conserto o site devolvia, para as mesmas
+   entradas, F=0,5664 com p=0,5742 e U=54 com p=0,2668, ou seja, a conclusão
+   oposta. */
+
+var grupoTxt = ['5,1 5,4 4,9 5,3 5,2', '6,2 6,5 6,0 6,4 6,3', '7,1 7,4 6,9 7,3 7,2'];
+var gruposLidos = [S.parseList(grupoTxt[0]), S.parseList(grupoTxt[1]), S.parseList(grupoTxt[2])];
+assert(gruposLidos[0].length === 5 && gruposLidos[1].length === 5 && gruposLidos[2].length === 5,
+       'ponta a ponta: cada grupo digitado com vírgula decimal tem 5 valores');
+// scipy.stats.f_oneway -> F=135.58558559, p=5.79152926e-09
+var anovaPt = S.anovaTest({ groups: gruposLidos, confidence: 0.95 });
+approx(anovaPt.F, 135.5855856, 1e-5, 'ponta a ponta: ANOVA F com vírgula decimal');
+approx(anovaPt.pValue, 5.791529e-9, 1e-13, 'ponta a ponta: ANOVA p com vírgula decimal');
+assert(anovaPt.dfB === 2 && anovaPt.dfW === 12, 'ponta a ponta: ANOVA gl 2/12');
+assert(anovaPt.significant === true, 'ponta a ponta: ANOVA acusa diferença significativa');
+
+// scipy.stats.mannwhitneyu(..., alternative='two-sided') -> U=0
+var mwA = S.parseList('12,5 15,5 11,5 18,5 14,5 16,5');
+var mwB = S.parseList('20,5 22,5 19,5 25,5 21,5 23,5');
+assert(mwA.length === 6 && mwB.length === 6, 'ponta a ponta: Mann-Whitney lê 6 e 6');
+var mw = S.mannWhitneyTest({ group1: mwA, group2: mwB, confidence: 0.95 });
+approx(mw.U, 0, 1e-12, 'ponta a ponta: Mann-Whitney U com vírgula decimal');
+assert(mw.significant === true, 'ponta a ponta: Mann-Whitney acusa diferença significativa');
+
+// scipy.stats.pearsonr([1,2,3,4,5],[2.1,3.9,6.2,7.8,9.5]) -> r=0.99813216
+var corX = S.parseList('1\n2\n3\n4\n5');
+var corY = S.parseList('2,1\n3,9\n6,2\n7,8\n9,5');
+var corr = S.pearsonCorrelation({ x: corX, y: corY });
+approx(corr.r, 0.9981322, 1e-6, 'ponta a ponta: Pearson r dos placeholders da página');
+assert(corr.n === 5, 'ponta a ponta: Pearson n=5 dos placeholders da página');
+
 /* ----- Relatório final ----- */
 
 var total = passed + failed;

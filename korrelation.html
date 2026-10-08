@@ -122,7 +122,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         Parrede data
       </h2>
-      <p class="calculator__hint">Hver række i X svarer til samme række i Y. Du kan indsætte direkte fra Excel eller Google Sheets (én kolonne ad gangen). Komma eller punktum som decimaltegn.</p>
+      <p class="calculator__hint">Hver række i X svarer til samme række i Y. Du kan indsætte direkte fra Excel eller Google Sheets (én kolonne ad gangen). Komma eller punktum som decimaltegn: 5,1 og 5.1 betyder det samme.</p>
 
       <fieldset class="field-group">
         <legend>Variable</legend>
@@ -449,17 +449,13 @@
   function showError(msg) { errBox.textContent = msg; errBox.classList.add('is-visible'); result.hidden = true; }
   function clearError() { errBox.textContent = ''; errBox.classList.remove('is-visible'); }
 
+  // Laesningen bor i js/stats.js. Her er LINJEN enheden, som siden lover, saa
+  // mellemrum deler ikke: "1 234" er tusind to hundrede og fireogtredive fra
+  // et regneark. Fejlen var kommaet: det kom med i delingen sammen med
+  // linjeskiftet, saa sidens egne eksempler i felterne vaeltede beregneren
+  // med "X har 5, Y har 10".
   function parseSeries(raw) {
-    if (!raw) return [];
-    var lines = String(raw).split(/[\r\n,;\t]+/);
-    var out = [];
-    for (var i = 0; i < lines.length; i++) {
-      var s = lines[i].trim().replace(/\s+/g, '');
-      if (!s) continue;
-      var n = parseNum(s);
-      if (isFinite(n)) out.push(n);
-    }
-    return out;
+    return Stats.parseLines(raw);
   }
 
   $('calc-example').addEventListener('click', function () {
