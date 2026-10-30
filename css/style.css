@@ -1547,26 +1547,6 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
   text-decoration: none;
 }
 
-/* ============================================================
-   Ad slot (AdSense)
-   ============================================================ */
-.ad-slot {
-  margin-block: var(--sp-5);
-  text-align: center;
-  min-height: 0;
-}
-.ad-slot:empty { display: none; }
-.ad-slot:not(:empty)::before {
-  content: "Annonce";
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--c-muted);
-  margin-bottom: var(--sp-2);
-  font-weight: 500;
-}
 
 /* ============================================================
    Recommend / affiliate box
@@ -2205,15 +2185,7 @@ table.data tbody tr:last-child td { border-bottom: 2px solid var(--c-ink); }
 @media print {
   .site-header,
   .site-footer,
-  .ad-slot,
-  .nav-toggle,
-  .main-nav,
-  .cta-band,
-  .skip-link,
-  .calculator__actions,
-  .ai-search,
-  .recommend { display: none !important; }
-
+  
   body {
     background: #fff;
     background-image: none;

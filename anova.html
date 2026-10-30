@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-7516029395999799">
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7516029395999799" crossorigin="anonymous"></script>
 <title>ANOVA og k-stikprøver beregner — Online og gratis</title>
 <meta name="description" content="Gratis ANOVA-beregner på dansk til at sammenligne tre eller flere grupper. Envejs-ANOVA eller Kruskal-Wallis: p-værdi og effektstørrelse.">
 <link rel="canonical" href="https://statistikberegner.dk/anova.html">
@@ -25,7 +23,6 @@
 <link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/css/style.css">
-<script src="/js/cookie-consent.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -163,8 +160,6 @@
       <section class="result" id="ka-result" hidden aria-live="polite"></section>
     </form>
 
-    <div class="ad-slot" data-ad-slot=""></div>
-
     <article class="prose">
 
       <nav class="toc" aria-label="Artiklens indhold">
@@ -214,8 +209,6 @@
       <p><strong>Kruskal-Wallis</strong> testen er det <strong>ikke-parametriske</strong> alternativ. I stedet for at arbejde med de oprindelige værdier konverterer den dem til <strong>rangordener</strong>: alle observationer fra alle grupper samles, sorteres fra mindste til største, og hver værdi erstattes af sin position (1, 2, 3, …). Analysen sker derefter på disse rangordener.</p>
       <p>Logikken er intuitiv. Hvis grupperne er ens, bør høje og lave rangordener fordele sig nogenlunde ens mellem dem: summen af rangordener i hver gruppe vil være proportional med dens størrelse. Hvis én gruppe samler de højeste værdier (store rangordener) og en anden de laveste, vokser teststørrelsen, kaldet <strong>H</strong>. Under antagelsen om ens grupper følger H tilnærmelsesvis en chi-i-anden fordeling med k − 1 frihedsgrader, og deraf kommer p-værdien.</p>
       <p>Fordi den kun bruger datas rækkefølge, er Kruskal-Wallis <strong>robust over for ekstreme værdier</strong> og kræver ikke normalitet. For tre eller flere grupper er den det samme som <a href="/wilcoxon.html">Mann-Whitney</a> testen er for to grupper. Prisen er et beskedent tab i statistisk styrke, når data <em>faktisk</em> er normalfordelte, i det tilfælde opdager ANOVA forskelle lidt mere følsomt.</p>
-
-      <div class="ad-slot" data-ad-slot=""></div>
 
       <h2 id="pressupostos">ANOVA's antagelser</h2>
       <p>For at p-værdien fra ANOVA er pålidelig, skal tre betingelser være rimeligt opfyldt:</p>
